@@ -1,11 +1,8 @@
-# Welcome to your Jupyter Book
+# My Profil
 
-This is a small sample book to give you a feel for how book content is
-structured.
-It shows off a few of the major file types, as well as some sample content.
-It does not go in-depth into any particular topic - check out [the Jupyter Book documentation](https://jupyterbook.org) for more information.
+Perkenalkan nama saya Harits Putra Junaidi, seorang mahasiswa yang saat ini sedang menempuh pendidikan di perguruan tinggi Universitas Trunojoyo Madura. Saya terdaftar sebagai mahasiswa aktif dengan Nomor Induk Mahasiswa (NIM) 230411100003. Program Studi saya yaitu Teknik Informatika. Untuk email saya adalah haritsputraj@gmail.com
 
-Check out the content pages bundled with this sample book to see more.
+Saya lahir di Kabupaten Bangkalan, dari lahir sampai sekarang saya tetap menetap di Bangkalan. Beberapa hobi yang saya tekuni antara lain membaca, menulis, dan mengikuti kegiatan olahraga. Hobi tersebut membantu saya untuk menyeimbangkan antara kesibukan belajar dengan menjaga kesehatan fisik serta memperluas wawasan. Saya juga tertarik untuk terus mengasah kemampuan di bidang teknologi dan penelitian sebagai bekal di masa depan.
 
 ```{tableofcontents}
 ```
