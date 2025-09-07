@@ -32,8 +32,6 @@ Dataset Iris terdiri dari **150 baris data** dengan **5 kolom** yang merepresent
 
 ![Distribusi Species Iris](images/species_distribusi.png)
 
-*Gambar 1: Distribusi Pada Setiap Kelas*
-
 ### 4.1 Distribusi Kelas (Target Variable)
 - **Iris-setosa**: 50 sampel (33.33%)
 - **Iris-versicolor**: 50 sampel (33.33%)

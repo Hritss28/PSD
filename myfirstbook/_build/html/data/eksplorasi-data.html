@@ -356,7 +356,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
 </div></div>
       
     </div>
@@ -372,6 +374,56 @@ document.write(`
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#statistik-deskriptif-dasar">1. Statistik Deskriptif Dasar</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#min-max-setiap-kolom">1.1 Min-Max Setiap Kolom</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rata-rata-setiap-kolom">1.2 Rata-rata Setiap Kolom</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#jumlah-setiap-kelas">1.3 Jumlah Setiap Kelas</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-distribusi-data">2. Analisis Distribusi Data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-histogram">2.1 Analisis Histogram</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-box-plot-per-spesies">2.2 Analisis Box Plot per Spesies</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-hubungan-antar-variabel">3. Analisis Hubungan Antar Variabel</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scatter-plot-analysis">3.1 Scatter Plot Analysis</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#correlation-matrix">3.2 Correlation Matrix</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-perbandingan-antar-spesies">4. Analisis Perbandingan Antar Spesies</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#statistik-per-spesies">4.1 Statistik per Spesies</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#coefficient-of-variation-cv">4.2 Coefficient of Variation (CV)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deteksi-outlier-dan-anomali">5. Deteksi Outlier dan Anomali</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#metode-iqr">5.1 Metode IQR</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#z-score-analysis">5.2 Z-Score Analysis</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-separability-kelas">6. Analisis Separability Kelas</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#overlap-analysis">6.1 Overlap Analysis</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#feature-importance">6.2 Feature Importance</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#insights-dan-temuan-utama">7. Insights dan Temuan Utama</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#karakteristik-data">7.1 Karakteristik Data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pola-spesies">7.2 Pola Spesies</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rekomendasi-untuk-modeling">7.3 Rekomendasi untuk Modeling</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-quality-assessment">7.4 Data Quality Assessment</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#langkah-selanjutnya">8. Langkah Selanjutnya</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#preprocessing">8.1 Preprocessing</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#advanced-analysis">8.2 Advanced Analysis</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -383,7 +435,245 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="eksplorasi-data">
 <h1>Eksplorasi Data<a class="headerlink" href="#eksplorasi-data" title="Link to this heading">#</a></h1>
-<p>Dataset yang saya gunakan di dapat dari kaggle yang di upload oleh Ms. Nancy Al Aswad. link nya yaitu <a class="reference external" href="https://www.kaggle.com/code/nancyalaswad90/diabetes-database/">https://www.kaggle.com/code/nancyalaswad90/diabetes-database/</a></p>
+<section id="statistik-deskriptif-dasar">
+<h2>1. Statistik Deskriptif Dasar<a class="headerlink" href="#statistik-deskriptif-dasar" title="Link to this heading">#</a></h2>
+<section id="min-max-setiap-kolom">
+<h3>1.1 Min-Max Setiap Kolom<a class="headerlink" href="#min-max-setiap-kolom" title="Link to this heading">#</a></h3>
+<p><img alt="Min_Max_kolom" src="../_images/min_max_kolom.png" /></p>
+<p><strong>Hasil Analisis</strong>:</p>
+<ul class="simple">
+<li><p><strong>sepal_length</strong>: 4.3 - 7.9 cm (range: 3.6 cm)</p></li>
+<li><p><strong>sepal_width</strong>: 2.0 - 4.4 cm (range: 2.4 cm)</p></li>
+<li><p><strong>petal_length</strong>: 1.0 - 6.9 cm (range: 5.9 cm)</p></li>
+<li><p><strong>petal_width</strong>: 0.1 - 2.5 cm (range: 2.4 cm)</p></li>
+</ul>
+<p><strong>Insight</strong>: Petal length memiliki variasi terbesar (5.9 cm), menunjukkan karakteristik yang paling beragam antar spesies.</p>
+</section>
+<section id="rata-rata-setiap-kolom">
+<h3>1.2 Rata-rata Setiap Kolom<a class="headerlink" href="#rata-rata-setiap-kolom" title="Link to this heading">#</a></h3>
+<p><img alt="Min_Max_kolom" src="../_images/rata_rata_kolom.png" /></p>
+<p><strong>Hasil Analisis</strong>:</p>
+<ul class="simple">
+<li><p><strong>sepal_length</strong>: ~5.84 cm</p></li>
+<li><p><strong>sepal_width</strong>: ~3.05 cm</p></li>
+<li><p><strong>petal_length</strong>: ~3.76 cm</p></li>
+<li><p><strong>petal_width</strong>: ~1.20 cm</p></li>
+</ul>
+<p><strong>Insight</strong>: Sepal umumnya lebih besar dari petal, dengan width selalu lebih kecil dari length.</p>
+</section>
+<section id="jumlah-setiap-kelas">
+<h3>1.3 Jumlah Setiap Kelas<a class="headerlink" href="#jumlah-setiap-kelas" title="Link to this heading">#</a></h3>
+<p><img alt="Distribusi Species Iris" src="data/images/species_distribusi.png" /></p>
+<p><strong>Hasil</strong>:</p>
+<ul class="simple">
+<li><p>Iris-setosa: 50 sampel (33.33%)</p></li>
+<li><p>Iris-versicolor: 50 sampel (33.33%)</p></li>
+<li><p>Iris-virginica: 50 sampel (33.33%)</p></li>
+</ul>
+<p><strong>Insight</strong>: Dataset perfectly balanced - tidak ada bias kelas, ideal untuk machine learning.</p>
+</section>
+</section>
+<section id="analisis-distribusi-data">
+<h2>2. Analisis Distribusi Data<a class="headerlink" href="#analisis-distribusi-data" title="Link to this heading">#</a></h2>
+<section id="analisis-histogram">
+<h3>2.1 Analisis Histogram<a class="headerlink" href="#analisis-histogram" title="Link to this heading">#</a></h3>
+<p><strong>Tujuan</strong>: Memahami bentuk distribusi setiap variabel.</p>
+<p><strong>Yang perlu dicari</strong>:</p>
+<ul class="simple">
+<li><p>Apakah distribusi normal atau skewed?</p></li>
+<li><p>Adakah multimodal distribution (puncak ganda)?</p></li>
+<li><p>Outlier atau nilai ekstrem?</p></li>
+</ul>
+<p><strong>Ekspektasi</strong>:</p>
+<ul class="simple">
+<li><p>Petal measurements: kemungkinan bimodal/multimodal (karena perbedaan spesies jelas)</p></li>
+<li><p>Sepal measurements: lebih normal, overlap antar spesies</p></li>
+</ul>
+</section>
+<section id="analisis-box-plot-per-spesies">
+<h3>2.2 Analisis Box Plot per Spesies<a class="headerlink" href="#analisis-box-plot-per-spesies" title="Link to this heading">#</a></h3>
+<p><strong>Tujuan</strong>: Membandingkan distribusi antar spesies untuk setiap variabel.</p>
+<p><strong>Yang perlu diperhatikan</strong>:</p>
+<ul class="simple">
+<li><p>Median setiap spesies</p></li>
+<li><p>Rentang IQR (Interquartile Range)</p></li>
+<li><p>Outlier dalam setiap spesies</p></li>
+<li><p>Overlap antar spesies</p></li>
+</ul>
+<p><strong>Ekspektasi</strong>:</p>
+<ul class="simple">
+<li><p>Iris-setosa: petal kecil, mudah dibedakan</p></li>
+<li><p>Iris-versicolor &amp; virginica: kemungkinan overlap</p></li>
+</ul>
+</section>
+</section>
+<section id="analisis-hubungan-antar-variabel">
+<h2>3. Analisis Hubungan Antar Variabel<a class="headerlink" href="#analisis-hubungan-antar-variabel" title="Link to this heading">#</a></h2>
+<section id="scatter-plot-analysis">
+<h3>3.1 Scatter Plot Analysis<a class="headerlink" href="#scatter-plot-analysis" title="Link to this heading">#</a></h3>
+<p><strong>Tujuan</strong>: Melihat korelasi dan pola hubungan antar variabel.</p>
+<p><strong>Kombinasi penting</strong>:</p>
+<ol class="arabic simple">
+<li><p><strong>Petal length vs Petal width</strong>: Korelasi positif kuat</p></li>
+<li><p><strong>Sepal length vs Sepal width</strong>: Korelasi lemah/negatif</p></li>
+<li><p><strong>Petal vs Sepal measurements</strong>: Pola berbeda per spesies</p></li>
+</ol>
+<p><strong>Yang dicari</strong>:</p>
+<ul class="simple">
+<li><p>Linear/non-linear relationship</p></li>
+<li><p>Clustering pattern per spesies</p></li>
+<li><p>Separability antar kelas</p></li>
+</ul>
+</section>
+<section id="correlation-matrix">
+<h3>3.2 Correlation Matrix<a class="headerlink" href="#correlation-matrix" title="Link to this heading">#</a></h3>
+<p><strong>Penjelasan</strong>: Mengukur kekuatan hubungan linear antar variabel (-1 to +1).</p>
+<p><strong>Ekspektasi korelasi</strong>:</p>
+<ul class="simple">
+<li><p>Petal length &amp; width: korelasi tinggi (+0.8 ke atas)</p></li>
+<li><p>Sepal measurements: korelasi rendah-sedang</p></li>
+<li><p>Cross-correlation (petal-sepal): bervariasi</p></li>
+</ul>
+</section>
+</section>
+<section id="analisis-perbandingan-antar-spesies">
+<h2>4. Analisis Perbandingan Antar Spesies<a class="headerlink" href="#analisis-perbandingan-antar-spesies" title="Link to this heading">#</a></h2>
+<section id="statistik-per-spesies">
+<h3>4.1 Statistik per Spesies<a class="headerlink" href="#statistik-per-spesies" title="Link to this heading">#</a></h3>
+<p><strong>Yang perlu dihitung untuk setiap spesies</strong>:</p>
+<p><strong>Iris-setosa</strong>:</p>
+<ul class="simple">
+<li><p>Karakteristik: Petal kecil, sepal lebar</p></li>
+<li><p>Range nilai: Petal length 1.0-1.9 cm, width 0.1-0.6 cm</p></li>
+</ul>
+<p><strong>Iris-versicolor</strong>:</p>
+<ul class="simple">
+<li><p>Karakteristik: Ukuran sedang</p></li>
+<li><p>Range nilai: Petal length 3.0-5.1 cm, width 1.0-1.8 cm</p></li>
+</ul>
+<p><strong>Iris-virginica</strong>:</p>
+<ul class="simple">
+<li><p>Karakteristik: Petal besar</p></li>
+<li><p>Range nilai: Petal length 4.5-6.9 cm, width 1.4-2.5 cm</p></li>
+</ul>
+</section>
+<section id="coefficient-of-variation-cv">
+<h3>4.2 Coefficient of Variation (CV)<a class="headerlink" href="#coefficient-of-variation-cv" title="Link to this heading">#</a></h3>
+<p><strong>Rumus</strong>: CV = Standard Deviation / Mean</p>
+<p><strong>Tujuan</strong>: Mengukur variabilitas relatif setiap variabel.</p>
+<p><strong>Interpretasi</strong>:</p>
+<ul class="simple">
+<li><p>CV tinggi: variabel sangat beragam</p></li>
+<li><p>CV rendah: variabel konsisten</p></li>
+<li><p>Berguna untuk menentukan feature importance</p></li>
+</ul>
+</section>
+</section>
+<section id="deteksi-outlier-dan-anomali">
+<h2>5. Deteksi Outlier dan Anomali<a class="headerlink" href="#deteksi-outlier-dan-anomali" title="Link to this heading">#</a></h2>
+<section id="metode-iqr">
+<h3>5.1 Metode IQR<a class="headerlink" href="#metode-iqr" title="Link to this heading">#</a></h3>
+<p><strong>Rumus</strong>:</p>
+<ul class="simple">
+<li><p>Lower bound: Q1 - 1.5 × IQR</p></li>
+<li><p>Upper bound: Q3 + 1.5 × IQR</p></li>
+</ul>
+<p><strong>Yang dicari</strong>:</p>
+<ul class="simple">
+<li><p>Data points di luar bounds</p></li>
+<li><p>Apakah outlier natural atau error?</p></li>
+<li><p>Pengaruh outlier terhadap klasifikasi</p></li>
+</ul>
+</section>
+<section id="z-score-analysis">
+<h3>5.2 Z-Score Analysis<a class="headerlink" href="#z-score-analysis" title="Link to this heading">#</a></h3>
+<p><strong>Rumus</strong>: Z = (x - mean) / standard deviation</p>
+<p><strong>Threshold</strong>: |Z| &gt; 2.5 atau 3 sebagai outlier</p>
+</section>
+</section>
+<section id="analisis-separability-kelas">
+<h2>6. Analisis Separability Kelas<a class="headerlink" href="#analisis-separability-kelas" title="Link to this heading">#</a></h2>
+<section id="overlap-analysis">
+<h3>6.1 Overlap Analysis<a class="headerlink" href="#overlap-analysis" title="Link to this heading">#</a></h3>
+<p><strong>Tujuan</strong>: Mengukur seberapa mudah memisahkan antar kelas.</p>
+<p><strong>Metrik</strong>:</p>
+<ul class="simple">
+<li><p>Range overlap antar spesies per variabel</p></li>
+<li><p>Percentage of misclassifiable instances</p></li>
+<li><p>Distance between class centroids</p></li>
+</ul>
+</section>
+<section id="feature-importance">
+<h3>6.2 Feature Importance<a class="headerlink" href="#feature-importance" title="Link to this heading">#</a></h3>
+<p><strong>Ranking variabel berdasarkan kemampuan diskriminasi</strong>:</p>
+<ol class="arabic simple">
+<li><p><strong>Petal length</strong>: Separasi terbaik</p></li>
+<li><p><strong>Petal width</strong>: Separasi baik</p></li>
+<li><p><strong>Sepal length</strong>: Separasi sedang</p></li>
+<li><p><strong>Sepal width</strong>: Separasi terlemah</p></li>
+</ol>
+</section>
+</section>
+<section id="insights-dan-temuan-utama">
+<h2>7. Insights dan Temuan Utama<a class="headerlink" href="#insights-dan-temuan-utama" title="Link to this heading">#</a></h2>
+<section id="karakteristik-data">
+<h3>7.1 Karakteristik Data<a class="headerlink" href="#karakteristik-data" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Dataset bersih, seimbang, tanpa missing values</p></li>
+<li><p>4 variabel numerik dengan skala berbeda (perlu normalisasi)</p></li>
+<li><p>Distribusi bervariasi: normal hingga multimodal</p></li>
+</ul>
+</section>
+<section id="pola-spesies">
+<h3>7.2 Pola Spesies<a class="headerlink" href="#pola-spesies" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Iris-setosa</strong>: Mudah diidentifikasi (petal sangat kecil)</p></li>
+<li><p><strong>Iris-versicolor vs virginica</strong>: Challenging separation (overlap signifikan)</p></li>
+<li><p>Petal measurements &gt; Sepal measurements untuk diskriminasi</p></li>
+</ul>
+</section>
+<section id="rekomendasi-untuk-modeling">
+<h3>7.3 Rekomendasi untuk Modeling<a class="headerlink" href="#rekomendasi-untuk-modeling" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Feature scaling/normalization diperlukan</p></li>
+<li><p>Petal features sebagai primary predictors</p></li>
+<li><p>Possible dimensionality reduction (PCA)</p></li>
+<li><p>Classification algorithms: KNN, SVM, Decision Tree cocok</p></li>
+</ul>
+</section>
+<section id="data-quality-assessment">
+<h3>7.4 Data Quality Assessment<a class="headerlink" href="#data-quality-assessment" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Completeness</strong>: 100% (no missing values)</p></li>
+<li><p><strong>Consistency</strong>: High (standard format)</p></li>
+<li><p><strong>Accuracy</strong>: Reliable (classic benchmark dataset)</p></li>
+<li><p><strong>Relevance</strong>: High (all features contribute)</p></li>
+</ul>
+</section>
+</section>
+<section id="langkah-selanjutnya">
+<h2>8. Langkah Selanjutnya<a class="headerlink" href="#langkah-selanjutnya" title="Link to this heading">#</a></h2>
+<section id="preprocessing">
+<h3>8.1 Preprocessing<a class="headerlink" href="#preprocessing" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p>Check for duplicate records</p></li>
+<li><p>Feature scaling (StandardScaler/MinMaxScaler)</p></li>
+<li><p>Outlier treatment decision</p></li>
+<li><p>Feature engineering possibilities</p></li>
+</ol>
+</section>
+<section id="advanced-analysis">
+<h3>8.2 Advanced Analysis<a class="headerlink" href="#advanced-analysis" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p>Principal Component Analysis (PCA)</p></li>
+<li><p>Linear Discriminant Analysis (LDA)</p></li>
+<li><p>Cluster analysis validation</p></li>
+<li><p>Statistical significance testing</p></li>
+</ol>
+<hr class="docutils" />
+<p><strong>Catatan</strong>: Gunakan penjelasan ini sebagai panduan saat membuat visualisasi. Setiap grafik yang dibuat harus mendukung insights yang disebutkan di atas.</p>
+</section>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -431,6 +721,63 @@ document.write(`
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#statistik-deskriptif-dasar">1. Statistik Deskriptif Dasar</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#min-max-setiap-kolom">1.1 Min-Max Setiap Kolom</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rata-rata-setiap-kolom">1.2 Rata-rata Setiap Kolom</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#jumlah-setiap-kelas">1.3 Jumlah Setiap Kelas</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-distribusi-data">2. Analisis Distribusi Data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-histogram">2.1 Analisis Histogram</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-box-plot-per-spesies">2.2 Analisis Box Plot per Spesies</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-hubungan-antar-variabel">3. Analisis Hubungan Antar Variabel</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scatter-plot-analysis">3.1 Scatter Plot Analysis</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#correlation-matrix">3.2 Correlation Matrix</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-perbandingan-antar-spesies">4. Analisis Perbandingan Antar Spesies</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#statistik-per-spesies">4.1 Statistik per Spesies</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#coefficient-of-variation-cv">4.2 Coefficient of Variation (CV)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deteksi-outlier-dan-anomali">5. Deteksi Outlier dan Anomali</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#metode-iqr">5.1 Metode IQR</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#z-score-analysis">5.2 Z-Score Analysis</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-separability-kelas">6. Analisis Separability Kelas</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#overlap-analysis">6.1 Overlap Analysis</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#feature-importance">6.2 Feature Importance</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#insights-dan-temuan-utama">7. Insights dan Temuan Utama</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#karakteristik-data">7.1 Karakteristik Data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pola-spesies">7.2 Pola Spesies</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rekomendasi-untuk-modeling">7.3 Rekomendasi untuk Modeling</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-quality-assessment">7.4 Data Quality Assessment</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#langkah-selanjutnya">8. Langkah Selanjutnya</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#preprocessing">8.1 Preprocessing</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#advanced-analysis">8.2 Advanced Analysis</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>
