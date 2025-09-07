@@ -25,7 +25,7 @@
 **Insight**: Sepal umumnya lebih besar dari petal, dengan width selalu lebih kecil dari length.
 
 ### 1.3 Jumlah Setiap Kelas
-![Distribusi Species Iris](images/species_distribusi.png)
+![Distribusi Species Iris](../images/species_distribusi.png)
 
 **Hasil**:
 - Iris-setosa: 50 sampel (33.33%)
@@ -34,156 +34,63 @@
 
 **Insight**: Dataset perfectly balanced - tidak ada bias kelas, ideal untuk machine learning.
 
-## 2. Analisis Distribusi Data
+### 1.4 Median Setiap Kolom
+![Median_kolom](../images/median_kolom.png)
 
-### 2.1 Analisis Histogram
-**Tujuan**: Memahami bentuk distribusi setiap variabel.
+**Hasil Analisis**:
+- **sepal_length**: ~5.80 cm (mendekati mean, distribusi simetris)
+- **sepal_width**: ~3.00 cm (mendekati mean, distribusi normal)
+- **petal_length**: ~4.35 cm (lebih besar dari mean, skew ke kiri)
+- **petal_width**: ~1.30 cm (lebih besar dari mean, skew ke kiri)
 
-**Yang perlu dicari**:
-- Apakah distribusi normal atau skewed?
-- Adakah multimodal distribution (puncak ganda)?
-- Outlier atau nilai ekstrem?
+**Insight**: Petal measurements cenderung skewed karena perbedaan besar antara Iris-setosa dengan spesies lainnya.
 
-**Ekspektasi**:
-- Petal measurements: kemungkinan bimodal/multimodal (karena perbedaan spesies jelas)
-- Sepal measurements: lebih normal, overlap antar spesies
+### 1.5 Variance Setiap Kolom
+![Varia6nce_kolom](../images/variance_kolom.png)
 
-### 2.2 Analisis Box Plot per Spesies
-**Tujuan**: Membandingkan distribusi antar spesies untuk setiap variabel.
+**Hasil Analisis**:
+- **sepal_length**: ~0.69 cm² (variance sedang)
+- **sepal_width**: ~0.19 cm² (variance rendah)
+- **petal_length**: ~3.10 cm² (variance tertinggi)
+- **petal_width**: ~0.58 cm² (variance sedang)
 
-**Yang perlu diperhatikan**:
-- Median setiap spesies
-- Rentang IQR (Interquartile Range)
-- Outlier dalam setiap spesies
-- Overlap antar spesies
+**Insight**: Variance menguatkan temuan bahwa petal length memiliki dispersi data terbesar antar spesies.
 
-**Ekspektasi**:
-- Iris-setosa: petal kecil, mudah dibedakan
-- Iris-versicolor & virginica: kemungkinan overlap
+### 1.6 Standard Deviasi Setiap Kolom
+![Standar_deviasi_kolom](../images/standar_deviasi_kolom.png)
 
-## 3. Analisis Hubungan Antar Variabel
+**Hasil Analisis**:
+- **sepal_length**: ~0.83 cm (variabilitas sedang)
+- **sepal_width**: ~0.43 cm (variabilitas rendah)
+- **petal_length**: ~1.76 cm (variabilitas tinggi)
+- **petal_width**: ~0.76 cm (variabilitas sedang-tinggi)
 
-### 3.1 Scatter Plot Analysis
-**Tujuan**: Melihat korelasi dan pola hubungan antar variabel.
+**Insight**: Petal length memiliki variabilitas tertinggi, mengkonfirmasi bahwa ini adalah feature yang paling diskriminatif.
 
-**Kombinasi penting**:
-1. **Petal length vs Petal width**: Korelasi positif kuat
-2. **Sepal length vs Sepal width**: Korelasi lemah/negatif
-3. **Petal vs Sepal measurements**: Pola berbeda per spesies
+## 2. Analisis Statistik Lanjutan
 
-**Yang dicari**:
-- Linear/non-linear relationship
-- Clustering pattern per spesies
-- Separability antar kelas
+### 2.1 Tabel Ringkasan Statistik Lengkap
 
-### 3.2 Correlation Matrix
-**Penjelasan**: Mengukur kekuatan hubungan linear antar variabel (-1 to +1).
+| Statistik | sepal_length | sepal_width | petal_length | petal_width |
+|-----------|--------------|-------------|--------------|-------------|
+| **Mean/Rata-Rata** | 5.84 | 3.05 | 3.76 | 1.20 |
+| **Median** | 5.80 | 3.00 | 4.35 | 1.30 |
+| **Std Dev** | 0.83 | 0.43 | 1.76 | 0.76 |
+| **Variance** | 0.69 | 0.19 | 3.10 | 0.58 |
+| **Min** | 4.30 | 2.00 | 1.00 | 0.10 |
+| **Max** | 7.90 | 4.40 | 6.90 | 2.50 |
+| **Range** | 3.60 | 2.40 | 5.90 | 2.40 |
 
-**Ekspektasi korelasi**:
-- Petal length & width: korelasi tinggi (+0.8 ke atas)
-- Sepal measurements: korelasi rendah-sedang
-- Cross-correlation (petal-sepal): bervariasi
+### 2.2 Coefficient of Variation (CV)
+![Coefficient_variation](../images/coefficient_variation.png)
 
-## 4. Analisis Perbandingan Antar Spesies
+**Rumus**: CV = (Standard Deviation / Mean) × 100%
 
-### 4.1 Statistik per Spesies
-**Yang perlu dihitung untuk setiap spesies**:
+**Hasil Analisis**:
+- **sepal_length**: ~14.2% (variabilitas rendah-sedang)
+- **sepal_width**: ~14.1% (variabilitas rendah-sedang)
+- **petal_length**: ~46.8% (variabilitas sangat tinggi)
+- **petal_width**: ~63.3% (variabilitas tertinggi)
 
-**Iris-setosa**:
-- Karakteristik: Petal kecil, sepal lebar
-- Range nilai: Petal length 1.0-1.9 cm, width 0.1-0.6 cm
-
-**Iris-versicolor**:
-- Karakteristik: Ukuran sedang
-- Range nilai: Petal length 3.0-5.1 cm, width 1.0-1.8 cm
-
-**Iris-virginica**:
-- Karakteristik: Petal besar
-- Range nilai: Petal length 4.5-6.9 cm, width 1.4-2.5 cm
-
-### 4.2 Coefficient of Variation (CV)
-**Rumus**: CV = Standard Deviation / Mean
-
-**Tujuan**: Mengukur variabilitas relatif setiap variabel.
-
-**Interpretasi**:
-- CV tinggi: variabel sangat beragam
-- CV rendah: variabel konsisten
-- Berguna untuk menentukan feature importance
-
-## 5. Deteksi Outlier dan Anomali
-
-### 5.1 Metode IQR
-**Rumus**: 
-- Lower bound: Q1 - 1.5 × IQR
-- Upper bound: Q3 + 1.5 × IQR
-
-**Yang dicari**:
-- Data points di luar bounds
-- Apakah outlier natural atau error?
-- Pengaruh outlier terhadap klasifikasi
-
-### 5.2 Z-Score Analysis
-**Rumus**: Z = (x - mean) / standard deviation
-
-**Threshold**: |Z| > 2.5 atau 3 sebagai outlier
-
-## 6. Analisis Separability Kelas
-
-### 6.1 Overlap Analysis
-**Tujuan**: Mengukur seberapa mudah memisahkan antar kelas.
-
-**Metrik**:
-- Range overlap antar spesies per variabel
-- Percentage of misclassifiable instances
-- Distance between class centroids
-
-### 6.2 Feature Importance
-**Ranking variabel berdasarkan kemampuan diskriminasi**:
-
-1. **Petal length**: Separasi terbaik
-2. **Petal width**: Separasi baik
-3. **Sepal length**: Separasi sedang
-4. **Sepal width**: Separasi terlemah
-
-## 7. Insights dan Temuan Utama
-
-### 7.1 Karakteristik Data
-- Dataset bersih, seimbang, tanpa missing values
-- 4 variabel numerik dengan skala berbeda (perlu normalisasi)
-- Distribusi bervariasi: normal hingga multimodal
-
-### 7.2 Pola Spesies
-- **Iris-setosa**: Mudah diidentifikasi (petal sangat kecil)
-- **Iris-versicolor vs virginica**: Challenging separation (overlap signifikan)
-- Petal measurements > Sepal measurements untuk diskriminasi
-
-### 7.3 Rekomendasi untuk Modeling
-- Feature scaling/normalization diperlukan
-- Petal features sebagai primary predictors
-- Possible dimensionality reduction (PCA)
-- Classification algorithms: KNN, SVM, Decision Tree cocok
-
-### 7.4 Data Quality Assessment
-- **Completeness**: 100% (no missing values)
-- **Consistency**: High (standard format)
-- **Accuracy**: Reliable (classic benchmark dataset)
-- **Relevance**: High (all features contribute)
-
-## 8. Langkah Selanjutnya
-
-### 8.1 Preprocessing
-1. Check for duplicate records
-2. Feature scaling (StandardScaler/MinMaxScaler)
-3. Outlier treatment decision
-4. Feature engineering possibilities
-
-### 8.2 Advanced Analysis
-1. Principal Component Analysis (PCA)
-2. Linear Discriminant Analysis (LDA)
-3. Cluster analysis validation
-4. Statistical significance testing
-
+**Insight**: Petal width memiliki variabilitas relatif tertinggi, menjadikannya feature yang sangat informatif untuk klasifikasi.
 ---
-
-**Catatan**: Gunakan penjelasan ini sebagai panduan saat membuat visualisasi. Setiap grafik yang dibuat harus mendukung insights yang disebutkan di atas.
