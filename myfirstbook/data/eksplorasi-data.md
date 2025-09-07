@@ -93,4 +93,3 @@
 - **petal_width**: ~63.3% (variabilitas tertinggi)
 
 **Insight**: Petal width memiliki variabilitas relatif tertinggi, menjadikannya feature yang sangat informatif untuk klasifikasi.
----
