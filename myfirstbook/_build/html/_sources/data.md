@@ -30,7 +30,7 @@ Dataset Iris terdiri dari **150 baris data** dengan **5 kolom** yang merepresent
 
 ## 4. Distribusi Data
 
-![Distribusi Species Iris](images/distribusi_spesies.png)
+![Distribusi Species Iris](images/species_distribusi.png)
 
 *Gambar 1: Distribusi Pada Setiap Kelas*
 
