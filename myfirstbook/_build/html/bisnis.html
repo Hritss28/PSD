@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Business Understanding &#8212; My sample book</title>
+    <title>Business Understanding - Dataset Iris &#8212; My sample book</title>
   
   
   
@@ -60,7 +60,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'bisnis';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Data Understanding" href="data.html" />
+    <link rel="next" title="Data Understanding - Dataset Iris" href="data.html" />
     <link rel="prev" title="My Profil" href="intro.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -370,7 +370,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Business Understanding</h1>
+    <h1>Business Understanding - Dataset Iris</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -380,9 +380,19 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#latar-belakang">Latar Belakang</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tujuan-bisnis">Tujuan Bisnis</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#manfaat">Manfaat</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#latar-belakang">1. Latar Belakang</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#business-problem">2. Business Problem</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tujuan-analisis">3. Tujuan Analisis</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tujuan-utama">Tujuan Utama:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tujuan-pembelajaran">Tujuan Pembelajaran:</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#manfaat-bisnis">4. Manfaat Bisnis</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#manfaat-edukasi">Manfaat Edukasi:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#manfaat-praktis">Manfaat Praktis:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#manfaat-pengembangan-skill">Manfaat Pengembangan Skill:</a></li>
+</ul>
+</li>
 </ul>
             </nav>
         </div>
@@ -394,23 +404,76 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="business-understanding">
-<h1>Business Understanding<a class="headerlink" href="#business-understanding" title="Link to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="business-understanding-dataset-iris">
+<h1>Business Understanding - Dataset Iris<a class="headerlink" href="#business-understanding-dataset-iris" title="Link to this heading">#</a></h1>
 <section id="latar-belakang">
-<h2>Latar Belakang<a class="headerlink" href="#latar-belakang" title="Link to this heading">#</a></h2>
-<p>Diabetes mellitus adalah salah satu penyakit kronis yang prevalensinya terus meningkat di seluruh dunia. Deteksi dini risiko diabetes penting agar dapat dilakukan pencegahan atau penanganan lebih cepat untuk mengurangi komplikasi serius.</p>
-</section>
-<section id="tujuan-bisnis">
-<h2>Tujuan Bisnis<a class="headerlink" href="#tujuan-bisnis" title="Link to this heading">#</a></h2>
-<p>Membangun model prediksi yang mampu mengklasifikasikan apakah seseorang berisiko terkena diabetes atau tidak, berdasarkan data kesehatan (misalnya kadar glukosa, tekanan darah, BMI, usia, dll).</p>
-</section>
-<section id="manfaat">
-<h2>Manfaat<a class="headerlink" href="#manfaat" title="Link to this heading">#</a></h2>
+<h2>1. Latar Belakang<a class="headerlink" href="#latar-belakang" title="Link to this heading">#</a></h2>
+<p>Dataset Iris adalah dataset klasik dalam machine learning yang berisi 150 sampel bunga iris dari 3 spesies berbeda (setosa, versicolor, virginica). Dataset ini dikumpulkan oleh Ronald Fisher pada tahun 1936 dan menjadi standar untuk pembelajaran algoritma klasifikasi.</p>
+<p><strong>Karakteristik Data:</strong></p>
 <ul class="simple">
-<li><p>Membantu tenaga medis dalam screening awal pasien.</p></li>
-<li><p>Memberikan insight bagi pencegahan dengan mengetahui faktor risiko paling signifikan.</p></li>
-<li><p>Menjadi dasar untuk pengembangan sistem decision support dalam bidang kesehatan.</p></li>
+<li><p>150 sampel total (50 per spesies)</p></li>
+<li><p>4 fitur: panjang/lebar sepal dan petal</p></li>
+<li><p>Data bersih tanpa missing values</p></li>
+<li><p>Distribusi seimbang antar kelas</p></li>
 </ul>
+</section>
+<section id="business-problem">
+<h2>2. Business Problem<a class="headerlink" href="#business-problem" title="Link to this heading">#</a></h2>
+<p><strong>Masalah Utama:</strong> Bagaimana mengklasifikasikan spesies bunga iris secara otomatis berdasarkan pengukuran fisik?</p>
+<p><strong>Tantangan Spesifik:</strong></p>
+<ul class="simple">
+<li><p>Identifikasi manual membutuhkan keahlian botani</p></li>
+<li><p>Proses klasifikasi lambat dan rentan error</p></li>
+<li><p>Beberapa spesies memiliki karakteristik yang mirip</p></li>
+<li><p>Dibutuhkan sistem otomatis yang akurat dan cepat</p></li>
+</ul>
+</section>
+<section id="tujuan-analisis">
+<h2>3. Tujuan Analisis<a class="headerlink" href="#tujuan-analisis" title="Link to this heading">#</a></h2>
+<section id="tujuan-utama">
+<h3>Tujuan Utama:<a class="headerlink" href="#tujuan-utama" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Mengembangkan model klasifikasi</strong> dengan akurasi minimal 95%</p></li>
+<li><p><strong>Mengidentifikasi fitur penting</strong> yang membedakan antar spesies</p></li>
+<li><p><strong>Membuat visualisasi</strong> yang menunjukkan pola data dengan jelas</p></li>
+</ul>
+</section>
+<section id="tujuan-pembelajaran">
+<h3>Tujuan Pembelajaran:<a class="headerlink" href="#tujuan-pembelajaran" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Memahami proses end-to-end machine learning</p></li>
+<li><p>Menguasai teknik eksplorasi dan visualisasi data</p></li>
+<li><p>Membandingkan performa berbagai algoritma klasifikasi</p></li>
+</ul>
+</section>
+</section>
+<section id="manfaat-bisnis">
+<h2>4. Manfaat Bisnis<a class="headerlink" href="#manfaat-bisnis" title="Link to this heading">#</a></h2>
+<section id="manfaat-edukasi">
+<h3>Manfaat Edukasi:<a class="headerlink" href="#manfaat-edukasi" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Dataset pembelajaran ideal</strong> untuk pemula data science</p></li>
+<li><p><strong>Benchmark standar</strong> untuk menguji algoritma baru</p></li>
+<li><p><strong>Proyek portfolio</strong> yang mudah dipahami dan dijelaskan</p></li>
+</ul>
+</section>
+<section id="manfaat-praktis">
+<h3>Manfaat Praktis:<a class="headerlink" href="#manfaat-praktis" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Efisiensi identifikasi</strong> tanaman dalam pertanian/hortikultura</p></li>
+<li><p><strong>Otomatisasi quality control</strong> untuk nursery dan greenhouse</p></li>
+<li><p><strong>Foundation</strong> untuk aplikasi klasifikasi yang lebih kompleks</p></li>
+</ul>
+</section>
+<section id="manfaat-pengembangan-skill">
+<h3>Manfaat Pengembangan Skill:<a class="headerlink" href="#manfaat-pengembangan-skill" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Kemampuan machine learning</strong> fundamental yang solid</p></li>
+<li><p><strong>Pemahaman metodologi</strong> data science yang benar</p></li>
+<li><p><strong>Experience</strong> dengan complete ML pipeline</p></li>
+</ul>
+<hr class="docutils" />
+</section>
 </section>
 </section>
 
@@ -458,7 +521,7 @@ document.write(`
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Data Understanding</p>
+        <p class="prev-next-title">Data Understanding - Dataset Iris</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -478,9 +541,19 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#latar-belakang">Latar Belakang</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tujuan-bisnis">Tujuan Bisnis</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#manfaat">Manfaat</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#latar-belakang">1. Latar Belakang</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#business-problem">2. Business Problem</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tujuan-analisis">3. Tujuan Analisis</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tujuan-utama">Tujuan Utama:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tujuan-pembelajaran">Tujuan Pembelajaran:</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#manfaat-bisnis">4. Manfaat Bisnis</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#manfaat-edukasi">Manfaat Edukasi:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#manfaat-praktis">Manfaat Praktis:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#manfaat-pengembangan-skill">Manfaat Pengembangan Skill:</a></li>
+</ul>
+</li>
 </ul>
   </nav></div>
 
