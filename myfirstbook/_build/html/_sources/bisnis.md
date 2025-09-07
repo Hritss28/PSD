@@ -23,30 +23,18 @@ Dataset Iris adalah dataset klasik dalam machine learning yang berisi 150 sampel
 ## 3. Tujuan Analisis
 
 ### Tujuan Utama:
-- **Mengembangkan model klasifikasi** dengan akurasi minimal 95%
+- **Mengembangkan model klasifikasi** dengan akurasi tinggi
 - **Mengidentifikasi fitur penting** yang membedakan antar spesies
 - **Membuat visualisasi** yang menunjukkan pola data dengan jelas
 
 ### Tujuan Pembelajaran:
 - Memahami proses end-to-end machine learning
 - Menguasai teknik eksplorasi dan visualisasi data
-- Membandingkan performa berbagai algoritma klasifikasi
 
 ## 4. Manfaat Bisnis
 
-### Manfaat Edukasi:
-- **Dataset pembelajaran ideal** untuk pemula data science
-- **Benchmark standar** untuk menguji algoritma baru
-- **Proyek portfolio** yang mudah dipahami dan dijelaskan
-
-### Manfaat Praktis:
-- **Efisiensi identifikasi** tanaman dalam pertanian/hortikultura
-- **Otomatisasi quality control** untuk nursery dan greenhouse
-- **Foundation** untuk aplikasi klasifikasi yang lebih kompleks
-
-### Manfaat Pengembangan Skill:
-- **Kemampuan machine learning** fundamental yang solid
-- **Pemahaman metodologi** data science yang benar
-- **Experience** dengan complete ML pipeline
+- **Efisiensi identifikasi** jenis bunga 
+- **Keakuratan Klasifikasi** agar mengurangi kesalahan dalam mengidentifikasi jenis bunga
+- **Bisa diaplikasikan** sebagai dasar pengembangan sistem klasifikasi tanaman lain.
 
 ---
