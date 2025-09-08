@@ -380,13 +380,14 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#statistik-deskriptif-dasar">1. Statistik Deskriptif Dasar</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#jumlah-setiap-kelas">1.2 Jumlah Setiap Kelas</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#min-max-setiap-kolom">1.3 Min-Max Setiap Kolom</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tabel-ringkasan-statistik-lengkap">1.5 Tabel Ringkasan Statistik Lengkap</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#rata-rata-setiap-kolom">1.5.1 Rata-rata Setiap Kolom</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#median-setiap-kolom">1.5.2 Median Setiap Kolom</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#standard-deviasi-setiap-kolom">1.5.3 Standard Deviasi Setiap Kolom</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#variance-setiap-kolom">1.5.4 Variance Setiap Kolom</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#jumlah-setiap-kelas">1.1 Jumlah Setiap Kelas</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#min-max-setiap-kolom">1.2 Min-Max Setiap Kolom</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#outlayer">1.3 Outlayer</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tabel-ringkasan-statistik-lengkap">1.4 Tabel Ringkasan Statistik Lengkap</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#rata-rata-setiap-kolom">1.4.1 Rata-rata Setiap Kolom</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#median-setiap-kolom">1.4.2 Median Setiap Kolom</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#standard-deviasi-setiap-kolom">1.4.3 Standard Deviasi Setiap Kolom</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#variance-setiap-kolom">1.4.4 Variance Setiap Kolom</a></li>
 </ul>
 </li>
 </ul>
@@ -407,7 +408,7 @@ document.write(`
 <section id="statistik-deskriptif-dasar">
 <h2>1. Statistik Deskriptif Dasar<a class="headerlink" href="#statistik-deskriptif-dasar" title="Link to this heading">#</a></h2>
 <section id="jumlah-setiap-kelas">
-<h3>1.2 Jumlah Setiap Kelas<a class="headerlink" href="#jumlah-setiap-kelas" title="Link to this heading">#</a></h3>
+<h3>1.1 Jumlah Setiap Kelas<a class="headerlink" href="#jumlah-setiap-kelas" title="Link to this heading">#</a></h3>
 <p><img alt="Distribusi Species Iris" src="../_images/species_distribusi.png" /></p>
 <p><strong>Hasil</strong>:</p>
 <ul class="simple">
@@ -418,7 +419,7 @@ document.write(`
 <p><strong>Insight</strong>: Dataset perfectly balanced - tidak ada bias kelas, ideal untuk machine learning.</p>
 </section>
 <section id="min-max-setiap-kolom">
-<h3>1.3 Min-Max Setiap Kolom<a class="headerlink" href="#min-max-setiap-kolom" title="Link to this heading">#</a></h3>
+<h3>1.2 Min-Max Setiap Kolom<a class="headerlink" href="#min-max-setiap-kolom" title="Link to this heading">#</a></h3>
 <p><img alt="Min_Max_kolom" src="../_images/min_max_kolom.png" /></p>
 <p><strong>Hasil Analisis</strong>:</p>
 <ul class="simple">
@@ -429,8 +430,26 @@ document.write(`
 </ul>
 <p><strong>Insight</strong>: Petal length memiliki variasi terbesar (5.9 cm), menunjukkan karakteristik yang paling beragam antar spesies.</p>
 </section>
+<section id="outlayer">
+<h3>1.3 Outlayer<a class="headerlink" href="#outlayer" title="Link to this heading">#</a></h3>
+<p><img alt="Min_Max_kolom" src="../_images/outlayer.png" /></p>
+<p><strong>1. Petal Length vs Petal Width</strong></p>
+<ul class="simple">
+<li><p>Grafik kiri menunjukkan hubungan antara <strong>petal_length</strong> dan <strong>petal_width</strong>.</p></li>
+<li><p>Setiap spesies iris (setosa, versicolor, virginica) terpisah jelas, terutama <strong>iris-setosa</strong> di kiri bawah.</p></li>
+<li><p>Fitur petal sangat baik untuk membedakan spesies karena sebaran datanya tidak saling tumpang tindih.</p></li>
+</ul>
+<p><strong>2. Sepal Length vs Sepal Width</strong></p>
+<ul class="simple">
+<li><p>Grafik kanan menunjukkan hubungan antara <strong>sepal_length</strong> dan <strong>sepal_width</strong>.</p></li>
+<li><p>Distribusi antar spesies lebih tumpang tindih, sehingga lebih sulit membedakan satu sama lain.</p></li>
+<li><p>Fitur sepal kurang efektif untuk klasifikasi dibandingkan petal.</p></li>
+</ul>
+<p><strong>Kesimpulan:</strong><br />
+Petal length dan petal width merupakan fitur terbaik untuk klasifikasi spesies iris, sedangkan sepal length dan sepal width kurang optimal.</p>
+</section>
 <section id="tabel-ringkasan-statistik-lengkap">
-<h3>1.5 Tabel Ringkasan Statistik Lengkap<a class="headerlink" href="#tabel-ringkasan-statistik-lengkap" title="Link to this heading">#</a></h3>
+<h3>1.4 Tabel Ringkasan Statistik Lengkap<a class="headerlink" href="#tabel-ringkasan-statistik-lengkap" title="Link to this heading">#</a></h3>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>Statistik</p></th>
@@ -462,7 +481,7 @@ document.write(`
 <tr class="row-odd"><td><p><strong>Variance</strong></p></td>
 <td><p>0.69</p></td>
 <td><p>0.19</p></td>
-<td><p>3.10</p></td>
+<td><p>3.09</p></td>
 <td><p>0.58</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>Min</strong></p></td>
@@ -487,7 +506,7 @@ document.write(`
 </table>
 </div>
 <section id="rata-rata-setiap-kolom">
-<h4>1.5.1 Rata-rata Setiap Kolom<a class="headerlink" href="#rata-rata-setiap-kolom" title="Link to this heading">#</a></h4>
+<h4>1.4.1 Rata-rata Setiap Kolom<a class="headerlink" href="#rata-rata-setiap-kolom" title="Link to this heading">#</a></h4>
 <p><strong>Hasil Analisis</strong>:</p>
 <ul class="simple">
 <li><p><strong>sepal_length</strong>: ~5.84 cm</p></li>
@@ -498,7 +517,7 @@ document.write(`
 <p><strong>Insight</strong>: Sepal umumnya lebih besar dari petal, dengan width selalu lebih kecil dari length.</p>
 </section>
 <section id="median-setiap-kolom">
-<h4>1.5.2 Median Setiap Kolom<a class="headerlink" href="#median-setiap-kolom" title="Link to this heading">#</a></h4>
+<h4>1.4.2 Median Setiap Kolom<a class="headerlink" href="#median-setiap-kolom" title="Link to this heading">#</a></h4>
 <p><strong>Hasil Analisis</strong>:</p>
 <ul class="simple">
 <li><p><strong>sepal_length</strong>: ~5.80 cm (mendekati mean, distribusi simetris)</p></li>
@@ -509,7 +528,7 @@ document.write(`
 <p><strong>Insight</strong>: Petal measurements cenderung skewed karena perbedaan besar antara Iris-setosa dengan spesies lainnya.</p>
 </section>
 <section id="standard-deviasi-setiap-kolom">
-<h4>1.5.3 Standard Deviasi Setiap Kolom<a class="headerlink" href="#standard-deviasi-setiap-kolom" title="Link to this heading">#</a></h4>
+<h4>1.4.3 Standard Deviasi Setiap Kolom<a class="headerlink" href="#standard-deviasi-setiap-kolom" title="Link to this heading">#</a></h4>
 <p><strong>Hasil Analisis</strong>:</p>
 <ul class="simple">
 <li><p><strong>sepal_length</strong>: ~0.83 cm (variabilitas sedang)</p></li>
@@ -520,7 +539,7 @@ document.write(`
 <p><strong>Insight</strong>: Petal length memiliki variabilitas tertinggi, mengkonfirmasi bahwa ini adalah feature yang paling diskriminatif.</p>
 </section>
 <section id="variance-setiap-kolom">
-<h4>1.5.4 Variance Setiap Kolom<a class="headerlink" href="#variance-setiap-kolom" title="Link to this heading">#</a></h4>
+<h4>1.4.4 Variance Setiap Kolom<a class="headerlink" href="#variance-setiap-kolom" title="Link to this heading">#</a></h4>
 <p><strong>Hasil Analisis</strong>:</p>
 <ul class="simple">
 <li><p><strong>sepal_length</strong>: ~0.69 cm² (variance sedang)</p></li>
@@ -590,13 +609,14 @@ document.write(`
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#statistik-deskriptif-dasar">1. Statistik Deskriptif Dasar</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#jumlah-setiap-kelas">1.2 Jumlah Setiap Kelas</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#min-max-setiap-kolom">1.3 Min-Max Setiap Kolom</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tabel-ringkasan-statistik-lengkap">1.5 Tabel Ringkasan Statistik Lengkap</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#rata-rata-setiap-kolom">1.5.1 Rata-rata Setiap Kolom</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#median-setiap-kolom">1.5.2 Median Setiap Kolom</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#standard-deviasi-setiap-kolom">1.5.3 Standard Deviasi Setiap Kolom</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#variance-setiap-kolom">1.5.4 Variance Setiap Kolom</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#jumlah-setiap-kelas">1.1 Jumlah Setiap Kelas</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#min-max-setiap-kolom">1.2 Min-Max Setiap Kolom</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#outlayer">1.3 Outlayer</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tabel-ringkasan-statistik-lengkap">1.4 Tabel Ringkasan Statistik Lengkap</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#rata-rata-setiap-kolom">1.4.1 Rata-rata Setiap Kolom</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#median-setiap-kolom">1.4.2 Median Setiap Kolom</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#standard-deviasi-setiap-kolom">1.4.3 Standard Deviasi Setiap Kolom</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#variance-setiap-kolom">1.4.4 Variance Setiap Kolom</a></li>
 </ul>
 </li>
 </ul>
