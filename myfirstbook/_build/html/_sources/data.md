@@ -30,8 +30,6 @@ Dataset Iris terdiri dari **150 baris data** dengan **5 kolom** yang merepresent
 
 ## 4. Distribusi Data
 
-![Distribusi Species Iris](images/species_distribusi.png)
-
 ### 4.1 Distribusi Kelas (Target Variable)
 - **Iris-setosa**: 50 sampel (33.33%)
 - **Iris-versicolor**: 50 sampel (33.33%)
@@ -53,12 +51,8 @@ Dataset Iris terdiri dari **150 baris data** dengan **5 kolom** yang merepresent
 
 ### 6.1 Feature Variables (X)
 - **Jumlah**: 4 variabel numerik
-- **Skala**: Berbeda-beda (perlu normalisasi/standardisasi)
-- **Korelasi**: Kemungkinan ada korelasi antar features
 
 ### 6.2 Target Variable (y)
 - **Tipe**: Multi-class classification (3 kelas)
-- **Balance**: Perfectly balanced
-- **Encoding**: Perlu label encoding untuk algoritma ML
 
 ---
