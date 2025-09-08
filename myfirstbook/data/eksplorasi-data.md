@@ -34,7 +34,6 @@
 | **Min** | 4.30 | 2.00 | 1.00 | 0.10 |
 | **Max** | 7.90 | 4.40 | 6.90 | 2.50 |
 | **Range** | 3.60 | 2.40 | 5.90 | 2.40 |
-| **Koef Variance** | 14.2% | 14.1% | 46.8% | 63.3% |
 
 #### 1.5.1 Rata-rata Setiap Kolom
 
@@ -76,15 +75,4 @@
 
 **Insight**: Variance menguatkan temuan bahwa petal length memiliki dispersi data terbesar antar spesies.
 
-#### 1.5.5 Coefficient of Variation (CV)
-![Coefficient_variation](../images/coefficient_variation.png)
 
-**Rumus**: CV = (Standard Deviation / Mean) × 100%
-
-**Hasil Analisis**:
-- **sepal_length**: ~14.2% (variabilitas rendah-sedang)
-- **sepal_width**: ~14.1% (variabilitas rendah-sedang)
-- **petal_length**: ~46.8% (variabilitas sangat tinggi)
-- **petal_width**: ~63.3% (variabilitas tertinggi)
-
-**Insight**: Petal width memiliki variabilitas relatif tertinggi, menjadikannya feature yang sangat informatif untuk klasifikasi.
