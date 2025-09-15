@@ -181,7 +181,7 @@ plt.show()
 #### Visualisasi Outlier ABOD
 
 
-![Petal Length](abod.png)
+![Petal Length](../images/abod.png)
 
 ### KNN
 
@@ -289,7 +289,7 @@ plt.show()
 #### Visualisasi Outlier ABOD
 
 
-![Petal Length](knn.png)
+![Petal Length](../images/knn.png)
 
 ---
 
@@ -400,6 +400,6 @@ plt.show()
 #### Visualisasi Outlier ABOD
 
 
-![Petal Length](lof.png)
+![Petal Length](../images/lof.png)
 
 
