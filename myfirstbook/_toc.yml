@@ -8,3 +8,5 @@ chapters:
     sections:
       - file: data/eksplorasi-data
         title: Eksplorasi Data
+  - file: data_preparation
+    title: Data Preparation
