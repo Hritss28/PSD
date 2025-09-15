@@ -71,7 +71,7 @@ Setelah dilakukan deteksi outlier menggunakan metode *ABOD (Angle-Based Outlier 
 
 Jadi, sekitar *5,33% data* dianggap sebagai outlier dan dihapus dari dataset.  
 
-![Petal Length](/images/prep_abod.png)
+![Petal Length](images/prep_abod.png)
 
 ---
 
@@ -145,7 +145,7 @@ Setelah dilakukan deteksi outlier menggunakan metode *KNN (k-Nearest Neighbors D
 
 Jadi, sekitar *5,33% data* dianggap sebagai outlier dan dihapus dari dataset.  
 
-![Petal Length](/images/prep_knn.png)
+![Petal Length](images/prep_knn.png)
 
 ---
 
@@ -220,6 +220,6 @@ Setelah dilakukan deteksi outlier menggunakan metode *LOF (Local Outlier Factor)
 
 Jadi, sekitar *5,33% data* dianggap sebagai outlier dan dihapus dari dataset.  
 
-![Petal Length](/images/prep_lof.png)
+![Petal Length](images/prep_lof.png)
 
 ---
