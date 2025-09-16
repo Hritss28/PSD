@@ -1,66 +1,59 @@
 # Get Data
 
-## Sumber Data
+## 1. Sumber Data
 Data Iris didapatkan dari dua database berbeda untuk mendemonstrasikan integrasi data multi-sumber:
 
-### Database MySQL
+### 1.1 Database MySQL
 Menyimpan data karakteristik sepal bunga iris:
 - `sepal_length` - Panjang sepal (cm)
 - `sepal_width` - Lebar sepal (cm)
 
-### Database PostgreSQL  
+### 1.2 Database PostgreSQL  
 Menyimpan data karakteristik petal dan klasifikasi spesies:
 - `petal_length` - Panjang petal (cm)
 - `petal_width` - Lebar petal (cm)
 - `species` - Jenis spesies iris (setosa, versicolor, virginica)
 
-## Ekstraksi Data
+## 2. Ekstraksi Data
 
-### 1. Mengambil Data dari MySQL
+### 2.1 Mengambil Data dari MySQL
 Code Python untuk mengambil data sepal dari MySQL ke Power BI:
 
 ```python
-import mysql.connector as myconnector
 import pandas as pd
+from sqlalchemy import create_engine
 
-# Koneksi ke database MySQL
-conn = myconnector.connect(
-    database="iris_db",
-    host="localhost",
-    user="root",
-    password="",
-    port=3306
-)
+# buat koneksi ke MySQL
+engine = create_engine("mysql+pymysql://root:@localhost/iris_sepal")
 
-# Query data sepal
-sepal = pd.read_sql("SELECT * FROM iris_table", conn)
-
-# Tutup koneksi
-conn.close()
+# ambil data
+df = pd.read_sql("SELECT * FROM iris_sepal", engine)
 ```
 
-### 2. Mengambil Data dari PostgreSQL
+### 2.2 Mengambil Data dari PostgreSQL
 Code Python untuk mengambil data petal dan spesies dari PostgreSQL ke Power BI:
 
 ```python
 import pandas as pd
-import psycopg2 as pgconnector
+from sqlalchemy import create_engine
 
-# Koneksi ke database PostgreSQL
-conn = pgconnector.connect(
-    "dbname=iris_db host=localhost user=postgres password=zanra2401 port=2005"
-)
+# konfigurasi koneksi PostgreSQL
+user = "postgres"        
+password = "28_Maret_2005"      
+host = "localhost"       
+port = "5432"           
+database = "iris_petal"        
 
-# Query data petal dan spesies
-petal_species = pd.read_sql("SELECT * FROM iris_table", conn)
+# buat koneksi
+engine = create_engine(f"postgresql+psycopg2://{user}:{password}@{host}:{port}/{database}")
 
-# Tutup koneksi
-conn.close()
+# ambil data ke DataFrame
+df = pd.read_sql("SELECT * FROM iris_petal", engine)
 ```
 
 ## Integrasi Data di Power BI
 
-Setelah kedua dataset berhasil diambil dari masing-masing database, data kemudian diintegrasikan di Power BI melalui proses **merge/join** berdasarkan key yang sama (biasanya ID atau index row).
+Setelah kedua dataset berhasil diambil dari masing-masing database, data kemudian diintegrasikan di Power BI melalui proses **merge/join** berdasarkan key yang sama (saya berdasarkan id).
 
 ### Hasil Akhir
 Dataset terintegrasi yang berisi:
@@ -69,7 +62,5 @@ Dataset terintegrasi yang berisi:
 - `petal_length` (dari PostgreSQL)
 - `petal_width` (dari PostgreSQL)
 - `species` (dari PostgreSQL)
-
-Dataset lengkap ini kemudian siap digunakan untuk analisis dan visualisasi dalam Power BI dashboard.
 
 ![Dataset Iris Marge](../images/dateset_marge.png)
