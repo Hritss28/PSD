@@ -71,7 +71,7 @@ Setelah dilakukan deteksi outlier menggunakan metode *ABOD (Angle-Based Outlier 
 
 Jadi, sekitar *5,33% data* dianggap sebagai outlier dan dihapus dari dataset.  
 
-![Petal Length](images/prep_adod.png)
+![Petal Length](images/prep_abod.png)
 
 ---
 
