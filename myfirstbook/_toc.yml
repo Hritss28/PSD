@@ -6,6 +6,8 @@ chapters:
   - file: data
     title: Data Understanding
     sections:
+      - file: data/get-data
+        title: Get Data
       - file: data/eksplorasi-data
         title: Eksplorasi Data
   - file: data_preprocessing

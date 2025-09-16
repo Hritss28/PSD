@@ -872,3 +872,440 @@
 2025-09-16 10:42:54,855:INFO:Copying data
 2025-09-16 10:42:54,855:INFO:(150, 6)
 2025-09-16 10:42:54,857:INFO:assign_model() successfully completed......................................
+2025-09-16 10:53:02,973:WARNING:
+'cuml' is a soft dependency and not included in the pycaret installation. Please run: `pip install cuml` to install.
+2025-09-16 10:53:02,973:WARNING:
+'cuml' is a soft dependency and not included in the pycaret installation. Please run: `pip install cuml` to install.
+2025-09-16 10:53:02,973:WARNING:
+'cuml' is a soft dependency and not included in the pycaret installation. Please run: `pip install cuml` to install.
+2025-09-16 10:53:02,973:WARNING:
+'cuml' is a soft dependency and not included in the pycaret installation. Please run: `pip install cuml` to install.
+2025-09-16 10:53:03,613:INFO:PyCaret AnomalyExperiment
+2025-09-16 10:53:03,613:INFO:Logging name: anomaly-default-name
+2025-09-16 10:53:03,613:INFO:ML Usecase: MLUsecase.ANOMALY
+2025-09-16 10:53:03,613:INFO:version 3.3.2
+2025-09-16 10:53:03,613:INFO:Initializing setup()
+2025-09-16 10:53:03,613:INFO:self.USI: e1fe
+2025-09-16 10:53:03,613:INFO:self._variable_keys: {'logging_param', 'exp_name_log', '_ml_usecase', 'gpu_param', 'seed', 'log_plots_param', 'html_param', 'pipeline', '_available_plots', 'USI', 'gpu_n_jobs_param', 'data', 'idx', 'exp_id', 'memory', 'X', 'n_jobs_param'}
+2025-09-16 10:53:03,613:INFO:Checking environment
+2025-09-16 10:53:03,613:INFO:python_version: 3.11.13
+2025-09-16 10:53:03,613:INFO:python_build: ('main', 'Jun  5 2025 13:03:15')
+2025-09-16 10:53:03,613:INFO:machine: AMD64
+2025-09-16 10:53:03,613:INFO:platform: Windows-10-10.0.26100-SP0
+2025-09-16 10:53:03,615:INFO:Memory: svmem(total=34049417216, available=18313723904, percent=46.2, used=15735693312, free=18313723904)
+2025-09-16 10:53:03,615:INFO:Physical Core: 12
+2025-09-16 10:53:03,615:INFO:Logical Core: 16
+2025-09-16 10:53:03,615:INFO:Checking libraries
+2025-09-16 10:53:03,615:INFO:System:
+2025-09-16 10:53:03,615:INFO:    python: 3.11.13 | packaged by Anaconda, Inc. | (main, Jun  5 2025, 13:03:15) [MSC v.1929 64 bit (AMD64)]
+2025-09-16 10:53:03,615:INFO:executable: C:\Anaconda3\envs\py311\python.exe
+2025-09-16 10:53:03,615:INFO:   machine: Windows-10-10.0.26100-SP0
+2025-09-16 10:53:03,615:INFO:PyCaret required dependencies:
+2025-09-16 10:53:03,632:INFO:                 pip: 25.2
+2025-09-16 10:53:03,632:INFO:          setuptools: 78.1.1
+2025-09-16 10:53:03,632:INFO:             pycaret: 3.3.2
+2025-09-16 10:53:03,632:INFO:             IPython: 9.1.0
+2025-09-16 10:53:03,632:INFO:          ipywidgets: 8.1.5
+2025-09-16 10:53:03,632:INFO:                tqdm: 4.67.1
+2025-09-16 10:53:03,632:INFO:               numpy: 1.26.4
+2025-09-16 10:53:03,632:INFO:              pandas: 2.1.4
+2025-09-16 10:53:03,632:INFO:              jinja2: 3.1.6
+2025-09-16 10:53:03,632:INFO:               scipy: 1.11.4
+2025-09-16 10:53:03,632:INFO:              joblib: 1.3.2
+2025-09-16 10:53:03,632:INFO:             sklearn: 1.4.2
+2025-09-16 10:53:03,632:INFO:                pyod: 2.0.5
+2025-09-16 10:53:03,632:INFO:            imblearn: 0.14.0
+2025-09-16 10:53:03,632:INFO:   category_encoders: 2.7.0
+2025-09-16 10:53:03,632:INFO:            lightgbm: 4.6.0
+2025-09-16 10:53:03,632:INFO:               numba: 0.61.2
+2025-09-16 10:53:03,632:INFO:            requests: 2.32.5
+2025-09-16 10:53:03,632:INFO:          matplotlib: 3.7.5
+2025-09-16 10:53:03,632:INFO:          scikitplot: 0.3.7
+2025-09-16 10:53:03,632:INFO:         yellowbrick: 1.5
+2025-09-16 10:53:03,632:INFO:              plotly: 6.3.0
+2025-09-16 10:53:03,632:INFO:    plotly-resampler: Not installed
+2025-09-16 10:53:03,632:INFO:             kaleido: 1.1.0
+2025-09-16 10:53:03,632:INFO:           schemdraw: 0.15
+2025-09-16 10:53:03,632:INFO:         statsmodels: 0.14.5
+2025-09-16 10:53:03,632:INFO:              sktime: 0.26.0
+2025-09-16 10:53:03,632:INFO:               tbats: 1.1.3
+2025-09-16 10:53:03,632:INFO:            pmdarima: 2.0.4
+2025-09-16 10:53:03,632:INFO:              psutil: 7.0.0
+2025-09-16 10:53:03,632:INFO:          markupsafe: 3.0.2
+2025-09-16 10:53:03,632:INFO:             pickle5: Not installed
+2025-09-16 10:53:03,632:INFO:         cloudpickle: 3.1.1
+2025-09-16 10:53:03,632:INFO:         deprecation: 2.1.0
+2025-09-16 10:53:03,632:INFO:              xxhash: 3.5.0
+2025-09-16 10:53:03,632:INFO:           wurlitzer: Not installed
+2025-09-16 10:53:03,632:INFO:PyCaret optional dependencies:
+2025-09-16 10:53:03,640:INFO:                shap: Not installed
+2025-09-16 10:53:03,640:INFO:           interpret: Not installed
+2025-09-16 10:53:03,640:INFO:                umap: Not installed
+2025-09-16 10:53:03,640:INFO:     ydata_profiling: Not installed
+2025-09-16 10:53:03,640:INFO:  explainerdashboard: Not installed
+2025-09-16 10:53:03,640:INFO:             autoviz: Not installed
+2025-09-16 10:53:03,640:INFO:           fairlearn: Not installed
+2025-09-16 10:53:03,640:INFO:          deepchecks: Not installed
+2025-09-16 10:53:03,640:INFO:             xgboost: Not installed
+2025-09-16 10:53:03,640:INFO:            catboost: Not installed
+2025-09-16 10:53:03,640:INFO:              kmodes: Not installed
+2025-09-16 10:53:03,640:INFO:             mlxtend: Not installed
+2025-09-16 10:53:03,640:INFO:       statsforecast: Not installed
+2025-09-16 10:53:03,640:INFO:        tune_sklearn: Not installed
+2025-09-16 10:53:03,640:INFO:                 ray: Not installed
+2025-09-16 10:53:03,640:INFO:            hyperopt: Not installed
+2025-09-16 10:53:03,640:INFO:              optuna: Not installed
+2025-09-16 10:53:03,640:INFO:               skopt: Not installed
+2025-09-16 10:53:03,640:INFO:              mlflow: Not installed
+2025-09-16 10:53:03,640:INFO:              gradio: Not installed
+2025-09-16 10:53:03,640:INFO:             fastapi: Not installed
+2025-09-16 10:53:03,640:INFO:             uvicorn: Not installed
+2025-09-16 10:53:03,640:INFO:              m2cgen: Not installed
+2025-09-16 10:53:03,640:INFO:           evidently: Not installed
+2025-09-16 10:53:03,640:INFO:               fugue: Not installed
+2025-09-16 10:53:03,640:INFO:           streamlit: Not installed
+2025-09-16 10:53:03,640:INFO:             prophet: Not installed
+2025-09-16 10:53:03,640:INFO:None
+2025-09-16 10:53:03,640:INFO:Set up data.
+2025-09-16 10:53:03,642:INFO:Set up index.
+2025-09-16 10:53:03,642:INFO:Assigning column types.
+2025-09-16 10:53:03,643:INFO:Engine successfully changes for model 'kmeans' to 'sklearn'.
+2025-09-16 10:53:03,834:INFO:Engine successfully changes for model 'dbscan' to 'sklearn'.
+2025-09-16 10:53:03,835:INFO:Preparing preprocessing pipeline...
+2025-09-16 10:53:03,835:INFO:Set up simple imputation.
+2025-09-16 10:53:03,843:INFO:Finished creating preprocessing pipeline.
+2025-09-16 10:53:03,846:INFO:Pipeline: Pipeline(memory=FastMemory(location=C:\Users\HARITS~1\AppData\Local\Temp\joblib),
+         steps=[('numerical_imputer',
+                 TransformerWrapper(include=['sepal_length', 'sepal_width',
+                                             'petal_length', 'petal_width'],
+                                    transformer=SimpleImputer())),
+                ('categorical_imputer',
+                 TransformerWrapper(include=[],
+                                    transformer=SimpleImputer(strategy='most_frequent')))])
+2025-09-16 10:53:03,846:INFO:Creating final display dataframe.
+2025-09-16 10:53:03,855:INFO:Setup _display_container:                Description                 Value
+0               Session id                  1393
+1      Original data shape              (150, 4)
+2   Transformed data shape              (150, 4)
+3         Numeric features                     4
+4               Preprocess                  True
+5          Imputation type                simple
+6       Numeric imputation                  mean
+7   Categorical imputation                  mode
+8                 CPU Jobs                    -1
+9                  Use GPU                 False
+10          Log Experiment                 False
+11         Experiment Name  anomaly-default-name
+12                     USI                  e1fe
+2025-09-16 10:53:03,861:INFO:setup() successfully completed in 0.25s...............
+2025-09-16 10:53:03,861:INFO:Initializing create_model()
+2025-09-16 10:53:03,862:INFO:create_model(self=<pycaret.anomaly.oop.AnomalyExperiment object at 0x000002D8EBCF36D0>, estimator=abod, num_clusters=4, fraction=0.05, ground_truth=None, round=4, fit_kwargs=None, experiment_custom_tags=None, verbose=True, system=True, add_to_model_list=True, raise_num_clusters=False, display=None, kwargs={})
+2025-09-16 10:53:03,862:INFO:Checking exceptions
+2025-09-16 10:53:03,880:INFO:Importing untrained model
+2025-09-16 10:53:03,882:INFO:Angle-base Outlier Detection Imported successfully
+2025-09-16 10:53:03,884:INFO:Fitting Model
+2025-09-16 10:53:04,875:INFO:ABOD(contamination=0.05, method='fast', n_neighbors=5)
+2025-09-16 10:53:04,875:INFO:create_models() successfully completed......................................
+2025-09-16 10:53:04,879:INFO:Uploading results into container
+2025-09-16 10:53:04,879:INFO:Uploading model into container now
+2025-09-16 10:53:04,880:INFO:_master_model_container: 1
+2025-09-16 10:53:04,880:INFO:_display_container: 1
+2025-09-16 10:53:04,880:INFO:ABOD(contamination=0.05, method='fast', n_neighbors=5)
+2025-09-16 10:53:04,881:INFO:create_model() successfully completed......................................
+2025-09-16 10:53:04,957:INFO:Initializing assign_model()
+2025-09-16 10:53:04,957:INFO:assign_model(self=<pycaret.anomaly.oop.AnomalyExperiment object at 0x000002D8EBCF36D0>, model=ABOD(contamination=0.05, method='fast', n_neighbors=5), transformation=False, score=True, verbose=True)
+2025-09-16 10:53:04,957:INFO:Checking exceptions
+2025-09-16 10:53:04,957:INFO:Determining Trained Model
+2025-09-16 10:53:04,957:INFO:Trained Model : Angle-base Outlier Detection
+2025-09-16 10:53:04,957:INFO:Copying data
+2025-09-16 10:53:04,958:INFO:(150, 6)
+2025-09-16 10:53:04,958:INFO:assign_model() successfully completed......................................
+2025-09-16 10:53:05,110:INFO:PyCaret AnomalyExperiment
+2025-09-16 10:53:05,110:INFO:Logging name: anomaly-default-name
+2025-09-16 10:53:05,111:INFO:ML Usecase: MLUsecase.ANOMALY
+2025-09-16 10:53:05,111:INFO:version 3.3.2
+2025-09-16 10:53:05,111:INFO:Initializing setup()
+2025-09-16 10:53:05,111:INFO:self.USI: 6f95
+2025-09-16 10:53:05,111:INFO:self._variable_keys: {'logging_param', 'exp_name_log', '_ml_usecase', 'gpu_param', 'seed', 'log_plots_param', 'html_param', 'pipeline', '_available_plots', 'USI', 'gpu_n_jobs_param', 'data', 'idx', 'exp_id', 'memory', 'X', 'n_jobs_param'}
+2025-09-16 10:53:05,111:INFO:Checking environment
+2025-09-16 10:53:05,111:INFO:python_version: 3.11.13
+2025-09-16 10:53:05,111:INFO:python_build: ('main', 'Jun  5 2025 13:03:15')
+2025-09-16 10:53:05,111:INFO:machine: AMD64
+2025-09-16 10:53:05,111:INFO:platform: Windows-10-10.0.26100-SP0
+2025-09-16 10:53:05,111:INFO:Memory: svmem(total=34049417216, available=18277498880, percent=46.3, used=15771918336, free=18277498880)
+2025-09-16 10:53:05,111:INFO:Physical Core: 12
+2025-09-16 10:53:05,111:INFO:Logical Core: 16
+2025-09-16 10:53:05,111:INFO:Checking libraries
+2025-09-16 10:53:05,111:INFO:System:
+2025-09-16 10:53:05,111:INFO:    python: 3.11.13 | packaged by Anaconda, Inc. | (main, Jun  5 2025, 13:03:15) [MSC v.1929 64 bit (AMD64)]
+2025-09-16 10:53:05,111:INFO:executable: C:\Anaconda3\envs\py311\python.exe
+2025-09-16 10:53:05,111:INFO:   machine: Windows-10-10.0.26100-SP0
+2025-09-16 10:53:05,111:INFO:PyCaret required dependencies:
+2025-09-16 10:53:05,111:INFO:                 pip: 25.2
+2025-09-16 10:53:05,111:INFO:          setuptools: 78.1.1
+2025-09-16 10:53:05,111:INFO:             pycaret: 3.3.2
+2025-09-16 10:53:05,111:INFO:             IPython: 9.1.0
+2025-09-16 10:53:05,111:INFO:          ipywidgets: 8.1.5
+2025-09-16 10:53:05,111:INFO:                tqdm: 4.67.1
+2025-09-16 10:53:05,111:INFO:               numpy: 1.26.4
+2025-09-16 10:53:05,111:INFO:              pandas: 2.1.4
+2025-09-16 10:53:05,111:INFO:              jinja2: 3.1.6
+2025-09-16 10:53:05,112:INFO:               scipy: 1.11.4
+2025-09-16 10:53:05,112:INFO:              joblib: 1.3.2
+2025-09-16 10:53:05,112:INFO:             sklearn: 1.4.2
+2025-09-16 10:53:05,112:INFO:                pyod: 2.0.5
+2025-09-16 10:53:05,112:INFO:            imblearn: 0.14.0
+2025-09-16 10:53:05,112:INFO:   category_encoders: 2.7.0
+2025-09-16 10:53:05,112:INFO:            lightgbm: 4.6.0
+2025-09-16 10:53:05,112:INFO:               numba: 0.61.2
+2025-09-16 10:53:05,112:INFO:            requests: 2.32.5
+2025-09-16 10:53:05,112:INFO:          matplotlib: 3.7.5
+2025-09-16 10:53:05,112:INFO:          scikitplot: 0.3.7
+2025-09-16 10:53:05,112:INFO:         yellowbrick: 1.5
+2025-09-16 10:53:05,112:INFO:              plotly: 6.3.0
+2025-09-16 10:53:05,112:INFO:    plotly-resampler: Not installed
+2025-09-16 10:53:05,112:INFO:             kaleido: 1.1.0
+2025-09-16 10:53:05,112:INFO:           schemdraw: 0.15
+2025-09-16 10:53:05,112:INFO:         statsmodels: 0.14.5
+2025-09-16 10:53:05,112:INFO:              sktime: 0.26.0
+2025-09-16 10:53:05,112:INFO:               tbats: 1.1.3
+2025-09-16 10:53:05,112:INFO:            pmdarima: 2.0.4
+2025-09-16 10:53:05,112:INFO:              psutil: 7.0.0
+2025-09-16 10:53:05,112:INFO:          markupsafe: 3.0.2
+2025-09-16 10:53:05,112:INFO:             pickle5: Not installed
+2025-09-16 10:53:05,112:INFO:         cloudpickle: 3.1.1
+2025-09-16 10:53:05,112:INFO:         deprecation: 2.1.0
+2025-09-16 10:53:05,112:INFO:              xxhash: 3.5.0
+2025-09-16 10:53:05,112:INFO:           wurlitzer: Not installed
+2025-09-16 10:53:05,112:INFO:PyCaret optional dependencies:
+2025-09-16 10:53:05,112:INFO:                shap: Not installed
+2025-09-16 10:53:05,112:INFO:           interpret: Not installed
+2025-09-16 10:53:05,112:INFO:                umap: Not installed
+2025-09-16 10:53:05,112:INFO:     ydata_profiling: Not installed
+2025-09-16 10:53:05,112:INFO:  explainerdashboard: Not installed
+2025-09-16 10:53:05,112:INFO:             autoviz: Not installed
+2025-09-16 10:53:05,112:INFO:           fairlearn: Not installed
+2025-09-16 10:53:05,112:INFO:          deepchecks: Not installed
+2025-09-16 10:53:05,112:INFO:             xgboost: Not installed
+2025-09-16 10:53:05,112:INFO:            catboost: Not installed
+2025-09-16 10:53:05,112:INFO:              kmodes: Not installed
+2025-09-16 10:53:05,112:INFO:             mlxtend: Not installed
+2025-09-16 10:53:05,112:INFO:       statsforecast: Not installed
+2025-09-16 10:53:05,112:INFO:        tune_sklearn: Not installed
+2025-09-16 10:53:05,112:INFO:                 ray: Not installed
+2025-09-16 10:53:05,112:INFO:            hyperopt: Not installed
+2025-09-16 10:53:05,112:INFO:              optuna: Not installed
+2025-09-16 10:53:05,112:INFO:               skopt: Not installed
+2025-09-16 10:53:05,112:INFO:              mlflow: Not installed
+2025-09-16 10:53:05,112:INFO:              gradio: Not installed
+2025-09-16 10:53:05,112:INFO:             fastapi: Not installed
+2025-09-16 10:53:05,112:INFO:             uvicorn: Not installed
+2025-09-16 10:53:05,112:INFO:              m2cgen: Not installed
+2025-09-16 10:53:05,112:INFO:           evidently: Not installed
+2025-09-16 10:53:05,113:INFO:               fugue: Not installed
+2025-09-16 10:53:05,113:INFO:           streamlit: Not installed
+2025-09-16 10:53:05,113:INFO:             prophet: Not installed
+2025-09-16 10:53:05,113:INFO:None
+2025-09-16 10:53:05,113:INFO:Set up data.
+2025-09-16 10:53:05,114:INFO:Set up index.
+2025-09-16 10:53:05,114:INFO:Assigning column types.
+2025-09-16 10:53:05,115:INFO:Engine successfully changes for model 'kmeans' to 'sklearn'.
+2025-09-16 10:53:05,115:INFO:Engine successfully changes for model 'dbscan' to 'sklearn'.
+2025-09-16 10:53:05,116:INFO:Preparing preprocessing pipeline...
+2025-09-16 10:53:05,116:INFO:Set up simple imputation.
+2025-09-16 10:53:05,123:INFO:Finished creating preprocessing pipeline.
+2025-09-16 10:53:05,125:INFO:Pipeline: Pipeline(memory=FastMemory(location=C:\Users\HARITS~1\AppData\Local\Temp\joblib),
+         steps=[('numerical_imputer',
+                 TransformerWrapper(include=['sepal_length', 'sepal_width',
+                                             'petal_length', 'petal_width'],
+                                    transformer=SimpleImputer())),
+                ('categorical_imputer',
+                 TransformerWrapper(include=[],
+                                    transformer=SimpleImputer(strategy='most_frequent')))])
+2025-09-16 10:53:05,125:INFO:Creating final display dataframe.
+2025-09-16 10:53:05,132:INFO:Setup _display_container:                Description                 Value
+0               Session id                  7945
+1      Original data shape              (150, 4)
+2   Transformed data shape              (150, 4)
+3         Numeric features                     4
+4               Preprocess                  True
+5          Imputation type                simple
+6       Numeric imputation                  mean
+7   Categorical imputation                  mode
+8                 CPU Jobs                    -1
+9                  Use GPU                 False
+10          Log Experiment                 False
+11         Experiment Name  anomaly-default-name
+12                     USI                  6f95
+2025-09-16 10:53:05,137:INFO:setup() successfully completed in 0.03s...............
+2025-09-16 10:53:05,138:INFO:Initializing create_model()
+2025-09-16 10:53:05,138:INFO:create_model(self=<pycaret.anomaly.oop.AnomalyExperiment object at 0x000002D8A7E09590>, estimator=knn, num_clusters=4, fraction=0.05, ground_truth=None, round=4, fit_kwargs=None, experiment_custom_tags=None, verbose=True, system=True, add_to_model_list=True, raise_num_clusters=False, display=None, kwargs={})
+2025-09-16 10:53:05,138:INFO:Checking exceptions
+2025-09-16 10:53:05,153:INFO:Importing untrained model
+2025-09-16 10:53:05,156:INFO:K-Nearest Neighbors Detector Imported successfully
+2025-09-16 10:53:05,158:INFO:Fitting Model
+2025-09-16 10:53:05,179:INFO:KNN(algorithm='auto', contamination=0.05, leaf_size=30, method='largest',
+  metric='minkowski', metric_params=None, n_jobs=-1, n_neighbors=5, p=2,
+  radius=1.0)
+2025-09-16 10:53:05,179:INFO:create_models() successfully completed......................................
+2025-09-16 10:53:05,181:INFO:Uploading results into container
+2025-09-16 10:53:05,181:INFO:Uploading model into container now
+2025-09-16 10:53:05,183:INFO:_master_model_container: 1
+2025-09-16 10:53:05,183:INFO:_display_container: 1
+2025-09-16 10:53:05,183:INFO:KNN(algorithm='auto', contamination=0.05, leaf_size=30, method='largest',
+  metric='minkowski', metric_params=None, n_jobs=-1, n_neighbors=5, p=2,
+  radius=1.0)
+2025-09-16 10:53:05,183:INFO:create_model() successfully completed......................................
+2025-09-16 10:53:05,251:INFO:Initializing assign_model()
+2025-09-16 10:53:05,251:INFO:assign_model(self=<pycaret.anomaly.oop.AnomalyExperiment object at 0x000002D8A7E09590>, model=KNN(algorithm='auto', contamination=0.05, leaf_size=30, method='largest',
+  metric='minkowski', metric_params=None, n_jobs=-1, n_neighbors=5, p=2,
+  radius=1.0), transformation=False, score=True, verbose=True)
+2025-09-16 10:53:05,251:INFO:Checking exceptions
+2025-09-16 10:53:05,251:INFO:Determining Trained Model
+2025-09-16 10:53:05,251:INFO:Trained Model : K-Nearest Neighbors Detector
+2025-09-16 10:53:05,252:INFO:Copying data
+2025-09-16 10:53:05,253:INFO:(150, 6)
+2025-09-16 10:53:05,253:INFO:assign_model() successfully completed......................................
+2025-09-16 10:53:05,365:INFO:PyCaret AnomalyExperiment
+2025-09-16 10:53:05,366:INFO:Logging name: anomaly-default-name
+2025-09-16 10:53:05,366:INFO:ML Usecase: MLUsecase.ANOMALY
+2025-09-16 10:53:05,366:INFO:version 3.3.2
+2025-09-16 10:53:05,366:INFO:Initializing setup()
+2025-09-16 10:53:05,366:INFO:self.USI: a71f
+2025-09-16 10:53:05,366:INFO:self._variable_keys: {'logging_param', 'exp_name_log', '_ml_usecase', 'gpu_param', 'seed', 'log_plots_param', 'html_param', 'pipeline', '_available_plots', 'USI', 'gpu_n_jobs_param', 'data', 'idx', 'exp_id', 'memory', 'X', 'n_jobs_param'}
+2025-09-16 10:53:05,366:INFO:Checking environment
+2025-09-16 10:53:05,366:INFO:python_version: 3.11.13
+2025-09-16 10:53:05,366:INFO:python_build: ('main', 'Jun  5 2025 13:03:15')
+2025-09-16 10:53:05,366:INFO:machine: AMD64
+2025-09-16 10:53:05,366:INFO:platform: Windows-10-10.0.26100-SP0
+2025-09-16 10:53:05,366:INFO:Memory: svmem(total=34049417216, available=18279563264, percent=46.3, used=15769853952, free=18279563264)
+2025-09-16 10:53:05,366:INFO:Physical Core: 12
+2025-09-16 10:53:05,366:INFO:Logical Core: 16
+2025-09-16 10:53:05,366:INFO:Checking libraries
+2025-09-16 10:53:05,366:INFO:System:
+2025-09-16 10:53:05,366:INFO:    python: 3.11.13 | packaged by Anaconda, Inc. | (main, Jun  5 2025, 13:03:15) [MSC v.1929 64 bit (AMD64)]
+2025-09-16 10:53:05,366:INFO:executable: C:\Anaconda3\envs\py311\python.exe
+2025-09-16 10:53:05,366:INFO:   machine: Windows-10-10.0.26100-SP0
+2025-09-16 10:53:05,366:INFO:PyCaret required dependencies:
+2025-09-16 10:53:05,366:INFO:                 pip: 25.2
+2025-09-16 10:53:05,366:INFO:          setuptools: 78.1.1
+2025-09-16 10:53:05,366:INFO:             pycaret: 3.3.2
+2025-09-16 10:53:05,366:INFO:             IPython: 9.1.0
+2025-09-16 10:53:05,366:INFO:          ipywidgets: 8.1.5
+2025-09-16 10:53:05,366:INFO:                tqdm: 4.67.1
+2025-09-16 10:53:05,366:INFO:               numpy: 1.26.4
+2025-09-16 10:53:05,366:INFO:              pandas: 2.1.4
+2025-09-16 10:53:05,366:INFO:              jinja2: 3.1.6
+2025-09-16 10:53:05,366:INFO:               scipy: 1.11.4
+2025-09-16 10:53:05,366:INFO:              joblib: 1.3.2
+2025-09-16 10:53:05,366:INFO:             sklearn: 1.4.2
+2025-09-16 10:53:05,366:INFO:                pyod: 2.0.5
+2025-09-16 10:53:05,366:INFO:            imblearn: 0.14.0
+2025-09-16 10:53:05,366:INFO:   category_encoders: 2.7.0
+2025-09-16 10:53:05,366:INFO:            lightgbm: 4.6.0
+2025-09-16 10:53:05,366:INFO:               numba: 0.61.2
+2025-09-16 10:53:05,366:INFO:            requests: 2.32.5
+2025-09-16 10:53:05,367:INFO:          matplotlib: 3.7.5
+2025-09-16 10:53:05,367:INFO:          scikitplot: 0.3.7
+2025-09-16 10:53:05,367:INFO:         yellowbrick: 1.5
+2025-09-16 10:53:05,367:INFO:              plotly: 6.3.0
+2025-09-16 10:53:05,367:INFO:    plotly-resampler: Not installed
+2025-09-16 10:53:05,367:INFO:             kaleido: 1.1.0
+2025-09-16 10:53:05,367:INFO:           schemdraw: 0.15
+2025-09-16 10:53:05,367:INFO:         statsmodels: 0.14.5
+2025-09-16 10:53:05,367:INFO:              sktime: 0.26.0
+2025-09-16 10:53:05,367:INFO:               tbats: 1.1.3
+2025-09-16 10:53:05,367:INFO:            pmdarima: 2.0.4
+2025-09-16 10:53:05,367:INFO:              psutil: 7.0.0
+2025-09-16 10:53:05,367:INFO:          markupsafe: 3.0.2
+2025-09-16 10:53:05,367:INFO:             pickle5: Not installed
+2025-09-16 10:53:05,367:INFO:         cloudpickle: 3.1.1
+2025-09-16 10:53:05,367:INFO:         deprecation: 2.1.0
+2025-09-16 10:53:05,367:INFO:              xxhash: 3.5.0
+2025-09-16 10:53:05,367:INFO:           wurlitzer: Not installed
+2025-09-16 10:53:05,367:INFO:PyCaret optional dependencies:
+2025-09-16 10:53:05,367:INFO:                shap: Not installed
+2025-09-16 10:53:05,367:INFO:           interpret: Not installed
+2025-09-16 10:53:05,367:INFO:                umap: Not installed
+2025-09-16 10:53:05,367:INFO:     ydata_profiling: Not installed
+2025-09-16 10:53:05,367:INFO:  explainerdashboard: Not installed
+2025-09-16 10:53:05,367:INFO:             autoviz: Not installed
+2025-09-16 10:53:05,367:INFO:           fairlearn: Not installed
+2025-09-16 10:53:05,367:INFO:          deepchecks: Not installed
+2025-09-16 10:53:05,367:INFO:             xgboost: Not installed
+2025-09-16 10:53:05,367:INFO:            catboost: Not installed
+2025-09-16 10:53:05,367:INFO:              kmodes: Not installed
+2025-09-16 10:53:05,367:INFO:             mlxtend: Not installed
+2025-09-16 10:53:05,367:INFO:       statsforecast: Not installed
+2025-09-16 10:53:05,367:INFO:        tune_sklearn: Not installed
+2025-09-16 10:53:05,367:INFO:                 ray: Not installed
+2025-09-16 10:53:05,367:INFO:            hyperopt: Not installed
+2025-09-16 10:53:05,367:INFO:              optuna: Not installed
+2025-09-16 10:53:05,367:INFO:               skopt: Not installed
+2025-09-16 10:53:05,367:INFO:              mlflow: Not installed
+2025-09-16 10:53:05,367:INFO:              gradio: Not installed
+2025-09-16 10:53:05,367:INFO:             fastapi: Not installed
+2025-09-16 10:53:05,367:INFO:             uvicorn: Not installed
+2025-09-16 10:53:05,367:INFO:              m2cgen: Not installed
+2025-09-16 10:53:05,367:INFO:           evidently: Not installed
+2025-09-16 10:53:05,367:INFO:               fugue: Not installed
+2025-09-16 10:53:05,367:INFO:           streamlit: Not installed
+2025-09-16 10:53:05,367:INFO:             prophet: Not installed
+2025-09-16 10:53:05,367:INFO:None
+2025-09-16 10:53:05,367:INFO:Set up data.
+2025-09-16 10:53:05,368:INFO:Set up index.
+2025-09-16 10:53:05,369:INFO:Assigning column types.
+2025-09-16 10:53:05,370:INFO:Engine successfully changes for model 'kmeans' to 'sklearn'.
+2025-09-16 10:53:05,370:INFO:Engine successfully changes for model 'dbscan' to 'sklearn'.
+2025-09-16 10:53:05,371:INFO:Preparing preprocessing pipeline...
+2025-09-16 10:53:05,371:INFO:Set up simple imputation.
+2025-09-16 10:53:05,378:INFO:Finished creating preprocessing pipeline.
+2025-09-16 10:53:05,380:INFO:Pipeline: Pipeline(memory=FastMemory(location=C:\Users\HARITS~1\AppData\Local\Temp\joblib),
+         steps=[('numerical_imputer',
+                 TransformerWrapper(include=['sepal_length', 'sepal_width',
+                                             'petal_length', 'petal_width'],
+                                    transformer=SimpleImputer())),
+                ('categorical_imputer',
+                 TransformerWrapper(include=[],
+                                    transformer=SimpleImputer(strategy='most_frequent')))])
+2025-09-16 10:53:05,380:INFO:Creating final display dataframe.
+2025-09-16 10:53:05,387:INFO:Setup _display_container:                Description                 Value
+0               Session id                  6316
+1      Original data shape              (150, 4)
+2   Transformed data shape              (150, 4)
+3         Numeric features                     4
+4               Preprocess                  True
+5          Imputation type                simple
+6       Numeric imputation                  mean
+7   Categorical imputation                  mode
+8                 CPU Jobs                    -1
+9                  Use GPU                 False
+10          Log Experiment                 False
+11         Experiment Name  anomaly-default-name
+12                     USI                  a71f
+2025-09-16 10:53:05,391:INFO:setup() successfully completed in 0.03s...............
+2025-09-16 10:53:05,392:INFO:Initializing create_model()
+2025-09-16 10:53:05,393:INFO:create_model(self=<pycaret.anomaly.oop.AnomalyExperiment object at 0x000002D8EE8729D0>, estimator=lof, num_clusters=4, fraction=0.05, ground_truth=None, round=4, fit_kwargs=None, experiment_custom_tags=None, verbose=True, system=True, add_to_model_list=True, raise_num_clusters=False, display=None, kwargs={})
+2025-09-16 10:53:05,393:INFO:Checking exceptions
+2025-09-16 10:53:05,410:INFO:Importing untrained model
+2025-09-16 10:53:05,412:INFO:Local Outlier Factor Imported successfully
+2025-09-16 10:53:05,414:INFO:Fitting Model
+2025-09-16 10:53:05,433:INFO:LOF(algorithm='auto', contamination=0.05, leaf_size=30, metric='minkowski',
+  metric_params=None, n_jobs=-1, n_neighbors=20, novelty=True, p=2)
+2025-09-16 10:53:05,433:INFO:create_models() successfully completed......................................
+2025-09-16 10:53:05,435:INFO:Uploading results into container
+2025-09-16 10:53:05,435:INFO:Uploading model into container now
+2025-09-16 10:53:05,436:INFO:_master_model_container: 1
+2025-09-16 10:53:05,437:INFO:_display_container: 1
+2025-09-16 10:53:05,437:INFO:LOF(algorithm='auto', contamination=0.05, leaf_size=30, metric='minkowski',
+  metric_params=None, n_jobs=-1, n_neighbors=20, novelty=True, p=2)
+2025-09-16 10:53:05,437:INFO:create_model() successfully completed......................................
+2025-09-16 10:53:05,508:INFO:Initializing assign_model()
+2025-09-16 10:53:05,509:INFO:assign_model(self=<pycaret.anomaly.oop.AnomalyExperiment object at 0x000002D8EE8729D0>, model=LOF(algorithm='auto', contamination=0.05, leaf_size=30, metric='minkowski',
+  metric_params=None, n_jobs=-1, n_neighbors=20, novelty=True, p=2), transformation=False, score=True, verbose=True)
+2025-09-16 10:53:05,509:INFO:Checking exceptions
+2025-09-16 10:53:05,509:INFO:Determining Trained Model
+2025-09-16 10:53:05,509:INFO:Trained Model : Local Outlier Factor
+2025-09-16 10:53:05,509:INFO:Copying data
+2025-09-16 10:53:05,509:INFO:(150, 6)
+2025-09-16 10:53:05,510:INFO:assign_model() successfully completed......................................
