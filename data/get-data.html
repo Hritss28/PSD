@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>&lt;no title&gt; &#8212; My sample book</title>
+    <title>Get Data &#8212; My sample book</title>
   
   
   
@@ -179,9 +179,10 @@
                 </a>
             </li>
         </ul>
-        <ul class="nav bd-sidenav">
+        <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../bisnis.html">Business Understanding</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../data.html">Data Understanding</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../data.html">Data Understanding</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Get Data</a></li>
 <li class="toctree-l2"><a class="reference internal" href="eksplorasi-data.html">Eksplorasi Data</a></li>
 </ul>
 </details></li>
@@ -371,7 +372,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1><no title></h1>
+    <h1>Get Data</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -380,9 +381,22 @@ document.write(`
                 <h2> Contents </h2>
             </div>
             <nav aria-label="Page">
-                <ul class="simple visible nav section-nav flex-column">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sumber-data">Sumber Data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#database-mysql">Database MySQL</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#database-postgresql">Database PostgreSQL</a></li>
 </ul>
-
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ekstraksi-data">Ekstraksi Data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mengambil-data-dari-mysql">1. Mengambil Data dari MySQL</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mengambil-data-dari-postgresql">2. Mengambil Data dari PostgreSQL</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#integrasi-data-di-power-bi">Integrasi Data di Power BI</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hasil-akhir">Hasil Akhir</a></li>
+</ul>
+</li>
+</ul>
             </nav>
         </div>
     </div>
@@ -393,7 +407,93 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  
+  <section class="tex2jax_ignore mathjax_ignore" id="get-data">
+<h1>Get Data<a class="headerlink" href="#get-data" title="Link to this heading">#</a></h1>
+<section id="sumber-data">
+<h2>Sumber Data<a class="headerlink" href="#sumber-data" title="Link to this heading">#</a></h2>
+<p>Data Iris didapatkan dari dua database berbeda untuk mendemonstrasikan integrasi data multi-sumber:</p>
+<section id="database-mysql">
+<h3>Database MySQL<a class="headerlink" href="#database-mysql" title="Link to this heading">#</a></h3>
+<p>Menyimpan data karakteristik sepal bunga iris:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">sepal_length</span></code> - Panjang sepal (cm)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">sepal_width</span></code> - Lebar sepal (cm)</p></li>
+</ul>
+</section>
+<section id="database-postgresql">
+<h3>Database PostgreSQL<a class="headerlink" href="#database-postgresql" title="Link to this heading">#</a></h3>
+<p>Menyimpan data karakteristik petal dan klasifikasi spesies:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">petal_length</span></code> - Panjang petal (cm)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">petal_width</span></code> - Lebar petal (cm)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">species</span></code> - Jenis spesies iris (setosa, versicolor, virginica)</p></li>
+</ul>
+</section>
+</section>
+<section id="ekstraksi-data">
+<h2>Ekstraksi Data<a class="headerlink" href="#ekstraksi-data" title="Link to this heading">#</a></h2>
+<section id="mengambil-data-dari-mysql">
+<h3>1. Mengambil Data dari MySQL<a class="headerlink" href="#mengambil-data-dari-mysql" title="Link to this heading">#</a></h3>
+<p>Code Python untuk mengambil data sepal dari MySQL ke Power BI:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">mysql.connector</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">myconnector</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+
+<span class="c1"># Koneksi ke database MySQL</span>
+<span class="n">conn</span> <span class="o">=</span> <span class="n">myconnector</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span>
+    <span class="n">database</span><span class="o">=</span><span class="s2">&quot;iris_db&quot;</span><span class="p">,</span>
+    <span class="n">host</span><span class="o">=</span><span class="s2">&quot;localhost&quot;</span><span class="p">,</span>
+    <span class="n">user</span><span class="o">=</span><span class="s2">&quot;root&quot;</span><span class="p">,</span>
+    <span class="n">password</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+    <span class="n">port</span><span class="o">=</span><span class="mi">3306</span>
+<span class="p">)</span>
+
+<span class="c1"># Query data sepal</span>
+<span class="n">sepal</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_sql</span><span class="p">(</span><span class="s2">&quot;SELECT * FROM iris_table&quot;</span><span class="p">,</span> <span class="n">conn</span><span class="p">)</span>
+
+<span class="c1"># Tutup koneksi</span>
+<span class="n">conn</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+<section id="mengambil-data-dari-postgresql">
+<h3>2. Mengambil Data dari PostgreSQL<a class="headerlink" href="#mengambil-data-dari-postgresql" title="Link to this heading">#</a></h3>
+<p>Code Python untuk mengambil data petal dan spesies dari PostgreSQL ke Power BI:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">psycopg2</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pgconnector</span>
+
+<span class="c1"># Koneksi ke database PostgreSQL</span>
+<span class="n">conn</span> <span class="o">=</span> <span class="n">pgconnector</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span>
+    <span class="s2">&quot;dbname=iris_db host=localhost user=postgres password=zanra2401 port=2005&quot;</span>
+<span class="p">)</span>
+
+<span class="c1"># Query data petal dan spesies</span>
+<span class="n">petal_species</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_sql</span><span class="p">(</span><span class="s2">&quot;SELECT * FROM iris_table&quot;</span><span class="p">,</span> <span class="n">conn</span><span class="p">)</span>
+
+<span class="c1"># Tutup koneksi</span>
+<span class="n">conn</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="integrasi-data-di-power-bi">
+<h2>Integrasi Data di Power BI<a class="headerlink" href="#integrasi-data-di-power-bi" title="Link to this heading">#</a></h2>
+<p>Setelah kedua dataset berhasil diambil dari masing-masing database, data kemudian diintegrasikan di Power BI melalui proses <strong>merge/join</strong> berdasarkan key yang sama (biasanya ID atau index row).</p>
+<section id="hasil-akhir">
+<h3>Hasil Akhir<a class="headerlink" href="#hasil-akhir" title="Link to this heading">#</a></h3>
+<p>Dataset terintegrasi yang berisi:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">sepal_length</span></code> (dari MySQL)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">sepal_width</span></code> (dari MySQL)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">petal_length</span></code> (dari PostgreSQL)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">petal_width</span></code> (dari PostgreSQL)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">species</span></code> (dari PostgreSQL)</p></li>
+</ul>
+<p>Dataset lengkap ini kemudian siap digunakan untuk analisis dan visualisasi dalam Power BI dashboard.</p>
+<p><img alt="Dataset Iris Marge" src="../_images/dateset_marge.png" /></p>
+</section>
+</section>
+</section>
+
     <script type="text/x-thebe-config">
     {
         requestKernel: true,
@@ -457,9 +557,22 @@ document.write(`
     <i class="fa-solid fa-list"></i> Contents
   </div>
   <nav class="bd-toc-nav page-toc">
-    <ul class="simple visible nav section-nav flex-column">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sumber-data">Sumber Data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#database-mysql">Database MySQL</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#database-postgresql">Database PostgreSQL</a></li>
 </ul>
-
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ekstraksi-data">Ekstraksi Data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mengambil-data-dari-mysql">1. Mengambil Data dari MySQL</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mengambil-data-dari-postgresql">2. Mengambil Data dari PostgreSQL</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#integrasi-data-di-power-bi">Integrasi Data di Power BI</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hasil-akhir">Hasil Akhir</a></li>
+</ul>
+</li>
+</ul>
   </nav></div>
 
 </div></div>
