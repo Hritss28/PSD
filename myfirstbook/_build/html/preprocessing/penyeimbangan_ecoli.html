@@ -60,6 +60,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'preprocessing/penyeimbangan_ecoli';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="Preprocessing Data Iris" href="data_preprocessing.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -122,8 +123,6 @@
       
       
       
-        
-      
       <div class="bd-sidebar-primary bd-sidebar">
         
 
@@ -179,13 +178,19 @@
                 </a>
             </li>
         </ul>
-        <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../bisnis.html">Business Understanding</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../data.html">Data Understanding</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../data/get-data.html">Get Data</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../data/eksplorasi-data.html">Eksplorasi Data</a></li>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Bussiness Understanding</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../bisnis.html">Business Understanding - Dataset Iris</a></li>
 </ul>
-</details></li>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Data Understanding</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../data/get-data.html">Get Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data/eksplorasi-data.html"><strong>Eksplorasi Data</strong></a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Preprocessing Data</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="data_preprocessing.html"><strong>Preprocessing Data Iris</strong></a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#"><strong>Penyeimbangan Dataset Ecoli</strong></a></li>
 </ul>
 
     </div>
@@ -485,7 +490,7 @@ Note: you may need to restart the kernel to use updated packages.
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Data berhasil dimuat!
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\Harits Putra Junaidi\AppData\Local\Temp\ipykernel_5396\366836291.py:8: UserWarning: pandas only supports SQLAlchemy connectable (engine/connection) or database string URI or sqlite3 DBAPI2 connection. Other DBAPI2 objects are not tested. Please consider using SQLAlchemy.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\Harits Putra Junaidi\AppData\Local\Temp\ipykernel_24632\366836291.py:8: UserWarning: pandas only supports SQLAlchemy connectable (engine/connection) or database string URI or sqlite3 DBAPI2 connection. Other DBAPI2 objects are not tested. Please consider using SQLAlchemy.
   df = pd.read_sql(&quot;SELECT * FROM ecoli&quot;, conn)
 </pre></div>
 </div>
@@ -684,9 +689,7 @@ DataFrame PCA (5 baris pertama):
 Sorted counts untuk iterasi: [2, 2, 5, 20, 35, 52, 77, 143]
 
 Iterasi 1: menggunakan k_neighbors=1
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Hasil iterasi 1: [(&#39;cp&#39;, 143), (&#39;im&#39;, 77), (&#39;imL&#39;, 142), (&#39;imS&#39;, 2), (&#39;imU&#39;, 35), (&#39;om&#39;, 20), (&#39;omL&#39;, 5), (&#39;pp&#39;, 52)]
+Hasil iterasi 1: [(&#39;cp&#39;, 143), (&#39;im&#39;, 77), (&#39;imL&#39;, 142), (&#39;imS&#39;, 2), (&#39;imU&#39;, 35), (&#39;om&#39;, 20), (&#39;omL&#39;, 5), (&#39;pp&#39;, 52)]
 
 Iterasi 2: menggunakan k_neighbors=1
 Hasil iterasi 2: [(&#39;cp&#39;, 143), (&#39;im&#39;, 77), (&#39;imL&#39;, 142), (&#39;imS&#39;, 142), (&#39;imU&#39;, 35), (&#39;om&#39;, 20), (&#39;omL&#39;, 5), (&#39;pp&#39;, 52)]
@@ -698,20 +701,20 @@ Iterasi 4: menggunakan k_neighbors=19
 Hasil iterasi 4: [(&#39;cp&#39;, 143), (&#39;im&#39;, 77), (&#39;imL&#39;, 142), (&#39;imS&#39;, 142), (&#39;imU&#39;, 35), (&#39;om&#39;, 143), (&#39;omL&#39;, 143), (&#39;pp&#39;, 52)]
 
 Iterasi 5: menggunakan k_neighbors=34
-Hasil iterasi 5: [(&#39;cp&#39;, 143), (&#39;im&#39;, 77), (&#39;imL&#39;, 142), (&#39;imS&#39;, 142), (&#39;imU&#39;, 143), (&#39;om&#39;, 143), (&#39;omL&#39;, 143), (&#39;pp&#39;, 52)]
+Hasil iterasi 5: [(&#39;cp&#39;, 143), (&#39;im&#39;, 77), (&#39;imL&#39;, 142), (&#39;imS&#39;, 142), (&#39;imU&#39;, 146), (&#39;om&#39;, 143), (&#39;omL&#39;, 143), (&#39;pp&#39;, 52)]
 
 Iterasi 6: menggunakan k_neighbors=51
-Hasil iterasi 6: [(&#39;cp&#39;, 143), (&#39;im&#39;, 77), (&#39;imL&#39;, 142), (&#39;imS&#39;, 142), (&#39;imU&#39;, 143), (&#39;om&#39;, 143), (&#39;omL&#39;, 143), (&#39;pp&#39;, 140)]
+Hasil iterasi 6: [(&#39;cp&#39;, 143), (&#39;im&#39;, 77), (&#39;imL&#39;, 142), (&#39;imS&#39;, 142), (&#39;imU&#39;, 146), (&#39;om&#39;, 143), (&#39;omL&#39;, 143), (&#39;pp&#39;, 143)]
 
 Iterasi 7: menggunakan k_neighbors=76
-Hasil iterasi 7: [(&#39;cp&#39;, 143), (&#39;im&#39;, 150), (&#39;imL&#39;, 142), (&#39;imS&#39;, 142), (&#39;imU&#39;, 143), (&#39;om&#39;, 143), (&#39;omL&#39;, 143), (&#39;pp&#39;, 140)]
+Hasil iterasi 7: [(&#39;cp&#39;, 143), (&#39;im&#39;, 154), (&#39;imL&#39;, 142), (&#39;imS&#39;, 142), (&#39;imU&#39;, 146), (&#39;om&#39;, 143), (&#39;omL&#39;, 143), (&#39;pp&#39;, 143)]
 
 Distribusi kelas setelah ADASYN:
-[(&#39;cp&#39;, 143), (&#39;im&#39;, 150), (&#39;imL&#39;, 142), (&#39;imS&#39;, 142), (&#39;imU&#39;, 143), (&#39;om&#39;, 143), (&#39;omL&#39;, 143), (&#39;pp&#39;, 140)]
+[(&#39;cp&#39;, 143), (&#39;im&#39;, 154), (&#39;imL&#39;, 142), (&#39;imS&#39;, 142), (&#39;imU&#39;, 146), (&#39;om&#39;, 143), (&#39;omL&#39;, 143), (&#39;pp&#39;, 143)]
 
 Total samples sebelum: 336
-Total samples setelah: 1146
-Data yang ditambahkan: 810
+Total samples setelah: 1156
+Data yang ditambahkan: 820
 </pre></div>
 </div>
 </div>
@@ -769,17 +772,17 @@ Data yang ditambahkan: 810
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/90dc54084d817827468234f06a3b209b9ed7d8a38f4d0c7e3ea327160f79885f.png" src="../_images/90dc54084d817827468234f06a3b209b9ed7d8a38f4d0c7e3ea327160f79885f.png" />
+<img alt="../_images/4c30bf7b97b4508eaa89b1f642aa16b8235018692719bd5c3dab9cfc85d36347.png" src="../_images/4c30bf7b97b4508eaa89b1f642aa16b8235018692719bd5c3dab9cfc85d36347.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>=== SUMMARY ADASYN ===
 Peningkatan per kelas:
   cp: 0 samples (143 → 143)
-  im: +73 samples (77 → 150)
+  im: +77 samples (77 → 154)
   imL: +140 samples (2 → 142)
   imS: +140 samples (2 → 142)
-  imU: +108 samples (35 → 143)
+  imU: +111 samples (35 → 146)
   om: +123 samples (20 → 143)
   omL: +138 samples (5 → 143)
-  pp: +88 samples (52 → 140)
+  pp: +91 samples (52 → 143)
 </pre></div>
 </div>
 </div>
@@ -809,7 +812,7 @@ Peningkatan per kelas:
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/fe43d0c2a6ee89ae6f0bdb471d3dfc55512ef28ae8a5dad24083a5fd09226206.png" src="../_images/fe43d0c2a6ee89ae6f0bdb471d3dfc55512ef28ae8a5dad24083a5fd09226206.png" />
+<img alt="../_images/a600c2e83b450e4fa554432dd5e8c8ae85090a31325106c179ff6b690b97d380.png" src="../_images/a600c2e83b450e4fa554432dd5e8c8ae85090a31325106c179ff6b690b97d380.png" />
 </div>
 </div>
 </section>
@@ -1002,10 +1005,10 @@ Peningkatan per kelas:
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/21dee2b9b67f10cfff187afd0cf7e30bbdcdedfc9491980bbbffdb63c9d970f7.png" src="../_images/21dee2b9b67f10cfff187afd0cf7e30bbdcdedfc9491980bbbffdb63c9d970f7.png" />
+<img alt="../_images/51997fbb931ecfc0f98069d158353eea7240770c5c8f4a4e77dfce44e78d523f.png" src="../_images/51997fbb931ecfc0f98069d158353eea7240770c5c8f4a4e77dfce44e78d523f.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>=== PERBANDINGAN KETIGA METODE ===
 Original  - Total: 336
-ADASYN    - Total: 1146, Penambahan: +810
+ADASYN    - Total: 1156, Penambahan: +820
 SMOTE     - Total: 1144, Penambahan: +808
 </pre></div>
 </div>
@@ -1061,9 +1064,9 @@ SMOTE     - Total: 1144, Penambahan: +808
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/a4c350532f05755f2f13b96ca74c75a49dee382c6ba1907b1f6d9b88171dc841.png" src="../_images/a4c350532f05755f2f13b96ca74c75a49dee382c6ba1907b1f6d9b88171dc841.png" />
+<img alt="../_images/c63dd823424e3b4237594360cc252ea1135f4d62e9270c582127e2e10d4bd4c8.png" src="../_images/c63dd823424e3b4237594360cc252ea1135f4d62e9270c582127e2e10d4bd4c8.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Data original: 336
-Data generated: 810
+Data generated: 820
 </pre></div>
 </div>
 </div>
@@ -1187,9 +1190,9 @@ Data generated: 808
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/84846dc5537a48ec02f6e6ef1dcc58428877805ffe865a46901b74aca06fd0de.png" src="../_images/84846dc5537a48ec02f6e6ef1dcc58428877805ffe865a46901b74aca06fd0de.png" />
+<img alt="../_images/555dc1c4f26b0645432614bf66b0cb07ec0ea3883741e695dc558681b5f9d5f2.png" src="../_images/555dc1c4f26b0645432614bf66b0cb07ec0ea3883741e695dc558681b5f9d5f2.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>=== PERBANDINGAN ADASYN vs SMOTE ===
-ADASYN - Original: 336, Generated: 810
+ADASYN - Original: 336, Generated: 820
 SMOTE  - Original: 336, Generated: 808
 </pre></div>
 </div>
@@ -1229,6 +1232,15 @@ SMOTE  - Original: 336, Generated: 808
                 <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="data_preprocessing.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><strong>Preprocessing Data Iris</strong></p>
+      </div>
+    </a>
 </div>
                 </footer>
               

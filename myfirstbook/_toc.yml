@@ -1,19 +1,14 @@
 format: jb-book
 root: intro
-chapters:
-  - file: bisnis
-    title: Business Understanding
-  - file: data
-    title: Data Understanding
-    sections:
-      - file: data/get-data
-        title: Get Data
-      - file: data/eksplorasi-data
-        title: Eksplorasi Data
-  - file: preprocessing
-    title: Data Preprocessing
-    sections:
-      - file: preprocessing/data_preprocessing
-        title: Data Preprocessing Iris
-      - file: preprocessing/penyeimbangan_ecoli
-        title: Penyeimbangan Dataset Ecoli
+parts:
+- caption: Bussiness Understanding
+  chapters:
+  - file: bisnis.md
+- caption: Data Understanding
+  chapters:
+  - file: data/get-data.md
+  - file: data/eksplorasi-data.ipynb
+- caption: Preprocessing Data
+  chapters:
+  - file: preprocessing/data_preprocessing.ipynb
+  - file: preprocessing/penyeimbangan_ecoli.ipynb

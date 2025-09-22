@@ -16,18 +16,131 @@ Traceback (most recent call last):
     return future.result()
   File "C:\Users\Harits Putra Junaidi\AppData\Roaming\Python\Python39\site-packages\nbclient\client.py", line 709, in async_execute
     await self.async_execute_cell(
-  File "C:\Users\Harits Putra Junaidi\AppData\Roaming\Python\Python39\site-packages\nbclient\client.py", line 1005, in async_execute_cell
-    exec_reply = await self.task_poll_for_reply
-  File "C:\Users\Harits Putra Junaidi\AppData\Roaming\Python\Python39\site-packages\nbclient\client.py", line 806, in _async_poll_for_reply
-    error_on_timeout_execute_reply = await self._async_handle_timeout(timeout, cell)
-  File "C:\Users\Harits Putra Junaidi\AppData\Roaming\Python\Python39\site-packages\nbclient\client.py", line 856, in _async_handle_timeout
-    raise CellTimeoutError.error_from_timeout_and_cell(
-nbclient.exceptions.CellTimeoutError: A cell timed out while it was being executed, after 30 seconds.
-The message was: Cell execution timed out.
-Here is a preview of the cell contents:
--------------------
-['import pandas as pd', 'from pycaret.anomaly import * ', 'import matplotlib.pyplot as plt', '', '# load data']
-...
-[']', 'plt.legend(handles=handles)', '', 'plt.tight_layout()', 'plt.show()']
--------------------
+  File "C:\Users\Harits Putra Junaidi\AppData\Roaming\Python\Python39\site-packages\nbclient\client.py", line 1062, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "C:\Users\Harits Putra Junaidi\AppData\Roaming\Python\Python39\site-packages\nbclient\client.py", line 918, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+import pandas as pd
+from pycaret.anomaly import * 
+import matplotlib.pyplot as plt
+
+# load data
+data = pd.read_csv("IRIS.csv")
+data = data.drop(columns=["species"])
+
+# setup data PyCaret
+s = setup(data)
+
+# membuat model dari metode
+abod = create_model('abod') 
+results = assign_model(abod)
+
+# menghapus data outlier
+cleaned_data = results[results["Anomaly"] == 0].copy()
+
+print("Data asli: ", results.shape)
+print("Data setelah hapus outlier: ", cleaned_data.shape)
+
+# buat file csv baru
+cleaned_data.to_csv("iris_ABOD_cleaned.csv", index=False)
+
+fig, axes = plt.subplots(1, 2, figsize=(14,6))
+
+# Sebelum dihapus data outlier
+axes[0].scatter(
+    results['petal_length'], results['petal_width'],
+    c=results['Anomaly'], cmap='coolwarm', edgecolor='k'
+)
+axes[0].set_title("Sebelum Hapus Outlier (abob)")
+axes[0].set_xlabel("Petal Length")
+axes[0].set_ylabel("Petal Width")
+
+# Sesudah dihapus data outlier
+axes[1].scatter(
+    cleaned_data['petal_length'], cleaned_data['petal_width'],
+    c='blue', edgecolor='k'
+)
+axes[1].set_title("Sesudah Hapus Outlier (abod)")
+axes[1].set_xlabel("Petal Length")
+axes[1].set_ylabel("Petal Width")
+
+handles = [
+    plt.Line2D([0], [0], marker='o', color='w', label='Normal',
+               markerfacecolor='blue', markersize=8),
+    plt.Line2D([0], [0], marker='o', color='w', label='Outlier',
+               markerfacecolor='red', markersize=8)
+]
+plt.legend(handles=handles)
+
+plt.tight_layout()
+plt.show()
+------------------
+
+
+[31m---------------------------------------------------------------------------[39m
+[31mFileNotFoundError[39m                         Traceback (most recent call last)
+[36mCell[39m[36m [39m[32mIn[1][39m[32m, line 6[39m
+[32m      3[39m [38;5;28;01mimport[39;00m[38;5;250m [39m[34;01mmatplotlib[39;00m[34;01m.[39;00m[34;01mpyplot[39;00m[38;5;250m [39m[38;5;28;01mas[39;00m[38;5;250m [39m[34;01mplt[39;00m
+[32m      5[39m [38;5;66;03m# load data[39;00m
+[32m----> [39m[32m6[39m data = [43mpd[49m[43m.[49m[43mread_csv[49m[43m([49m[33;43m"[39;49m[33;43mIRIS.csv[39;49m[33;43m"[39;49m[43m)[49m
+[32m      7[39m data = data.drop(columns=[[33m"[39m[33mspecies[39m[33m"[39m])
+[32m      9[39m [38;5;66;03m# setup data PyCaret[39;00m
+
+[36mFile [39m[32mC:\Anaconda3\envs\py311\Lib\site-packages\pandas\io\parsers\readers.py:948[39m, in [36mread_csv[39m[34m(filepath_or_buffer, sep, delimiter, header, names, index_col, usecols, dtype, engine, converters, true_values, false_values, skipinitialspace, skiprows, skipfooter, nrows, na_values, keep_default_na, na_filter, verbose, skip_blank_lines, parse_dates, infer_datetime_format, keep_date_col, date_parser, date_format, dayfirst, cache_dates, iterator, chunksize, compression, thousands, decimal, lineterminator, quotechar, quoting, doublequote, escapechar, comment, encoding, encoding_errors, dialect, on_bad_lines, delim_whitespace, low_memory, memory_map, float_precision, storage_options, dtype_backend)[39m
+[32m    935[39m kwds_defaults = _refine_defaults_read(
+[32m    936[39m     dialect,
+[32m    937[39m     delimiter,
+[32m   (...)[39m[32m    944[39m     dtype_backend=dtype_backend,
+[32m    945[39m )
+[32m    946[39m kwds.update(kwds_defaults)
+[32m--> [39m[32m948[39m [38;5;28;01mreturn[39;00m [43m_read[49m[43m([49m[43mfilepath_or_buffer[49m[43m,[49m[43m [49m[43mkwds[49m[43m)[49m
+
+[36mFile [39m[32mC:\Anaconda3\envs\py311\Lib\site-packages\pandas\io\parsers\readers.py:611[39m, in [36m_read[39m[34m(filepath_or_buffer, kwds)[39m
+[32m    608[39m _validate_names(kwds.get([33m"[39m[33mnames[39m[33m"[39m, [38;5;28;01mNone[39;00m))
+[32m    610[39m [38;5;66;03m# Create the parser.[39;00m
+[32m--> [39m[32m611[39m parser = [43mTextFileReader[49m[43m([49m[43mfilepath_or_buffer[49m[43m,[49m[43m [49m[43m*[49m[43m*[49m[43mkwds[49m[43m)[49m
+[32m    613[39m [38;5;28;01mif[39;00m chunksize [38;5;129;01mor[39;00m iterator:
+[32m    614[39m     [38;5;28;01mreturn[39;00m parser
+
+[36mFile [39m[32mC:\Anaconda3\envs\py311\Lib\site-packages\pandas\io\parsers\readers.py:1448[39m, in [36mTextFileReader.__init__[39m[34m(self, f, engine, **kwds)[39m
+[32m   1445[39m     [38;5;28mself[39m.options[[33m"[39m[33mhas_index_names[39m[33m"[39m] = kwds[[33m"[39m[33mhas_index_names[39m[33m"[39m]
+[32m   1447[39m [38;5;28mself[39m.handles: IOHandles | [38;5;28;01mNone[39;00m = [38;5;28;01mNone[39;00m
+[32m-> [39m[32m1448[39m [38;5;28mself[39m._engine = [38;5;28;43mself[39;49m[43m.[49m[43m_make_engine[49m[43m([49m[43mf[49m[43m,[49m[43m [49m[38;5;28;43mself[39;49m[43m.[49m[43mengine[49m[43m)[49m
+
+[36mFile [39m[32mC:\Anaconda3\envs\py311\Lib\site-packages\pandas\io\parsers\readers.py:1705[39m, in [36mTextFileReader._make_engine[39m[34m(self, f, engine)[39m
+[32m   1703[39m     [38;5;28;01mif[39;00m [33m"[39m[33mb[39m[33m"[39m [38;5;129;01mnot[39;00m [38;5;129;01min[39;00m mode:
+[32m   1704[39m         mode += [33m"[39m[33mb[39m[33m"[39m
+[32m-> [39m[32m1705[39m [38;5;28mself[39m.handles = [43mget_handle[49m[43m([49m
+[32m   1706[39m [43m    [49m[43mf[49m[43m,[49m
+[32m   1707[39m [43m    [49m[43mmode[49m[43m,[49m
+[32m   1708[39m [43m    [49m[43mencoding[49m[43m=[49m[38;5;28;43mself[39;49m[43m.[49m[43moptions[49m[43m.[49m[43mget[49m[43m([49m[33;43m"[39;49m[33;43mencoding[39;49m[33;43m"[39;49m[43m,[49m[43m [49m[38;5;28;43;01mNone[39;49;00m[43m)[49m[43m,[49m
+[32m   1709[39m [43m    [49m[43mcompression[49m[43m=[49m[38;5;28;43mself[39;49m[43m.[49m[43moptions[49m[43m.[49m[43mget[49m[43m([49m[33;43m"[39;49m[33;43mcompression[39;49m[33;43m"[39;49m[43m,[49m[43m [49m[38;5;28;43;01mNone[39;49;00m[43m)[49m[43m,[49m
+[32m   1710[39m [43m    [49m[43mmemory_map[49m[43m=[49m[38;5;28;43mself[39;49m[43m.[49m[43moptions[49m[43m.[49m[43mget[49m[43m([49m[33;43m"[39;49m[33;43mmemory_map[39;49m[33;43m"[39;49m[43m,[49m[43m [49m[38;5;28;43;01mFalse[39;49;00m[43m)[49m[43m,[49m
+[32m   1711[39m [43m    [49m[43mis_text[49m[43m=[49m[43mis_text[49m[43m,[49m
+[32m   1712[39m [43m    [49m[43merrors[49m[43m=[49m[38;5;28;43mself[39;49m[43m.[49m[43moptions[49m[43m.[49m[43mget[49m[43m([49m[33;43m"[39;49m[33;43mencoding_errors[39;49m[33;43m"[39;49m[43m,[49m[43m [49m[33;43m"[39;49m[33;43mstrict[39;49m[33;43m"[39;49m[43m)[49m[43m,[49m
+[32m   1713[39m [43m    [49m[43mstorage_options[49m[43m=[49m[38;5;28;43mself[39;49m[43m.[49m[43moptions[49m[43m.[49m[43mget[49m[43m([49m[33;43m"[39;49m[33;43mstorage_options[39;49m[33;43m"[39;49m[43m,[49m[43m [49m[38;5;28;43;01mNone[39;49;00m[43m)[49m[43m,[49m
+[32m   1714[39m [43m[49m[43m)[49m
+[32m   1715[39m [38;5;28;01massert[39;00m [38;5;28mself[39m.handles [38;5;129;01mis[39;00m [38;5;129;01mnot[39;00m [38;5;28;01mNone[39;00m
+[32m   1716[39m f = [38;5;28mself[39m.handles.handle
+
+[36mFile [39m[32mC:\Anaconda3\envs\py311\Lib\site-packages\pandas\io\common.py:863[39m, in [36mget_handle[39m[34m(path_or_buf, mode, encoding, compression, memory_map, is_text, errors, storage_options)[39m
+[32m    858[39m [38;5;28;01melif[39;00m [38;5;28misinstance[39m(handle, [38;5;28mstr[39m):
+[32m    859[39m     [38;5;66;03m# Check whether the filename is to be opened in binary mode.[39;00m
+[32m    860[39m     [38;5;66;03m# Binary mode does not support 'encoding' and 'newline'.[39;00m
+[32m    861[39m     [38;5;28;01mif[39;00m ioargs.encoding [38;5;129;01mand[39;00m [33m"[39m[33mb[39m[33m"[39m [38;5;129;01mnot[39;00m [38;5;129;01min[39;00m ioargs.mode:
+[32m    862[39m         [38;5;66;03m# Encoding[39;00m
+[32m--> [39m[32m863[39m         handle = [38;5;28;43mopen[39;49m[43m([49m
+[32m    864[39m [43m            [49m[43mhandle[49m[43m,[49m
+[32m    865[39m [43m            [49m[43mioargs[49m[43m.[49m[43mmode[49m[43m,[49m
+[32m    866[39m [43m            [49m[43mencoding[49m[43m=[49m[43mioargs[49m[43m.[49m[43mencoding[49m[43m,[49m
+[32m    867[39m [43m            [49m[43merrors[49m[43m=[49m[43merrors[49m[43m,[49m
+[32m    868[39m [43m            [49m[43mnewline[49m[43m=[49m[33;43m"[39;49m[33;43m"[39;49m[43m,[49m
+[32m    869[39m [43m        [49m[43m)[49m
+[32m    870[39m     [38;5;28;01melse[39;00m:
+[32m    871[39m         [38;5;66;03m# Binary mode[39;00m
+[32m    872[39m         handle = [38;5;28mopen[39m(handle, ioargs.mode)
+
+[31mFileNotFoundError[39m: [Errno 2] No such file or directory: 'IRIS.csv'
 
