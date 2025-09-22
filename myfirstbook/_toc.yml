@@ -10,5 +10,10 @@ chapters:
         title: Get Data
       - file: data/eksplorasi-data
         title: Eksplorasi Data
-  - file: data_preprocessing
+  - file: preprocessing
     title: Data Preprocessing
+    sections:
+      - file: preprocessing/data_preprocessing
+        title: Data Preprocessing Iris
+      - file: preprocessing/penyeimbangan_ecoli
+        title: Penyeimbangan Dataset Ecoli
