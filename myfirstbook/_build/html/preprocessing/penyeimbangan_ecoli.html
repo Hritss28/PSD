@@ -485,7 +485,7 @@ Note: you may need to restart the kernel to use updated packages.
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Data berhasil dimuat!
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\Harits Putra Junaidi\AppData\Local\Temp\ipykernel_13636\366836291.py:8: UserWarning: pandas only supports SQLAlchemy connectable (engine/connection) or database string URI or sqlite3 DBAPI2 connection. Other DBAPI2 objects are not tested. Please consider using SQLAlchemy.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\Harits Putra Junaidi\AppData\Local\Temp\ipykernel_5396\366836291.py:8: UserWarning: pandas only supports SQLAlchemy connectable (engine/connection) or database string URI or sqlite3 DBAPI2 connection. Other DBAPI2 objects are not tested. Please consider using SQLAlchemy.
   df = pd.read_sql(&quot;SELECT * FROM ecoli&quot;, conn)
 </pre></div>
 </div>
@@ -684,7 +684,9 @@ DataFrame PCA (5 baris pertama):
 Sorted counts untuk iterasi: [2, 2, 5, 20, 35, 52, 77, 143]
 
 Iterasi 1: menggunakan k_neighbors=1
-Hasil iterasi 1: [(&#39;cp&#39;, 143), (&#39;im&#39;, 77), (&#39;imL&#39;, 142), (&#39;imS&#39;, 2), (&#39;imU&#39;, 35), (&#39;om&#39;, 20), (&#39;omL&#39;, 5), (&#39;pp&#39;, 52)]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Hasil iterasi 1: [(&#39;cp&#39;, 143), (&#39;im&#39;, 77), (&#39;imL&#39;, 142), (&#39;imS&#39;, 2), (&#39;imU&#39;, 35), (&#39;om&#39;, 20), (&#39;omL&#39;, 5), (&#39;pp&#39;, 52)]
 
 Iterasi 2: menggunakan k_neighbors=1
 Hasil iterasi 2: [(&#39;cp&#39;, 143), (&#39;im&#39;, 77), (&#39;imL&#39;, 142), (&#39;imS&#39;, 142), (&#39;imU&#39;, 35), (&#39;om&#39;, 20), (&#39;omL&#39;, 5), (&#39;pp&#39;, 52)]
@@ -696,22 +698,20 @@ Iterasi 4: menggunakan k_neighbors=19
 Hasil iterasi 4: [(&#39;cp&#39;, 143), (&#39;im&#39;, 77), (&#39;imL&#39;, 142), (&#39;imS&#39;, 142), (&#39;imU&#39;, 35), (&#39;om&#39;, 143), (&#39;omL&#39;, 143), (&#39;pp&#39;, 52)]
 
 Iterasi 5: menggunakan k_neighbors=34
-Hasil iterasi 5: [(&#39;cp&#39;, 143), (&#39;im&#39;, 77), (&#39;imL&#39;, 142), (&#39;imS&#39;, 142), (&#39;imU&#39;, 144), (&#39;om&#39;, 143), (&#39;omL&#39;, 143), (&#39;pp&#39;, 52)]
+Hasil iterasi 5: [(&#39;cp&#39;, 143), (&#39;im&#39;, 77), (&#39;imL&#39;, 142), (&#39;imS&#39;, 142), (&#39;imU&#39;, 143), (&#39;om&#39;, 143), (&#39;omL&#39;, 143), (&#39;pp&#39;, 52)]
 
 Iterasi 6: menggunakan k_neighbors=51
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Hasil iterasi 6: [(&#39;cp&#39;, 143), (&#39;im&#39;, 77), (&#39;imL&#39;, 142), (&#39;imS&#39;, 142), (&#39;imU&#39;, 144), (&#39;om&#39;, 143), (&#39;omL&#39;, 143), (&#39;pp&#39;, 144)]
+Hasil iterasi 6: [(&#39;cp&#39;, 143), (&#39;im&#39;, 77), (&#39;imL&#39;, 142), (&#39;imS&#39;, 142), (&#39;imU&#39;, 143), (&#39;om&#39;, 143), (&#39;omL&#39;, 143), (&#39;pp&#39;, 140)]
 
 Iterasi 7: menggunakan k_neighbors=76
-Hasil iterasi 7: [(&#39;cp&#39;, 143), (&#39;im&#39;, 152), (&#39;imL&#39;, 142), (&#39;imS&#39;, 142), (&#39;imU&#39;, 144), (&#39;om&#39;, 143), (&#39;omL&#39;, 143), (&#39;pp&#39;, 144)]
+Hasil iterasi 7: [(&#39;cp&#39;, 143), (&#39;im&#39;, 150), (&#39;imL&#39;, 142), (&#39;imS&#39;, 142), (&#39;imU&#39;, 143), (&#39;om&#39;, 143), (&#39;omL&#39;, 143), (&#39;pp&#39;, 140)]
 
 Distribusi kelas setelah ADASYN:
-[(&#39;cp&#39;, 143), (&#39;im&#39;, 152), (&#39;imL&#39;, 142), (&#39;imS&#39;, 142), (&#39;imU&#39;, 144), (&#39;om&#39;, 143), (&#39;omL&#39;, 143), (&#39;pp&#39;, 144)]
+[(&#39;cp&#39;, 143), (&#39;im&#39;, 150), (&#39;imL&#39;, 142), (&#39;imS&#39;, 142), (&#39;imU&#39;, 143), (&#39;om&#39;, 143), (&#39;omL&#39;, 143), (&#39;pp&#39;, 140)]
 
 Total samples sebelum: 336
-Total samples setelah: 1153
-Data yang ditambahkan: 817
+Total samples setelah: 1146
+Data yang ditambahkan: 810
 </pre></div>
 </div>
 </div>
@@ -769,17 +769,17 @@ Data yang ditambahkan: 817
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/6784d81ab81a2c5b7a7e4df31c672e8c9b7fc17ba6c3bf5ca9859ebf1bb4f5fe.png" src="../_images/6784d81ab81a2c5b7a7e4df31c672e8c9b7fc17ba6c3bf5ca9859ebf1bb4f5fe.png" />
+<img alt="../_images/90dc54084d817827468234f06a3b209b9ed7d8a38f4d0c7e3ea327160f79885f.png" src="../_images/90dc54084d817827468234f06a3b209b9ed7d8a38f4d0c7e3ea327160f79885f.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>=== SUMMARY ADASYN ===
 Peningkatan per kelas:
   cp: 0 samples (143 → 143)
-  im: +75 samples (77 → 152)
+  im: +73 samples (77 → 150)
   imL: +140 samples (2 → 142)
   imS: +140 samples (2 → 142)
-  imU: +109 samples (35 → 144)
+  imU: +108 samples (35 → 143)
   om: +123 samples (20 → 143)
   omL: +138 samples (5 → 143)
-  pp: +92 samples (52 → 144)
+  pp: +88 samples (52 → 140)
 </pre></div>
 </div>
 </div>
@@ -809,7 +809,7 @@ Peningkatan per kelas:
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/e891b0f7d4fdd184eb6eec51d1035a2a1d590a59222f75739016baa14280cde1.png" src="../_images/e891b0f7d4fdd184eb6eec51d1035a2a1d590a59222f75739016baa14280cde1.png" />
+<img alt="../_images/fe43d0c2a6ee89ae6f0bdb471d3dfc55512ef28ae8a5dad24083a5fd09226206.png" src="../_images/fe43d0c2a6ee89ae6f0bdb471d3dfc55512ef28ae8a5dad24083a5fd09226206.png" />
 </div>
 </div>
 </section>
@@ -1002,10 +1002,10 @@ Peningkatan per kelas:
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/c7cc74fafb39f040565be325776c3755a8b1c7b3b1b6301159f0a95fdfbffa7c.png" src="../_images/c7cc74fafb39f040565be325776c3755a8b1c7b3b1b6301159f0a95fdfbffa7c.png" />
+<img alt="../_images/21dee2b9b67f10cfff187afd0cf7e30bbdcdedfc9491980bbbffdb63c9d970f7.png" src="../_images/21dee2b9b67f10cfff187afd0cf7e30bbdcdedfc9491980bbbffdb63c9d970f7.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>=== PERBANDINGAN KETIGA METODE ===
 Original  - Total: 336
-ADASYN    - Total: 1153, Penambahan: +817
+ADASYN    - Total: 1146, Penambahan: +810
 SMOTE     - Total: 1144, Penambahan: +808
 </pre></div>
 </div>
@@ -1061,9 +1061,9 @@ SMOTE     - Total: 1144, Penambahan: +808
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/bee1046d6720ee10078ef440b24714da45aab27fb524af6a05685d39eddc3e20.png" src="../_images/bee1046d6720ee10078ef440b24714da45aab27fb524af6a05685d39eddc3e20.png" />
+<img alt="../_images/a4c350532f05755f2f13b96ca74c75a49dee382c6ba1907b1f6d9b88171dc841.png" src="../_images/a4c350532f05755f2f13b96ca74c75a49dee382c6ba1907b1f6d9b88171dc841.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Data original: 336
-Data generated: 817
+Data generated: 810
 </pre></div>
 </div>
 </div>
@@ -1187,9 +1187,9 @@ Data generated: 808
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/b5e274b7f31b4f78ddcaa65af2b2ef954641d1c893547d4b85d0e0571fe6b701.png" src="../_images/b5e274b7f31b4f78ddcaa65af2b2ef954641d1c893547d4b85d0e0571fe6b701.png" />
+<img alt="../_images/84846dc5537a48ec02f6e6ef1dcc58428877805ffe865a46901b74aca06fd0de.png" src="../_images/84846dc5537a48ec02f6e6ef1dcc58428877805ffe865a46901b74aca06fd0de.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>=== PERBANDINGAN ADASYN vs SMOTE ===
-ADASYN - Original: 336, Generated: 817
+ADASYN - Original: 336, Generated: 810
 SMOTE  - Original: 336, Generated: 808
 </pre></div>
 </div>
