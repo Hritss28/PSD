@@ -60,6 +60,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'preprocessing/penyeimbangan_ecoli';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Klasifikasi Dan BaggingClassifier Pada Dataset Ecoli" href="../model/klasifikasi_ecoli.html" />
     <link rel="prev" title="Preprocessing Data Iris" href="data_preprocessing.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -191,6 +192,10 @@
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="data_preprocessing.html"><strong>Preprocessing Data Iris</strong></a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#"><strong>Penyeimbangan Dataset Ecoli</strong></a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Modelling</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../model/klasifikasi_ecoli.html"><strong>Klasifikasi Dan BaggingClassifier Pada Dataset Ecoli</strong></a></li>
 </ul>
 
     </div>
@@ -480,6 +485,12 @@ Note: you may need to restart the kernel to use updated packages.
     <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_sql</span><span class="p">(</span><span class="s2">&quot;SELECT * FROM ecoli&quot;</span><span class="p">,</span> <span class="n">conn</span><span class="p">)</span>
     <span class="n">conn</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Data berhasil dimuat!&quot;</span><span class="p">)</span>
+    
+    <span class="c1"># Convert ke CSV</span>
+    <span class="n">df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;data_ecoli_original.csv&#39;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;✅ Data disimpan ke &#39;data_ecoli_original.csv&#39;&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;   Shape: </span><span class="si">{</span><span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
 <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Error: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
     <span class="n">df</span> <span class="o">=</span> <span class="kc">None</span>
@@ -487,11 +498,7 @@ Note: you may need to restart the kernel to use updated packages.
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Data berhasil dimuat!
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\Harits Putra Junaidi\AppData\Local\Temp\ipykernel_24632\366836291.py:8: UserWarning: pandas only supports SQLAlchemy connectable (engine/connection) or database string URI or sqlite3 DBAPI2 connection. Other DBAPI2 objects are not tested. Please consider using SQLAlchemy.
-  df = pd.read_sql(&quot;SELECT * FROM ecoli&quot;, conn)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Error: (2003, &quot;Can&#39;t connect to MySQL server on &#39;localhost&#39; ([WinError 10061] No connection could be made because the target machine actively refused it)&quot;)
 </pre></div>
 </div>
 </div>
@@ -555,22 +562,7 @@ Note: you may need to restart the kernel to use updated packages.
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Distribusi kelas:
-cp: 143 samples (42.6%)
-im: 77 samples (22.9%)
-imL: 2 samples (0.6%)
-imS: 2 samples (0.6%)
-imU: 35 samples (10.4%)
-om: 20 samples (6.0%)
-omL: 5 samples (1.5%)
-pp: 52 samples (15.5%)
-</pre></div>
-</div>
-<img alt="../_images/8b868520706124f88692220951dd2c23f4c2977100ac6adcdacd17739756ecc0.png" src="../_images/8b868520706124f88692220951dd2c23f4c2977100ac6adcdacd17739756ecc0.png" />
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Kelas terbanyak: cp (42.6%)
-Kelas tersedikit: imL (0.6%)
-Rasio ketidakseimbangan: 71.5:1
-Status: TIDAK SEIMBANG
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Data tidak tersedia!
 </pre></div>
 </div>
 </div>
@@ -618,33 +610,6 @@ Status: TIDAK SEIMBANG
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Data shape: (336, 10)
-Columns: [&#39;id&#39;, &#39;Sequence&#39;, &#39;mcg&#39;, &#39;gvh&#39;, &#39;lip&#39;, &#39;chg&#39;, &#39;aac&#39;, &#39;alm1&#39;, &#39;alm2&#39;, &#39;class&#39;]
-</pre></div>
-</div>
-<img alt="../_images/fa53e4097f11917c57b1cff98dd676f8c06186d0c8a0977236caf29f8995103c.png" src="../_images/fa53e4097f11917c57b1cff98dd676f8c06186d0c8a0977236caf29f8995103c.png" />
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Total variance explained: 76.0%
-PCA components shape: (336, 2)
-
-DataFrame PCA (5 baris pertama):
-          PC1       PC2 class
-0   -0.285601 -0.035274    cp
-1   -0.290838 -0.330159    cp
-2   -0.104676  0.015248    cp
-3   -0.087943  0.122218    cp
-4   -0.366268 -0.210366    cp
-..        ...       ...   ...
-331  0.084233  0.274803    pp
-332 -0.139026  0.274116    pp
-333 -0.111904  0.187103    pp
-334 -0.106204  0.178851    pp
-335  0.108764  0.281129    pp
-
-[336 rows x 3 columns]
-</pre></div>
-</div>
-</div>
 </div>
 </section>
 <section id="penyeimbangan-data-menggunakan-adasyn-dan-smote">
@@ -680,41 +645,28 @@ DataFrame PCA (5 baris pertama):
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Total samples sebelum: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">y</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Total samples setelah: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">ns</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Data yang ditambahkan: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">ns</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nb">len</span><span class="p">(</span><span class="n">y</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># Convert ADASYN ke CSV</span>
+<span class="n">df_adasyn</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">nt</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;mcg&#39;</span><span class="p">,</span> <span class="s1">&#39;gvh&#39;</span><span class="p">,</span> <span class="s1">&#39;lip&#39;</span><span class="p">,</span> <span class="s1">&#39;chg&#39;</span><span class="p">,</span> <span class="s1">&#39;aac&#39;</span><span class="p">,</span> <span class="s1">&#39;alm1&#39;</span><span class="p">,</span> <span class="s1">&#39;alm2&#39;</span><span class="p">])</span>
+<span class="n">df_adasyn</span><span class="p">[</span><span class="s1">&#39;class&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">ns</span>
+<span class="n">df_adasyn</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;data_ecoli_adasyn.csv&#39;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;✅ Data ADASYN disimpan ke &#39;data_ecoli_adasyn.csv&#39; - </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">df_adasyn</span><span class="p">)</span><span class="si">}</span><span class="s2"> rows&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Distribusi kelas sebelum ADASYN:
-[(&#39;cp&#39;, 143), (&#39;im&#39;, 77), (&#39;imL&#39;, 2), (&#39;imS&#39;, 2), (&#39;imU&#39;, 35), (&#39;om&#39;, 20), (&#39;omL&#39;, 5), (&#39;pp&#39;, 52)]
-Sorted counts untuk iterasi: [2, 2, 5, 20, 35, 52, 77, 143]
+</pre></div>
+</div>
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">6</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Distribusi kelas sebelum ADASYN:&quot;</span><span class="p">)</span>
+<span class="ne">----&gt; </span><span class="mi">2</span> <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="nb">sorted</span><span class="p">(</span><span class="n">Counter</span><span class="p">(</span><span class="n">y</span><span class="p">)</span><span class="o">.</span><span class="n">items</span><span class="p">())</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">nt</span> <span class="o">=</span> <span class="n">X</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="n">ns</span> <span class="o">=</span> <span class="n">y</span>
 
-Iterasi 1: menggunakan k_neighbors=1
-Hasil iterasi 1: [(&#39;cp&#39;, 143), (&#39;im&#39;, 77), (&#39;imL&#39;, 142), (&#39;imS&#39;, 2), (&#39;imU&#39;, 35), (&#39;om&#39;, 20), (&#39;omL&#39;, 5), (&#39;pp&#39;, 52)]
-
-Iterasi 2: menggunakan k_neighbors=1
-Hasil iterasi 2: [(&#39;cp&#39;, 143), (&#39;im&#39;, 77), (&#39;imL&#39;, 142), (&#39;imS&#39;, 142), (&#39;imU&#39;, 35), (&#39;om&#39;, 20), (&#39;omL&#39;, 5), (&#39;pp&#39;, 52)]
-
-Iterasi 3: menggunakan k_neighbors=4
-Hasil iterasi 3: [(&#39;cp&#39;, 143), (&#39;im&#39;, 77), (&#39;imL&#39;, 142), (&#39;imS&#39;, 142), (&#39;imU&#39;, 35), (&#39;om&#39;, 20), (&#39;omL&#39;, 143), (&#39;pp&#39;, 52)]
-
-Iterasi 4: menggunakan k_neighbors=19
-Hasil iterasi 4: [(&#39;cp&#39;, 143), (&#39;im&#39;, 77), (&#39;imL&#39;, 142), (&#39;imS&#39;, 142), (&#39;imU&#39;, 35), (&#39;om&#39;, 143), (&#39;omL&#39;, 143), (&#39;pp&#39;, 52)]
-
-Iterasi 5: menggunakan k_neighbors=34
-Hasil iterasi 5: [(&#39;cp&#39;, 143), (&#39;im&#39;, 77), (&#39;imL&#39;, 142), (&#39;imS&#39;, 142), (&#39;imU&#39;, 146), (&#39;om&#39;, 143), (&#39;omL&#39;, 143), (&#39;pp&#39;, 52)]
-
-Iterasi 6: menggunakan k_neighbors=51
-Hasil iterasi 6: [(&#39;cp&#39;, 143), (&#39;im&#39;, 77), (&#39;imL&#39;, 142), (&#39;imS&#39;, 142), (&#39;imU&#39;, 146), (&#39;om&#39;, 143), (&#39;omL&#39;, 143), (&#39;pp&#39;, 143)]
-
-Iterasi 7: menggunakan k_neighbors=76
-Hasil iterasi 7: [(&#39;cp&#39;, 143), (&#39;im&#39;, 154), (&#39;imL&#39;, 142), (&#39;imS&#39;, 142), (&#39;imU&#39;, 146), (&#39;om&#39;, 143), (&#39;omL&#39;, 143), (&#39;pp&#39;, 143)]
-
-Distribusi kelas setelah ADASYN:
-[(&#39;cp&#39;, 143), (&#39;im&#39;, 154), (&#39;imL&#39;, 142), (&#39;imS&#39;, 142), (&#39;imU&#39;, 146), (&#39;om&#39;, 143), (&#39;omL&#39;, 143), (&#39;pp&#39;, 143)]
-
-Total samples sebelum: 336
-Total samples setelah: 1156
-Data yang ditambahkan: 820
+<span class="ne">NameError</span>: name &#39;y&#39; is not defined
 </pre></div>
 </div>
 </div>
@@ -772,17 +724,17 @@ Data yang ditambahkan: 820
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/4c30bf7b97b4508eaa89b1f642aa16b8235018692719bd5c3dab9cfc85d36347.png" src="../_images/4c30bf7b97b4508eaa89b1f642aa16b8235018692719bd5c3dab9cfc85d36347.png" />
+<img alt="../_images/4b2601fdb940bf3864d9824baf0f4f380df4dae746c642a02b3597d1230bff71.png" src="../_images/4b2601fdb940bf3864d9824baf0f4f380df4dae746c642a02b3597d1230bff71.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>=== SUMMARY ADASYN ===
 Peningkatan per kelas:
   cp: 0 samples (143 → 143)
-  im: +77 samples (77 → 154)
+  im: +74 samples (77 → 151)
   imL: +140 samples (2 → 142)
   imS: +140 samples (2 → 142)
-  imU: +111 samples (35 → 146)
+  imU: +109 samples (35 → 144)
   om: +123 samples (20 → 143)
   omL: +138 samples (5 → 143)
-  pp: +91 samples (52 → 143)
+  pp: +89 samples (52 → 141)
 </pre></div>
 </div>
 </div>
@@ -812,7 +764,7 @@ Peningkatan per kelas:
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/a600c2e83b450e4fa554432dd5e8c8ae85090a31325106c179ff6b690b97d380.png" src="../_images/a600c2e83b450e4fa554432dd5e8c8ae85090a31325106c179ff6b690b97d380.png" />
+<img alt="../_images/20868e37340e9c17fd1bc18c5df82b51b168b9a48d8fb5d52f6c78a11527caf1.png" src="../_images/20868e37340e9c17fd1bc18c5df82b51b168b9a48d8fb5d52f6c78a11527caf1.png" />
 </div>
 </div>
 </section>
@@ -832,6 +784,12 @@ Peningkatan per kelas:
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Total samples sebelum: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">y</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Total samples setelah: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">y_res</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Data yang ditambahkan: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">y_res</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nb">len</span><span class="p">(</span><span class="n">y</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># Convert SMOTE ke CSV</span>
+<span class="n">df_smote</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">X_res</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;mcg&#39;</span><span class="p">,</span> <span class="s1">&#39;gvh&#39;</span><span class="p">,</span> <span class="s1">&#39;lip&#39;</span><span class="p">,</span> <span class="s1">&#39;chg&#39;</span><span class="p">,</span> <span class="s1">&#39;aac&#39;</span><span class="p">,</span> <span class="s1">&#39;alm1&#39;</span><span class="p">,</span> <span class="s1">&#39;alm2&#39;</span><span class="p">])</span>
+<span class="n">df_smote</span><span class="p">[</span><span class="s1">&#39;class&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">y_res</span>
+<span class="n">df_smote</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;data_ecoli_smote.csv&#39;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;✅ Data SMOTE disimpan ke &#39;data_ecoli_smote.csv&#39; - </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">df_smote</span><span class="p">)</span><span class="si">}</span><span class="s2"> rows&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -845,6 +803,7 @@ Distribusi kelas setelah SMOTE:
 Total samples sebelum: 336
 Total samples setelah: 1144
 Data yang ditambahkan: 808
+✅ Data SMOTE disimpan ke &#39;data_ecoli_smote.csv&#39; - 1144 rows
 </pre></div>
 </div>
 </div>
@@ -1005,10 +964,10 @@ Peningkatan per kelas:
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/51997fbb931ecfc0f98069d158353eea7240770c5c8f4a4e77dfce44e78d523f.png" src="../_images/51997fbb931ecfc0f98069d158353eea7240770c5c8f4a4e77dfce44e78d523f.png" />
+<img alt="../_images/d1a534023dfa518b554d155a42546030f326b9460ddb33ba600fbc80ae0d527a.png" src="../_images/d1a534023dfa518b554d155a42546030f326b9460ddb33ba600fbc80ae0d527a.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>=== PERBANDINGAN KETIGA METODE ===
 Original  - Total: 336
-ADASYN    - Total: 1156, Penambahan: +820
+ADASYN    - Total: 1149, Penambahan: +813
 SMOTE     - Total: 1144, Penambahan: +808
 </pre></div>
 </div>
@@ -1064,9 +1023,9 @@ SMOTE     - Total: 1144, Penambahan: +808
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/c63dd823424e3b4237594360cc252ea1135f4d62e9270c582127e2e10d4bd4c8.png" src="../_images/c63dd823424e3b4237594360cc252ea1135f4d62e9270c582127e2e10d4bd4c8.png" />
+<img alt="../_images/d279b61bd92dba59b273564dda9d7c2a44ac39d447274bed8d68e26fd4f1b56f.png" src="../_images/d279b61bd92dba59b273564dda9d7c2a44ac39d447274bed8d68e26fd4f1b56f.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Data original: 336
-Data generated: 820
+Data generated: 813
 </pre></div>
 </div>
 </div>
@@ -1190,9 +1149,9 @@ Data generated: 808
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/555dc1c4f26b0645432614bf66b0cb07ec0ea3883741e695dc558681b5f9d5f2.png" src="../_images/555dc1c4f26b0645432614bf66b0cb07ec0ea3883741e695dc558681b5f9d5f2.png" />
+<img alt="../_images/ef7961da927d83d41f72f8208f8bf86ed96f18dde9ee0da6a8bf295594364266.png" src="../_images/ef7961da927d83d41f72f8208f8bf86ed96f18dde9ee0da6a8bf295594364266.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>=== PERBANDINGAN ADASYN vs SMOTE ===
-ADASYN - Original: 336, Generated: 820
+ADASYN - Original: 336, Generated: 813
 SMOTE  - Original: 336, Generated: 808
 </pre></div>
 </div>
@@ -1240,6 +1199,15 @@ SMOTE  - Original: 336, Generated: 808
         <p class="prev-next-subtitle">previous</p>
         <p class="prev-next-title"><strong>Preprocessing Data Iris</strong></p>
       </div>
+    </a>
+    <a class="right-next"
+       href="../model/klasifikasi_ecoli.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><strong>Klasifikasi Dan BaggingClassifier Pada Dataset Ecoli</strong></p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
                 </footer>
