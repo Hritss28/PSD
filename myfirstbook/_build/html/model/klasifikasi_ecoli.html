@@ -519,11 +519,11 @@ Note: you may need to restart the kernel to use updated packages.
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Distribusi kelas data ORIGINAL (dari CSV):&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="nb">sorted</span><span class="p">(</span><span class="n">Counter</span><span class="p">(</span><span class="n">y_orig</span><span class="p">)</span><span class="o">.</span><span class="n">items</span><span class="p">())</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Distribusi kelas data SMOTE (dari CSV):&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Distribusi kelas data ADASYN (dari CSV):&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="nb">sorted</span><span class="p">(</span><span class="n">Counter</span><span class="p">(</span><span class="n">y_adasyn</span><span class="p">)</span><span class="o">.</span><span class="n">items</span><span class="p">())</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Total samples original: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">y_orig</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Total samples SMOTE: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">y_adasyn</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Total samples ADASYN: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">y_adasyn</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Data yang ditambahkan: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">y_adasyn</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nb">len</span><span class="p">(</span><span class="n">y_orig</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -535,11 +535,11 @@ KLASIFIKASI ADASYN MENGGUNAKAN NAIVE BAYES
 Distribusi kelas data ORIGINAL (dari CSV):
 [(&#39;cp&#39;, 143), (&#39;im&#39;, 77), (&#39;imL&#39;, 2), (&#39;imS&#39;, 2), (&#39;imU&#39;, 35), (&#39;om&#39;, 20), (&#39;omL&#39;, 5), (&#39;pp&#39;, 52)]
 
-Distribusi kelas data SMOTE (dari CSV):
+Distribusi kelas data ADASYN (dari CSV):
 [(&#39;cp&#39;, 143), (&#39;im&#39;, 151), (&#39;imL&#39;, 142), (&#39;imS&#39;, 142), (&#39;imU&#39;, 144), (&#39;om&#39;, 143), (&#39;omL&#39;, 143), (&#39;pp&#39;, 141)]
 
 Total samples original: 336
-Total samples SMOTE: 1149
+Total samples ADASYN: 1149
 Data yang ditambahkan: 813
 </pre></div>
 </div>
@@ -2306,7 +2306,9 @@ Name: count, dtype: int64
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Akurasi: 0.75
-Classification Report:
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Classification Report:
                precision    recall  f1-score   support
 
           cp       0.91      0.94      0.92        32
