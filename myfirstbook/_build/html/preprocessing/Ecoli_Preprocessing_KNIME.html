@@ -1,0 +1,1000 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Dokumentasi Preprocessing Data dengan KNIME &#8212; My sample book</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'preprocessing/Ecoli_Preprocessing_KNIME';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Klasifikasi Dan BaggingClassifier Pada Dataset Ecoli" href="../model/klasifikasi_ecoli.html" />
+    <link rel="prev" title="Penyeimbangan Dataset Ecoli" href="penyeimbangan_ecoli.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/foto.png" class="logo__image only-light" alt="My sample book - Home"/>
+    <script>document.write(`<img src="../_static/foto.png" class="logo__image only-dark" alt="My sample book - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    My Profil
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Bussiness Understanding</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../bisnis.html">Business Understanding - Dataset Iris</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Data Understanding</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../data/get-data.html">Get Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data/eksplorasi-data.html"><strong>Eksplorasi Data</strong></a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Preprocessing Data</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="data_preprocessing.html"><strong>Preprocessing Data Iris</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="penyeimbangan_ecoli.html"><strong>Penyeimbangan Dataset Ecoli</strong></a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Dokumentasi Preprocessing Data dengan KNIME</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Modelling</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../model/klasifikasi_ecoli.html"><strong>Klasifikasi Dan BaggingClassifier Pada Dataset Ecoli</strong></a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fpreprocessing/Ecoli_Preprocessing_KNIME.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/preprocessing/Ecoli_Preprocessing_KNIME.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Dokumentasi Preprocessing Data dengan KNIME</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deskripsi-umum">Deskripsi Umum</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#langkah-langkah-preprocessing">Langkah-Langkah Preprocessing</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#koneksi-dan-import-data">1. Koneksi dan Import Data</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#postgresql-connector">1.1 PostgreSQL Connector</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#db-table-selector">1.2 DB Table Selector</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#db-reader">1.3 DB Reader</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#eksplorasi-data-awal">2. Eksplorasi Data Awal</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#table-view-melihat-isi-dataset">2.1 Table View - Melihat Isi Dataset</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bar-chart-distribusi-class-original">2.2 Bar Chart - Distribusi Class Original</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#statistics-cek-statistic">2.3 Statistics - Cek Statistic</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bar-chart-distribusi-missing-value-original">2.4 Bar Chart - Distribusi Missing Value (Original)</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#deteksi-dan-handling-outlier">3. Deteksi dan Handling Outlier</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#numeric-outliers-dan-handling-outlier">3.1 Numeric Outliers dan Handling Outlier</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bar-chart-distribusi-deteksi-outlier">3.2 Bar Chart - Distribusi Deteksi Outlier</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#balancing-data-dengan-smote-tahap-1">4. Balancing Data dengan SMOTE (Tahap 1)</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#smote">4.1 SMOTE</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#statistics-cek-statistic-setelah-smote">4.2 Statistics - Cek Statistic Setelah Smote</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#penanganan-missing-value-setelah-smote">5. Penanganan Missing Value Setelah SMOTE</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bar-chart-distribusi-missing-value-setelah-smote">5.1 Bar Chart - Distribusi Missing Value Setelah SMOTE</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#missing-value-node">5.2 Missing Value Node</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verifikasi-dan-analisis-akhir">6. Verifikasi dan Analisis Akhir</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#statistics-cek-statistik-setelah-penanganan-missing-value">6.1 Statistics - Cek Statistik Setelah Penanganan Missing Value</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bar-chart-distribusi-missing-value-final">6.2 Bar Chart - Distribusi Missing Value Final</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#table-view-hasil-setelah-di-balancing">6.3 Table View - Hasil Setelah Di Balancing</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bar-chart-distribusi-kelas-setelah-balancing">6.4 Bar Chart - Distribusi Kelas Setelah Balancing</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#export-data">7. Export Data</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#csv-writer">7.1 CSV Writer</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#workflow-summary">Workflow Summary</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#alur-proses-preprocessing">Alur Proses Preprocessing</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fase-1-import-dan-eksplorasi">Fase 1: Import dan Eksplorasi</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fase-2-deteksi-outlier">Fase 2: Deteksi Outlier</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fase-3-balancing-data">Fase 3: Balancing Data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fase-4-penanganan-missing-value">Fase 4: Penanganan Missing Value</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fase-5-verifikasi-dan-export">Fase 5: Verifikasi dan Export</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#temuan-dan-hasil">Temuan dan Hasil</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#temuan-preprocessing">Temuan Preprocessing:</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kesimpulan">Kesimpulan</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="dokumentasi-preprocessing-data-dengan-knime">
+<h1>Dokumentasi Preprocessing Data dengan KNIME<a class="headerlink" href="#dokumentasi-preprocessing-data-dengan-knime" title="Link to this heading">#</a></h1>
+<section id="deskripsi-umum">
+<h2>Deskripsi Umum<a class="headerlink" href="#deskripsi-umum" title="Link to this heading">#</a></h2>
+<p>Dokumen ini menjelaskan langkah-langkah preprocessing data yang dilakukan menggunakan KNIME Analytics Platform. Workflow ini mencakup proses import data, eksplorasi data, analisis statistik, deteksi outlier, penanganan missing values dengan SMOTE, dan balancing data.</p>
+</section>
+<hr class="docutils" />
+<section id="langkah-langkah-preprocessing">
+<h2>Langkah-Langkah Preprocessing<a class="headerlink" href="#langkah-langkah-preprocessing" title="Link to this heading">#</a></h2>
+<section id="koneksi-dan-import-data">
+<h3>1. Koneksi dan Import Data<a class="headerlink" href="#koneksi-dan-import-data" title="Link to this heading">#</a></h3>
+<section id="postgresql-connector">
+<h4>1.1 PostgreSQL Connector<a class="headerlink" href="#postgresql-connector" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p><strong>Node</strong>: PostgreSQL Connector</p></li>
+<li><p><strong>Fungsi</strong>: Membuat koneksi ke database PostgreSQL</p></li>
+<li><p><strong>Konfigurasi</strong>:</p>
+<ul>
+<li><p>Hostname dan port database</p></li>
+<li><p>Username dan password</p></li>
+<li><p>Nama database</p></li>
+</ul>
+</li>
+<li><p><strong>Status</strong>: ✅ Terkoneksi
+<img alt="PostgreSQL Connector" src="../_images/postgresqlconnector.png" /></p></li>
+</ul>
+</section>
+<section id="db-table-selector">
+<h4>1.2 DB Table Selector<a class="headerlink" href="#db-table-selector" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p><strong>Node</strong>: DB Table Selector</p></li>
+<li><p><strong>Fungsi</strong>: Memilih tabel dari database yang akan digunakan untuk analisis</p></li>
+<li><p><strong>Output</strong>: Referensi tabel yang dipilih
+<img alt="DB Table Selector" src="../_images/DBTableSelector.png" /></p></li>
+</ul>
+</section>
+<section id="db-reader">
+<h4>1.3 DB Reader<a class="headerlink" href="#db-reader" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p><strong>Node</strong>: DB Reader</p></li>
+<li><p><strong>Fungsi</strong>: Membaca seluruh data dari tabel yang dipilih</p></li>
+<li><p><strong>Output</strong>: Dataset lengkap dalam format tabel KNIME</p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="eksplorasi-data-awal">
+<h3>2. Eksplorasi Data Awal<a class="headerlink" href="#eksplorasi-data-awal" title="Link to this heading">#</a></h3>
+<section id="table-view-melihat-isi-dataset">
+<h4>2.1 Table View - Melihat Isi Dataset<a class="headerlink" href="#table-view-melihat-isi-dataset" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p><strong>Node</strong>: Table View</p></li>
+<li><p><strong>Fungsi</strong>: Menampilkan isi dataset Ecoli</p></li>
+<li><p><strong>Tujuan</strong>: Memeriksa struktur data, kolom, dan isi data mentah</p></li>
+<li><p><strong>Output</strong>: “Melihat Isi Dataset Ecoli”
+<img alt="Table View" src="../_images/TableView.png" /></p></li>
+</ul>
+</section>
+<section id="bar-chart-distribusi-class-original">
+<h4>2.2 Bar Chart - Distribusi Class Original<a class="headerlink" href="#bar-chart-distribusi-class-original" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p><strong>Node</strong>: Bar Chart</p></li>
+<li><p><strong>Fungsi</strong>: Visualisasi distribusi kelas pada data original</p></li>
+<li><p><strong>Tujuan</strong>: Mengidentifikasi ketidakseimbangan kelas (class imbalance)</p></li>
+<li><p><strong>Output</strong>: “Distribusi Class (Original)”
+<img alt="Distribusi Class Original" src="../_images/KonfigurasiDistribusiClassOriginal.png" />
+<img alt="Distribusi Class Original" src="../_images/DistribusiClassOriginal.png" /></p></li>
+</ul>
+</section>
+<section id="statistics-cek-statistic">
+<h4>2.3 Statistics - Cek Statistic<a class="headerlink" href="#statistics-cek-statistic" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p><strong>Node</strong>: Statistics</p></li>
+<li><p><strong>Fungsi</strong>: Menghitung statistik deskriptif dari dataset original</p></li>
+<li><p><strong>Metrik</strong>: Mean, median, standard deviation, min, max, quartiles</p></li>
+<li><p><strong>Tujuan</strong>: Memahami karakteristik data sebelum preprocessing</p></li>
+<li><p><strong>Output</strong>: “Cek statistic”
+<img alt="Statistics Node" src="../_images/StatisticsKonfigurasi.png" />
+<img alt="Statistics Node" src="../_images/StatisticsNode.png" /></p></li>
+</ul>
+</section>
+<section id="bar-chart-distribusi-missing-value-original">
+<h4>2.4 Bar Chart - Distribusi Missing Value (Original)<a class="headerlink" href="#bar-chart-distribusi-missing-value-original" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p><strong>Node</strong>: Bar Chart</p></li>
+<li><p><strong>Fungsi</strong>: Visualisasi distribusi missing value</p></li>
+<li><p><strong>Tujuan</strong>: Mengidentifikasi kolom dengan missing value</p></li>
+<li><p><strong>Output</strong>: “Distribusi Missing Value (tidak ada missing value)”
+<img alt="Distribusi Missing Value" src="../_images/KonfigurasiDistribusiMissingValue.png" />
+<img alt="Distribusi Missing Value" src="../_images/DistribusiMissingValue.png" /></p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="deteksi-dan-handling-outlier">
+<h3>3. Deteksi dan Handling Outlier<a class="headerlink" href="#deteksi-dan-handling-outlier" title="Link to this heading">#</a></h3>
+<section id="numeric-outliers-dan-handling-outlier">
+<h4>3.1 Numeric Outliers dan Handling Outlier<a class="headerlink" href="#numeric-outliers-dan-handling-outlier" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p><strong>Node</strong>: Numeric Outliers</p></li>
+<li><p><strong>Fungsi</strong>: Mendeteksi dan menandai outlier pada kolom numerik, serta menhandling Outlier</p></li>
+<li><p><strong>Metode</strong>: IQR (Interquartile Range) Method</p></li>
+<li><p><strong>Tujuan</strong>: Mengidentifikasi data yang tidak normal</p></li>
+<li><p><strong>Output</strong>: “Deteksi Outlier dan Menangani Outlier”
+<img alt="Deteksi dan Handling Outlier" src="../_images/DeteksidanHandlingOutlier.png" /></p></li>
+</ul>
+</section>
+<section id="bar-chart-distribusi-deteksi-outlier">
+<h4>3.2 Bar Chart - Distribusi Deteksi Outlier<a class="headerlink" href="#bar-chart-distribusi-deteksi-outlier" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p><strong>Node</strong>: Bar Chart</p></li>
+<li><p><strong>Fungsi</strong>: Visualisasi jumlah dan distribusi outlier yang terdeteksi</p></li>
+<li><p><strong>Tujuan</strong>: Melihat seberapa banyak outlier per kolom</p></li>
+<li><p><strong>Output</strong>: “Distribusi Deteksi Outlier”
+<img alt="Distribusi Outlier" src="../_images/KonfigurasiDistribusiOutlier.png" />
+<img alt="Distribusi Outlier" src="../_images/DistribusiOutlier.png" /></p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="balancing-data-dengan-smote-tahap-1">
+<h3>4. Balancing Data dengan SMOTE (Tahap 1)<a class="headerlink" href="#balancing-data-dengan-smote-tahap-1" title="Link to this heading">#</a></h3>
+<section id="smote">
+<h4>4.1 SMOTE<a class="headerlink" href="#smote" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p><strong>Node</strong>: SMOTE (Synthetic Minority Over-sampling Technique)</p></li>
+<li><p><strong>Fungsi</strong>: Melakukan oversampling pada kelas minoritas</p></li>
+<li><p><strong>Tujuan</strong>: Menyeimbangkan distribusi kelas</p></li>
+<li><p><strong>Metode</strong>: Membuat data sintetis menggunakan K-Nearest Neighbors</p></li>
+<li><p><strong>Output</strong>: “Balancing Data Menggunakan Smote”
+<img alt="SMOTE Node" src="../_images/KonfigurasiSMOTENode.png" />
+<img alt="SMOTE Node" src="../_images/SMOTENode.png" /></p></li>
+</ul>
+</section>
+<section id="statistics-cek-statistic-setelah-smote">
+<h4>4.2 Statistics - Cek Statistic Setelah Smote<a class="headerlink" href="#statistics-cek-statistic-setelah-smote" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p><strong>Node</strong>: Statistics</p></li>
+<li><p><strong>Fungsi</strong>: Menghitung statistik deskriptif setelah SMOTE</p></li>
+<li><p><strong>Tujuan</strong>: Melihat perubahan statistik setelah balancing</p></li>
+<li><p><strong>Output</strong>: “Cek statistic Setelah Smote”
+<img alt="Statistic Setelah Smote" src="../_images/StatisticSetelahSmote.png" /></p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="penanganan-missing-value-setelah-smote">
+<h3>5. Penanganan Missing Value Setelah SMOTE<a class="headerlink" href="#penanganan-missing-value-setelah-smote" title="Link to this heading">#</a></h3>
+<section id="bar-chart-distribusi-missing-value-setelah-smote">
+<h4>5.1 Bar Chart - Distribusi Missing Value Setelah SMOTE<a class="headerlink" href="#bar-chart-distribusi-missing-value-setelah-smote" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p><strong>Node</strong>: Bar Chart</p></li>
+<li><p><strong>Fungsi</strong>: Visualisasi missing value yang muncul setelah proses SMOTE</p></li>
+<li><p><strong>Tujuan</strong>: Mengidentifikasi missing value yang terbentuk</p></li>
+<li><p><strong>Output</strong>: “Distribusi Missing Value Setelah Smote (terdapat Missing Value)”
+<img alt="Distribusi Missing Value Setelah SMOTE" src="../_images/KonfigurasiDistribusiMissingValueSetelahSMOTE.png" />
+<img alt="Distribusi Missing Value Setelah SMOTE" src="../_images/DistribusiMissingValueSetelahSMOTE.png" /></p></li>
+</ul>
+</section>
+<section id="missing-value-node">
+<h4>5.2 Missing Value Node<a class="headerlink" href="#missing-value-node" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p><strong>Node</strong>: Missing Value</p></li>
+<li><p><strong>Fungsi</strong>: Menangani missing value dengan berbagai metode</p></li>
+<li><p><strong>Metode yang digunakan</strong>:</p>
+<ul>
+<li><p>Median imputation untuk numerik</p></li>
+</ul>
+</li>
+<li><p><strong>Tujuan</strong>: Membersihkan missing value setelah SMOTE</p></li>
+<li><p><strong>Output</strong>: “Penangan Missing Value setela smote”
+<img alt="Missing Value Node" src="../_images/MissingValueNode.png" /></p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="verifikasi-dan-analisis-akhir">
+<h3>6. Verifikasi dan Analisis Akhir<a class="headerlink" href="#verifikasi-dan-analisis-akhir" title="Link to this heading">#</a></h3>
+<section id="statistics-cek-statistik-setelah-penanganan-missing-value">
+<h4>6.1 Statistics - Cek Statistik Setelah Penanganan Missing Value<a class="headerlink" href="#statistics-cek-statistik-setelah-penanganan-missing-value" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p><strong>Node</strong>: Statistics</p></li>
+<li><p><strong>Fungsi</strong>: Menghitung statistik final setelah penanganan missing value</p></li>
+<li><p><strong>Tujuan</strong>: Memastikan data sudah bersih dan siap digunakan</p></li>
+<li><p><strong>Output</strong>: “Cek Statistik setelah Penanganan Missing Value”
+<img alt="Cek Statistik Setelah Penanganan Missing Value" src="../_images/CekStatistikSetelahPenangananMissingValue.png" /></p></li>
+</ul>
+</section>
+<section id="bar-chart-distribusi-missing-value-final">
+<h4>6.2 Bar Chart - Distribusi Missing Value Final<a class="headerlink" href="#bar-chart-distribusi-missing-value-final" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p><strong>Node</strong>: Bar Chart</p></li>
+<li><p><strong>Fungsi</strong>: Visualisasi untuk memastikan tidak ada missing value</p></li>
+<li><p><strong>Tujuan</strong>: Verifikasi bahwa missing value sudah tertangani</p></li>
+<li><p><strong>Output</strong>: “Distribusi Missing Value Setelah Penanganan Missing Value (Tidak ada Missing Value)”
+<img alt="Distribusi Missing Value Final" src="../_images/KonfigurasiDistribusiMissingValueFinal.png" />
+<img alt="Distribusi Missing Value Final" src="../_images/DistribusiDistribusiMissingValueFinal.png" /></p></li>
+</ul>
+</section>
+<section id="table-view-hasil-setelah-di-balancing">
+<h4>6.3 Table View - Hasil Setelah Di Balancing<a class="headerlink" href="#table-view-hasil-setelah-di-balancing" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p><strong>Node</strong>: Table View</p></li>
+<li><p><strong>Fungsi</strong>: Menampilkan dataset final setelah semua preprocessing</p></li>
+<li><p><strong>Tujuan</strong>: Review data final sebelum export</p></li>
+<li><p><strong>Output</strong>: “Hasil Setelah Di Balancing”
+<img alt="Table View Hasil Setelah Di Balancing" src="../_images/HasilSetelahDiBalancing.png" /></p></li>
+</ul>
+</section>
+<section id="bar-chart-distribusi-kelas-setelah-balancing">
+<h4>6.4 Bar Chart - Distribusi Kelas Setelah Balancing<a class="headerlink" href="#bar-chart-distribusi-kelas-setelah-balancing" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p><strong>Node</strong>: Bar Chart</p></li>
+<li><p><strong>Fungsi</strong>: Visualisasi distribusi kelas final</p></li>
+<li><p><strong>Tujuan</strong>: Memastikan kelas sudah seimbang</p></li>
+<li><p><strong>Output</strong>: “Dristibusi Kelas setelah balancing”
+<img alt="Distribusi Kelas Setelah Balancing" src="../_images/KonfigurasiDistribusiKelasSetelahBalancing.png" />
+<img alt="Distribusi Kelas Setelah Balancing" src="../_images/DistribusiKelasSetelahBalancing.png" /></p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="export-data">
+<h3>7. Export Data<a class="headerlink" href="#export-data" title="Link to this heading">#</a></h3>
+<section id="csv-writer">
+<h4>7.1 CSV Writer<a class="headerlink" href="#csv-writer" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p><strong>Node</strong>: CSV Writer</p></li>
+<li><p><strong>Fungsi</strong>: Mengekspor hasil preprocessing ke file CSV</p></li>
+<li><p><strong>Konfigurasi</strong>:</p>
+<ul>
+<li><p>Path dan nama file output</p></li>
+<li><p>Column delimiter</p></li>
+<li><p>Header inclusion</p></li>
+</ul>
+</li>
+<li><p><strong>Output</strong>: “Convert Ke CSV Hasil setelah balancing”
+<img alt="Export Data" src="../_images/CSVWriter.png" /></p></li>
+</ul>
+</section>
+</section>
+</section>
+<hr class="docutils" />
+<section id="workflow-summary">
+<h2>Workflow Summary<a class="headerlink" href="#workflow-summary" title="Link to this heading">#</a></h2>
+<p><img alt="Export Data" src="../_images/workflow.png" /></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>PostgreSQL Connector → DB Table Selector → DB Reader → 
+├── Table View (Melihat Isi Dataset Ecoli)
+├── Bar Chart (Distribusi Class Original)
+├── Statistics (Cek statistic)
+└── Numeric Outliers (Deteksi Outlier) → 
+    ├── Bar Chart (Distribusi Deteksi Outlier)
+    └── SMOTE (Balancing Data) → 
+        ├── Bar Chart (Distribusi Missing Value Original)
+        ├── Statistics (Cek statistic Setelah Smote)
+        └── Bar Chart (Distribusi Missing Value Setelah Smote) →
+            └── Missing Value (Penanganan Missing Value) →
+                ├── Statistics (Cek Statistik setelah Penanganan Missing Value)
+                ├── Bar Chart (Distribusi Missing Value Final)
+                ├── Table View (Hasil Setelah Di Balancing)
+                ├── Bar Chart (Distribusi Kelas setelah balancing)
+                └── CSV Writer (Export)
+</pre></div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="alur-proses-preprocessing">
+<h2>Alur Proses Preprocessing<a class="headerlink" href="#alur-proses-preprocessing" title="Link to this heading">#</a></h2>
+<section id="fase-1-import-dan-eksplorasi">
+<h3>Fase 1: Import dan Eksplorasi<a class="headerlink" href="#fase-1-import-dan-eksplorasi" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p>Koneksi ke PostgreSQL database</p></li>
+<li><p>Membaca data dari tabel Ecoli</p></li>
+<li><p>Visualisasi distribusi kelas original</p></li>
+<li><p>Analisis statistik deskriptif</p></li>
+</ol>
+</section>
+<section id="fase-2-deteksi-outlier">
+<h3>Fase 2: Deteksi Outlier<a class="headerlink" href="#fase-2-deteksi-outlier" title="Link to this heading">#</a></h3>
+<ol class="arabic simple" start="5">
+<li><p>Deteksi outlier menggunakan metode IQR</p></li>
+<li><p>Visualisasi distribusi outlier</p></li>
+<li><p>Penanganan outlier (removal atau treatment)</p></li>
+</ol>
+</section>
+<section id="fase-3-balancing-data">
+<h3>Fase 3: Balancing Data<a class="headerlink" href="#fase-3-balancing-data" title="Link to this heading">#</a></h3>
+<ol class="arabic simple" start="8">
+<li><p>Penerapan SMOTE untuk balancing kelas</p></li>
+<li><p>Cek missing value pada data original</p></li>
+<li><p>Analisis statistik setelah SMOTE</p></li>
+</ol>
+</section>
+<section id="fase-4-penanganan-missing-value">
+<h3>Fase 4: Penanganan Missing Value<a class="headerlink" href="#fase-4-penanganan-missing-value" title="Link to this heading">#</a></h3>
+<ol class="arabic simple" start="11">
+<li><p>Identifikasi missing value yang muncul setelah SMOTE</p></li>
+<li><p>Penanganan missing value dengan metode imputation</p></li>
+<li><p>Verifikasi tidak ada missing value tersisa</p></li>
+</ol>
+</section>
+<section id="fase-5-verifikasi-dan-export">
+<h3>Fase 5: Verifikasi dan Export<a class="headerlink" href="#fase-5-verifikasi-dan-export" title="Link to this heading">#</a></h3>
+<ol class="arabic simple" start="14">
+<li><p>Analisis statistik final</p></li>
+<li><p>Verifikasi distribusi kelas sudah seimbang</p></li>
+<li><p>Review data final</p></li>
+<li><p>Export ke format CSV</p></li>
+</ol>
+</section>
+</section>
+<hr class="docutils" />
+<section id="temuan-dan-hasil">
+<h2>Temuan dan Hasil<a class="headerlink" href="#temuan-dan-hasil" title="Link to this heading">#</a></h2>
+<section id="temuan-preprocessing">
+<h3>Temuan Preprocessing:<a class="headerlink" href="#temuan-preprocessing" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p><strong>Missing Values</strong>:</p>
+<ul class="simple">
+<li><p>Data original: Tidak ada missing value</p></li>
+<li><p>Setelah SMOTE: Terdapat missing value</p></li>
+<li><p>Setelah penanganan: Berhasil dibersihkan</p></li>
+</ul>
+</li>
+<li><p><strong>Class Imbalance</strong>:</p>
+<ul class="simple">
+<li><p>Terdapat ketidakseimbangan kelas pada data original</p></li>
+<li><p>Berhasil diseimbangkan menggunakan SMOTE</p></li>
+</ul>
+</li>
+<li><p><strong>Outliers</strong>:</p>
+<ul class="simple">
+<li><p>Terdeteksi outlier pada beberapa fitur numerik</p></li>
+<li><p>Ditangani pada tahap preprocessing</p></li>
+</ul>
+</li>
+<li><p><strong>Statistik Data</strong>:</p>
+<ul class="simple">
+<li><p>Statistik berubah setelah SMOTE (karena penambahan data sintetis)</p></li>
+<li><p>Statistik stabil setelah penanganan missing value</p></li>
+</ul>
+</li>
+</ol>
+</section>
+</section>
+<hr class="docutils" />
+<section id="kesimpulan">
+<h2>Kesimpulan<a class="headerlink" href="#kesimpulan" title="Link to this heading">#</a></h2>
+<p>Preprocessing data telah dilakukan dengan langkah-langkah sistematis dan komprehensif meliputi:</p>
+<ol class="arabic simple">
+<li><p>✅ Import data dari PostgreSQL</p></li>
+<li><p>✅ Eksplorasi dan analisis statistik awal</p></li>
+<li><p>✅ Deteksi dan penanganan outlier</p></li>
+<li><p>✅ Balancing data menggunakan SMOTE</p></li>
+<li><p>✅ Penanganan missing value yang muncul setelah SMOTE</p></li>
+<li><p>✅ Verifikasi kualitas data final</p></li>
+<li><p>✅ Export hasil ke CSV</p></li>
+</ol>
+<p><strong>Data siap untuk tahap selanjutnya</strong>: Modeling, Machine Learning, atau Data Mining.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./preprocessing"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="penyeimbangan_ecoli.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><strong>Penyeimbangan Dataset Ecoli</strong></p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../model/klasifikasi_ecoli.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><strong>Klasifikasi Dan BaggingClassifier Pada Dataset Ecoli</strong></p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deskripsi-umum">Deskripsi Umum</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#langkah-langkah-preprocessing">Langkah-Langkah Preprocessing</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#koneksi-dan-import-data">1. Koneksi dan Import Data</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#postgresql-connector">1.1 PostgreSQL Connector</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#db-table-selector">1.2 DB Table Selector</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#db-reader">1.3 DB Reader</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#eksplorasi-data-awal">2. Eksplorasi Data Awal</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#table-view-melihat-isi-dataset">2.1 Table View - Melihat Isi Dataset</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bar-chart-distribusi-class-original">2.2 Bar Chart - Distribusi Class Original</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#statistics-cek-statistic">2.3 Statistics - Cek Statistic</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bar-chart-distribusi-missing-value-original">2.4 Bar Chart - Distribusi Missing Value (Original)</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#deteksi-dan-handling-outlier">3. Deteksi dan Handling Outlier</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#numeric-outliers-dan-handling-outlier">3.1 Numeric Outliers dan Handling Outlier</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bar-chart-distribusi-deteksi-outlier">3.2 Bar Chart - Distribusi Deteksi Outlier</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#balancing-data-dengan-smote-tahap-1">4. Balancing Data dengan SMOTE (Tahap 1)</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#smote">4.1 SMOTE</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#statistics-cek-statistic-setelah-smote">4.2 Statistics - Cek Statistic Setelah Smote</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#penanganan-missing-value-setelah-smote">5. Penanganan Missing Value Setelah SMOTE</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bar-chart-distribusi-missing-value-setelah-smote">5.1 Bar Chart - Distribusi Missing Value Setelah SMOTE</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#missing-value-node">5.2 Missing Value Node</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verifikasi-dan-analisis-akhir">6. Verifikasi dan Analisis Akhir</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#statistics-cek-statistik-setelah-penanganan-missing-value">6.1 Statistics - Cek Statistik Setelah Penanganan Missing Value</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bar-chart-distribusi-missing-value-final">6.2 Bar Chart - Distribusi Missing Value Final</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#table-view-hasil-setelah-di-balancing">6.3 Table View - Hasil Setelah Di Balancing</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bar-chart-distribusi-kelas-setelah-balancing">6.4 Bar Chart - Distribusi Kelas Setelah Balancing</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#export-data">7. Export Data</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#csv-writer">7.1 CSV Writer</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#workflow-summary">Workflow Summary</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#alur-proses-preprocessing">Alur Proses Preprocessing</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fase-1-import-dan-eksplorasi">Fase 1: Import dan Eksplorasi</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fase-2-deteksi-outlier">Fase 2: Deteksi Outlier</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fase-3-balancing-data">Fase 3: Balancing Data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fase-4-penanganan-missing-value">Fase 4: Penanganan Missing Value</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fase-5-verifikasi-dan-export">Fase 5: Verifikasi dan Export</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#temuan-dan-hasil">Temuan dan Hasil</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#temuan-preprocessing">Temuan Preprocessing:</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kesimpulan">Kesimpulan</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By The Jupyter Book Community
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

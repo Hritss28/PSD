@@ -6553,3 +6553,11 @@
 2025-09-30 10:42:11,655:INFO:Copying data
 2025-09-30 10:42:11,656:INFO:(150, 6)
 2025-09-30 10:42:11,656:INFO:assign_model() successfully completed......................................
+2025-10-09 13:12:36,395:WARNING:
+'cuml' is a soft dependency and not included in the pycaret installation. Please run: `pip install cuml` to install.
+2025-10-09 13:12:36,395:WARNING:
+'cuml' is a soft dependency and not included in the pycaret installation. Please run: `pip install cuml` to install.
+2025-10-09 13:12:36,396:WARNING:
+'cuml' is a soft dependency and not included in the pycaret installation. Please run: `pip install cuml` to install.
+2025-10-09 13:12:36,396:WARNING:
+'cuml' is a soft dependency and not included in the pycaret installation. Please run: `pip install cuml` to install.

@@ -12,6 +12,7 @@ parts:
   chapters:
   - file: preprocessing/data_preprocessing.ipynb
   - file: preprocessing/penyeimbangan_ecoli.ipynb
+  - file: preprocessing/Ecoli_Preprocessing_KNIME.md
 - caption: Modelling
   chapters:
   - file: model/klasifikasi_ecoli.ipynb

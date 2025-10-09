@@ -60,7 +60,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'model/klasifikasi_ecoli';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="prev" title="Penyeimbangan Dataset Ecoli" href="../preprocessing/penyeimbangan_ecoli.html" />
+    <link rel="prev" title="Dokumentasi Preprocessing Data dengan KNIME" href="../preprocessing/Ecoli_Preprocessing_KNIME.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -191,6 +191,7 @@
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../preprocessing/data_preprocessing.html"><strong>Preprocessing Data Iris</strong></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../preprocessing/penyeimbangan_ecoli.html"><strong>Penyeimbangan Dataset Ecoli</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../preprocessing/Ecoli_Preprocessing_KNIME.html">Dokumentasi Preprocessing Data dengan KNIME</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Modelling</span></p>
 <ul class="current nav bd-sidenav">
@@ -468,15 +469,15 @@ document.write(`
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: seaborn in c:\anaconda3\envs\py311\lib\site-packages (0.13.2)
 Requirement already satisfied: pandas in c:\anaconda3\envs\py311\lib\site-packages (2.1.4)
-Requirement already satisfied: scikit-learn in c:\anaconda3\envs\py311\lib\site-packages (1.4.2)
+Requirement already satisfied: scikit-learn in c:\anaconda3\envs\py311\lib\site-packages (1.7.2)
 Requirement already satisfied: matplotlib in c:\anaconda3\envs\py311\lib\site-packages (3.7.5)
 Requirement already satisfied: numpy!=1.24.0,&gt;=1.20 in c:\anaconda3\envs\py311\lib\site-packages (from seaborn) (1.26.4)
 Requirement already satisfied: python-dateutil&gt;=2.8.2 in c:\anaconda3\envs\py311\lib\site-packages (from pandas) (2.9.0.post0)
 Requirement already satisfied: pytz&gt;=2020.1 in c:\anaconda3\envs\py311\lib\site-packages (from pandas) (2025.2)
 Requirement already satisfied: tzdata&gt;=2022.1 in c:\anaconda3\envs\py311\lib\site-packages (from pandas) (2025.2)
-Requirement already satisfied: scipy&gt;=1.6.0 in c:\anaconda3\envs\py311\lib\site-packages (from scikit-learn) (1.11.4)
+Requirement already satisfied: scipy&gt;=1.8.0 in c:\anaconda3\envs\py311\lib\site-packages (from scikit-learn) (1.11.4)
 Requirement already satisfied: joblib&gt;=1.2.0 in c:\anaconda3\envs\py311\lib\site-packages (from scikit-learn) (1.3.2)
-Requirement already satisfied: threadpoolctl&gt;=2.0.0 in c:\anaconda3\envs\py311\lib\site-packages (from scikit-learn) (3.6.0)
+Requirement already satisfied: threadpoolctl&gt;=3.1.0 in c:\anaconda3\envs\py311\lib\site-packages (from scikit-learn) (3.6.0)
 Requirement already satisfied: contourpy&gt;=1.0.1 in c:\anaconda3\envs\py311\lib\site-packages (from matplotlib) (1.3.3)
 Requirement already satisfied: cycler&gt;=0.10 in c:\anaconda3\envs\py311\lib\site-packages (from matplotlib) (0.12.1)
 Requirement already satisfied: fonttools&gt;=4.22.0 in c:\anaconda3\envs\py311\lib\site-packages (from matplotlib) (4.59.2)
@@ -1147,7 +1148,9 @@ KLASIFIKASI MENGGUNAKAN RANDOM FOREST
 ============================================================
 
 --- KLASIFIKASI DATA SEBELUM ADASYN ---
-Accuracy data SEBELUM ADASYN: 0.8676
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Accuracy data SEBELUM ADASYN: 0.8676
 
 Classification Report - SEBELUM ADASYN:
               precision    recall  f1-score   support
@@ -2306,9 +2309,7 @@ Name: count, dtype: int64
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Akurasi: 0.75
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Classification Report:
+Classification Report:
                precision    recall  f1-score   support
 
           cp       0.91      0.94      0.92        32
@@ -2334,101 +2335,101 @@ Confusion Matrix - Bagging NB Original:
  [ 1  2  0  0  0  0  8]]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Anaconda3\envs\py311\Lib\site-packages\sklearn\naive_bayes.py:509: RuntimeWarning: divide by zero encountered in log
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Anaconda3\envs\py311\Lib\site-packages\sklearn\naive_bayes.py:512: RuntimeWarning: divide by zero encountered in log
   jointi = np.log(self.class_prior_[i])
-C:\Anaconda3\envs\py311\Lib\site-packages\sklearn\naive_bayes.py:509: RuntimeWarning: divide by zero encountered in log
+C:\Anaconda3\envs\py311\Lib\site-packages\sklearn\naive_bayes.py:512: RuntimeWarning: divide by zero encountered in log
   jointi = np.log(self.class_prior_[i])
-C:\Anaconda3\envs\py311\Lib\site-packages\sklearn\naive_bayes.py:509: RuntimeWarning: divide by zero encountered in log
+C:\Anaconda3\envs\py311\Lib\site-packages\sklearn\naive_bayes.py:512: RuntimeWarning: divide by zero encountered in log
   jointi = np.log(self.class_prior_[i])
-C:\Anaconda3\envs\py311\Lib\site-packages\sklearn\naive_bayes.py:509: RuntimeWarning: divide by zero encountered in log
+C:\Anaconda3\envs\py311\Lib\site-packages\sklearn\naive_bayes.py:512: RuntimeWarning: divide by zero encountered in log
   jointi = np.log(self.class_prior_[i])
-C:\Anaconda3\envs\py311\Lib\site-packages\sklearn\naive_bayes.py:509: RuntimeWarning: divide by zero encountered in log
+C:\Anaconda3\envs\py311\Lib\site-packages\sklearn\naive_bayes.py:512: RuntimeWarning: divide by zero encountered in log
   jointi = np.log(self.class_prior_[i])
-C:\Anaconda3\envs\py311\Lib\site-packages\sklearn\naive_bayes.py:509: RuntimeWarning: divide by zero encountered in log
+C:\Anaconda3\envs\py311\Lib\site-packages\sklearn\naive_bayes.py:512: RuntimeWarning: divide by zero encountered in log
   jointi = np.log(self.class_prior_[i])
-C:\Anaconda3\envs\py311\Lib\site-packages\sklearn\naive_bayes.py:509: RuntimeWarning: divide by zero encountered in log
+C:\Anaconda3\envs\py311\Lib\site-packages\sklearn\naive_bayes.py:512: RuntimeWarning: divide by zero encountered in log
   jointi = np.log(self.class_prior_[i])
-C:\Anaconda3\envs\py311\Lib\site-packages\sklearn\naive_bayes.py:509: RuntimeWarning: divide by zero encountered in log
+C:\Anaconda3\envs\py311\Lib\site-packages\sklearn\naive_bayes.py:512: RuntimeWarning: divide by zero encountered in log
   jointi = np.log(self.class_prior_[i])
-C:\Anaconda3\envs\py311\Lib\site-packages\sklearn\naive_bayes.py:509: RuntimeWarning: divide by zero encountered in log
+C:\Anaconda3\envs\py311\Lib\site-packages\sklearn\naive_bayes.py:512: RuntimeWarning: divide by zero encountered in log
   jointi = np.log(self.class_prior_[i])
-C:\Anaconda3\envs\py311\Lib\site-packages\sklearn\naive_bayes.py:509: RuntimeWarning: divide by zero encountered in log
+C:\Anaconda3\envs\py311\Lib\site-packages\sklearn\naive_bayes.py:512: RuntimeWarning: divide by zero encountered in log
   jointi = np.log(self.class_prior_[i])
-C:\Anaconda3\envs\py311\Lib\site-packages\sklearn\naive_bayes.py:509: RuntimeWarning: divide by zero encountered in log
+C:\Anaconda3\envs\py311\Lib\site-packages\sklearn\naive_bayes.py:512: RuntimeWarning: divide by zero encountered in log
   jointi = np.log(self.class_prior_[i])
-C:\Anaconda3\envs\py311\Lib\site-packages\sklearn\naive_bayes.py:509: RuntimeWarning: divide by zero encountered in log
+C:\Anaconda3\envs\py311\Lib\site-packages\sklearn\naive_bayes.py:512: RuntimeWarning: divide by zero encountered in log
   jointi = np.log(self.class_prior_[i])
-C:\Anaconda3\envs\py311\Lib\site-packages\sklearn\naive_bayes.py:509: RuntimeWarning: divide by zero encountered in log
+C:\Anaconda3\envs\py311\Lib\site-packages\sklearn\naive_bayes.py:512: RuntimeWarning: divide by zero encountered in log
   jointi = np.log(self.class_prior_[i])
-C:\Anaconda3\envs\py311\Lib\site-packages\sklearn\naive_bayes.py:509: RuntimeWarning: divide by zero encountered in log
+C:\Anaconda3\envs\py311\Lib\site-packages\sklearn\naive_bayes.py:512: RuntimeWarning: divide by zero encountered in log
   jointi = np.log(self.class_prior_[i])
-C:\Anaconda3\envs\py311\Lib\site-packages\sklearn\naive_bayes.py:509: RuntimeWarning: divide by zero encountered in log
+C:\Anaconda3\envs\py311\Lib\site-packages\sklearn\naive_bayes.py:512: RuntimeWarning: divide by zero encountered in log
   jointi = np.log(self.class_prior_[i])
-C:\Anaconda3\envs\py311\Lib\site-packages\sklearn\naive_bayes.py:509: RuntimeWarning: divide by zero encountered in log
+C:\Anaconda3\envs\py311\Lib\site-packages\sklearn\naive_bayes.py:512: RuntimeWarning: divide by zero encountered in log
   jointi = np.log(self.class_prior_[i])
-C:\Anaconda3\envs\py311\Lib\site-packages\sklearn\naive_bayes.py:509: RuntimeWarning: divide by zero encountered in log
+C:\Anaconda3\envs\py311\Lib\site-packages\sklearn\naive_bayes.py:512: RuntimeWarning: divide by zero encountered in log
   jointi = np.log(self.class_prior_[i])
-C:\Anaconda3\envs\py311\Lib\site-packages\sklearn\naive_bayes.py:509: RuntimeWarning: divide by zero encountered in log
+C:\Anaconda3\envs\py311\Lib\site-packages\sklearn\naive_bayes.py:512: RuntimeWarning: divide by zero encountered in log
   jointi = np.log(self.class_prior_[i])
-C:\Anaconda3\envs\py311\Lib\site-packages\sklearn\naive_bayes.py:509: RuntimeWarning: divide by zero encountered in log
+C:\Anaconda3\envs\py311\Lib\site-packages\sklearn\naive_bayes.py:512: RuntimeWarning: divide by zero encountered in log
   jointi = np.log(self.class_prior_[i])
-C:\Anaconda3\envs\py311\Lib\site-packages\sklearn\naive_bayes.py:509: RuntimeWarning: divide by zero encountered in log
+C:\Anaconda3\envs\py311\Lib\site-packages\sklearn\naive_bayes.py:512: RuntimeWarning: divide by zero encountered in log
   jointi = np.log(self.class_prior_[i])
-C:\Anaconda3\envs\py311\Lib\site-packages\sklearn\naive_bayes.py:509: RuntimeWarning: divide by zero encountered in log
+C:\Anaconda3\envs\py311\Lib\site-packages\sklearn\naive_bayes.py:512: RuntimeWarning: divide by zero encountered in log
   jointi = np.log(self.class_prior_[i])
-C:\Anaconda3\envs\py311\Lib\site-packages\sklearn\naive_bayes.py:509: RuntimeWarning: divide by zero encountered in log
+C:\Anaconda3\envs\py311\Lib\site-packages\sklearn\naive_bayes.py:512: RuntimeWarning: divide by zero encountered in log
   jointi = np.log(self.class_prior_[i])
-C:\Anaconda3\envs\py311\Lib\site-packages\sklearn\naive_bayes.py:509: RuntimeWarning: divide by zero encountered in log
+C:\Anaconda3\envs\py311\Lib\site-packages\sklearn\naive_bayes.py:512: RuntimeWarning: divide by zero encountered in log
   jointi = np.log(self.class_prior_[i])
-C:\Anaconda3\envs\py311\Lib\site-packages\sklearn\naive_bayes.py:509: RuntimeWarning: divide by zero encountered in log
+C:\Anaconda3\envs\py311\Lib\site-packages\sklearn\naive_bayes.py:512: RuntimeWarning: divide by zero encountered in log
   jointi = np.log(self.class_prior_[i])
-C:\Anaconda3\envs\py311\Lib\site-packages\sklearn\naive_bayes.py:509: RuntimeWarning: divide by zero encountered in log
+C:\Anaconda3\envs\py311\Lib\site-packages\sklearn\naive_bayes.py:512: RuntimeWarning: divide by zero encountered in log
   jointi = np.log(self.class_prior_[i])
-C:\Anaconda3\envs\py311\Lib\site-packages\sklearn\naive_bayes.py:509: RuntimeWarning: divide by zero encountered in log
+C:\Anaconda3\envs\py311\Lib\site-packages\sklearn\naive_bayes.py:512: RuntimeWarning: divide by zero encountered in log
   jointi = np.log(self.class_prior_[i])
-C:\Anaconda3\envs\py311\Lib\site-packages\sklearn\naive_bayes.py:509: RuntimeWarning: divide by zero encountered in log
+C:\Anaconda3\envs\py311\Lib\site-packages\sklearn\naive_bayes.py:512: RuntimeWarning: divide by zero encountered in log
   jointi = np.log(self.class_prior_[i])
-C:\Anaconda3\envs\py311\Lib\site-packages\sklearn\naive_bayes.py:509: RuntimeWarning: divide by zero encountered in log
+C:\Anaconda3\envs\py311\Lib\site-packages\sklearn\naive_bayes.py:512: RuntimeWarning: divide by zero encountered in log
   jointi = np.log(self.class_prior_[i])
-C:\Anaconda3\envs\py311\Lib\site-packages\sklearn\naive_bayes.py:509: RuntimeWarning: divide by zero encountered in log
+C:\Anaconda3\envs\py311\Lib\site-packages\sklearn\naive_bayes.py:512: RuntimeWarning: divide by zero encountered in log
   jointi = np.log(self.class_prior_[i])
-C:\Anaconda3\envs\py311\Lib\site-packages\sklearn\naive_bayes.py:509: RuntimeWarning: divide by zero encountered in log
+C:\Anaconda3\envs\py311\Lib\site-packages\sklearn\naive_bayes.py:512: RuntimeWarning: divide by zero encountered in log
   jointi = np.log(self.class_prior_[i])
-C:\Anaconda3\envs\py311\Lib\site-packages\sklearn\naive_bayes.py:509: RuntimeWarning: divide by zero encountered in log
+C:\Anaconda3\envs\py311\Lib\site-packages\sklearn\naive_bayes.py:512: RuntimeWarning: divide by zero encountered in log
   jointi = np.log(self.class_prior_[i])
-C:\Anaconda3\envs\py311\Lib\site-packages\sklearn\naive_bayes.py:509: RuntimeWarning: divide by zero encountered in log
+C:\Anaconda3\envs\py311\Lib\site-packages\sklearn\naive_bayes.py:512: RuntimeWarning: divide by zero encountered in log
   jointi = np.log(self.class_prior_[i])
-C:\Anaconda3\envs\py311\Lib\site-packages\sklearn\naive_bayes.py:509: RuntimeWarning: divide by zero encountered in log
+C:\Anaconda3\envs\py311\Lib\site-packages\sklearn\naive_bayes.py:512: RuntimeWarning: divide by zero encountered in log
   jointi = np.log(self.class_prior_[i])
-C:\Anaconda3\envs\py311\Lib\site-packages\sklearn\naive_bayes.py:509: RuntimeWarning: divide by zero encountered in log
+C:\Anaconda3\envs\py311\Lib\site-packages\sklearn\naive_bayes.py:512: RuntimeWarning: divide by zero encountered in log
   jointi = np.log(self.class_prior_[i])
-C:\Anaconda3\envs\py311\Lib\site-packages\sklearn\naive_bayes.py:509: RuntimeWarning: divide by zero encountered in log
+C:\Anaconda3\envs\py311\Lib\site-packages\sklearn\naive_bayes.py:512: RuntimeWarning: divide by zero encountered in log
   jointi = np.log(self.class_prior_[i])
-C:\Anaconda3\envs\py311\Lib\site-packages\sklearn\naive_bayes.py:509: RuntimeWarning: divide by zero encountered in log
+C:\Anaconda3\envs\py311\Lib\site-packages\sklearn\naive_bayes.py:512: RuntimeWarning: divide by zero encountered in log
   jointi = np.log(self.class_prior_[i])
-C:\Anaconda3\envs\py311\Lib\site-packages\sklearn\naive_bayes.py:509: RuntimeWarning: divide by zero encountered in log
+C:\Anaconda3\envs\py311\Lib\site-packages\sklearn\naive_bayes.py:512: RuntimeWarning: divide by zero encountered in log
   jointi = np.log(self.class_prior_[i])
-C:\Anaconda3\envs\py311\Lib\site-packages\sklearn\naive_bayes.py:509: RuntimeWarning: divide by zero encountered in log
+C:\Anaconda3\envs\py311\Lib\site-packages\sklearn\naive_bayes.py:512: RuntimeWarning: divide by zero encountered in log
   jointi = np.log(self.class_prior_[i])
-C:\Anaconda3\envs\py311\Lib\site-packages\sklearn\naive_bayes.py:509: RuntimeWarning: divide by zero encountered in log
+C:\Anaconda3\envs\py311\Lib\site-packages\sklearn\naive_bayes.py:512: RuntimeWarning: divide by zero encountered in log
   jointi = np.log(self.class_prior_[i])
-C:\Anaconda3\envs\py311\Lib\site-packages\sklearn\naive_bayes.py:509: RuntimeWarning: divide by zero encountered in log
+C:\Anaconda3\envs\py311\Lib\site-packages\sklearn\naive_bayes.py:512: RuntimeWarning: divide by zero encountered in log
   jointi = np.log(self.class_prior_[i])
-C:\Anaconda3\envs\py311\Lib\site-packages\sklearn\naive_bayes.py:509: RuntimeWarning: divide by zero encountered in log
+C:\Anaconda3\envs\py311\Lib\site-packages\sklearn\naive_bayes.py:512: RuntimeWarning: divide by zero encountered in log
   jointi = np.log(self.class_prior_[i])
-C:\Anaconda3\envs\py311\Lib\site-packages\sklearn\naive_bayes.py:509: RuntimeWarning: divide by zero encountered in log
+C:\Anaconda3\envs\py311\Lib\site-packages\sklearn\naive_bayes.py:512: RuntimeWarning: divide by zero encountered in log
   jointi = np.log(self.class_prior_[i])
-C:\Anaconda3\envs\py311\Lib\site-packages\sklearn\naive_bayes.py:509: RuntimeWarning: divide by zero encountered in log
+C:\Anaconda3\envs\py311\Lib\site-packages\sklearn\naive_bayes.py:512: RuntimeWarning: divide by zero encountered in log
   jointi = np.log(self.class_prior_[i])
-C:\Anaconda3\envs\py311\Lib\site-packages\sklearn\naive_bayes.py:509: RuntimeWarning: divide by zero encountered in log
+C:\Anaconda3\envs\py311\Lib\site-packages\sklearn\naive_bayes.py:512: RuntimeWarning: divide by zero encountered in log
   jointi = np.log(self.class_prior_[i])
-C:\Anaconda3\envs\py311\Lib\site-packages\sklearn\naive_bayes.py:509: RuntimeWarning: divide by zero encountered in log
+C:\Anaconda3\envs\py311\Lib\site-packages\sklearn\naive_bayes.py:512: RuntimeWarning: divide by zero encountered in log
   jointi = np.log(self.class_prior_[i])
-C:\Anaconda3\envs\py311\Lib\site-packages\sklearn\naive_bayes.py:509: RuntimeWarning: divide by zero encountered in log
+C:\Anaconda3\envs\py311\Lib\site-packages\sklearn\naive_bayes.py:512: RuntimeWarning: divide by zero encountered in log
   jointi = np.log(self.class_prior_[i])
-C:\Anaconda3\envs\py311\Lib\site-packages\sklearn\naive_bayes.py:509: RuntimeWarning: divide by zero encountered in log
+C:\Anaconda3\envs\py311\Lib\site-packages\sklearn\naive_bayes.py:512: RuntimeWarning: divide by zero encountered in log
   jointi = np.log(self.class_prior_[i])
-C:\Anaconda3\envs\py311\Lib\site-packages\sklearn\naive_bayes.py:509: RuntimeWarning: divide by zero encountered in log
+C:\Anaconda3\envs\py311\Lib\site-packages\sklearn\naive_bayes.py:512: RuntimeWarning: divide by zero encountered in log
   jointi = np.log(self.class_prior_[i])
 </pre></div>
 </div>
@@ -2917,12 +2918,12 @@ Akurasi SMOTE     : 0.9651
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../preprocessing/penyeimbangan_ecoli.html"
+       href="../preprocessing/Ecoli_Preprocessing_KNIME.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><strong>Penyeimbangan Dataset Ecoli</strong></p>
+        <p class="prev-next-title">Dokumentasi Preprocessing Data dengan KNIME</p>
       </div>
     </a>
 </div>
