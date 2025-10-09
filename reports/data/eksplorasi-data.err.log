@@ -25,57 +25,6 @@ nbclient.exceptions.CellExecutionError: An error occurred while executing the fo
 import pandas as pd
 from pycaret.anomaly import * 
 import matplotlib.pyplot as plt
-
-# load data
-data = pd.read_csv("IRIS.csv")
-data = data.drop(columns=["species"])
-
-# setup data PyCaret
-s = setup(data)
-
-# membuat model dari metode
-abod = create_model('abod') 
-results = assign_model(abod)
-
-# menghapus data outlier
-cleaned_data = results[results["Anomaly"] == 0].copy()
-
-print("Data asli: ", results.shape)
-print("Data setelah hapus outlier: ", cleaned_data.shape)
-
-# buat file csv baru
-cleaned_data.to_csv("iris_ABOD_cleaned.csv", index=False)
-
-fig, axes = plt.subplots(1, 2, figsize=(14,6))
-
-# Sebelum dihapus data outlier
-axes[0].scatter(
-    results['petal_length'], results['petal_width'],
-    c=results['Anomaly'], cmap='coolwarm', edgecolor='k'
-)
-axes[0].set_title("Sebelum Hapus Outlier (abob)")
-axes[0].set_xlabel("Petal Length")
-axes[0].set_ylabel("Petal Width")
-
-# Sesudah dihapus data outlier
-axes[1].scatter(
-    cleaned_data['petal_length'], cleaned_data['petal_width'],
-    c='blue', edgecolor='k'
-)
-axes[1].set_title("Sesudah Hapus Outlier (abod)")
-axes[1].set_xlabel("Petal Length")
-axes[1].set_ylabel("Petal Width")
-
-handles = [
-    plt.Line2D([0], [0], marker='o', color='w', label='Normal',
-               markerfacecolor='blue', markersize=8),
-    plt.Line2D([0], [0], marker='o', color='w', label='Outlier',
-               markerfacecolor='red', markersize=8)
-]
-plt.legend(handles=handles)
-
-plt.tight_layout()
-plt.show()
 ------------------
 
 
@@ -85,7 +34,6 @@ plt.show()
 [32m      1[39m [38;5;28;01mimport[39;00m[38;5;250m [39m[34;01mpandas[39;00m[38;5;250m [39m[38;5;28;01mas[39;00m[38;5;250m [39m[34;01mpd[39;00m
 [32m----> [39m[32m2[39m [38;5;28;01mfrom[39;00m[38;5;250m [39m[34;01mpycaret[39;00m[34;01m.[39;00m[34;01manomaly[39;00m[38;5;250m [39m[38;5;28;01mimport[39;00m * 
 [32m      3[39m [38;5;28;01mimport[39;00m[38;5;250m [39m[34;01mmatplotlib[39;00m[34;01m.[39;00m[34;01mpyplot[39;00m[38;5;250m [39m[38;5;28;01mas[39;00m[38;5;250m [39m[34;01mplt[39;00m
-[32m      5[39m [38;5;66;03m# load data[39;00m
 
 [36mFile [39m[32mC:\Anaconda3\envs\py311\Lib\site-packages\pycaret\anomaly\__init__.py:1[39m
 [32m----> [39m[32m1[39m [38;5;28;01mfrom[39;00m[38;5;250m [39m[34;01mpycaret[39;00m[34;01m.[39;00m[34;01manomaly[39;00m[34;01m.[39;00m[34;01mfunctional[39;00m[38;5;250m [39m[38;5;28;01mimport[39;00m (
