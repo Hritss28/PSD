@@ -442,16 +442,16 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: pymysql in c:\anaconda3\envs\py311\lib\site-packages (1.1.2)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: pymysql in c:\python39\lib\site-packages (1.1.2)
 Note: you may need to restart the kernel to use updated packages.
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: imbalanced-learn in c:\anaconda3\envs\py311\lib\site-packages (0.14.0)
-Requirement already satisfied: numpy&lt;3,&gt;=1.25.2 in c:\anaconda3\envs\py311\lib\site-packages (from imbalanced-learn) (1.26.4)
-Requirement already satisfied: scipy&lt;2,&gt;=1.11.4 in c:\anaconda3\envs\py311\lib\site-packages (from imbalanced-learn) (1.11.4)
-Requirement already satisfied: scikit-learn&lt;2,&gt;=1.4.2 in c:\anaconda3\envs\py311\lib\site-packages (from imbalanced-learn) (1.7.2)
-Requirement already satisfied: joblib&lt;2,&gt;=1.2.0 in c:\anaconda3\envs\py311\lib\site-packages (from imbalanced-learn) (1.3.2)
-Requirement already satisfied: threadpoolctl&lt;4,&gt;=2.0.0 in c:\anaconda3\envs\py311\lib\site-packages (from imbalanced-learn) (3.6.0)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: imbalanced-learn in c:\python39\lib\site-packages (0.12.4)
+Requirement already satisfied: numpy&gt;=1.17.3 in c:\python39\lib\site-packages (from imbalanced-learn) (1.26.4)
+Requirement already satisfied: scipy&gt;=1.5.0 in c:\python39\lib\site-packages (from imbalanced-learn) (1.11.4)
+Requirement already satisfied: scikit-learn&gt;=1.0.2 in c:\python39\lib\site-packages (from imbalanced-learn) (1.4.2)
+Requirement already satisfied: joblib&gt;=1.1.1 in c:\python39\lib\site-packages (from imbalanced-learn) (1.3.2)
+Requirement already satisfied: threadpoolctl&gt;=2.0.0 in c:\python39\lib\site-packages (from imbalanced-learn) (3.6.0)
 Note: you may need to restart the kernel to use updated packages.
 </pre></div>
 </div>
@@ -480,7 +480,7 @@ Note: you may need to restart the kernel to use updated packages.
     <span class="n">conn</span> <span class="o">=</span> <span class="n">pymysql</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span>
         <span class="n">host</span><span class="o">=</span><span class="s1">&#39;localhost&#39;</span><span class="p">,</span>
         <span class="n">user</span><span class="o">=</span><span class="s1">&#39;root&#39;</span><span class="p">,</span>
-        <span class="n">password</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span>
+        <span class="n">password</span><span class="o">=</span><span class="s1">&#39;28maret2005&#39;</span><span class="p">,</span>
         <span class="n">database</span><span class="o">=</span><span class="s1">&#39;ecoli&#39;</span>
     <span class="p">)</span>
     <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_sql</span><span class="p">(</span><span class="s2">&quot;SELECT * FROM ecoli&quot;</span><span class="p">,</span> <span class="n">conn</span><span class="p">)</span>
@@ -499,7 +499,13 @@ Note: you may need to restart the kernel to use updated packages.
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Error: (2003, &quot;Can&#39;t connect to MySQL server on &#39;localhost&#39; ([WinError 10061] No connection could be made because the target machine actively refused it)&quot;)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Data berhasil dimuat!
+✅ Data disimpan ke &#39;data_ecoli_original.csv&#39;
+   Shape: (336, 10)
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\Harits Putra Junaidi\AppData\Local\Temp\ipykernel_17520\37460529.py:8: UserWarning: pandas only supports SQLAlchemy connectable (engine/connection) or database string URI or sqlite3 DBAPI2 connection. Other DBAPI2 objects are not tested. Please consider using SQLAlchemy.
+  df = pd.read_sql(&quot;SELECT * FROM ecoli&quot;, conn)
 </pre></div>
 </div>
 </div>
@@ -563,7 +569,22 @@ Note: you may need to restart the kernel to use updated packages.
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Data tidak tersedia!
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Distribusi kelas:
+cp: 143 samples (42.6%)
+im: 77 samples (22.9%)
+imL: 2 samples (0.6%)
+imS: 2 samples (0.6%)
+imU: 35 samples (10.4%)
+om: 20 samples (6.0%)
+omL: 5 samples (1.5%)
+pp: 52 samples (15.5%)
+</pre></div>
+</div>
+<img alt="../_images/8b868520706124f88692220951dd2c23f4c2977100ac6adcdacd17739756ecc0.png" src="../_images/8b868520706124f88692220951dd2c23f4c2977100ac6adcdacd17739756ecc0.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Kelas terbanyak: cp (42.6%)
+Kelas tersedikit: imL (0.6%)
+Rasio ketidakseimbangan: 71.5:1
+Status: TIDAK SEIMBANG
 </pre></div>
 </div>
 </div>
@@ -608,6 +629,33 @@ Note: you may need to restart the kernel to use updated packages.
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;PCA components shape:&quot;</span><span class="p">,</span> <span class="n">X_pca</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">DataFrame PCA (5 baris pertama):&quot;</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">dataframe_pca</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Data shape: (336, 10)
+Columns: [&#39;id&#39;, &#39;Sequence&#39;, &#39;mcg&#39;, &#39;gvh&#39;, &#39;lip&#39;, &#39;chg&#39;, &#39;aac&#39;, &#39;alm1&#39;, &#39;alm2&#39;, &#39;class&#39;]
+</pre></div>
+</div>
+<img alt="../_images/fa53e4097f11917c57b1cff98dd676f8c06186d0c8a0977236caf29f8995103c.png" src="../_images/fa53e4097f11917c57b1cff98dd676f8c06186d0c8a0977236caf29f8995103c.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Total variance explained: 76.0%
+PCA components shape: (336, 2)
+
+DataFrame PCA (5 baris pertama):
+          PC1       PC2 class
+0   -0.285601 -0.035274    cp
+1   -0.290838 -0.330159    cp
+2   -0.104676  0.015248    cp
+3   -0.087943  0.122218    cp
+4   -0.366268 -0.210366    cp
+..        ...       ...   ...
+331  0.084233  0.274803    pp
+332 -0.139026  0.274116    pp
+333 -0.111904  0.187103    pp
+334 -0.106204  0.178851    pp
+335  0.108764  0.281129    pp
+
+[336 rows x 3 columns]
 </pre></div>
 </div>
 </div>
@@ -657,17 +705,39 @@ Note: you may need to restart the kernel to use updated packages.
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Distribusi kelas sebelum ADASYN:
+[(&#39;cp&#39;, 143), (&#39;im&#39;, 77), (&#39;imL&#39;, 2), (&#39;imS&#39;, 2), (&#39;imU&#39;, 35), (&#39;om&#39;, 20), (&#39;omL&#39;, 5), (&#39;pp&#39;, 52)]
+Sorted counts untuk iterasi: [2, 2, 5, 20, 35, 52, 77, 143]
+
+Iterasi 1: menggunakan k_neighbors=1
 </pre></div>
 </div>
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">6</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Distribusi kelas sebelum ADASYN:&quot;</span><span class="p">)</span>
-<span class="ne">----&gt; </span><span class="mi">2</span> <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="nb">sorted</span><span class="p">(</span><span class="n">Counter</span><span class="p">(</span><span class="n">y</span><span class="p">)</span><span class="o">.</span><span class="n">items</span><span class="p">())</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">nt</span> <span class="o">=</span> <span class="n">X</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="n">ns</span> <span class="o">=</span> <span class="n">y</span>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Hasil iterasi 1: [(&#39;cp&#39;, 143), (&#39;im&#39;, 77), (&#39;imL&#39;, 142), (&#39;imS&#39;, 2), (&#39;imU&#39;, 35), (&#39;om&#39;, 20), (&#39;omL&#39;, 5), (&#39;pp&#39;, 52)]
 
-<span class="ne">NameError</span>: name &#39;y&#39; is not defined
+Iterasi 2: menggunakan k_neighbors=1
+Hasil iterasi 2: [(&#39;cp&#39;, 143), (&#39;im&#39;, 77), (&#39;imL&#39;, 142), (&#39;imS&#39;, 142), (&#39;imU&#39;, 35), (&#39;om&#39;, 20), (&#39;omL&#39;, 5), (&#39;pp&#39;, 52)]
+
+Iterasi 3: menggunakan k_neighbors=4
+Hasil iterasi 3: [(&#39;cp&#39;, 143), (&#39;im&#39;, 77), (&#39;imL&#39;, 142), (&#39;imS&#39;, 142), (&#39;imU&#39;, 35), (&#39;om&#39;, 20), (&#39;omL&#39;, 143), (&#39;pp&#39;, 52)]
+
+Iterasi 4: menggunakan k_neighbors=19
+Hasil iterasi 4: [(&#39;cp&#39;, 143), (&#39;im&#39;, 77), (&#39;imL&#39;, 142), (&#39;imS&#39;, 142), (&#39;imU&#39;, 35), (&#39;om&#39;, 143), (&#39;omL&#39;, 143), (&#39;pp&#39;, 52)]
+
+Iterasi 5: menggunakan k_neighbors=34
+Hasil iterasi 5: [(&#39;cp&#39;, 143), (&#39;im&#39;, 77), (&#39;imL&#39;, 142), (&#39;imS&#39;, 142), (&#39;imU&#39;, 144), (&#39;om&#39;, 143), (&#39;omL&#39;, 143), (&#39;pp&#39;, 52)]
+
+Iterasi 6: menggunakan k_neighbors=51
+Hasil iterasi 6: [(&#39;cp&#39;, 143), (&#39;im&#39;, 77), (&#39;imL&#39;, 142), (&#39;imS&#39;, 142), (&#39;imU&#39;, 144), (&#39;om&#39;, 143), (&#39;omL&#39;, 143), (&#39;pp&#39;, 143)]
+
+Iterasi 7: menggunakan k_neighbors=76
+Hasil iterasi 7: [(&#39;cp&#39;, 143), (&#39;im&#39;, 150), (&#39;imL&#39;, 142), (&#39;imS&#39;, 142), (&#39;imU&#39;, 144), (&#39;om&#39;, 143), (&#39;omL&#39;, 143), (&#39;pp&#39;, 143)]
+
+Distribusi kelas setelah ADASYN:
+[(&#39;cp&#39;, 143), (&#39;im&#39;, 150), (&#39;imL&#39;, 142), (&#39;imS&#39;, 142), (&#39;imU&#39;, 144), (&#39;om&#39;, 143), (&#39;omL&#39;, 143), (&#39;pp&#39;, 143)]
+
+Total samples sebelum: 336
+Total samples setelah: 1150
+Data yang ditambahkan: 814
+✅ Data ADASYN disimpan ke &#39;data_ecoli_adasyn.csv&#39; - 1150 rows
 </pre></div>
 </div>
 </div>
@@ -725,17 +795,17 @@ Note: you may need to restart the kernel to use updated packages.
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/4b2601fdb940bf3864d9824baf0f4f380df4dae746c642a02b3597d1230bff71.png" src="../_images/4b2601fdb940bf3864d9824baf0f4f380df4dae746c642a02b3597d1230bff71.png" />
+<img alt="../_images/55f13a06f8f229b4d4714aad40b0f89172e1f566c5146a929d7d0d0412c22702.png" src="../_images/55f13a06f8f229b4d4714aad40b0f89172e1f566c5146a929d7d0d0412c22702.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>=== SUMMARY ADASYN ===
 Peningkatan per kelas:
   cp: 0 samples (143 → 143)
-  im: +74 samples (77 → 151)
+  im: +73 samples (77 → 150)
   imL: +140 samples (2 → 142)
   imS: +140 samples (2 → 142)
   imU: +109 samples (35 → 144)
   om: +123 samples (20 → 143)
   omL: +138 samples (5 → 143)
-  pp: +89 samples (52 → 141)
+  pp: +91 samples (52 → 143)
 </pre></div>
 </div>
 </div>
@@ -765,7 +835,7 @@ Peningkatan per kelas:
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/20868e37340e9c17fd1bc18c5df82b51b168b9a48d8fb5d52f6c78a11527caf1.png" src="../_images/20868e37340e9c17fd1bc18c5df82b51b168b9a48d8fb5d52f6c78a11527caf1.png" />
+<img alt="../_images/bd2cc84af3b670518c847c457a57891e1f7d488dc19efebb4ce1fdcf706af47b.png" src="../_images/bd2cc84af3b670518c847c457a57891e1f7d488dc19efebb4ce1fdcf706af47b.png" />
 </div>
 </div>
 </section>
@@ -965,10 +1035,10 @@ Peningkatan per kelas:
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/d1a534023dfa518b554d155a42546030f326b9460ddb33ba600fbc80ae0d527a.png" src="../_images/d1a534023dfa518b554d155a42546030f326b9460ddb33ba600fbc80ae0d527a.png" />
+<img alt="../_images/cbc30b48fd006277fbe518df2edc3b3107d10dd448a59efc8f2df49ae1e5589a.png" src="../_images/cbc30b48fd006277fbe518df2edc3b3107d10dd448a59efc8f2df49ae1e5589a.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>=== PERBANDINGAN KETIGA METODE ===
 Original  - Total: 336
-ADASYN    - Total: 1149, Penambahan: +813
+ADASYN    - Total: 1150, Penambahan: +814
 SMOTE     - Total: 1144, Penambahan: +808
 </pre></div>
 </div>
@@ -1024,9 +1094,9 @@ SMOTE     - Total: 1144, Penambahan: +808
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/d279b61bd92dba59b273564dda9d7c2a44ac39d447274bed8d68e26fd4f1b56f.png" src="../_images/d279b61bd92dba59b273564dda9d7c2a44ac39d447274bed8d68e26fd4f1b56f.png" />
+<img alt="../_images/b1bb3ff15da1ea11019831ca05feddede76574b4e94885c55e04020fe265ac2e.png" src="../_images/b1bb3ff15da1ea11019831ca05feddede76574b4e94885c55e04020fe265ac2e.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Data original: 336
-Data generated: 813
+Data generated: 814
 </pre></div>
 </div>
 </div>
@@ -1150,9 +1220,9 @@ Data generated: 808
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/ef7961da927d83d41f72f8208f8bf86ed96f18dde9ee0da6a8bf295594364266.png" src="../_images/ef7961da927d83d41f72f8208f8bf86ed96f18dde9ee0da6a8bf295594364266.png" />
+<img alt="../_images/31876854d445206d25b2301bc80455e9cfb8e0f5a005c2779c16cffd2d9d126d.png" src="../_images/31876854d445206d25b2301bc80455e9cfb8e0f5a005c2779c16cffd2d9d126d.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>=== PERBANDINGAN ADASYN vs SMOTE ===
-ADASYN - Original: 336, Generated: 813
+ADASYN - Original: 336, Generated: 814
 SMOTE  - Original: 336, Generated: 808
 </pre></div>
 </div>
@@ -1171,16 +1241,16 @@ SMOTE  - Original: 336, Generated: 808
         },
         codeMirrorConfig: {
             theme: "abcdef",
-            mode: "py311"
+            mode: "python"
         },
         kernelOptions: {
-            name: "py311",
+            name: "python3",
             path: "./preprocessing"
         },
         predefinedOutput: true
     }
     </script>
-    <script>kernelName = 'py311'</script>
+    <script>kernelName = 'python3'</script>
 
                 </article>
               
