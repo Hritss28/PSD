@@ -1,4 +1,4 @@
-# Dokumentasi Preprocessing Data dengan KNIME
+# Dokumentasi Preprocessing Data dengan KNIME (Projek Pra UTS)
 
 ## Deskripsi Umum
 Dokumen ini menjelaskan langkah-langkah preprocessing data yang dilakukan menggunakan KNIME Analytics Platform. Workflow ini mencakup proses import data, eksplorasi data, analisis statistik, deteksi outlier, penanganan missing values dengan SMOTE, dan balancing data.
