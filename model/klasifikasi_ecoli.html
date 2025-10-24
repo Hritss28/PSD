@@ -60,7 +60,8 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'model/klasifikasi_ecoli';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="prev" title="Dokumentasi Preprocessing Data dengan KNIME" href="../preprocessing/Ecoli_Preprocessing_KNIME.html" />
+    <link rel="next" title="Business Understanding (Kadar NO₂ di Kabupaten Bangkalan)" href="../NO2_Bangkalan/business_understanding_NO2_BKL.html" />
+    <link rel="prev" title="Dokumentasi Preprocessing Data dengan KNIME (Projek Pra UTS)" href="../preprocessing/Ecoli_Preprocessing_KNIME.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -185,17 +186,21 @@
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Data Understanding</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../data/get-data.html">Get Data</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../data/eksplorasi-data.html"><strong>Eksplorasi Data</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data/eksplorasi-data.html">Eksplorasi Data</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Preprocessing Data</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../preprocessing/data_preprocessing.html"><strong>Preprocessing Data Iris</strong></a></li>
-<li class="toctree-l1"><a class="reference internal" href="../preprocessing/penyeimbangan_ecoli.html"><strong>Penyeimbangan Dataset Ecoli</strong></a></li>
-<li class="toctree-l1"><a class="reference internal" href="../preprocessing/Ecoli_Preprocessing_KNIME.html">Dokumentasi Preprocessing Data dengan KNIME</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../preprocessing/data_preprocessing.html">Preprocessing Data Iris</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../preprocessing/penyeimbangan_ecoli.html">Penyeimbangan Dataset Ecoli</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../preprocessing/Ecoli_Preprocessing_KNIME.html">Dokumentasi Preprocessing Data dengan KNIME (Projek Pra UTS)</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Modelling</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active"><a class="current reference internal" href="#"><strong>Klasifikasi Dan BaggingClassifier Pada Dataset Ecoli</strong></a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Klasifikasi Dan BaggingClassifier Pada Dataset Ecoli</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Prediksi NO2 di Kabupaten Bangkalan</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../NO2_Bangkalan/business_understanding_NO2_BKL.html">Business Understanding (Kadar NO₂ di Kabupaten Bangkalan)</a></li>
 </ul>
 
     </div>
@@ -459,7 +464,7 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="klasifikasi-dan-baggingclassifier-pada-dataset-ecoli">
-<h1><strong>Klasifikasi Dan BaggingClassifier Pada Dataset Ecoli</strong><a class="headerlink" href="#klasifikasi-dan-baggingclassifier-pada-dataset-ecoli" title="Link to this heading">#</a></h1>
+<h1>Klasifikasi Dan BaggingClassifier Pada Dataset Ecoli<a class="headerlink" href="#klasifikasi-dan-baggingclassifier-pada-dataset-ecoli" title="Link to this heading">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">pip</span> install seaborn pandas scikit-learn matplotlib
@@ -1148,9 +1153,7 @@ KLASIFIKASI MENGGUNAKAN RANDOM FOREST
 ============================================================
 
 --- KLASIFIKASI DATA SEBELUM ADASYN ---
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Accuracy data SEBELUM ADASYN: 0.8676
+Accuracy data SEBELUM ADASYN: 0.8676
 
 Classification Report - SEBELUM ADASYN:
               precision    recall  f1-score   support
@@ -1189,9 +1192,7 @@ weighted avg       0.90      0.87      0.87        68
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>--- KLASIFIKASI DATA SETELAH ADASYN ---
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Accuracy data SETELAH ADASYN: 0.9478
+Accuracy data SETELAH ADASYN: 0.9478
 
 Classification Report - SETELAH ADASYN:
               precision    recall  f1-score   support
@@ -1426,9 +1427,7 @@ Data yang ditambahkan: 808
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>--- KLASIFIKASI DATA SEBELUM SMOTE ---
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Accuracy data SEBELUM SMOTE: 0.8676
+Accuracy data SEBELUM SMOTE: 0.8676
 
 Classification Report - SEBELUM SMOTE:
               precision    recall  f1-score   support
@@ -2925,8 +2924,17 @@ Akurasi SMOTE     : 0.9651
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Dokumentasi Preprocessing Data dengan KNIME</p>
+        <p class="prev-next-title">Dokumentasi Preprocessing Data dengan KNIME (Projek Pra UTS)</p>
       </div>
+    </a>
+    <a class="right-next"
+       href="../NO2_Bangkalan/business_understanding_NO2_BKL.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Business Understanding (Kadar NO₂ di Kabupaten Bangkalan)</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
                 </footer>
