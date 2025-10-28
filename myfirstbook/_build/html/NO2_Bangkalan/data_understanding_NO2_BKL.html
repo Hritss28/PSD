@@ -425,26 +425,100 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: openeo in c:\python39\lib\site-packages (0.45.0)
-Requirement already satisfied: requests&gt;=2.26.0 in c:\python39\lib\site-packages (from openeo) (2.32.5)
-Requirement already satisfied: urllib3&gt;=1.9.0 in c:\python39\lib\site-packages (from openeo) (2.5.0)
-Requirement already satisfied: shapely&gt;=1.6.4 in c:\python39\lib\site-packages (from openeo) (2.0.7)
-Requirement already satisfied: numpy&gt;=1.17.0 in c:\python39\lib\site-packages (from openeo) (1.26.4)
-Requirement already satisfied: xarray&lt;2025.01.2,&gt;=0.12.3 in c:\python39\lib\site-packages (from openeo) (2024.7.0)
-Requirement already satisfied: pandas&gt;0.20.0 in c:\python39\lib\site-packages (from openeo) (2.1.4)
-Requirement already satisfied: pystac&gt;=1.5.0 in c:\python39\lib\site-packages (from openeo) (1.10.1)
-Requirement already satisfied: deprecated&gt;=1.2.12 in c:\python39\lib\site-packages (from openeo) (1.2.18)
-Requirement already satisfied: oschmod&gt;=0.3.12 in c:\python39\lib\site-packages (from openeo) (0.3.12)
-Requirement already satisfied: packaging&gt;=23.1 in c:\python39\lib\site-packages (from xarray&lt;2025.01.2,&gt;=0.12.3-&gt;openeo) (25.0)
-Requirement already satisfied: wrapt&lt;2,&gt;=1.10 in c:\python39\lib\site-packages (from deprecated&gt;=1.2.12-&gt;openeo) (1.17.3)
-Requirement already satisfied: pywin32 in c:\python39\lib\site-packages (from oschmod&gt;=0.3.12-&gt;openeo) (311)
-Requirement already satisfied: python-dateutil&gt;=2.8.2 in c:\python39\lib\site-packages (from pandas&gt;0.20.0-&gt;openeo) (2.9.0.post0)
-Requirement already satisfied: pytz&gt;=2020.1 in c:\python39\lib\site-packages (from pandas&gt;0.20.0-&gt;openeo) (2025.2)
-Requirement already satisfied: tzdata&gt;=2022.1 in c:\python39\lib\site-packages (from pandas&gt;0.20.0-&gt;openeo) (2025.2)
-Requirement already satisfied: six&gt;=1.5 in c:\python39\lib\site-packages (from python-dateutil&gt;=2.8.2-&gt;pandas&gt;0.20.0-&gt;openeo) (1.17.0)
-Requirement already satisfied: charset_normalizer&lt;4,&gt;=2 in c:\python39\lib\site-packages (from requests&gt;=2.26.0-&gt;openeo) (3.4.4)
-Requirement already satisfied: idna&lt;4,&gt;=2.5 in c:\python39\lib\site-packages (from requests&gt;=2.26.0-&gt;openeo) (3.11)
-Requirement already satisfied: certifi&gt;=2017.4.17 in c:\python39\lib\site-packages (from requests&gt;=2.26.0-&gt;openeo) (2025.10.5)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Collecting openeo
+  Using cached openeo-0.45.0-py3-none-any.whl.metadata (8.2 kB)
+Requirement already satisfied: requests&gt;=2.26.0 in c:\python311\lib\site-packages (from openeo) (2.32.5)
+Requirement already satisfied: urllib3&gt;=1.9.0 in c:\python311\lib\site-packages (from openeo) (2.5.0)
+Requirement already satisfied: shapely&gt;=1.6.4 in c:\python311\lib\site-packages (from openeo) (2.1.2)
+Requirement already satisfied: numpy&gt;=1.17.0 in c:\python311\lib\site-packages (from openeo) (2.3.4)
+Collecting xarray&lt;2025.01.2,&gt;=0.12.3 (from openeo)
+  Using cached xarray-2025.1.1-py3-none-any.whl.metadata (11 kB)
+Requirement already satisfied: pandas&gt;0.20.0 in c:\python311\lib\site-packages (from openeo) (2.3.3)
+Requirement already satisfied: pystac&gt;=1.5.0 in c:\python311\lib\site-packages (from openeo) (1.14.1)
+Requirement already satisfied: deprecated&gt;=1.2.12 in c:\python311\lib\site-packages (from openeo) (1.2.18)
+Requirement already satisfied: oschmod&gt;=0.3.12 in c:\python311\lib\site-packages (from openeo) (0.3.12)
+Requirement already satisfied: packaging&gt;=23.2 in c:\python311\lib\site-packages (from xarray&lt;2025.01.2,&gt;=0.12.3-&gt;openeo) (25.0)
+Requirement already satisfied: wrapt&lt;2,&gt;=1.10 in c:\python311\lib\site-packages (from deprecated&gt;=1.2.12-&gt;openeo) (1.17.3)
+Requirement already satisfied: pywin32 in c:\python311\lib\site-packages (from oschmod&gt;=0.3.12-&gt;openeo) (311)
+Requirement already satisfied: python-dateutil&gt;=2.8.2 in c:\python311\lib\site-packages (from pandas&gt;0.20.0-&gt;openeo) (2.9.0.post0)
+Requirement already satisfied: pytz&gt;=2020.1 in c:\python311\lib\site-packages (from pandas&gt;0.20.0-&gt;openeo) (2025.2)
+Requirement already satisfied: tzdata&gt;=2022.7 in c:\python311\lib\site-packages (from pandas&gt;0.20.0-&gt;openeo) (2025.2)
+Requirement already satisfied: six&gt;=1.5 in c:\python311\lib\site-packages (from python-dateutil&gt;=2.8.2-&gt;pandas&gt;0.20.0-&gt;openeo) (1.17.0)
+Requirement already satisfied: charset_normalizer&lt;4,&gt;=2 in c:\python311\lib\site-packages (from requests&gt;=2.26.0-&gt;openeo) (3.4.4)
+Requirement already satisfied: idna&lt;4,&gt;=2.5 in c:\python311\lib\site-packages (from requests&gt;=2.26.0-&gt;openeo) (3.11)
+Requirement already satisfied: certifi&gt;=2017.4.17 in c:\python311\lib\site-packages (from requests&gt;=2.26.0-&gt;openeo) (2025.10.5)
+Using cached openeo-0.45.0-py3-none-any.whl (335 kB)
+Using cached xarray-2025.1.1-py3-none-any.whl (1.2 MB)
+Installing collected packages: xarray, openeo
+
+   ---------------------------------------- 0/2 [xarray]
+   ---------------------------------------- 0/2 [xarray]
+   ---------------------------------------- 0/2 [xarray]
+   ---------------------------------------- 0/2 [xarray]
+   ---------------------------------------- 0/2 [xarray]
+   ---------------------------------------- 0/2 [xarray]
+   ---------------------------------------- 0/2 [xarray]
+   ---------------------------------------- 0/2 [xarray]
+   ---------------------------------------- 0/2 [xarray]
+   ---------------------------------------- 0/2 [xarray]
+   ---------------------------------------- 0/2 [xarray]
+   ---------------------------------------- 0/2 [xarray]
+   ---------------------------------------- 0/2 [xarray]
+   ---------------------------------------- 0/2 [xarray]
+   ---------------------------------------- 0/2 [xarray]
+   ---------------------------------------- 0/2 [xarray]
+   ---------------------------------------- 0/2 [xarray]
+   ---------------------------------------- 0/2 [xarray]
+   ---------------------------------------- 0/2 [xarray]
+   ---------------------------------------- 0/2 [xarray]
+   ---------------------------------------- 0/2 [xarray]
+   ---------------------------------------- 0/2 [xarray]
+   ---------------------------------------- 0/2 [xarray]
+   ---------------------------------------- 0/2 [xarray]
+   ---------------------------------------- 0/2 [xarray]
+   ---------------------------------------- 0/2 [xarray]
+   ---------------------------------------- 0/2 [xarray]
+   ---------------------------------------- 0/2 [xarray]
+   ---------------------------------------- 0/2 [xarray]
+   ---------------------------------------- 0/2 [xarray]
+   ---------------------------------------- 0/2 [xarray]
+   ---------------------------------------- 0/2 [xarray]
+   ---------------------------------------- 0/2 [xarray]
+   ---------------------------------------- 0/2 [xarray]
+   ---------------------------------------- 0/2 [xarray]
+   ---------------------------------------- 0/2 [xarray]
+   ---------------------------------------- 0/2 [xarray]
+   ---------------------------------------- 0/2 [xarray]
+   ---------------------------------------- 0/2 [xarray]
+   ---------------------------------------- 0/2 [xarray]
+   ---------------------------------------- 0/2 [xarray]
+   ---------------------------------------- 0/2 [xarray]
+   ---------------------------------------- 0/2 [xarray]
+   ---------------------------------------- 0/2 [xarray]
+   ---------------------------------------- 0/2 [xarray]
+   -------------------- ------------------- 1/2 [openeo]
+   -------------------- ------------------- 1/2 [openeo]
+   -------------------- ------------------- 1/2 [openeo]
+   -------------------- ------------------- 1/2 [openeo]
+   -------------------- ------------------- 1/2 [openeo]
+   -------------------- ------------------- 1/2 [openeo]
+   -------------------- ------------------- 1/2 [openeo]
+   -------------------- ------------------- 1/2 [openeo]
+   -------------------- ------------------- 1/2 [openeo]
+   -------------------- ------------------- 1/2 [openeo]
+   -------------------- ------------------- 1/2 [openeo]
+   -------------------- ------------------- 1/2 [openeo]
+   -------------------- ------------------- 1/2 [openeo]
+   -------------------- ------------------- 1/2 [openeo]
+   -------------------- ------------------- 1/2 [openeo]
+   -------------------- ------------------- 1/2 [openeo]
+   -------------------- ------------------- 1/2 [openeo]
+   -------------------- ------------------- 1/2 [openeo]
+   -------------------- ------------------- 1/2 [openeo]
+   -------------------- ------------------- 1/2 [openeo]
+   ---------------------------------------- 2/2 [openeo]
+
+Successfully installed openeo-0.45.0 xarray-2025.1.1
 </pre></div>
 </div>
 </div>
@@ -556,16 +630,16 @@ Requirement already satisfied: certifi&gt;=2017.4.17 in c:\python39\lib\site-pac
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0:00:00 Job &#39;j-25102402071743f196932bc89108da48&#39;: send &#39;start&#39;
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0:00:00 Job &#39;j-2510281211234f908aae1ba6345a9956&#39;: send &#39;start&#39;
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0:00:14 Job &#39;j-25102402071743f196932bc89108da48&#39;: created (progress 0%)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0:00:14 Job &#39;j-2510281211234f908aae1ba6345a9956&#39;: created (progress 0%)
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0:00:20 Job &#39;j-25102402071743f196932bc89108da48&#39;: created (progress 0%)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0:00:20 Job &#39;j-2510281211234f908aae1ba6345a9956&#39;: created (progress 0%)
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0:00:27 Job &#39;j-25102402071743f196932bc89108da48&#39;: created (progress 0%)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0:00:26 Job &#39;j-2510281211234f908aae1ba6345a9956&#39;: created (progress 0%)
 </pre></div>
 </div>
 </div>
@@ -625,7 +699,7 @@ Requirement already satisfied: certifi&gt;=2017.4.17 in c:\python39\lib\site-pac
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\Harits Putra Junaidi\AppData\Local\Temp\ipykernel_8972\3399061483.py:5: UserWarning: Converting to PeriodArray/Index representation will drop timezone information.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\Harits Putra Junaidi\AppData\Local\Temp\ipykernel_8816\3399061483.py:5: UserWarning: Converting to PeriodArray/Index representation will drop timezone information.
   df[&quot;month&quot;] = df[&quot;date&quot;].dt.to_period(&quot;M&quot;)
 </pre></div>
 </div>
@@ -656,38 +730,38 @@ Requirement already satisfied: certifi&gt;=2017.4.17 in c:\python39\lib\site-pac
   <tbody>
     <tr>
       <th>0</th>
-      <td>2025-02-11 00:00:00+00:00</td>
+      <td>2025-07-09 00:00:00+00:00</td>
       <td>0</td>
-      <td>NaN</td>
-      <td>2025-02</td>
+      <td>0.000055</td>
+      <td>2025-07</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>2025-02-12 00:00:00+00:00</td>
+      <td>2025-07-07 00:00:00+00:00</td>
       <td>0</td>
-      <td>0.000061</td>
-      <td>2025-02</td>
+      <td>0.000047</td>
+      <td>2025-07</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>2025-02-13 00:00:00+00:00</td>
+      <td>2025-07-05 00:00:00+00:00</td>
       <td>0</td>
-      <td>0.000042</td>
-      <td>2025-02</td>
+      <td>0.000026</td>
+      <td>2025-07</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>2025-02-10 00:00:00+00:00</td>
+      <td>2025-07-06 00:00:00+00:00</td>
       <td>0</td>
       <td>NaN</td>
-      <td>2025-02</td>
+      <td>2025-07</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>2025-02-14 00:00:00+00:00</td>
+      <td>2025-07-08 00:00:00+00:00</td>
       <td>0</td>
-      <td>0.000020</td>
-      <td>2025-02</td>
+      <td>0.000017</td>
+      <td>2025-07</td>
     </tr>
     <tr>
       <th>...</th>
@@ -698,38 +772,38 @@ Requirement already satisfied: certifi&gt;=2017.4.17 in c:\python39\lib\site-pac
     </tr>
     <tr>
       <th>269</th>
-      <td>2025-07-25 00:00:00+00:00</td>
+      <td>2025-09-07 00:00:00+00:00</td>
       <td>0</td>
-      <td>0.000020</td>
-      <td>2025-07</td>
+      <td>0.000021</td>
+      <td>2025-09</td>
     </tr>
     <tr>
       <th>270</th>
-      <td>2025-07-22 00:00:00+00:00</td>
+      <td>2025-09-09 00:00:00+00:00</td>
       <td>0</td>
-      <td>0.000020</td>
-      <td>2025-07</td>
+      <td>0.000032</td>
+      <td>2025-09</td>
     </tr>
     <tr>
       <th>271</th>
-      <td>2025-07-24 00:00:00+00:00</td>
+      <td>2025-09-05 00:00:00+00:00</td>
       <td>0</td>
-      <td>0.000021</td>
-      <td>2025-07</td>
+      <td>0.000020</td>
+      <td>2025-09</td>
     </tr>
     <tr>
       <th>272</th>
-      <td>2025-07-20 00:00:00+00:00</td>
+      <td>2025-09-30 00:00:00+00:00</td>
       <td>0</td>
-      <td>0.000029</td>
-      <td>2025-07</td>
+      <td>NaN</td>
+      <td>2025-09</td>
     </tr>
     <tr>
       <th>273</th>
-      <td>2025-07-23 00:00:00+00:00</td>
+      <td>2025-09-29 00:00:00+00:00</td>
       <td>0</td>
-      <td>0.000018</td>
-      <td>2025-07</td>
+      <td>0.000028</td>
+      <td>2025-09</td>
     </tr>
   </tbody>
 </table>
@@ -835,7 +909,7 @@ dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\Harits Putra Junaidi\AppData\Local\Temp\ipykernel_8972\3930139431.py:12: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\Harits Putra Junaidi\AppData\Local\Temp\ipykernel_8816\3930139431.py:12: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
   ax.text(i, v + 0.5, f&quot;{v} ({missing_percent[i]:.1f}%)&quot;,
 </pre></div>
 </div>
@@ -853,7 +927,7 @@ dtype: int64
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
-Index: 274 entries, 134 to 24
+Index: 274 entries, 262 to 272
 Data columns (total 3 columns):
  #   Column         Non-Null Count  Dtype  
 ---  ------         --------------  -----  
@@ -895,7 +969,7 @@ memory usage: 8.6+ KB
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\Harits Putra Junaidi\AppData\Local\Temp\ipykernel_8972\3279999190.py:6: UserWarning: Converting to PeriodArray/Index representation will drop timezone information.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\Harits Putra Junaidi\AppData\Local\Temp\ipykernel_8816\3279999190.py:6: UserWarning: Converting to PeriodArray/Index representation will drop timezone information.
   df[&quot;month&quot;] = df[&quot;date&quot;].dt.to_period(&quot;M&quot;)
 </pre></div>
 </div>
