@@ -57,11 +57,9 @@
     <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'NO2_Bangkalan/data_understanding_NO2_BKL';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'NO2_Bangkalan (multi prediksi)/data_understanding_NO2_BKL';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Preprocessing Data NO2 Kabupaten Bangkalan" href="data_preprocessing_NO2_BKL.html" />
-    <link rel="prev" title="Business Understanding (Kadar NO₂ di Kabupaten Bangkalan)" href="business_understanding_NO2_BKL.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -123,6 +121,8 @@
     <div class="bd-container__inner bd-page-width">
       
       
+      
+        
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -199,11 +199,11 @@
 <li class="toctree-l1"><a class="reference internal" href="../model/klasifikasi_ecoli.html">Klasifikasi Dan BaggingClassifier Pada Dataset Ecoli</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Prediksi NO2 di Kabupaten Bangkalan</span></p>
-<ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="business_understanding_NO2_BKL.html">Business Understanding (Kadar NO₂ di Kabupaten Bangkalan)</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Data Understanding (Pengambilan dan Eksplorasi Data NO<sub>2</sub> Di Kabupaten Bangkalan)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="data_preprocessing_NO2_BKL.html">Preprocessing Data NO<sub>2</sub> Kabupaten Bangkalan</a></li>
-<li class="toctree-l1"><a class="reference internal" href="modelling_NO2_BKL.html">Modelling Data NO<sub>2</sub> Kabupaten Bangkalan</a></li>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../NO2_Bangkalan/business_understanding_NO2_BKL.html">Business Understanding (Kadar NO₂ di Kabupaten Bangkalan)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../NO2_Bangkalan/data_understanding_NO2_BKL.html">Data Understanding (Pengambilan dan Eksplorasi Data NO<sub>2</sub> Di Kabupaten Bangkalan)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../NO2_Bangkalan/data_preprocessing_NO2_BKL.html">Preprocessing Data NO<sub>2</sub> Kabupaten Bangkalan</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../NO2_Bangkalan/modelling_NO2_BKL.html">Modelling Data NO<sub>2</sub> Kabupaten Bangkalan</a></li>
 </ul>
 
     </div>
@@ -275,7 +275,7 @@
       
       
       
-      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2FNO2_Bangkalan/data_understanding_NO2_BKL.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2FNO2_Bangkalan (multi prediksi)/data_understanding_NO2_BKL.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -305,7 +305,7 @@
       
       
       
-      <li><a href="../_sources/NO2_Bangkalan/data_understanding_NO2_BKL.ipynb" target="_blank"
+      <li><a href="../_sources/NO2_Bangkalan (multi prediksi)/data_understanding_NO2_BKL.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -425,21 +425,28 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Collecting openeo
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>^C
+Collecting openeo
   Using cached openeo-0.45.0-py3-none-any.whl.metadata (8.2 kB)
 Requirement already satisfied: requests&gt;=2.26.0 in c:\python311\lib\site-packages (from openeo) (2.32.5)
 Requirement already satisfied: urllib3&gt;=1.9.0 in c:\python311\lib\site-packages (from openeo) (2.5.0)
-Requirement already satisfied: shapely&gt;=1.6.4 in c:\python311\lib\site-packages (from openeo) (2.1.2)
+Collecting shapely&gt;=1.6.4 (from openeo)
+  Using cached shapely-2.1.2-cp311-cp311-win_amd64.whl.metadata (7.1 kB)
 Requirement already satisfied: numpy&gt;=1.17.0 in c:\python311\lib\site-packages (from openeo) (2.3.4)
 Collecting xarray&lt;2025.01.2,&gt;=0.12.3 (from openeo)
   Using cached xarray-2025.1.1-py3-none-any.whl.metadata (11 kB)
 Requirement already satisfied: pandas&gt;0.20.0 in c:\python311\lib\site-packages (from openeo) (2.3.3)
-Requirement already satisfied: pystac&gt;=1.5.0 in c:\python311\lib\site-packages (from openeo) (1.14.1)
-Requirement already satisfied: deprecated&gt;=1.2.12 in c:\python311\lib\site-packages (from openeo) (1.2.18)
-Requirement already satisfied: oschmod&gt;=0.3.12 in c:\python311\lib\site-packages (from openeo) (0.3.12)
+Collecting pystac&gt;=1.5.0 (from openeo)
+  Using cached pystac-1.14.1-py3-none-any.whl.metadata (4.7 kB)
+Collecting deprecated&gt;=1.2.12 (from openeo)
+  Using cached Deprecated-1.2.18-py2.py3-none-any.whl.metadata (5.7 kB)
+Collecting oschmod&gt;=0.3.12 (from openeo)
+  Using cached oschmod-0.3.12-py2.py3-none-any.whl.metadata (10.0 kB)
 Requirement already satisfied: packaging&gt;=23.2 in c:\python311\lib\site-packages (from xarray&lt;2025.01.2,&gt;=0.12.3-&gt;openeo) (25.0)
-Requirement already satisfied: wrapt&lt;2,&gt;=1.10 in c:\python311\lib\site-packages (from deprecated&gt;=1.2.12-&gt;openeo) (1.17.3)
-Requirement already satisfied: pywin32 in c:\python311\lib\site-packages (from oschmod&gt;=0.3.12-&gt;openeo) (311)
+Collecting wrapt&lt;2,&gt;=1.10 (from deprecated&gt;=1.2.12-&gt;openeo)
+  Using cached wrapt-1.17.3-cp311-cp311-win_amd64.whl.metadata (6.5 kB)
+Collecting pywin32 (from oschmod&gt;=0.3.12-&gt;openeo)
+  Using cached pywin32-311-cp311-cp311-win_amd64.whl.metadata (10 kB)
 Requirement already satisfied: python-dateutil&gt;=2.8.2 in c:\python311\lib\site-packages (from pandas&gt;0.20.0-&gt;openeo) (2.9.0.post0)
 Requirement already satisfied: pytz&gt;=2020.1 in c:\python311\lib\site-packages (from pandas&gt;0.20.0-&gt;openeo) (2025.2)
 Requirement already satisfied: tzdata&gt;=2022.7 in c:\python311\lib\site-packages (from pandas&gt;0.20.0-&gt;openeo) (2025.2)
@@ -449,76 +456,146 @@ Requirement already satisfied: idna&lt;4,&gt;=2.5 in c:\python311\lib\site-packa
 Requirement already satisfied: certifi&gt;=2017.4.17 in c:\python311\lib\site-packages (from requests&gt;=2.26.0-&gt;openeo) (2025.10.5)
 Using cached openeo-0.45.0-py3-none-any.whl (335 kB)
 Using cached xarray-2025.1.1-py3-none-any.whl (1.2 MB)
-Installing collected packages: xarray, openeo
+Using cached Deprecated-1.2.18-py2.py3-none-any.whl (10.0 kB)
+Using cached wrapt-1.17.3-cp311-cp311-win_amd64.whl (38 kB)
+Using cached oschmod-0.3.12-py2.py3-none-any.whl (14 kB)
+Using cached pystac-1.14.1-py3-none-any.whl (207 kB)
+Using cached shapely-2.1.2-cp311-cp311-win_amd64.whl (1.7 MB)
+Using cached pywin32-311-cp311-cp311-win_amd64.whl (9.5 MB)
+Installing collected packages: pywin32, wrapt, shapely, oschmod, pystac, deprecated, xarray, openeo
 
-   ---------------------------------------- 0/2 [xarray]
-   ---------------------------------------- 0/2 [xarray]
-   ---------------------------------------- 0/2 [xarray]
-   ---------------------------------------- 0/2 [xarray]
-   ---------------------------------------- 0/2 [xarray]
-   ---------------------------------------- 0/2 [xarray]
-   ---------------------------------------- 0/2 [xarray]
-   ---------------------------------------- 0/2 [xarray]
-   ---------------------------------------- 0/2 [xarray]
-   ---------------------------------------- 0/2 [xarray]
-   ---------------------------------------- 0/2 [xarray]
-   ---------------------------------------- 0/2 [xarray]
-   ---------------------------------------- 0/2 [xarray]
-   ---------------------------------------- 0/2 [xarray]
-   ---------------------------------------- 0/2 [xarray]
-   ---------------------------------------- 0/2 [xarray]
-   ---------------------------------------- 0/2 [xarray]
-   ---------------------------------------- 0/2 [xarray]
-   ---------------------------------------- 0/2 [xarray]
-   ---------------------------------------- 0/2 [xarray]
-   ---------------------------------------- 0/2 [xarray]
-   ---------------------------------------- 0/2 [xarray]
-   ---------------------------------------- 0/2 [xarray]
-   ---------------------------------------- 0/2 [xarray]
-   ---------------------------------------- 0/2 [xarray]
-   ---------------------------------------- 0/2 [xarray]
-   ---------------------------------------- 0/2 [xarray]
-   ---------------------------------------- 0/2 [xarray]
-   ---------------------------------------- 0/2 [xarray]
-   ---------------------------------------- 0/2 [xarray]
-   ---------------------------------------- 0/2 [xarray]
-   ---------------------------------------- 0/2 [xarray]
-   ---------------------------------------- 0/2 [xarray]
-   ---------------------------------------- 0/2 [xarray]
-   ---------------------------------------- 0/2 [xarray]
-   ---------------------------------------- 0/2 [xarray]
-   ---------------------------------------- 0/2 [xarray]
-   ---------------------------------------- 0/2 [xarray]
-   ---------------------------------------- 0/2 [xarray]
-   ---------------------------------------- 0/2 [xarray]
-   ---------------------------------------- 0/2 [xarray]
-   ---------------------------------------- 0/2 [xarray]
-   ---------------------------------------- 0/2 [xarray]
-   ---------------------------------------- 0/2 [xarray]
-   ---------------------------------------- 0/2 [xarray]
-   -------------------- ------------------- 1/2 [openeo]
-   -------------------- ------------------- 1/2 [openeo]
-   -------------------- ------------------- 1/2 [openeo]
-   -------------------- ------------------- 1/2 [openeo]
-   -------------------- ------------------- 1/2 [openeo]
-   -------------------- ------------------- 1/2 [openeo]
-   -------------------- ------------------- 1/2 [openeo]
-   -------------------- ------------------- 1/2 [openeo]
-   -------------------- ------------------- 1/2 [openeo]
-   -------------------- ------------------- 1/2 [openeo]
-   -------------------- ------------------- 1/2 [openeo]
-   -------------------- ------------------- 1/2 [openeo]
-   -------------------- ------------------- 1/2 [openeo]
-   -------------------- ------------------- 1/2 [openeo]
-   -------------------- ------------------- 1/2 [openeo]
-   -------------------- ------------------- 1/2 [openeo]
-   -------------------- ------------------- 1/2 [openeo]
-   -------------------- ------------------- 1/2 [openeo]
-   -------------------- ------------------- 1/2 [openeo]
-   -------------------- ------------------- 1/2 [openeo]
-   ---------------------------------------- 2/2 [openeo]
-
-Successfully installed openeo-0.45.0 xarray-2025.1.1
+   ---------------------------------------- 0/8 [pywin32]
+   ---------------------------------------- 0/8 [pywin32]
+   ---------------------------------------- 0/8 [pywin32]
+   ---------------------------------------- 0/8 [pywin32]
+   ---------------------------------------- 0/8 [pywin32]
+   ---------------------------------------- 0/8 [pywin32]
+   ---------------------------------------- 0/8 [pywin32]
+   ---------------------------------------- 0/8 [pywin32]
+   ---------------------------------------- 0/8 [pywin32]
+   ---------------------------------------- 0/8 [pywin32]
+   ---------------------------------------- 0/8 [pywin32]
+   ---------------------------------------- 0/8 [pywin32]
+   ---------------------------------------- 0/8 [pywin32]
+   ---------------------------------------- 0/8 [pywin32]
+   ---------------------------------------- 0/8 [pywin32]
+   ---------------------------------------- 0/8 [pywin32]
+   ---------------------------------------- 0/8 [pywin32]
+   ---------------------------------------- 0/8 [pywin32]
+   ---------------------------------------- 0/8 [pywin32]
+   ---------------------------------------- 0/8 [pywin32]
+   ---------------------------------------- 0/8 [pywin32]
+   ---------------------------------------- 0/8 [pywin32]
+   ---------------------------------------- 0/8 [pywin32]
+   ---------------------------------------- 0/8 [pywin32]
+   ---------------------------------------- 0/8 [pywin32]
+   ---------------------------------------- 0/8 [pywin32]
+   ---------------------------------------- 0/8 [pywin32]
+   ---------------------------------------- 0/8 [pywin32]
+   ---------------------------------------- 0/8 [pywin32]
+   ---------------------------------------- 0/8 [pywin32]
+   ---------------------------------------- 0/8 [pywin32]
+   ---------------------------------------- 0/8 [pywin32]
+   ---------------------------------------- 0/8 [pywin32]
+   ---------------------------------------- 0/8 [pywin32]
+   ---------------------------------------- 0/8 [pywin32]
+   ---------------------------------------- 0/8 [pywin32]
+   ---------------------------------------- 0/8 [pywin32]
+   ---------------------------------------- 0/8 [pywin32]
+   ---------------------------------------- 0/8 [pywin32]
+   ---------------------------------------- 0/8 [pywin32]
+   ---------------------------------------- 0/8 [pywin32]
+   ---------------------------------------- 0/8 [pywin32]
+   ---------------------------------------- 0/8 [pywin32]
+   ---------------------------------------- 0/8 [pywin32]
+   ---------------------------------------- 0/8 [pywin32]
+   ---------------------------------------- 0/8 [pywin32]
+   ---------------------------------------- 0/8 [pywin32]
+   ---------------------------------------- 0/8 [pywin32]
+   ---------------------------------------- 0/8 [pywin32]
+   ---------------------------------------- 0/8 [pywin32]
+   ---------------------------------------- 0/8 [pywin32]
+   ---------------------------------------- 0/8 [pywin32]
+   ---------------------------------------- 0/8 [pywin32]
+   ---------------------------------------- 0/8 [pywin32]
+   ---------------------------------------- 0/8 [pywin32]
+   ---------------------------------------- 0/8 [pywin32]
+   ---------------------------------------- 0/8 [pywin32]
+   ---------------------------------------- 0/8 [pywin32]
+   ---------------------------------------- 0/8 [pywin32]
+   ---------------------------------------- 0/8 [pywin32]
+   ---------------------------------------- 0/8 [pywin32]
+   ---------------------------------------- 0/8 [pywin32]
+   ---------------------------------------- 0/8 [pywin32]
+   ---------------------------------------- 0/8 [pywin32]
+   ---------------------------------------- 0/8 [pywin32]
+   ---------------------------------------- 0/8 [pywin32]
+   ---------------------------------------- 0/8 [pywin32]
+   ---------------------------------------- 0/8 [pywin32]
+   ---------------------------------------- 0/8 [pywin32]
+   ---------------------------------------- 0/8 [pywin32]
+   ---------------------------------------- 0/8 [pywin32]
+   ---------------------------------------- 0/8 [pywin32]
+   ---------------------------------------- 0/8 [pywin32]
+   ---------------------------------------- 0/8 [pywin32]
+   ---------------------------------------- 0/8 [pywin32]
+   ---------------------------------------- 0/8 [pywin32]
+   ---------------------------------------- 0/8 [pywin32]
+   ---------------------------------------- 0/8 [pywin32]
+   ---------------------------------------- 0/8 [pywin32]
+   ---------------------------------------- 0/8 [pywin32]
+   ---------------------------------------- 0/8 [pywin32]
+   ---------------------------------------- 0/8 [pywin32]
+   ---------------------------------------- 0/8 [pywin32]
+   ---------------------------------------- 0/8 [pywin32]
+   ---------------------------------------- 0/8 [pywin32]
+   ---------------------------------------- 0/8 [pywin32]
+   ---------------------------------------- 0/8 [pywin32]
+   ---------------------------------------- 0/8 [pywin32]
+   ---------------------------------------- 0/8 [pywin32]
+   ---------------------------------------- 0/8 [pywin32]
+   ----- ---------------------------------- 1/8 [wrapt]
+   ---------- ----------------------------- 2/8 [shapely]
+   ---------- ----------------------------- 2/8 [shapely]
+   ---------- ----------------------------- 2/8 [shapely]
+   ---------- ----------------------------- 2/8 [shapely]
+   ---------- ----------------------------- 2/8 [shapely]
+   ---------- ----------------------------- 2/8 [shapely]
+   ---------- ----------------------------- 2/8 [shapely]
+   ---------- ----------------------------- 2/8 [shapely]
+   ---------- ----------------------------- 2/8 [shapely]
+   ---------- ----------------------------- 2/8 [shapely]
+   ---------- ----------------------------- 2/8 [shapely]
+   ---------- ----------------------------- 2/8 [shapely]
+   ---------- ----------------------------- 2/8 [shapely]
+   ---------- ----------------------------- 2/8 [shapely]
+   ---------- ----------------------------- 2/8 [shapely]
+   ---------- ----------------------------- 2/8 [shapely]
+   ---------- ----------------------------- 2/8 [shapely]
+   ---------- ----------------------------- 2/8 [shapely]
+   ---------- ----------------------------- 2/8 [shapely]
+   ---------- ----------------------------- 2/8 [shapely]
+   ---------- ----------------------------- 2/8 [shapely]
+   ---------- ----------------------------- 2/8 [shapely]
+   ---------- ----------------------------- 2/8 [shapely]
+   ---------- ----------------------------- 2/8 [shapely]
+   --------------- ------------------------ 3/8 [oschmod]
+   --------------- ------------------------ 3/8 [oschmod]
+   --------------- ------------------------ 3/8 [oschmod]
+   --------------- ------------------------ 3/8 [oschmod]
+   -------------------- ------------------- 4/8 [pystac]
+   -------------------- ------------------- 4/8 [pystac]
+   -------------------- ------------------- 4/8 [pystac]
+   -------------------- ------------------- 4/8 [pystac]
+   -------------------- ------------------- 4/8 [pystac]
+   -------------------- ------------------- 4/8 [pystac]
+   -------------------- ------------------- 4/8 [pystac]
+   -------------------- ------------------- 4/8 [pystac]
+   -------------------- ------------------- 4/8 [pystac]
+   -------------------- ------------------- 4/8 [pystac]
+   -------------------- ------------------- 4/8 [pystac]
+   -------------------- ------------------- 4/8 [pystac]
+   -------------------- ------------------- 4/8 [pystac]
 </pre></div>
 </div>
 </div>
@@ -630,16 +707,24 @@ Successfully installed openeo-0.45.0 xarray-2025.1.1
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0:00:00 Job &#39;j-2510281211234f908aae1ba6345a9956&#39;: send &#39;start&#39;
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0:00:00 Job &#39;j-25102711235345958c68eeb70e680cbc&#39;: send &#39;start&#39;
+0:00:13 Job &#39;j-25102711235345958c68eeb70e680cbc&#39;: created (progress 0%)
+0:00:19 Job &#39;j-25102711235345958c68eeb70e680cbc&#39;: queued (progress 0%)
+0:00:25 Job &#39;j-25102711235345958c68eeb70e680cbc&#39;: queued (progress 0%)
+0:00:34 Job &#39;j-25102711235345958c68eeb70e680cbc&#39;: queued (progress 0%)
+0:00:44 Job &#39;j-25102711235345958c68eeb70e680cbc&#39;: queued (progress 0%)
+0:00:56 Job &#39;j-25102711235345958c68eeb70e680cbc&#39;: queued (progress 0%)
+0:01:12 Job &#39;j-25102711235345958c68eeb70e680cbc&#39;: queued (progress 0%)
+0:01:31 Job &#39;j-25102711235345958c68eeb70e680cbc&#39;: queued (progress 0%)
+0:01:55 Job &#39;j-25102711235345958c68eeb70e680cbc&#39;: running (progress N/A)
+0:02:25 Job &#39;j-25102711235345958c68eeb70e680cbc&#39;: running (progress N/A)
+0:03:03 Job &#39;j-25102711235345958c68eeb70e680cbc&#39;: running (progress N/A)
+0:03:50 Job &#39;j-25102711235345958c68eeb70e680cbc&#39;: running (progress N/A)
+0:04:49 Job &#39;j-25102711235345958c68eeb70e680cbc&#39;: finished (progress 100%)
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0:00:14 Job &#39;j-2510281211234f908aae1ba6345a9956&#39;: created (progress 0%)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0:00:20 Job &#39;j-2510281211234f908aae1ba6345a9956&#39;: created (progress 0%)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0:00:26 Job &#39;j-2510281211234f908aae1ba6345a9956&#39;: created (progress 0%)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[WindowsPath(&#39;no2_results/timeseries.csv&#39;),
+ WindowsPath(&#39;no2_results/job-results.json&#39;)]
 </pre></div>
 </div>
 </div>
@@ -699,7 +784,7 @@ Successfully installed openeo-0.45.0 xarray-2025.1.1
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\Harits Putra Junaidi\AppData\Local\Temp\ipykernel_8816\3399061483.py:5: UserWarning: Converting to PeriodArray/Index representation will drop timezone information.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\Harits Putra Junaidi\AppData\Local\Temp\ipykernel_4676\3399061483.py:5: UserWarning: Converting to PeriodArray/Index representation will drop timezone information.
   df[&quot;month&quot;] = df[&quot;date&quot;].dt.to_period(&quot;M&quot;)
 </pre></div>
 </div>
@@ -730,38 +815,38 @@ Successfully installed openeo-0.45.0 xarray-2025.1.1
   <tbody>
     <tr>
       <th>0</th>
-      <td>2025-07-09 00:00:00+00:00</td>
+      <td>2025-02-26 00:00:00+00:00</td>
       <td>0</td>
-      <td>0.000055</td>
-      <td>2025-07</td>
+      <td>NaN</td>
+      <td>2025-02</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>2025-07-07 00:00:00+00:00</td>
+      <td>2025-03-02 00:00:00+00:00</td>
       <td>0</td>
-      <td>0.000047</td>
-      <td>2025-07</td>
+      <td>0.000029</td>
+      <td>2025-03</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>2025-07-05 00:00:00+00:00</td>
+      <td>2025-03-04 00:00:00+00:00</td>
       <td>0</td>
-      <td>0.000026</td>
-      <td>2025-07</td>
+      <td>0.000033</td>
+      <td>2025-03</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>2025-07-06 00:00:00+00:00</td>
+      <td>2025-02-25 00:00:00+00:00</td>
       <td>0</td>
-      <td>NaN</td>
-      <td>2025-07</td>
+      <td>0.000027</td>
+      <td>2025-02</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>2025-07-08 00:00:00+00:00</td>
+      <td>2025-03-03 00:00:00+00:00</td>
       <td>0</td>
-      <td>0.000017</td>
-      <td>2025-07</td>
+      <td>0.000026</td>
+      <td>2025-03</td>
     </tr>
     <tr>
       <th>...</th>
@@ -772,37 +857,37 @@ Successfully installed openeo-0.45.0 xarray-2025.1.1
     </tr>
     <tr>
       <th>269</th>
-      <td>2025-09-07 00:00:00+00:00</td>
+      <td>2025-09-15 00:00:00+00:00</td>
       <td>0</td>
-      <td>0.000021</td>
+      <td>0.000022</td>
       <td>2025-09</td>
     </tr>
     <tr>
       <th>270</th>
-      <td>2025-09-09 00:00:00+00:00</td>
+      <td>2025-09-14 00:00:00+00:00</td>
       <td>0</td>
-      <td>0.000032</td>
+      <td>0.000017</td>
       <td>2025-09</td>
     </tr>
     <tr>
       <th>271</th>
-      <td>2025-09-05 00:00:00+00:00</td>
+      <td>2025-09-19 00:00:00+00:00</td>
       <td>0</td>
-      <td>0.000020</td>
+      <td>0.000011</td>
       <td>2025-09</td>
     </tr>
     <tr>
       <th>272</th>
-      <td>2025-09-30 00:00:00+00:00</td>
+      <td>2025-09-13 00:00:00+00:00</td>
       <td>0</td>
-      <td>NaN</td>
+      <td>0.000026</td>
       <td>2025-09</td>
     </tr>
     <tr>
       <th>273</th>
-      <td>2025-09-29 00:00:00+00:00</td>
+      <td>2025-09-17 00:00:00+00:00</td>
       <td>0</td>
-      <td>0.000028</td>
+      <td>NaN</td>
       <td>2025-09</td>
     </tr>
   </tbody>
@@ -909,7 +994,7 @@ dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\Harits Putra Junaidi\AppData\Local\Temp\ipykernel_8816\3930139431.py:12: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\Harits Putra Junaidi\AppData\Local\Temp\ipykernel_4676\3930139431.py:12: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
   ax.text(i, v + 0.5, f&quot;{v} ({missing_percent[i]:.1f}%)&quot;,
 </pre></div>
 </div>
@@ -927,7 +1012,7 @@ dtype: int64
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
-Index: 274 entries, 262 to 272
+Index: 274 entries, 200 to 192
 Data columns (total 3 columns):
  #   Column         Non-Null Count  Dtype  
 ---  ------         --------------  -----  
@@ -969,7 +1054,7 @@ memory usage: 8.6+ KB
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\Harits Putra Junaidi\AppData\Local\Temp\ipykernel_8816\3279999190.py:6: UserWarning: Converting to PeriodArray/Index representation will drop timezone information.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\Harits Putra Junaidi\AppData\Local\Temp\ipykernel_4676\3279999190.py:6: UserWarning: Converting to PeriodArray/Index representation will drop timezone information.
   df[&quot;month&quot;] = df[&quot;date&quot;].dt.to_period(&quot;M&quot;)
 </pre></div>
 </div>
@@ -992,7 +1077,7 @@ memory usage: 8.6+ KB
         },
         kernelOptions: {
             name: "python3",
-            path: "./NO2_Bangkalan"
+            path: "./NO2_Bangkalan (multi prediksi)"
         },
         predefinedOutput: true
     }
@@ -1009,24 +1094,6 @@ memory usage: 8.6+ KB
                 <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
-    <a class="left-prev"
-       href="business_understanding_NO2_BKL.html"
-       title="previous page">
-      <i class="fa-solid fa-angle-left"></i>
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Business Understanding (Kadar NO₂ di Kabupaten Bangkalan)</p>
-      </div>
-    </a>
-    <a class="right-next"
-       href="data_preprocessing_NO2_BKL.html"
-       title="next page">
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Preprocessing Data NO<sub>2</sub> Kabupaten Bangkalan</p>
-      </div>
-      <i class="fa-solid fa-angle-right"></i>
-    </a>
 </div>
                 </footer>
               

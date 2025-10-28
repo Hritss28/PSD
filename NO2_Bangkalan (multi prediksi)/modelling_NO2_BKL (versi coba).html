@@ -57,10 +57,9 @@
     <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'NO2_Bangkalan/modelling_NO2_BKL';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'NO2_Bangkalan (multi prediksi)/modelling_NO2_BKL (versi coba)';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="prev" title="Preprocessing Data NO2 Kabupaten Bangkalan" href="data_preprocessing_NO2_BKL.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -122,6 +121,8 @@
     <div class="bd-container__inner bd-page-width">
       
       
+      
+        
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -198,11 +199,11 @@
 <li class="toctree-l1"><a class="reference internal" href="../model/klasifikasi_ecoli.html">Klasifikasi Dan BaggingClassifier Pada Dataset Ecoli</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Prediksi NO2 di Kabupaten Bangkalan</span></p>
-<ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="business_understanding_NO2_BKL.html">Business Understanding (Kadar NO₂ di Kabupaten Bangkalan)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="data_understanding_NO2_BKL.html">Data Understanding (Pengambilan dan Eksplorasi Data NO<sub>2</sub> Di Kabupaten Bangkalan)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="data_preprocessing_NO2_BKL.html">Preprocessing Data NO<sub>2</sub> Kabupaten Bangkalan</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Modelling Data NO<sub>2</sub> Kabupaten Bangkalan</a></li>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../NO2_Bangkalan/business_understanding_NO2_BKL.html">Business Understanding (Kadar NO₂ di Kabupaten Bangkalan)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../NO2_Bangkalan/data_understanding_NO2_BKL.html">Data Understanding (Pengambilan dan Eksplorasi Data NO<sub>2</sub> Di Kabupaten Bangkalan)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../NO2_Bangkalan/data_preprocessing_NO2_BKL.html">Preprocessing Data NO<sub>2</sub> Kabupaten Bangkalan</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../NO2_Bangkalan/modelling_NO2_BKL.html">Modelling Data NO<sub>2</sub> Kabupaten Bangkalan</a></li>
 </ul>
 
     </div>
@@ -274,7 +275,7 @@
       
       
       
-      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2FNO2_Bangkalan/modelling_NO2_BKL.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2FNO2_Bangkalan (multi prediksi)/modelling_NO2_BKL (versi coba).html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -304,7 +305,7 @@
       
       
       
-      <li><a href="../_sources/NO2_Bangkalan/modelling_NO2_BKL.ipynb" target="_blank"
+      <li><a href="../_sources/NO2_Bangkalan (multi prediksi)/modelling_NO2_BKL (versi coba).ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -454,10 +455,16 @@ document.write(`
 <h2><strong>Modelling</strong><a class="headerlink" href="#modelling" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X</span> <span class="o">=</span> <span class="n">day1</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;NO2&#39;</span><span class="p">])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">day1</span><span class="p">[</span><span class="s1">&#39;delta_1&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">day1</span><span class="p">[</span><span class="s1">&#39;NO2&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">day1</span><span class="p">[</span><span class="s1">&#39;t-1&#39;</span><span class="p">]</span>
+
+<span class="n">X</span> <span class="o">=</span> <span class="n">day1</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;NO2&#39;</span><span class="p">])</span>
 <span class="n">y</span> <span class="o">=</span> <span class="n">day1</span><span class="p">[</span><span class="s1">&#39;NO2&#39;</span><span class="p">]</span>
 
-<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+<span class="n">split_idx</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">day1</span><span class="p">)</span> <span class="o">*</span> <span class="mf">0.8</span><span class="p">)</span>
+<span class="n">X_train</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="n">split_idx</span><span class="p">]</span>
+<span class="n">X_test</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">split_idx</span><span class="p">:]</span>
+<span class="n">y_train</span> <span class="o">=</span> <span class="n">y</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="n">split_idx</span><span class="p">]</span>
+<span class="n">y_test</span> <span class="o">=</span> <span class="n">y</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">split_idx</span><span class="p">:]</span>
 
 <span class="n">scaler</span> <span class="o">=</span> <span class="n">StandardScaler</span><span class="p">()</span>
 <span class="n">X_train_scaled</span> <span class="o">=</span> <span class="n">scaler</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>
@@ -482,10 +489,10 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>MSE: 1.1385699832131643e-10
-MAE: 7.575028989570378e-06
-R2: 0.30524335514711565
-MAPE: 25.30%
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>MSE: 8.305216754269345e-12
+MAE: 1.6019464720342111e-06
+R2: 0.9113936075750347
+MAPE: 7.99%
 </pre></div>
 </div>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;saved_models/scaler_day1.pkl&#39;]
@@ -495,10 +502,17 @@ MAPE: 25.30%
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X</span> <span class="o">=</span> <span class="n">day2</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;NO2&#39;</span><span class="p">])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">day2</span><span class="p">[</span><span class="s1">&#39;delta_1&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">day2</span><span class="p">[</span><span class="s1">&#39;NO2&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">day2</span><span class="p">[</span><span class="s1">&#39;t-1&#39;</span><span class="p">]</span>
+<span class="n">day2</span><span class="p">[</span><span class="s1">&#39;delta_2&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">day2</span><span class="p">[</span><span class="s1">&#39;t-1&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">day2</span><span class="p">[</span><span class="s1">&#39;t-2&#39;</span><span class="p">]</span>
+
+<span class="n">X</span> <span class="o">=</span> <span class="n">day2</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;NO2&#39;</span><span class="p">])</span>
 <span class="n">y</span> <span class="o">=</span> <span class="n">day2</span><span class="p">[</span><span class="s1">&#39;NO2&#39;</span><span class="p">]</span>
 
-<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+<span class="n">split_idx</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">day2</span><span class="p">)</span> <span class="o">*</span> <span class="mf">0.8</span><span class="p">)</span>
+<span class="n">X_train</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="n">split_idx</span><span class="p">]</span>
+<span class="n">X_test</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">split_idx</span><span class="p">:]</span>
+<span class="n">y_train</span> <span class="o">=</span> <span class="n">y</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="n">split_idx</span><span class="p">]</span>
+<span class="n">y_test</span> <span class="o">=</span> <span class="n">y</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">split_idx</span><span class="p">:]</span>
 
 <span class="n">scaler</span> <span class="o">=</span> <span class="n">StandardScaler</span><span class="p">()</span>
 <span class="n">X_train_scaled</span> <span class="o">=</span> <span class="n">scaler</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>
@@ -523,10 +537,10 @@ MAPE: 25.30%
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>MSE: 7.894403356636817e-11
-MAE: 6.203386946105781e-06
-R2: 0.4030538342438983
-MAPE: 20.37%
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>MSE: 1.8001004089894377e-11
+MAE: 2.9137111954632286e-06
+R2: 0.8079515466453462
+MAPE: 12.73%
 </pre></div>
 </div>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;saved_models/scaler_day2.pkl&#39;]
@@ -536,10 +550,18 @@ MAPE: 20.37%
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X</span> <span class="o">=</span> <span class="n">day3</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;NO2&#39;</span><span class="p">])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">day3</span><span class="p">[</span><span class="s1">&#39;delta_1&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">day3</span><span class="p">[</span><span class="s1">&#39;NO2&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">day3</span><span class="p">[</span><span class="s1">&#39;t-1&#39;</span><span class="p">]</span>
+<span class="n">day3</span><span class="p">[</span><span class="s1">&#39;delta_2&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">day3</span><span class="p">[</span><span class="s1">&#39;t-1&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">day3</span><span class="p">[</span><span class="s1">&#39;t-2&#39;</span><span class="p">]</span>
+<span class="n">day3</span><span class="p">[</span><span class="s1">&#39;delta_3&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">day3</span><span class="p">[</span><span class="s1">&#39;t-2&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">day3</span><span class="p">[</span><span class="s1">&#39;t-3&#39;</span><span class="p">]</span>
+
+<span class="n">X</span> <span class="o">=</span> <span class="n">day3</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;NO2&#39;</span><span class="p">])</span>
 <span class="n">y</span> <span class="o">=</span> <span class="n">day3</span><span class="p">[</span><span class="s1">&#39;NO2&#39;</span><span class="p">]</span>
 
-<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+<span class="n">split_idx</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">day3</span><span class="p">)</span> <span class="o">*</span> <span class="mf">0.8</span><span class="p">)</span>
+<span class="n">X_train</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="n">split_idx</span><span class="p">]</span>
+<span class="n">X_test</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">split_idx</span><span class="p">:]</span>
+<span class="n">y_train</span> <span class="o">=</span> <span class="n">y</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="n">split_idx</span><span class="p">]</span>
+<span class="n">y_test</span> <span class="o">=</span> <span class="n">y</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">split_idx</span><span class="p">:]</span>
 
 <span class="n">scaler</span> <span class="o">=</span> <span class="n">StandardScaler</span><span class="p">()</span>
 <span class="n">X_train_scaled</span> <span class="o">=</span> <span class="n">scaler</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>
@@ -564,10 +586,10 @@ MAPE: 20.37%
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>MSE: 5.7890085672610804e-11
-MAE: 6.004969324728146e-06
-R2: 0.40266377348843274
-MAPE: 24.32%
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>MSE: 2.677203693256011e-11
+MAE: 3.6979187101900578e-06
+R2: 0.714375472591651
+MAPE: 15.82%
 </pre></div>
 </div>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;saved_models/scaler_day3.pkl&#39;]
@@ -577,10 +599,19 @@ MAPE: 24.32%
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X</span> <span class="o">=</span> <span class="n">day4</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;NO2&#39;</span><span class="p">])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">day4</span><span class="p">[</span><span class="s1">&#39;delta_1&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">day4</span><span class="p">[</span><span class="s1">&#39;NO2&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">day4</span><span class="p">[</span><span class="s1">&#39;t-1&#39;</span><span class="p">]</span>
+<span class="n">day4</span><span class="p">[</span><span class="s1">&#39;delta_2&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">day4</span><span class="p">[</span><span class="s1">&#39;t-1&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">day4</span><span class="p">[</span><span class="s1">&#39;t-2&#39;</span><span class="p">]</span>
+<span class="n">day4</span><span class="p">[</span><span class="s1">&#39;delta_3&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">day4</span><span class="p">[</span><span class="s1">&#39;t-2&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">day4</span><span class="p">[</span><span class="s1">&#39;t-3&#39;</span><span class="p">]</span>
+<span class="n">day4</span><span class="p">[</span><span class="s1">&#39;delta_4&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">day4</span><span class="p">[</span><span class="s1">&#39;t-3&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">day4</span><span class="p">[</span><span class="s1">&#39;t-4&#39;</span><span class="p">]</span>
+
+<span class="n">X</span> <span class="o">=</span> <span class="n">day4</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;NO2&#39;</span><span class="p">])</span>
 <span class="n">y</span> <span class="o">=</span> <span class="n">day4</span><span class="p">[</span><span class="s1">&#39;NO2&#39;</span><span class="p">]</span>
 
-<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+<span class="n">split_idx</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">day4</span><span class="p">)</span> <span class="o">*</span> <span class="mf">0.8</span><span class="p">)</span>
+<span class="n">X_train</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="n">split_idx</span><span class="p">]</span>
+<span class="n">X_test</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">split_idx</span><span class="p">:]</span>
+<span class="n">y_train</span> <span class="o">=</span> <span class="n">y</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="n">split_idx</span><span class="p">]</span>
+<span class="n">y_test</span> <span class="o">=</span> <span class="n">y</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">split_idx</span><span class="p">:]</span>
 
 <span class="n">scaler</span> <span class="o">=</span> <span class="n">StandardScaler</span><span class="p">()</span>
 <span class="n">X_train_scaled</span> <span class="o">=</span> <span class="n">scaler</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>
@@ -605,10 +636,10 @@ MAPE: 24.32%
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>MSE: 6.656744982628955e-11
-MAE: 6.172037109363925e-06
-R2: 0.3731941162431256
-MAPE: 23.87%
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>MSE: 3.4826261930624095e-11
+MAE: 4.294175274385486e-06
+R2: 0.6351385399031891
+MAPE: 19.09%
 </pre></div>
 </div>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;saved_models/scaler_day4.pkl&#39;]
@@ -618,10 +649,20 @@ MAPE: 23.87%
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X</span> <span class="o">=</span> <span class="n">day5</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;NO2&#39;</span><span class="p">])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">day5</span><span class="p">[</span><span class="s1">&#39;delta_1&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">day5</span><span class="p">[</span><span class="s1">&#39;NO2&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">day5</span><span class="p">[</span><span class="s1">&#39;t-1&#39;</span><span class="p">]</span>
+<span class="n">day5</span><span class="p">[</span><span class="s1">&#39;delta_2&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">day5</span><span class="p">[</span><span class="s1">&#39;t-1&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">day5</span><span class="p">[</span><span class="s1">&#39;t-2&#39;</span><span class="p">]</span>
+<span class="n">day5</span><span class="p">[</span><span class="s1">&#39;delta_3&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">day5</span><span class="p">[</span><span class="s1">&#39;t-2&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">day5</span><span class="p">[</span><span class="s1">&#39;t-3&#39;</span><span class="p">]</span>
+<span class="n">day5</span><span class="p">[</span><span class="s1">&#39;delta_4&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">day5</span><span class="p">[</span><span class="s1">&#39;t-3&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">day5</span><span class="p">[</span><span class="s1">&#39;t-4&#39;</span><span class="p">]</span>
+<span class="n">day5</span><span class="p">[</span><span class="s1">&#39;delta_5&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">day5</span><span class="p">[</span><span class="s1">&#39;t-4&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">day5</span><span class="p">[</span><span class="s1">&#39;t-5&#39;</span><span class="p">]</span>
+
+<span class="n">X</span> <span class="o">=</span> <span class="n">day5</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;NO2&#39;</span><span class="p">])</span>
 <span class="n">y</span> <span class="o">=</span> <span class="n">day5</span><span class="p">[</span><span class="s1">&#39;NO2&#39;</span><span class="p">]</span>
 
-<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+<span class="n">split_idx</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">day5</span><span class="p">)</span> <span class="o">*</span> <span class="mf">0.8</span><span class="p">)</span>
+<span class="n">X_train</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="n">split_idx</span><span class="p">]</span>
+<span class="n">X_test</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">split_idx</span><span class="p">:]</span>
+<span class="n">y_train</span> <span class="o">=</span> <span class="n">y</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="n">split_idx</span><span class="p">]</span>
+<span class="n">y_test</span> <span class="o">=</span> <span class="n">y</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">split_idx</span><span class="p">:]</span>
 
 <span class="n">scaler</span> <span class="o">=</span> <span class="n">StandardScaler</span><span class="p">()</span>
 <span class="n">X_train_scaled</span> <span class="o">=</span> <span class="n">scaler</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>
@@ -646,10 +687,10 @@ MAPE: 23.87%
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>MSE: 1.9162899159656018e-10
-MAE: 8.673422774541536e-06
-R2: 0.07557939431966565
-MAPE: 30.76%
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>MSE: 4.4205849178157666e-11
+MAE: 4.760948231123303e-06
+R2: 0.5368721826048422
+MAPE: 20.67%
 </pre></div>
 </div>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;saved_models/scaler_day5.pkl&#39;]
@@ -684,7 +725,7 @@ MAPE: 30.76%
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/2aa301a29e50ff62fc896e7c23f862d2baf7bc32e5dc060bc11f2463989afaf3.png" src="../_images/2aa301a29e50ff62fc896e7c23f862d2baf7bc32e5dc060bc11f2463989afaf3.png" />
+<img alt="../_images/8653904dd91a15fcecb48656e9f9015865b953f57f73c4aa6f81dcb4a4f85bef.png" src="../_images/8653904dd91a15fcecb48656e9f9015865b953f57f73c4aa6f81dcb4a4f85bef.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -714,7 +755,7 @@ MAPE: 30.76%
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/b5ff38f821efab3f78ad46ee60a35e1dac127efe52b1e1ee86ef414503fbf59e.png" src="../_images/b5ff38f821efab3f78ad46ee60a35e1dac127efe52b1e1ee86ef414503fbf59e.png" />
+<img alt="../_images/a802939620357f42af072662efce2781364c07ed29375f4942d6cb3a37b125b2.png" src="../_images/a802939620357f42af072662efce2781364c07ed29375f4942d6cb3a37b125b2.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -737,24 +778,35 @@ MAPE: 30.76%
     <span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;#E74C3C&#39;</span><span class="p">,</span> <span class="s1">&#39;#F39C12&#39;</span><span class="p">,</span> <span class="s1">&#39;#F1C40F&#39;</span><span class="p">,</span> <span class="s1">&#39;#27AE60&#39;</span><span class="p">,</span> <span class="s1">&#39;#3498DB&#39;</span><span class="p">]</span>
     
     <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">title</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">datasets</span><span class="p">):</span>
+        <span class="c1"># LANGSUNG PAKAI DATA ASLI (delta sudah ada!)</span>
         <span class="n">X</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;NO2&#39;</span><span class="p">])</span>
         <span class="n">y</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;NO2&#39;</span><span class="p">]</span>
         
-        <span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+        <span class="c1"># TIME-BASED SPLIT</span>
+        <span class="n">split_idx</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="o">*</span> <span class="mf">0.8</span><span class="p">)</span>
         
+        <span class="n">X_train</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="n">split_idx</span><span class="p">]</span>
+        <span class="n">X_test</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">split_idx</span><span class="p">:]</span>
+        <span class="n">y_train</span> <span class="o">=</span> <span class="n">y</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="n">split_idx</span><span class="p">]</span>
+        <span class="n">y_test</span> <span class="o">=</span> <span class="n">y</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">split_idx</span><span class="p">:]</span>
+        
+        <span class="c1"># Scaling</span>
         <span class="n">scaler</span> <span class="o">=</span> <span class="n">StandardScaler</span><span class="p">()</span>
         <span class="n">X_train_scaled</span> <span class="o">=</span> <span class="n">scaler</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>
         <span class="n">X_test_scaled</span> <span class="o">=</span> <span class="n">scaler</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
         
+        <span class="c1"># Model</span>
         <span class="n">knn</span> <span class="o">=</span> <span class="n">KNeighborsRegressor</span><span class="p">(</span><span class="n">n_neighbors</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
         <span class="n">knn</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train_scaled</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
         <span class="n">predictions</span> <span class="o">=</span> <span class="n">knn</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test_scaled</span><span class="p">)</span>
         
+        <span class="c1"># Metrics</span>
         <span class="n">r2</span> <span class="o">=</span> <span class="n">r2_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">predictions</span><span class="p">)</span>
         <span class="n">mse</span> <span class="o">=</span> <span class="n">mean_squared_error</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">predictions</span><span class="p">)</span>
         <span class="n">mae</span> <span class="o">=</span> <span class="n">mean_absolute_error</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">predictions</span><span class="p">)</span>
         <span class="n">mape</span> <span class="o">=</span> <span class="n">mean_absolute_percentage_error</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">predictions</span><span class="p">)</span>
 
+        <span class="c1"># Plotting</span>
         <span class="n">ax</span> <span class="o">=</span> <span class="n">axes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
         <span class="n">test_indices</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">y_test</span><span class="p">))</span>
         
@@ -766,27 +818,29 @@ MAPE: 30.76%
         <span class="n">ax</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span><span class="n">test_indices</span><span class="p">,</span> <span class="n">y_test</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">predictions</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> 
                        <span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Error Area&#39;</span><span class="p">)</span>
         
-
-        <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">title</span><span class="si">}</span><span class="se">\n</span><span class="s1">R² = </span><span class="si">{</span><span class="n">r2</span><span class="si">:</span><span class="s1">.3f</span><span class="si">}</span><span class="s1">, MSE = </span><span class="si">{</span><span class="n">mse</span><span class="si">:</span><span class="s1">.6f</span><span class="si">}</span><span class="s1">, MAE = </span><span class="si">{</span><span class="n">mae</span><span class="si">:</span><span class="s1">.6f</span><span class="si">}</span><span class="s1">, MAPE = </span><span class="si">{</span><span class="n">mape</span><span class="si">:</span><span class="s1">.6f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span> 
+        <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">title</span><span class="si">}</span><span class="se">\n</span><span class="s1">R² = </span><span class="si">{</span><span class="n">r2</span><span class="si">:</span><span class="s1">.3f</span><span class="si">}</span><span class="s1">, MSE = </span><span class="si">{</span><span class="n">mse</span><span class="si">:</span><span class="s1">.6f</span><span class="si">}</span><span class="s1">, MAE = </span><span class="si">{</span><span class="n">mae</span><span class="si">:</span><span class="s1">.6f</span><span class="si">}</span><span class="s1">, MAPE = </span><span class="si">{</span><span class="n">mape</span><span class="o">*</span><span class="mi">100</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">%&#39;</span><span class="p">,</span> 
                     <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">fontweight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">,</span> <span class="n">pad</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
         <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Index Data Test&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">fontweight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">)</span>
         <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Nilai NO₂ (mol/m²)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">fontweight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">)</span>
         <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">9</span><span class="p">)</span>
         <span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
         
+        <span class="c1"># Print statistics</span>
         <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">=== STATISTIK </span><span class="si">{</span><span class="n">title</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span><span class="si">}</span><span class="s2"> ===&quot;</span><span class="p">)</span>
         <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Jumlah data test: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">y_test</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
         <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Mean nilai aktual: </span><span class="si">{</span><span class="n">y_test</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="si">:</span><span class="s2">.6f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
         <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Mean nilai prediksi: </span><span class="si">{</span><span class="n">predictions</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="si">:</span><span class="s2">.6f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
         <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Selisih mean: </span><span class="si">{</span><span class="nb">abs</span><span class="p">(</span><span class="n">y_test</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">predictions</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span><span class="si">:</span><span class="s2">.6f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;R²: </span><span class="si">{</span><span class="n">r2</span><span class="si">:</span><span class="s2">.6f</span><span class="si">}</span><span class="s2">, MSE: </span><span class="si">{</span><span class="n">mse</span><span class="si">:</span><span class="s2">.6f</span><span class="si">}</span><span class="s2">, MAE: </span><span class="si">{</span><span class="n">mae</span><span class="si">:</span><span class="s2">.6f</span><span class="si">}</span><span class="s2">, MAPE: </span><span class="si">{</span><span class="n">mape</span><span class="si">:</span><span class="s2">.6f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;R²: </span><span class="si">{</span><span class="n">r2</span><span class="si">:</span><span class="s2">.6f</span><span class="si">}</span><span class="s2">, MSE: </span><span class="si">{</span><span class="n">mse</span><span class="si">:</span><span class="s2">.6f</span><span class="si">}</span><span class="s2">, MAE: </span><span class="si">{</span><span class="n">mae</span><span class="si">:</span><span class="s2">.6f</span><span class="si">}</span><span class="s2">, MAPE: </span><span class="si">{</span><span class="n">mape</span><span class="o">*</span><span class="mi">100</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">%&quot;</span><span class="p">)</span>
     
+    <span class="c1"># Remove extra subplot</span>
     <span class="n">fig</span><span class="o">.</span><span class="n">delaxes</span><span class="p">(</span><span class="n">axes</span><span class="p">[</span><span class="mi">5</span><span class="p">])</span>
     
     <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">top</span><span class="o">=</span><span class="mf">0.95</span><span class="p">)</span> 
     <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 
+<span class="c1"># Panggil fungsi</span>
 <span class="n">plot_all_time_series_comparison</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -794,41 +848,41 @@ MAPE: 30.76%
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>=== STATISTIK DAY 1 (LAG 1) ===
 Jumlah data test: 55
-Mean nilai aktual: 0.000029
-Mean nilai prediksi: 0.000027
-Selisih mean: 0.000003
-R²: 0.305243, MSE: 0.000000, MAE: 0.000008, MAPE: 0.252955
+Mean nilai aktual: 0.000024
+Mean nilai prediksi: 0.000024
+Selisih mean: 0.000000
+R²: 0.911394, MSE: 0.000000, MAE: 0.000002, MAPE: 7.99%
 
 === STATISTIK DAY 2 (LAG 2) ===
 Jumlah data test: 55
-Mean nilai aktual: 0.000030
-Mean nilai prediksi: 0.000028
-Selisih mean: 0.000002
-R²: 0.403054, MSE: 0.000000, MAE: 0.000006, MAPE: 0.203692
+Mean nilai aktual: 0.000024
+Mean nilai prediksi: 0.000023
+Selisih mean: 0.000000
+R²: 0.807952, MSE: 0.000000, MAE: 0.000003, MAPE: 12.73%
 
 === STATISTIK DAY 3 (LAG 3) ===
 Jumlah data test: 55
-Mean nilai aktual: 0.000028
-Mean nilai prediksi: 0.000028
-Selisih mean: 0.000001
-R²: 0.402664, MSE: 0.000000, MAE: 0.000006, MAPE: 0.243159
+Mean nilai aktual: 0.000024
+Mean nilai prediksi: 0.000023
+Selisih mean: 0.000000
+R²: 0.714375, MSE: 0.000000, MAE: 0.000004, MAPE: 15.82%
 
 === STATISTIK DAY 4 (LAG 4) ===
 Jumlah data test: 54
-Mean nilai aktual: 0.000028
-Mean nilai prediksi: 0.000027
-Selisih mean: 0.000001
-R²: 0.373194, MSE: 0.000000, MAE: 0.000006, MAPE: 0.238659
+Mean nilai aktual: 0.000024
+Mean nilai prediksi: 0.000023
+Selisih mean: 0.000000
+R²: 0.635139, MSE: 0.000000, MAE: 0.000004, MAPE: 19.09%
 
 === STATISTIK DAY 5 (LAG 5) ===
 Jumlah data test: 54
-Mean nilai aktual: 0.000029
-Mean nilai prediksi: 0.000027
-Selisih mean: 0.000002
-R²: 0.075579, MSE: 0.000000, MAE: 0.000009, MAPE: 0.307627
+Mean nilai aktual: 0.000024
+Mean nilai prediksi: 0.000023
+Selisih mean: 0.000001
+R²: 0.536872, MSE: 0.000000, MAE: 0.000005, MAPE: 20.67%
 </pre></div>
 </div>
-<img alt="../_images/55c26c12912dd24c64516bf6c16009936cea0c8df4d74243b1a1dcd707907817.png" src="../_images/55c26c12912dd24c64516bf6c16009936cea0c8df4d74243b1a1dcd707907817.png" />
+<img alt="../_images/e1734b89647a4ae97c8659ccadfcd10e03203d89ecdaebeea967deff510b7974.png" src="../_images/e1734b89647a4ae97c8659ccadfcd10e03203d89ecdaebeea967deff510b7974.png" />
 </div>
 </div>
 </section>
@@ -847,7 +901,7 @@ R²: 0.075579, MSE: 0.000000, MAE: 0.000009, MAPE: 0.307627
         },
         kernelOptions: {
             name: "python3",
-            path: "./NO2_Bangkalan"
+            path: "./NO2_Bangkalan (multi prediksi)"
         },
         predefinedOutput: true
     }
@@ -864,15 +918,6 @@ R²: 0.075579, MSE: 0.000000, MAE: 0.000009, MAPE: 0.307627
                 <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
-    <a class="left-prev"
-       href="data_preprocessing_NO2_BKL.html"
-       title="previous page">
-      <i class="fa-solid fa-angle-left"></i>
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Preprocessing Data NO<sub>2</sub> Kabupaten Bangkalan</p>
-      </div>
-    </a>
 </div>
                 </footer>
               

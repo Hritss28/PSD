@@ -57,11 +57,9 @@
     <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'NO2_Bangkalan/data_preprocessing_NO2_BKL';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'NO2_Bangkalan (multi prediksi)/data_preprocessing_NO2_BKL';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Modelling Data NO2 Kabupaten Bangkalan" href="modelling_NO2_BKL.html" />
-    <link rel="prev" title="Data Understanding (Pengambilan dan Eksplorasi Data NO2 Di Kabupaten Bangkalan)" href="data_understanding_NO2_BKL.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -123,6 +121,8 @@
     <div class="bd-container__inner bd-page-width">
       
       
+      
+        
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -199,11 +199,11 @@
 <li class="toctree-l1"><a class="reference internal" href="../model/klasifikasi_ecoli.html">Klasifikasi Dan BaggingClassifier Pada Dataset Ecoli</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Prediksi NO2 di Kabupaten Bangkalan</span></p>
-<ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="business_understanding_NO2_BKL.html">Business Understanding (Kadar NO₂ di Kabupaten Bangkalan)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="data_understanding_NO2_BKL.html">Data Understanding (Pengambilan dan Eksplorasi Data NO<sub>2</sub> Di Kabupaten Bangkalan)</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Preprocessing Data NO<sub>2</sub> Kabupaten Bangkalan</a></li>
-<li class="toctree-l1"><a class="reference internal" href="modelling_NO2_BKL.html">Modelling Data NO<sub>2</sub> Kabupaten Bangkalan</a></li>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../NO2_Bangkalan/business_understanding_NO2_BKL.html">Business Understanding (Kadar NO₂ di Kabupaten Bangkalan)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../NO2_Bangkalan/data_understanding_NO2_BKL.html">Data Understanding (Pengambilan dan Eksplorasi Data NO<sub>2</sub> Di Kabupaten Bangkalan)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../NO2_Bangkalan/data_preprocessing_NO2_BKL.html">Preprocessing Data NO<sub>2</sub> Kabupaten Bangkalan</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../NO2_Bangkalan/modelling_NO2_BKL.html">Modelling Data NO<sub>2</sub> Kabupaten Bangkalan</a></li>
 </ul>
 
     </div>
@@ -275,7 +275,7 @@
       
       
       
-      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2FNO2_Bangkalan/data_preprocessing_NO2_BKL.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2FNO2_Bangkalan (multi prediksi)/data_preprocessing_NO2_BKL.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -305,7 +305,7 @@
       
       
       
-      <li><a href="../_sources/NO2_Bangkalan/data_preprocessing_NO2_BKL.ipynb" target="_blank"
+      <li><a href="../_sources/NO2_Bangkalan (multi prediksi)/data_preprocessing_NO2_BKL.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -430,6 +430,11 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Matplotlib is building the font cache; this may take a moment.
+</pre></div>
+</div>
+</div>
 </div>
 <p><strong>Penjelasan:</strong></p>
 <ul class="simple">
@@ -470,31 +475,31 @@ document.write(`
   </thead>
   <tbody>
     <tr>
-      <th>262</th>
+      <th>200</th>
       <td>2024-12-31T00:00:00.000Z</td>
       <td>0</td>
       <td>NaN</td>
     </tr>
     <tr>
-      <th>259</th>
+      <th>197</th>
       <td>2025-01-01T00:00:00.000Z</td>
       <td>0</td>
       <td>NaN</td>
     </tr>
     <tr>
-      <th>257</th>
+      <th>195</th>
       <td>2025-01-02T00:00:00.000Z</td>
       <td>0</td>
       <td>NaN</td>
     </tr>
     <tr>
-      <th>260</th>
+      <th>198</th>
       <td>2025-01-03T00:00:00.000Z</td>
       <td>0</td>
       <td>0.000040</td>
     </tr>
     <tr>
-      <th>256</th>
+      <th>194</th>
       <td>2025-01-04T00:00:00.000Z</td>
       <td>0</td>
       <td>NaN</td>
@@ -506,31 +511,31 @@ document.write(`
       <td>...</td>
     </tr>
     <tr>
-      <th>255</th>
+      <th>167</th>
       <td>2025-09-26T00:00:00.000Z</td>
       <td>0</td>
       <td>0.000019</td>
     </tr>
     <tr>
-      <th>249</th>
+      <th>161</th>
       <td>2025-09-27T00:00:00.000Z</td>
       <td>0</td>
       <td>0.000017</td>
     </tr>
     <tr>
-      <th>254</th>
+      <th>166</th>
       <td>2025-09-28T00:00:00.000Z</td>
       <td>0</td>
       <td>0.000017</td>
     </tr>
     <tr>
-      <th>273</th>
+      <th>193</th>
       <td>2025-09-29T00:00:00.000Z</td>
       <td>0</td>
       <td>0.000028</td>
     </tr>
     <tr>
-      <th>272</th>
+      <th>192</th>
       <td>2025-09-30T00:00:00.000Z</td>
       <td>0</td>
       <td>NaN</td>
@@ -591,7 +596,7 @@ dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\Harits Putra Junaidi\AppData\Local\Temp\ipykernel_2528\800750193.py:12: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\Harits Putra Junaidi\AppData\Local\Temp\ipykernel_20172\800750193.py:12: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
   ax.text(i, v + 0.5, f&quot;{v} ({missing_percent[i]:.1f}%)&quot;,
 </pre></div>
 </div>
@@ -1545,7 +1550,7 @@ dtype: int64
         },
         kernelOptions: {
             name: "python3",
-            path: "./NO2_Bangkalan"
+            path: "./NO2_Bangkalan (multi prediksi)"
         },
         predefinedOutput: true
     }
@@ -1562,24 +1567,6 @@ dtype: int64
                 <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
-    <a class="left-prev"
-       href="data_understanding_NO2_BKL.html"
-       title="previous page">
-      <i class="fa-solid fa-angle-left"></i>
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Data Understanding (Pengambilan dan Eksplorasi Data NO<sub>2</sub> Di Kabupaten Bangkalan)</p>
-      </div>
-    </a>
-    <a class="right-next"
-       href="modelling_NO2_BKL.html"
-       title="next page">
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Modelling Data NO<sub>2</sub> Kabupaten Bangkalan</p>
-      </div>
-      <i class="fa-solid fa-angle-right"></i>
-    </a>
 </div>
                 </footer>
               
