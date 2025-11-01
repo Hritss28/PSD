@@ -17,7 +17,7 @@ Proyek ini bertujuan untuk membangun sistem prediksi konsentrasi NO₂ harian me
 Adapun tujuan utamanya meliputi:
 
 1. Membangun model prediksi konsentrasi NO₂ harian di Kabupaten Bangkalan menggunakan algoritma KNN Regression berdasarkan data historis dari 1 hingga 5 hari sebelumnya.
-2. Mengevaluasi performa model dengan melihat metrik seperti Mean Squared Error (MSE), Mean Absolute Error (MAE), dan R² Score untuk menentukan jumlah lag hari optimal.
+2. Mengevaluasi performa model dengan melihat metrik seperti Mean Squared Error (MSE), Mean Absolute Error (MAE), Mean Absolute Percentage Error (MAPE) dan R² Score untuk menentukan jumlah lag hari optimal.
 3. Mengidentifikasi pola temporal antara nilai NO₂ hari ini dengan nilai-nilai pada hari-hari sebelumnya guna memahami tingkat pengaruh waktu terhadap perubahan kualitas udara.
 
 ## 4. Manfaat Bisnis
@@ -38,8 +38,7 @@ Tahapan proyek meliputi:
 2. Transformasi data menjadi supervised learning dengan lag 1–5 hari.
 3. Normalisasi data menggunakan StandardScaler.
 4. Pelatihan model KNN Regression dengan berbagai nilai lag days.
-5. Evaluasi performa model berdasarkan MSE, MAE, dan R².
+5. Evaluasi performa model berdasarkan MSE, MAE, R² dan Mape.
 6. Prediksi kadar NO₂ hari berikutnya menggunakan model terbaik.
 
-Fokus penelitian ini terbatas pada hubungan waktu (lag NO₂), belum memasukkan faktor cuaca seperti suhu, kelembapan, dan kecepatan angin.
-
+Fokus penelitian ini terbatas pada hubungan waktu (lag NO₂), belum memasukkan faktor cuaca seperti suhu, kelembapan, dan kecepatan angin# Business Understanding (Kadar NO₂ di Kabupaten Bangkalan)

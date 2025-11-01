@@ -205,6 +205,20 @@
 <li class="toctree-l1"><a class="reference internal" href="../NO2_Bangkalan/data_preprocessing_NO2_BKL.html">Preprocessing Data NO<sub>2</sub> Kabupaten Bangkalan</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../NO2_Bangkalan/modelling_NO2_BKL.html">Modelling Data NO<sub>2</sub> Kabupaten Bangkalan</a></li>
 </ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Multi Prediksi NO2 di Kabupaten Bangkalan</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../NO2_Bangkalan%20%28multi%20prediksi%29/business_understanding_NO2_BKL.html">Business Understanding (Kadar NO₂ di Kabupaten Bangkalan)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../NO2_Bangkalan%20%28multi%20prediksi%29/data_understanding_NO2_BKL.html">Data Understanding (Pengambilan dan Eksplorasi Data NO<sub>2</sub> Di Kabupaten Bangkalan)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../NO2_Bangkalan%20%28multi%20prediksi%29/data_preprocessing_NO2_BKL.html">Preprocessing Data NO<sub>2</sub> Kabupaten Bangkalan</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../NO2_Bangkalan%20%28multi%20prediksi%29/modelling_NO2_BKL.html">Modelling Data NO<sub>2</sub> Kabupaten Bangkalan</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Identifikasi Audio Buka Tutup</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../audio_buka_tutup/data_understanding_suara_buka_tutup.html"><strong>1. Data Understanding &amp; Exploratory Data Analysis Suara Buka Tutup</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../audio_buka_tutup/data_preprocessing_suara_buka_tutup.html"><strong>2. Preprocessing Suara Buka Tutup</strong></a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../audio_buka_tutup/modelling_suara_buka_tutup.html"><strong>4. Modeling &amp; Evaluation (Random Forest) Suara Buka Tutup</strong></a></li>
+</ul>
 
     </div>
 </nav></div>
@@ -476,13 +490,12 @@ document.write(`
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: seaborn in c:\anaconda3\envs\py311\lib\site-packages (0.13.2)
-Requirement already satisfied: pandas in c:\anaconda3\envs\py311\lib\site-packages (2.1.4)
+Requirement already satisfied: pandas in c:\anaconda3\envs\py311\lib\site-packages (1.5.3)
 Requirement already satisfied: scikit-learn in c:\anaconda3\envs\py311\lib\site-packages (1.7.2)
 Requirement already satisfied: matplotlib in c:\anaconda3\envs\py311\lib\site-packages (3.7.5)
-Requirement already satisfied: numpy!=1.24.0,&gt;=1.20 in c:\anaconda3\envs\py311\lib\site-packages (from seaborn) (1.26.4)
-Requirement already satisfied: python-dateutil&gt;=2.8.2 in c:\anaconda3\envs\py311\lib\site-packages (from pandas) (2.9.0.post0)
+Requirement already satisfied: numpy!=1.24.0,&gt;=1.20 in c:\anaconda3\envs\py311\lib\site-packages (from seaborn) (1.25.2)
+Requirement already satisfied: python-dateutil&gt;=2.8.1 in c:\anaconda3\envs\py311\lib\site-packages (from pandas) (2.9.0.post0)
 Requirement already satisfied: pytz&gt;=2020.1 in c:\anaconda3\envs\py311\lib\site-packages (from pandas) (2025.2)
-Requirement already satisfied: tzdata&gt;=2022.1 in c:\anaconda3\envs\py311\lib\site-packages (from pandas) (2025.2)
 Requirement already satisfied: scipy&gt;=1.8.0 in c:\anaconda3\envs\py311\lib\site-packages (from scikit-learn) (1.11.4)
 Requirement already satisfied: joblib&gt;=1.2.0 in c:\anaconda3\envs\py311\lib\site-packages (from scikit-learn) (1.3.2)
 Requirement already satisfied: threadpoolctl&gt;=3.1.0 in c:\anaconda3\envs\py311\lib\site-packages (from scikit-learn) (3.6.0)
@@ -493,7 +506,7 @@ Requirement already satisfied: kiwisolver&gt;=1.0.1 in c:\anaconda3\envs\py311\l
 Requirement already satisfied: packaging&gt;=20.0 in c:\anaconda3\envs\py311\lib\site-packages (from matplotlib) (25.0)
 Requirement already satisfied: pillow&gt;=6.2.0 in c:\anaconda3\envs\py311\lib\site-packages (from matplotlib) (11.3.0)
 Requirement already satisfied: pyparsing&gt;=2.3.1 in c:\anaconda3\envs\py311\lib\site-packages (from matplotlib) (3.2.4)
-Requirement already satisfied: six&gt;=1.5 in c:\anaconda3\envs\py311\lib\site-packages (from python-dateutil&gt;=2.8.2-&gt;pandas) (1.17.0)
+Requirement already satisfied: six&gt;=1.5 in c:\anaconda3\envs\py311\lib\site-packages (from python-dateutil&gt;=2.8.1-&gt;pandas) (1.17.0)
 Note: you may need to restart the kernel to use updated packages.
 </pre></div>
 </div>
@@ -1156,9 +1169,7 @@ KLASIFIKASI MENGGUNAKAN RANDOM FOREST
 ============================================================
 
 --- KLASIFIKASI DATA SEBELUM ADASYN ---
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Accuracy data SEBELUM ADASYN: 0.8676
+Accuracy data SEBELUM ADASYN: 0.8676
 
 Classification Report - SEBELUM ADASYN:
               precision    recall  f1-score   support
@@ -1197,9 +1208,7 @@ weighted avg       0.90      0.87      0.87        68
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>--- KLASIFIKASI DATA SETELAH ADASYN ---
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Accuracy data SETELAH ADASYN: 0.9478
+Accuracy data SETELAH ADASYN: 0.9478
 
 Classification Report - SETELAH ADASYN:
               precision    recall  f1-score   support
@@ -1434,14 +1443,10 @@ Data yang ditambahkan: 808
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>--- KLASIFIKASI DATA SEBELUM SMOTE ---
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Accuracy data SEBELUM SMOTE: 0.8676
+Accuracy data SEBELUM SMOTE: 0.8676
 
 Classification Report - SEBELUM SMOTE:
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>              precision    recall  f1-score   support
+              precision    recall  f1-score   support
 
           cp       0.94      1.00      0.97        29
           im       0.91      0.62      0.74        16
@@ -1482,7 +1487,9 @@ weighted avg       0.90      0.87      0.87        68
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Accuracy data SETELAH SMOTE: 0.9520
 
 Classification Report - SETELAH SMOTE:
-              precision    recall  f1-score   support
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>              precision    recall  f1-score   support
 
           cp       0.88      1.00      0.93        28
           im       0.89      0.86      0.87        28
@@ -1755,8 +1762,7 @@ Confusion Matrix - SETELAH SMOTE:
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>class
-cp     143
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>cp     143
 im      77
 pp      52
 imU     35
@@ -1764,7 +1770,7 @@ om      20
 omL      5
 imS      2
 imL      2
-Name: count, dtype: int64
+Name: class, dtype: int64
 </pre></div>
 </div>
 <div class="output text_html"><div>

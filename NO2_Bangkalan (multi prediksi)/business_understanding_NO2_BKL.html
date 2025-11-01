@@ -60,6 +60,8 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'NO2_Bangkalan (multi prediksi)/business_understanding_NO2_BKL';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Data Understanding (Pengambilan dan Eksplorasi Data NO2 Di Kabupaten Bangkalan)" href="data_understanding_NO2_BKL.html" />
+    <link rel="prev" title="Modelling Data NO2 Kabupaten Bangkalan" href="../NO2_Bangkalan/modelling_NO2_BKL.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -121,8 +123,6 @@
     <div class="bd-container__inner bd-page-width">
       
       
-      
-        
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -204,6 +204,20 @@
 <li class="toctree-l1"><a class="reference internal" href="../NO2_Bangkalan/data_understanding_NO2_BKL.html">Data Understanding (Pengambilan dan Eksplorasi Data NO<sub>2</sub> Di Kabupaten Bangkalan)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../NO2_Bangkalan/data_preprocessing_NO2_BKL.html">Preprocessing Data NO<sub>2</sub> Kabupaten Bangkalan</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../NO2_Bangkalan/modelling_NO2_BKL.html">Modelling Data NO<sub>2</sub> Kabupaten Bangkalan</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Multi Prediksi NO2 di Kabupaten Bangkalan</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Business Understanding (Kadar NO₂ di Kabupaten Bangkalan)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data_understanding_NO2_BKL.html">Data Understanding (Pengambilan dan Eksplorasi Data NO<sub>2</sub> Di Kabupaten Bangkalan)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data_preprocessing_NO2_BKL.html">Preprocessing Data NO<sub>2</sub> Kabupaten Bangkalan</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modelling_NO2_BKL.html">Modelling Data NO<sub>2</sub> Kabupaten Bangkalan</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Identifikasi Audio Buka Tutup</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../audio_buka_tutup/data_understanding_suara_buka_tutup.html"><strong>1. Data Understanding &amp; Exploratory Data Analysis Suara Buka Tutup</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../audio_buka_tutup/data_preprocessing_suara_buka_tutup.html"><strong>2. Preprocessing Suara Buka Tutup</strong></a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../audio_buka_tutup/modelling_suara_buka_tutup.html"><strong>4. Modeling &amp; Evaluation (Random Forest) Suara Buka Tutup</strong></a></li>
 </ul>
 
     </div>
@@ -421,14 +435,14 @@ document.write(`
 <h2>1. Latar Belakang<a class="headerlink" href="#latar-belakang" title="Link to this heading">#</a></h2>
 <p>Kualitas udara merupakan salah satu indikator penting dalam menentukan tingkat kesehatan lingkungan suatu wilayah. Salah satu parameter utama yang berperan dalam menilai kualitas udara adalah konsentrasi nitrogen dioksida (NO₂). Gas ini umumnya dihasilkan dari aktivitas pembakaran bahan bakar fosil seperti kendaraan bermotor, industri, dan pembangkit listrik. Paparan NO₂ dalam jangka panjang dapat menimbulkan gangguan pernapasan serta memperburuk kondisi penyakit paru-paru kronis.</p>
 <p>Kabupaten Bangkalan, yang menjadi salah satu wilayah penyangga aktivitas di Pulau Madura dan dekat dengan kawasan industri serta jalur lalu lintas menuju Surabaya, berpotensi mengalami peningkatan kadar NO₂ akibat pertumbuhan transportasi dan aktivitas ekonomi. Oleh karena itu, diperlukan suatu sistem prediksi yang mampu memperkirakan kadar NO₂ secara akurat untuk membantu pemerintah daerah dan masyarakat dalam melakukan antisipasi terhadap pencemaran udara.</p>
-<p>Dengan memanfaatkan data penginderaan jauh satelit Copernicus Sentinel-5P serta metode machine learning, khususnya K-Nearest Neighbors (KNN) Regression, analisis ini bertujuan untuk mengidentifikasi pola perubahan kadar NO₂ harian dan melakukan prediksi konsentrasi di hari-hari berikutnya.</p>
+<p>Jika sebelumnya sistem prediksi hanya berfokus pada perkiraan satu hari ke depan, maka dalam penelitian ini dilakukan pengembangan model untuk memprediksi kadar NO₂ hingga tiga hari ke depan (multi-step forecasting). Pendekatan ini memberikan kemampuan yang lebih luas dalam memperkirakan tren jangka pendek kualitas udara, sehingga langkah mitigasi dapat dilakukan lebih dini. Dengan memanfaatkan data penginderaan jauh satelit Copernicus Sentinel-5P serta metode machine learning, khususnya K-Nearest Neighbors (KNN) Regression, analisis ini bertujuan untuk mengidentifikasi pola perubahan kadar NO₂ harian dan melakukan prediksi berjangka beberapa hari ke depan secara lebih adaptif dan akurat.</p>
 </section>
 <section id="business-problem">
 <h2>2. Business Problem<a class="headerlink" href="#business-problem" title="Link to this heading">#</a></h2>
-<p>Hingga saat ini, sebagian besar pemantauan kualitas udara masih dilakukan secara reaktif, yaitu setelah pencemaran terjadi. Padahal, kemampuan untuk melakukan prediksi kadar NO₂ secara harian akan sangat membantu dalam pengambilan keputusan yang lebih proaktif. Namun, tantangan yang dihadapi adalah:</p>
+<p>Hingga saat ini, sebagian besar pemantauan kualitas udara masih dilakukan secara reaktif, yaitu setelah pencemaran terjadi. Padahal, kemampuan untuk melakukan prediksi kadar NO₂ secara berjangka (lebih dari satu hari) akan sangat membantu dalam pengambilan keputusan yang lebih proaktif. Namun, tantangan yang dihadapi adalah:</p>
 <ul class="simple">
-<li><p>Bagaimana memanfaatkan data historis konsentrasi NO₂ untuk memprediksi kadar NO₂ pada hari berikutnya?</p></li>
-<li><p>Bagaimana memilih pendekatan model yang sederhana namun efektif untuk menghasilkan prediksi yang akurat dan mudah diimplementasikan?</p></li>
+<li><p>Bagaimana memanfaatkan data historis konsentrasi NO₂ untuk memprediksi kadar NO₂ hingga tiga hari ke depan?</p></li>
+<li><p>Bagaimana menentukan model dan konfigurasi lag yang paling optimal agar hasil prediksi multi-step tetap akurat dan stabil?</p></li>
 </ul>
 </section>
 <section id="tujuan-analisis">
@@ -436,18 +450,18 @@ document.write(`
 <p>Proyek ini bertujuan untuk membangun sistem prediksi konsentrasi NO₂ harian menggunakan pendekatan machine learning, khususnya algoritma K-Nearest Neighbors Regression (KNN Regression).
 Adapun tujuan utamanya meliputi:</p>
 <ol class="arabic simple">
-<li><p>Membangun model prediksi konsentrasi NO₂ harian di Kabupaten Bangkalan menggunakan algoritma KNN Regression berdasarkan data historis dari 1 hingga 5 hari sebelumnya.</p></li>
-<li><p>Mengevaluasi performa model dengan melihat metrik seperti Mean Squared Error (MSE), Mean Absolute Error (MAE), dan R² Score untuk menentukan jumlah lag hari optimal.</p></li>
-<li><p>Mengidentifikasi pola temporal antara nilai NO₂ hari ini dengan nilai-nilai pada hari-hari sebelumnya guna memahami tingkat pengaruh waktu terhadap perubahan kualitas udara.</p></li>
+<li><p>Membangun model prediksi konsentrasi NO₂ di Kabupaten Bangkalan yang mampu memperkirakan nilai hingga tiga hari ke depan berdasarkan data historis (multi-step forecasting).</p></li>
+<li><p>Mengevaluasi performa model KNN Regression untuk masing-masing horizon prediksi (hari ke-1, ke-2, dan ke-3) menggunakan metrik seperti Mean Squared Error (MSE), Mean Absolute Error (MAE), Mean Absolute Percentage Error (MAPE), dan R² Score.</p></li>
+<li><p>Mengidentifikasi pengaruh nilai lag terhadap kemampuan model dalam memprediksi kadar NO₂ berjangka beberapa hari, guna memahami seberapa jauh data historis dapat memberikan informasi yang relevan terhadap kondisi masa depan.</p></li>
 </ol>
 </section>
 <section id="manfaat-bisnis">
 <h2>4. Manfaat Bisnis<a class="headerlink" href="#manfaat-bisnis" title="Link to this heading">#</a></h2>
 <p>Hasil analisis ini diharapkan memberikan manfaat strategis bagi berbagai pihak, antara lain:</p>
 <ul class="simple">
-<li><p>Pemerintah Daerah/Dinas Lingkungan Hidup (DLH): Mendukung proses pemantauan kualitas udara dengan sistem prediksi sederhana dan hemat sumber daya.</p></li>
-<li><p>Masyarakat: Mendapatkan informasi dini tentang potensi peningkatan polusi udara untuk mencegah dampak kesehatan.</p></li>
-<li><p>Peneliti/Akademisi : Menjadi contoh penerapan model regresi non-parametrik (KNN Regression) dalam bidang prediksi lingkungan berbasis data terbuka.</p></li>
+<li><p>Pemerintah Daerah/Dinas Lingkungan Hidup (DLH): Mendukung proses pemantauan kualitas udara dengan sistem prediksi multi-hari yang membantu perencanaan mitigasi lebih awal.</p></li>
+<li><p>Masyarakat: Mendapatkan informasi lebih awal mengenai potensi peningkatan polusi udara dalam beberapa hari mendatang untuk mempersiapkan langkah pencegahan kesehatan.</p></li>
+<li><p>Peneliti/Akademisi : Menjadi contoh penerapan model regresi non-parametrik (KNN Regression) dalam skenario multi-step forecasting berbasis data satelit terbuka.</p></li>
 </ul>
 </section>
 <section id="ruang-lingkup-proyek">
@@ -462,9 +476,9 @@ Adapun tujuan utamanya meliputi:</p>
 <li><p>Pengumpulan dan pembersihan data (penanganan missing values dengan interpolasi linear).</p></li>
 <li><p>Transformasi data menjadi supervised learning dengan lag 1–5 hari.</p></li>
 <li><p>Normalisasi data menggunakan StandardScaler.</p></li>
-<li><p>Pelatihan model KNN Regression dengan berbagai nilai lag days.</p></li>
-<li><p>Evaluasi performa model berdasarkan MSE, MAE, dan R².</p></li>
-<li><p>Prediksi kadar NO₂ hari berikutnya menggunakan model terbaik.</p></li>
+<li><p>Pelatihan model KNN Regression untuk melakukan prediksi hingga tiga hari ke depan (multi-output regression).</p></li>
+<li><p>Evaluasi performa model berdasarkan MSE, MAE, MAPE, dan R² untuk setiap horizon prediksi.</p></li>
+<li><p>Visualisasi hasil berupa perbandingan antara nilai aktual dan prediksi untuk masing-masing horizon (t+1, t+2, t+3).</p></li>
 </ol>
 <p>Fokus penelitian ini terbatas pada hubungan waktu (lag NO₂), belum memasukkan faktor cuaca seperti suhu, kelembapan, dan kecepatan angin.</p>
 </section>
@@ -500,6 +514,24 @@ Adapun tujuan utamanya meliputi:</p>
                 <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="../NO2_Bangkalan/modelling_NO2_BKL.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Modelling Data NO<sub>2</sub> Kabupaten Bangkalan</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="data_understanding_NO2_BKL.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Data Understanding (Pengambilan dan Eksplorasi Data NO<sub>2</sub> Di Kabupaten Bangkalan)</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div>
                 </footer>
               
