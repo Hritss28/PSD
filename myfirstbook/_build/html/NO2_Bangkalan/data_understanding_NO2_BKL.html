@@ -205,6 +205,20 @@
 <li class="toctree-l1"><a class="reference internal" href="data_preprocessing_NO2_BKL.html">Preprocessing Data NO<sub>2</sub> Kabupaten Bangkalan</a></li>
 <li class="toctree-l1"><a class="reference internal" href="modelling_NO2_BKL.html">Modelling Data NO<sub>2</sub> Kabupaten Bangkalan</a></li>
 </ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Multi Prediksi NO2 di Kabupaten Bangkalan</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../NO2_Bangkalan%20%28multi%20prediksi%29/business_understanding_NO2_BKL.html">Business Understanding (Kadar NO₂ di Kabupaten Bangkalan)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../NO2_Bangkalan%20%28multi%20prediksi%29/data_understanding_NO2_BKL.html">Data Understanding (Pengambilan dan Eksplorasi Data NO<sub>2</sub> Di Kabupaten Bangkalan)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../NO2_Bangkalan%20%28multi%20prediksi%29/data_preprocessing_NO2_BKL.html">Preprocessing Data NO<sub>2</sub> Kabupaten Bangkalan</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../NO2_Bangkalan%20%28multi%20prediksi%29/modelling_NO2_BKL.html">Modelling Data NO<sub>2</sub> Kabupaten Bangkalan</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Identifikasi Audio Buka Tutup</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../audio_buka_tutup/data_understanding_suara_buka_tutup.html"><strong>1. Data Understanding &amp; Exploratory Data Analysis Suara Buka Tutup</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../audio_buka_tutup/data_preprocessing_suara_buka_tutup.html"><strong>2. Preprocessing Suara Buka Tutup</strong></a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../audio_buka_tutup/modelling_suara_buka_tutup.html"><strong>4. Modeling &amp; Evaluation (Random Forest) Suara Buka Tutup</strong></a></li>
+</ul>
 
     </div>
 </nav></div>
@@ -425,100 +439,26 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Collecting openeo
-  Using cached openeo-0.45.0-py3-none-any.whl.metadata (8.2 kB)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: openeo in c:\python311\lib\site-packages (0.45.0)
 Requirement already satisfied: requests&gt;=2.26.0 in c:\python311\lib\site-packages (from openeo) (2.32.5)
 Requirement already satisfied: urllib3&gt;=1.9.0 in c:\python311\lib\site-packages (from openeo) (2.5.0)
 Requirement already satisfied: shapely&gt;=1.6.4 in c:\python311\lib\site-packages (from openeo) (2.1.2)
-Requirement already satisfied: numpy&gt;=1.17.0 in c:\python311\lib\site-packages (from openeo) (2.3.4)
-Collecting xarray&lt;2025.01.2,&gt;=0.12.3 (from openeo)
-  Using cached xarray-2025.1.1-py3-none-any.whl.metadata (11 kB)
-Requirement already satisfied: pandas&gt;0.20.0 in c:\python311\lib\site-packages (from openeo) (2.3.3)
+Requirement already satisfied: numpy&gt;=1.17.0 in c:\python311\lib\site-packages (from openeo) (1.26.4)
+Requirement already satisfied: xarray&lt;2025.01.2,&gt;=0.12.3 in c:\python311\lib\site-packages (from openeo) (2025.1.1)
+Requirement already satisfied: pandas&gt;0.20.0 in c:\python311\lib\site-packages (from openeo) (2.1.4)
 Requirement already satisfied: pystac&gt;=1.5.0 in c:\python311\lib\site-packages (from openeo) (1.14.1)
 Requirement already satisfied: deprecated&gt;=1.2.12 in c:\python311\lib\site-packages (from openeo) (1.2.18)
 Requirement already satisfied: oschmod&gt;=0.3.12 in c:\python311\lib\site-packages (from openeo) (0.3.12)
 Requirement already satisfied: packaging&gt;=23.2 in c:\python311\lib\site-packages (from xarray&lt;2025.01.2,&gt;=0.12.3-&gt;openeo) (25.0)
-Requirement already satisfied: wrapt&lt;2,&gt;=1.10 in c:\python311\lib\site-packages (from deprecated&gt;=1.2.12-&gt;openeo) (1.17.3)
+Requirement already satisfied: wrapt&lt;2,&gt;=1.10 in c:\python311\lib\site-packages (from deprecated&gt;=1.2.12-&gt;openeo) (1.14.2)
 Requirement already satisfied: pywin32 in c:\python311\lib\site-packages (from oschmod&gt;=0.3.12-&gt;openeo) (311)
 Requirement already satisfied: python-dateutil&gt;=2.8.2 in c:\python311\lib\site-packages (from pandas&gt;0.20.0-&gt;openeo) (2.9.0.post0)
 Requirement already satisfied: pytz&gt;=2020.1 in c:\python311\lib\site-packages (from pandas&gt;0.20.0-&gt;openeo) (2025.2)
-Requirement already satisfied: tzdata&gt;=2022.7 in c:\python311\lib\site-packages (from pandas&gt;0.20.0-&gt;openeo) (2025.2)
+Requirement already satisfied: tzdata&gt;=2022.1 in c:\python311\lib\site-packages (from pandas&gt;0.20.0-&gt;openeo) (2025.2)
 Requirement already satisfied: six&gt;=1.5 in c:\python311\lib\site-packages (from python-dateutil&gt;=2.8.2-&gt;pandas&gt;0.20.0-&gt;openeo) (1.17.0)
 Requirement already satisfied: charset_normalizer&lt;4,&gt;=2 in c:\python311\lib\site-packages (from requests&gt;=2.26.0-&gt;openeo) (3.4.4)
 Requirement already satisfied: idna&lt;4,&gt;=2.5 in c:\python311\lib\site-packages (from requests&gt;=2.26.0-&gt;openeo) (3.11)
 Requirement already satisfied: certifi&gt;=2017.4.17 in c:\python311\lib\site-packages (from requests&gt;=2.26.0-&gt;openeo) (2025.10.5)
-Using cached openeo-0.45.0-py3-none-any.whl (335 kB)
-Using cached xarray-2025.1.1-py3-none-any.whl (1.2 MB)
-Installing collected packages: xarray, openeo
-
-   ---------------------------------------- 0/2 [xarray]
-   ---------------------------------------- 0/2 [xarray]
-   ---------------------------------------- 0/2 [xarray]
-   ---------------------------------------- 0/2 [xarray]
-   ---------------------------------------- 0/2 [xarray]
-   ---------------------------------------- 0/2 [xarray]
-   ---------------------------------------- 0/2 [xarray]
-   ---------------------------------------- 0/2 [xarray]
-   ---------------------------------------- 0/2 [xarray]
-   ---------------------------------------- 0/2 [xarray]
-   ---------------------------------------- 0/2 [xarray]
-   ---------------------------------------- 0/2 [xarray]
-   ---------------------------------------- 0/2 [xarray]
-   ---------------------------------------- 0/2 [xarray]
-   ---------------------------------------- 0/2 [xarray]
-   ---------------------------------------- 0/2 [xarray]
-   ---------------------------------------- 0/2 [xarray]
-   ---------------------------------------- 0/2 [xarray]
-   ---------------------------------------- 0/2 [xarray]
-   ---------------------------------------- 0/2 [xarray]
-   ---------------------------------------- 0/2 [xarray]
-   ---------------------------------------- 0/2 [xarray]
-   ---------------------------------------- 0/2 [xarray]
-   ---------------------------------------- 0/2 [xarray]
-   ---------------------------------------- 0/2 [xarray]
-   ---------------------------------------- 0/2 [xarray]
-   ---------------------------------------- 0/2 [xarray]
-   ---------------------------------------- 0/2 [xarray]
-   ---------------------------------------- 0/2 [xarray]
-   ---------------------------------------- 0/2 [xarray]
-   ---------------------------------------- 0/2 [xarray]
-   ---------------------------------------- 0/2 [xarray]
-   ---------------------------------------- 0/2 [xarray]
-   ---------------------------------------- 0/2 [xarray]
-   ---------------------------------------- 0/2 [xarray]
-   ---------------------------------------- 0/2 [xarray]
-   ---------------------------------------- 0/2 [xarray]
-   ---------------------------------------- 0/2 [xarray]
-   ---------------------------------------- 0/2 [xarray]
-   ---------------------------------------- 0/2 [xarray]
-   ---------------------------------------- 0/2 [xarray]
-   ---------------------------------------- 0/2 [xarray]
-   ---------------------------------------- 0/2 [xarray]
-   ---------------------------------------- 0/2 [xarray]
-   ---------------------------------------- 0/2 [xarray]
-   -------------------- ------------------- 1/2 [openeo]
-   -------------------- ------------------- 1/2 [openeo]
-   -------------------- ------------------- 1/2 [openeo]
-   -------------------- ------------------- 1/2 [openeo]
-   -------------------- ------------------- 1/2 [openeo]
-   -------------------- ------------------- 1/2 [openeo]
-   -------------------- ------------------- 1/2 [openeo]
-   -------------------- ------------------- 1/2 [openeo]
-   -------------------- ------------------- 1/2 [openeo]
-   -------------------- ------------------- 1/2 [openeo]
-   -------------------- ------------------- 1/2 [openeo]
-   -------------------- ------------------- 1/2 [openeo]
-   -------------------- ------------------- 1/2 [openeo]
-   -------------------- ------------------- 1/2 [openeo]
-   -------------------- ------------------- 1/2 [openeo]
-   -------------------- ------------------- 1/2 [openeo]
-   -------------------- ------------------- 1/2 [openeo]
-   -------------------- ------------------- 1/2 [openeo]
-   -------------------- ------------------- 1/2 [openeo]
-   -------------------- ------------------- 1/2 [openeo]
-   ---------------------------------------- 2/2 [openeo]
-
-Successfully installed openeo-0.45.0 xarray-2025.1.1
 </pre></div>
 </div>
 </div>
@@ -630,16 +570,16 @@ Successfully installed openeo-0.45.0 xarray-2025.1.1
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0:00:00 Job &#39;j-2510281211234f908aae1ba6345a9956&#39;: send &#39;start&#39;
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0:00:00 Job &#39;j-2511011314154c96985f2d69414fe14d&#39;: send &#39;start&#39;
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0:00:14 Job &#39;j-2510281211234f908aae1ba6345a9956&#39;: created (progress 0%)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0:00:14 Job &#39;j-2511011314154c96985f2d69414fe14d&#39;: created (progress 0%)
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0:00:20 Job &#39;j-2510281211234f908aae1ba6345a9956&#39;: created (progress 0%)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0:00:19 Job &#39;j-2511011314154c96985f2d69414fe14d&#39;: created (progress 0%)
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0:00:26 Job &#39;j-2510281211234f908aae1ba6345a9956&#39;: created (progress 0%)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0:00:26 Job &#39;j-2511011314154c96985f2d69414fe14d&#39;: created (progress 0%)
 </pre></div>
 </div>
 </div>

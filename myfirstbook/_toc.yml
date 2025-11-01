@@ -4,21 +4,38 @@ parts:
 - caption: Bussiness Understanding
   chapters:
   - file: bisnis.md
+
 - caption: Data Understanding
   chapters:
   - file: data/get-data.md
   - file: data/eksplorasi-data.ipynb
+
 - caption: Preprocessing Data
   chapters:
   - file: preprocessing/data_preprocessing.ipynb
   - file: preprocessing/penyeimbangan_ecoli.ipynb
   - file: preprocessing/Ecoli_Preprocessing_KNIME.md
+
 - caption: Modelling
   chapters:
   - file: model/klasifikasi_ecoli.ipynb
+
 - caption: Prediksi NO2 di Kabupaten Bangkalan
   chapters:
   - file: NO2_Bangkalan/business_understanding_NO2_BKL.md
   - file: NO2_Bangkalan/data_understanding_NO2_BKL.ipynb
   - file: NO2_Bangkalan/data_preprocessing_NO2_BKL.ipynb
   - file: NO2_Bangkalan/modelling_NO2_BKL.ipynb
+
+- caption: Multi Prediksi NO2 di Kabupaten Bangkalan
+  chapters:
+  - file: NO2_Bangkalan (multi prediksi)/business_understanding_NO2_BKL.md
+  - file: NO2_Bangkalan (multi prediksi)/data_understanding_NO2_BKL.ipynb
+  - file: NO2_Bangkalan (multi prediksi)/data_preprocessing_NO2_BKL.ipynb
+  - file: NO2_Bangkalan (multi prediksi)/modelling_NO2_BKL.ipynb
+
+- caption: Identifikasi Audio Buka Tutup
+  chapters:
+  - file: audio_buka_tutup/data_understanding_suara_buka_tutup.ipynb
+  - file: audio_buka_tutup/data_preprocessing_suara_buka_tutup.ipynb
+  - file: audio_buka_tutup/modelling_suara_buka_tutup.ipynb

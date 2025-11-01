@@ -60,6 +60,8 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'NO2_Bangkalan (multi prediksi)/data_understanding_NO2_BKL';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Preprocessing Data NO2 Kabupaten Bangkalan" href="data_preprocessing_NO2_BKL.html" />
+    <link rel="prev" title="Business Understanding (Kadar NO₂ di Kabupaten Bangkalan)" href="business_understanding_NO2_BKL.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -121,8 +123,6 @@
     <div class="bd-container__inner bd-page-width">
       
       
-      
-        
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -204,6 +204,20 @@
 <li class="toctree-l1"><a class="reference internal" href="../NO2_Bangkalan/data_understanding_NO2_BKL.html">Data Understanding (Pengambilan dan Eksplorasi Data NO<sub>2</sub> Di Kabupaten Bangkalan)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../NO2_Bangkalan/data_preprocessing_NO2_BKL.html">Preprocessing Data NO<sub>2</sub> Kabupaten Bangkalan</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../NO2_Bangkalan/modelling_NO2_BKL.html">Modelling Data NO<sub>2</sub> Kabupaten Bangkalan</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Multi Prediksi NO2 di Kabupaten Bangkalan</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="business_understanding_NO2_BKL.html">Business Understanding (Kadar NO₂ di Kabupaten Bangkalan)</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Data Understanding (Pengambilan dan Eksplorasi Data NO<sub>2</sub> Di Kabupaten Bangkalan)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data_preprocessing_NO2_BKL.html">Preprocessing Data NO<sub>2</sub> Kabupaten Bangkalan</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modelling_NO2_BKL.html">Modelling Data NO<sub>2</sub> Kabupaten Bangkalan</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Identifikasi Audio Buka Tutup</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../audio_buka_tutup/data_understanding_suara_buka_tutup.html"><strong>1. Data Understanding &amp; Exploratory Data Analysis Suara Buka Tutup</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../audio_buka_tutup/data_preprocessing_suara_buka_tutup.html"><strong>2. Preprocessing Suara Buka Tutup</strong></a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../audio_buka_tutup/modelling_suara_buka_tutup.html"><strong>4. Modeling &amp; Evaluation (Random Forest) Suara Buka Tutup</strong></a></li>
 </ul>
 
     </div>
@@ -425,177 +439,26 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>^C
-Collecting openeo
-  Using cached openeo-0.45.0-py3-none-any.whl.metadata (8.2 kB)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: openeo in c:\python311\lib\site-packages (0.45.0)
 Requirement already satisfied: requests&gt;=2.26.0 in c:\python311\lib\site-packages (from openeo) (2.32.5)
 Requirement already satisfied: urllib3&gt;=1.9.0 in c:\python311\lib\site-packages (from openeo) (2.5.0)
-Collecting shapely&gt;=1.6.4 (from openeo)
-  Using cached shapely-2.1.2-cp311-cp311-win_amd64.whl.metadata (7.1 kB)
-Requirement already satisfied: numpy&gt;=1.17.0 in c:\python311\lib\site-packages (from openeo) (2.3.4)
-Collecting xarray&lt;2025.01.2,&gt;=0.12.3 (from openeo)
-  Using cached xarray-2025.1.1-py3-none-any.whl.metadata (11 kB)
-Requirement already satisfied: pandas&gt;0.20.0 in c:\python311\lib\site-packages (from openeo) (2.3.3)
-Collecting pystac&gt;=1.5.0 (from openeo)
-  Using cached pystac-1.14.1-py3-none-any.whl.metadata (4.7 kB)
-Collecting deprecated&gt;=1.2.12 (from openeo)
-  Using cached Deprecated-1.2.18-py2.py3-none-any.whl.metadata (5.7 kB)
-Collecting oschmod&gt;=0.3.12 (from openeo)
-  Using cached oschmod-0.3.12-py2.py3-none-any.whl.metadata (10.0 kB)
+Requirement already satisfied: shapely&gt;=1.6.4 in c:\python311\lib\site-packages (from openeo) (2.1.2)
+Requirement already satisfied: numpy&gt;=1.17.0 in c:\python311\lib\site-packages (from openeo) (1.26.4)
+Requirement already satisfied: xarray&lt;2025.01.2,&gt;=0.12.3 in c:\python311\lib\site-packages (from openeo) (2025.1.1)
+Requirement already satisfied: pandas&gt;0.20.0 in c:\python311\lib\site-packages (from openeo) (2.1.4)
+Requirement already satisfied: pystac&gt;=1.5.0 in c:\python311\lib\site-packages (from openeo) (1.14.1)
+Requirement already satisfied: deprecated&gt;=1.2.12 in c:\python311\lib\site-packages (from openeo) (1.2.18)
+Requirement already satisfied: oschmod&gt;=0.3.12 in c:\python311\lib\site-packages (from openeo) (0.3.12)
 Requirement already satisfied: packaging&gt;=23.2 in c:\python311\lib\site-packages (from xarray&lt;2025.01.2,&gt;=0.12.3-&gt;openeo) (25.0)
-Collecting wrapt&lt;2,&gt;=1.10 (from deprecated&gt;=1.2.12-&gt;openeo)
-  Using cached wrapt-1.17.3-cp311-cp311-win_amd64.whl.metadata (6.5 kB)
-Collecting pywin32 (from oschmod&gt;=0.3.12-&gt;openeo)
-  Using cached pywin32-311-cp311-cp311-win_amd64.whl.metadata (10 kB)
+Requirement already satisfied: wrapt&lt;2,&gt;=1.10 in c:\python311\lib\site-packages (from deprecated&gt;=1.2.12-&gt;openeo) (1.14.2)
+Requirement already satisfied: pywin32 in c:\python311\lib\site-packages (from oschmod&gt;=0.3.12-&gt;openeo) (311)
 Requirement already satisfied: python-dateutil&gt;=2.8.2 in c:\python311\lib\site-packages (from pandas&gt;0.20.0-&gt;openeo) (2.9.0.post0)
 Requirement already satisfied: pytz&gt;=2020.1 in c:\python311\lib\site-packages (from pandas&gt;0.20.0-&gt;openeo) (2025.2)
-Requirement already satisfied: tzdata&gt;=2022.7 in c:\python311\lib\site-packages (from pandas&gt;0.20.0-&gt;openeo) (2025.2)
+Requirement already satisfied: tzdata&gt;=2022.1 in c:\python311\lib\site-packages (from pandas&gt;0.20.0-&gt;openeo) (2025.2)
 Requirement already satisfied: six&gt;=1.5 in c:\python311\lib\site-packages (from python-dateutil&gt;=2.8.2-&gt;pandas&gt;0.20.0-&gt;openeo) (1.17.0)
 Requirement already satisfied: charset_normalizer&lt;4,&gt;=2 in c:\python311\lib\site-packages (from requests&gt;=2.26.0-&gt;openeo) (3.4.4)
 Requirement already satisfied: idna&lt;4,&gt;=2.5 in c:\python311\lib\site-packages (from requests&gt;=2.26.0-&gt;openeo) (3.11)
 Requirement already satisfied: certifi&gt;=2017.4.17 in c:\python311\lib\site-packages (from requests&gt;=2.26.0-&gt;openeo) (2025.10.5)
-Using cached openeo-0.45.0-py3-none-any.whl (335 kB)
-Using cached xarray-2025.1.1-py3-none-any.whl (1.2 MB)
-Using cached Deprecated-1.2.18-py2.py3-none-any.whl (10.0 kB)
-Using cached wrapt-1.17.3-cp311-cp311-win_amd64.whl (38 kB)
-Using cached oschmod-0.3.12-py2.py3-none-any.whl (14 kB)
-Using cached pystac-1.14.1-py3-none-any.whl (207 kB)
-Using cached shapely-2.1.2-cp311-cp311-win_amd64.whl (1.7 MB)
-Using cached pywin32-311-cp311-cp311-win_amd64.whl (9.5 MB)
-Installing collected packages: pywin32, wrapt, shapely, oschmod, pystac, deprecated, xarray, openeo
-
-   ---------------------------------------- 0/8 [pywin32]
-   ---------------------------------------- 0/8 [pywin32]
-   ---------------------------------------- 0/8 [pywin32]
-   ---------------------------------------- 0/8 [pywin32]
-   ---------------------------------------- 0/8 [pywin32]
-   ---------------------------------------- 0/8 [pywin32]
-   ---------------------------------------- 0/8 [pywin32]
-   ---------------------------------------- 0/8 [pywin32]
-   ---------------------------------------- 0/8 [pywin32]
-   ---------------------------------------- 0/8 [pywin32]
-   ---------------------------------------- 0/8 [pywin32]
-   ---------------------------------------- 0/8 [pywin32]
-   ---------------------------------------- 0/8 [pywin32]
-   ---------------------------------------- 0/8 [pywin32]
-   ---------------------------------------- 0/8 [pywin32]
-   ---------------------------------------- 0/8 [pywin32]
-   ---------------------------------------- 0/8 [pywin32]
-   ---------------------------------------- 0/8 [pywin32]
-   ---------------------------------------- 0/8 [pywin32]
-   ---------------------------------------- 0/8 [pywin32]
-   ---------------------------------------- 0/8 [pywin32]
-   ---------------------------------------- 0/8 [pywin32]
-   ---------------------------------------- 0/8 [pywin32]
-   ---------------------------------------- 0/8 [pywin32]
-   ---------------------------------------- 0/8 [pywin32]
-   ---------------------------------------- 0/8 [pywin32]
-   ---------------------------------------- 0/8 [pywin32]
-   ---------------------------------------- 0/8 [pywin32]
-   ---------------------------------------- 0/8 [pywin32]
-   ---------------------------------------- 0/8 [pywin32]
-   ---------------------------------------- 0/8 [pywin32]
-   ---------------------------------------- 0/8 [pywin32]
-   ---------------------------------------- 0/8 [pywin32]
-   ---------------------------------------- 0/8 [pywin32]
-   ---------------------------------------- 0/8 [pywin32]
-   ---------------------------------------- 0/8 [pywin32]
-   ---------------------------------------- 0/8 [pywin32]
-   ---------------------------------------- 0/8 [pywin32]
-   ---------------------------------------- 0/8 [pywin32]
-   ---------------------------------------- 0/8 [pywin32]
-   ---------------------------------------- 0/8 [pywin32]
-   ---------------------------------------- 0/8 [pywin32]
-   ---------------------------------------- 0/8 [pywin32]
-   ---------------------------------------- 0/8 [pywin32]
-   ---------------------------------------- 0/8 [pywin32]
-   ---------------------------------------- 0/8 [pywin32]
-   ---------------------------------------- 0/8 [pywin32]
-   ---------------------------------------- 0/8 [pywin32]
-   ---------------------------------------- 0/8 [pywin32]
-   ---------------------------------------- 0/8 [pywin32]
-   ---------------------------------------- 0/8 [pywin32]
-   ---------------------------------------- 0/8 [pywin32]
-   ---------------------------------------- 0/8 [pywin32]
-   ---------------------------------------- 0/8 [pywin32]
-   ---------------------------------------- 0/8 [pywin32]
-   ---------------------------------------- 0/8 [pywin32]
-   ---------------------------------------- 0/8 [pywin32]
-   ---------------------------------------- 0/8 [pywin32]
-   ---------------------------------------- 0/8 [pywin32]
-   ---------------------------------------- 0/8 [pywin32]
-   ---------------------------------------- 0/8 [pywin32]
-   ---------------------------------------- 0/8 [pywin32]
-   ---------------------------------------- 0/8 [pywin32]
-   ---------------------------------------- 0/8 [pywin32]
-   ---------------------------------------- 0/8 [pywin32]
-   ---------------------------------------- 0/8 [pywin32]
-   ---------------------------------------- 0/8 [pywin32]
-   ---------------------------------------- 0/8 [pywin32]
-   ---------------------------------------- 0/8 [pywin32]
-   ---------------------------------------- 0/8 [pywin32]
-   ---------------------------------------- 0/8 [pywin32]
-   ---------------------------------------- 0/8 [pywin32]
-   ---------------------------------------- 0/8 [pywin32]
-   ---------------------------------------- 0/8 [pywin32]
-   ---------------------------------------- 0/8 [pywin32]
-   ---------------------------------------- 0/8 [pywin32]
-   ---------------------------------------- 0/8 [pywin32]
-   ---------------------------------------- 0/8 [pywin32]
-   ---------------------------------------- 0/8 [pywin32]
-   ---------------------------------------- 0/8 [pywin32]
-   ---------------------------------------- 0/8 [pywin32]
-   ---------------------------------------- 0/8 [pywin32]
-   ---------------------------------------- 0/8 [pywin32]
-   ---------------------------------------- 0/8 [pywin32]
-   ---------------------------------------- 0/8 [pywin32]
-   ---------------------------------------- 0/8 [pywin32]
-   ---------------------------------------- 0/8 [pywin32]
-   ---------------------------------------- 0/8 [pywin32]
-   ---------------------------------------- 0/8 [pywin32]
-   ---------------------------------------- 0/8 [pywin32]
-   ----- ---------------------------------- 1/8 [wrapt]
-   ---------- ----------------------------- 2/8 [shapely]
-   ---------- ----------------------------- 2/8 [shapely]
-   ---------- ----------------------------- 2/8 [shapely]
-   ---------- ----------------------------- 2/8 [shapely]
-   ---------- ----------------------------- 2/8 [shapely]
-   ---------- ----------------------------- 2/8 [shapely]
-   ---------- ----------------------------- 2/8 [shapely]
-   ---------- ----------------------------- 2/8 [shapely]
-   ---------- ----------------------------- 2/8 [shapely]
-   ---------- ----------------------------- 2/8 [shapely]
-   ---------- ----------------------------- 2/8 [shapely]
-   ---------- ----------------------------- 2/8 [shapely]
-   ---------- ----------------------------- 2/8 [shapely]
-   ---------- ----------------------------- 2/8 [shapely]
-   ---------- ----------------------------- 2/8 [shapely]
-   ---------- ----------------------------- 2/8 [shapely]
-   ---------- ----------------------------- 2/8 [shapely]
-   ---------- ----------------------------- 2/8 [shapely]
-   ---------- ----------------------------- 2/8 [shapely]
-   ---------- ----------------------------- 2/8 [shapely]
-   ---------- ----------------------------- 2/8 [shapely]
-   ---------- ----------------------------- 2/8 [shapely]
-   ---------- ----------------------------- 2/8 [shapely]
-   ---------- ----------------------------- 2/8 [shapely]
-   --------------- ------------------------ 3/8 [oschmod]
-   --------------- ------------------------ 3/8 [oschmod]
-   --------------- ------------------------ 3/8 [oschmod]
-   --------------- ------------------------ 3/8 [oschmod]
-   -------------------- ------------------- 4/8 [pystac]
-   -------------------- ------------------- 4/8 [pystac]
-   -------------------- ------------------- 4/8 [pystac]
-   -------------------- ------------------- 4/8 [pystac]
-   -------------------- ------------------- 4/8 [pystac]
-   -------------------- ------------------- 4/8 [pystac]
-   -------------------- ------------------- 4/8 [pystac]
-   -------------------- ------------------- 4/8 [pystac]
-   -------------------- ------------------- 4/8 [pystac]
-   -------------------- ------------------- 4/8 [pystac]
-   -------------------- ------------------- 4/8 [pystac]
-   -------------------- ------------------- 4/8 [pystac]
-   -------------------- ------------------- 4/8 [pystac]
 </pre></div>
 </div>
 </div>
@@ -707,24 +570,16 @@ Installing collected packages: pywin32, wrapt, shapely, oschmod, pystac, depreca
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0:00:00 Job &#39;j-25102711235345958c68eeb70e680cbc&#39;: send &#39;start&#39;
-0:00:13 Job &#39;j-25102711235345958c68eeb70e680cbc&#39;: created (progress 0%)
-0:00:19 Job &#39;j-25102711235345958c68eeb70e680cbc&#39;: queued (progress 0%)
-0:00:25 Job &#39;j-25102711235345958c68eeb70e680cbc&#39;: queued (progress 0%)
-0:00:34 Job &#39;j-25102711235345958c68eeb70e680cbc&#39;: queued (progress 0%)
-0:00:44 Job &#39;j-25102711235345958c68eeb70e680cbc&#39;: queued (progress 0%)
-0:00:56 Job &#39;j-25102711235345958c68eeb70e680cbc&#39;: queued (progress 0%)
-0:01:12 Job &#39;j-25102711235345958c68eeb70e680cbc&#39;: queued (progress 0%)
-0:01:31 Job &#39;j-25102711235345958c68eeb70e680cbc&#39;: queued (progress 0%)
-0:01:55 Job &#39;j-25102711235345958c68eeb70e680cbc&#39;: running (progress N/A)
-0:02:25 Job &#39;j-25102711235345958c68eeb70e680cbc&#39;: running (progress N/A)
-0:03:03 Job &#39;j-25102711235345958c68eeb70e680cbc&#39;: running (progress N/A)
-0:03:50 Job &#39;j-25102711235345958c68eeb70e680cbc&#39;: running (progress N/A)
-0:04:49 Job &#39;j-25102711235345958c68eeb70e680cbc&#39;: finished (progress 100%)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0:00:00 Job &#39;j-2511011313234fa380dd50eac6d5df84&#39;: send &#39;start&#39;
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[WindowsPath(&#39;no2_results/timeseries.csv&#39;),
- WindowsPath(&#39;no2_results/job-results.json&#39;)]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0:00:13 Job &#39;j-2511011313234fa380dd50eac6d5df84&#39;: created (progress 0%)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0:00:18 Job &#39;j-2511011313234fa380dd50eac6d5df84&#39;: created (progress 0%)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0:00:25 Job &#39;j-2511011313234fa380dd50eac6d5df84&#39;: created (progress 0%)
 </pre></div>
 </div>
 </div>
@@ -1094,6 +949,24 @@ memory usage: 8.6+ KB
                 <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="business_understanding_NO2_BKL.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Business Understanding (Kadar NO₂ di Kabupaten Bangkalan)</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="data_preprocessing_NO2_BKL.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Preprocessing Data NO<sub>2</sub> Kabupaten Bangkalan</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div>
                 </footer>
               
