@@ -1,0 +1,246 @@
+Traceback (most recent call last):
+  File "C:\Python311\Lib\site-packages\jupyter_cache\executors\utils.py", line 58, in single_nb_execution
+    executenb(
+  File "C:\Python311\Lib\site-packages\nbclient\client.py", line 1319, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python311\Lib\site-packages\jupyter_core\utils\__init__.py", line 165, in wrapped
+    return loop.run_until_complete(inner)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python311\Lib\asyncio\base_events.py", line 654, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "C:\Python311\Lib\site-packages\nbclient\client.py", line 709, in async_execute
+    await self.async_execute_cell(
+  File "C:\Python311\Lib\site-packages\nbclient\client.py", line 1062, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "C:\Python311\Lib\site-packages\nbclient\client.py", line 918, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+import streamlit as st
+import pandas as pd
+import joblib
+
+@st.cache_resource
+def load_model(model_type):
+    if model_type == "1_hari":
+        model = joblib.load('saved_models/knn_model_day2.pkl')
+        scaler = joblib.load('saved_models/scaler_day2.pkl')
+    else:  # 3_hari
+        model = joblib.load('saved_models/knn_model_day3.pkl')
+        scaler = joblib.load('saved_models/scaler_day3.pkl')
+    return model, scaler
+
+@st.cache_data
+def load_thresholds():
+    return joblib.load('saved_models/thresholds_day3.pkl')
+
+st.set_page_config(page_title="Prediksi NO₂ Bangkalan", page_icon="🌫️")
+st.title("🌫️ Prediksi Kadar NO₂ - Bangkalan")
+st.caption("Prediksi kadar NO₂ troposfer (mol/m²) menggunakan model KNN berdasarkan data Sentinel-5P.")
+
+# Pilihan model prediksi
+prediksi_type = st.selectbox(
+    "Pilih Jenis Prediksi:",
+    ("1_hari", "3_hari"),
+    format_func=lambda x: "Prediksi 1 Hari Ke Depan" if x == "1_hari" else "Prediksi 3 Hari Ke Depan"
+)
+
+model, scaler = load_model(prediksi_type)
+thresholds = load_thresholds()
+
+def get_kategori(nilai):
+    """Kategorisasi berdasarkan threshold"""
+    if nilai <= thresholds['low']:
+        return "🟢 **RENDAH**", "Kadar NO₂ rendah, kualitas udara baik."
+    elif nilai <= thresholds['medium']:
+        return "🟡 **SEDANG**", "Kadar NO₂ sedang, masih dalam batas aman."
+    else:
+        return "🔴 **TINGGI**", "Kadar NO₂ tinggi, waspadai kualitas udara!"
+
+# Input berbeda berdasarkan jenis prediksi
+if prediksi_type == "1_hari":
+    # Prediksi 1 hari menggunakan lag 2
+    col1, col2 = st.columns(2)
+    t2 = col1.number_input("NO₂ (t-2)", value=0.000028, format="%.6f")
+    t1 = col2.number_input("NO₂ (t-1)", value=0.000030, format="%.6f")
+else:
+    # Prediksi 3 hari menggunakan lag 3
+    col1, col2, col3 = st.columns(3)
+    t3 = col1.number_input("NO₂ (t-3)", value=0.000025, format="%.6f")
+    t2 = col2.number_input("NO₂ (t-2)", value=0.000028, format="%.6f")
+    t1 = col3.number_input("NO₂ (t-1)", value=0.000030, format="%.6f")
+
+if st.button("Prediksi", type="primary"):
+    if prediksi_type == "1_hari":
+        X = pd.DataFrame({'t-1': [t1], 't-2': [t2]})
+        X_scaled = scaler.transform(X)
+    else:
+        X = pd.DataFrame({'t-3': [t3], 't-2': [t2], 't-1': [t1]})
+        X_scaled = scaler.transform(X)
+    
+    y_pred = model.predict(X_scaled)[0]
+    
+    st.success("### Hasil Prediksi")
+    
+    num_predictions = 1 if prediksi_type == "1_hari" else 3
+    cols = st.columns(num_predictions)
+    
+    for i in range(num_predictions):
+        col = cols[i] if num_predictions > 1 else cols[0]
+        with col:
+            nilai_molm2 = y_pred[i] if num_predictions > 1 else y_pred
+            kategori, keterangan = get_kategori(nilai_molm2)
+            
+            st.metric(f"NO₂ (t+{i+1})", f"{nilai_molm2:.6f} mol/m²")
+            st.markdown(kategori)
+            st.caption(keterangan)
+
+with st.expander("📋 Informasi Threshold"):
+    st.markdown(f"""    
+    **Kategori Kadar NO₂:**
+    - 🟢 **RENDAH**: ≤ {thresholds['low']:.6f} mol/m²
+    - 🟡 **SEDANG**: {thresholds['low']:.6f} - {thresholds['medium']:.6f} mol/m²
+    - 🔴 **TINGGI**: > {thresholds['medium']:.6f} mol/m²
+    
+    **Statistik Data:**
+    - Minimum: {thresholds['min']:.6f} mol/m²
+    - Maksimum: {thresholds['max']:.6f} mol/m²
+    - Rata-rata: {thresholds['mean']:.6f} mol/m²
+    """)
+
+st.divider()
+st.caption("Model: KNN Regression (3 lag) | Data: 268 observasi | Metode Threshold: Quartile")
+------------------
+
+----- stderr -----
+2025-11-02 21:35:56.825 WARNING streamlit.runtime.caching.cache_data_api: No runtime found, using MemoryCacheStorageManager
+----- stderr -----
+2025-11-02 21:35:56.863 WARNING streamlit.runtime.scriptrunner_utils.script_run_context: Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+----- stderr -----
+2025-11-02 21:35:56.864 WARNING streamlit.runtime.scriptrunner_utils.script_run_context: Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+----- stderr -----
+2025-11-02 21:35:57.293 
+  [33m[1mWarning:[0m to view this Streamlit app on a browser, run it with the following
+  command:
+
+    streamlit run C:\Python311\Lib\site-packages\ipykernel_launcher.py [ARGUMENTS]
+----- stderr -----
+2025-11-02 21:35:57.294 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+----- stderr -----
+2025-11-02 21:35:57.294 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+----- stderr -----
+2025-11-02 21:35:57.295 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+----- stderr -----
+2025-11-02 21:35:57.296 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+----- stderr -----
+2025-11-02 21:35:57.296 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+----- stderr -----
+2025-11-02 21:35:57.297 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+----- stderr -----
+2025-11-02 21:35:57.298 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+----- stderr -----
+2025-11-02 21:35:57.298 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+----- stderr -----
+2025-11-02 21:35:57.299 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+----- stderr -----
+2025-11-02 21:35:57.299 Session state does not function when running a script without `streamlit run`
+----- stderr -----
+2025-11-02 21:35:57.300 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+----- stderr -----
+2025-11-02 21:35:57.300 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+----- stderr -----
+2025-11-02 21:35:57.301 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+----- stderr -----
+2025-11-02 21:35:57.302 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+----- stderr -----
+2025-11-02 21:35:57.302 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+----- stderr -----
+2025-11-02 21:35:57.303 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+----- stderr -----
+2025-11-02 21:35:57.304 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+----- stderr -----
+2025-11-02 21:35:57.814 Thread 'Thread-3': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+----- stderr -----
+2025-11-02 21:35:57.816 Thread 'Thread-3': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+----- stderr -----
+2025-11-02 21:35:57.817 Thread 'Thread-3': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+----- stderr -----
+2025-11-02 21:35:58.214 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+----- stderr -----
+2025-11-02 21:35:58.216 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+----- stderr -----
+2025-11-02 21:35:58.217 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+----- stderr -----
+2025-11-02 21:35:58.218 No runtime found, using MemoryCacheStorageManager
+----- stderr -----
+2025-11-02 21:35:58.220 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+----- stderr -----
+2025-11-02 21:35:58.221 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+----- stderr -----
+2025-11-02 21:35:58.221 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+----- stderr -----
+2025-11-02 21:35:58.223 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+----- stderr -----
+2025-11-02 21:35:58.226 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+----- stderr -----
+2025-11-02 21:35:58.227 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+----- stderr -----
+2025-11-02 21:35:58.228 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+------------------
+
+[31m---------------------------------------------------------------------------[39m
+[31mFileNotFoundError[39m                         Traceback (most recent call last)
+[36mCell[39m[36m [39m[32mIn[1][39m[32m, line 31[39m
+[32m     24[39m prediksi_type = st.selectbox(
+[32m     25[39m     [33m"[39m[33mPilih Jenis Prediksi:[39m[33m"[39m,
+[32m     26[39m     ([33m"[39m[33m1_hari[39m[33m"[39m, [33m"[39m[33m3_hari[39m[33m"[39m),
+[32m     27[39m     format_func=[38;5;28;01mlambda[39;00m x: [33m"[39m[33mPrediksi 1 Hari Ke Depan[39m[33m"[39m [38;5;28;01mif[39;00m x == [33m"[39m[33m1_hari[39m[33m"[39m [38;5;28;01melse[39;00m [33m"[39m[33mPrediksi 3 Hari Ke Depan[39m[33m"[39m
+[32m     28[39m )
+[32m     30[39m model, scaler = load_model(prediksi_type)
+[32m---> [39m[32m31[39m thresholds = [43mload_thresholds[49m[43m([49m[43m)[49m
+[32m     33[39m [38;5;28;01mdef[39;00m[38;5;250m [39m[34mget_kategori[39m(nilai):
+[32m     34[39m [38;5;250m    [39m[33;03m"""Kategorisasi berdasarkan threshold"""[39;00m
+
+[36mFile [39m[32mC:\Python311\Lib\site-packages\streamlit\runtime\caching\cache_utils.py:227[39m, in [36mCachedFunc.__call__[39m[34m(self, *args, **kwargs)[39m
+[32m    224[39m     [38;5;28;01melse[39;00m:
+[32m    225[39m         spinner_message = [33mf[39m[33m"[39m[33mRunning `[39m[38;5;132;01m{[39;00mname[38;5;132;01m}[39;00m[33m(...)`.[39m[33m"[39m
+[32m--> [39m[32m227[39m [38;5;28;01mreturn[39;00m [38;5;28;43mself[39;49m[43m.[49m[43m_get_or_create_cached_value[49m[43m([49m[43margs[49m[43m,[49m[43m [49m[43mkwargs[49m[43m,[49m[43m [49m[43mspinner_message[49m[43m)[49m
+
+[36mFile [39m[32mC:\Python311\Lib\site-packages\streamlit\runtime\caching\cache_utils.py:269[39m, in [36mCachedFunc._get_or_create_cached_value[39m[34m(self, func_args, func_kwargs, spinner_message)[39m
+[32m    263[39m spinner_or_no_context = (
+[32m    264[39m     spinner(spinner_message, _cache=[38;5;28;01mTrue[39;00m, show_time=[38;5;28mself[39m._info.show_time)
+[32m    265[39m     [38;5;28;01mif[39;00m spinner_message [38;5;129;01mis[39;00m [38;5;129;01mnot[39;00m [38;5;28;01mNone[39;00m [38;5;129;01mand[39;00m [38;5;129;01mnot[39;00m is_nested_cache_function
+[32m    266[39m     [38;5;28;01melse[39;00m contextlib.nullcontext()
+[32m    267[39m )
+[32m    268[39m [38;5;28;01mwith[39;00m spinner_or_no_context:
+[32m--> [39m[32m269[39m     [38;5;28;01mreturn[39;00m [38;5;28;43mself[39;49m[43m.[49m[43m_handle_cache_miss[49m[43m([49m[43mcache[49m[43m,[49m[43m [49m[43mvalue_key[49m[43m,[49m[43m [49m[43mfunc_args[49m[43m,[49m[43m [49m[43mfunc_kwargs[49m[43m)[49m
+
+[36mFile [39m[32mC:\Python311\Lib\site-packages\streamlit\runtime\caching\cache_utils.py:328[39m, in [36mCachedFunc._handle_cache_miss[39m[34m(self, cache, value_key, func_args, func_kwargs)[39m
+[32m    324[39m [38;5;66;03m# We acquired the lock before any other thread. Compute the value![39;00m
+[32m    325[39m [38;5;28;01mwith[39;00m [38;5;28mself[39m._info.cached_message_replay_ctx.calling_cached_function(
+[32m    326[39m     [38;5;28mself[39m._info.func
+[32m    327[39m ):
+[32m--> [39m[32m328[39m     computed_value = [38;5;28;43mself[39;49m[43m.[49m[43m_info[49m[43m.[49m[43mfunc[49m[43m([49m[43m*[49m[43mfunc_args[49m[43m,[49m[43m [49m[43m*[49m[43m*[49m[43mfunc_kwargs[49m[43m)[49m
+[32m    330[39m [38;5;66;03m# We've computed our value, and now we need to write it back to the cache[39;00m
+[32m    331[39m [38;5;66;03m# along with any "replay messages" that were generated during value computation.[39;00m
+[32m    332[39m messages = [38;5;28mself[39m._info.cached_message_replay_ctx._most_recent_messages
+
+[36mCell[39m[36m [39m[32mIn[1][39m[32m, line 17[39m, in [36mload_thresholds[39m[34m()[39m
+[32m     15[39m [38;5;129m@st[39m.cache_data
+[32m     16[39m [38;5;28;01mdef[39;00m[38;5;250m [39m[34mload_thresholds[39m():
+[32m---> [39m[32m17[39m     [38;5;28;01mreturn[39;00m [43mjoblib[49m[43m.[49m[43mload[49m[43m([49m[33;43m'[39;49m[33;43msaved_models/thresholds_day3.pkl[39;49m[33;43m'[39;49m[43m)[49m
+
+[36mFile [39m[32mC:\Python311\Lib\site-packages\joblib\numpy_pickle.py:650[39m, in [36mload[39m[34m(filename, mmap_mode)[39m
+[32m    648[39m         obj = _unpickle(fobj)
+[32m    649[39m [38;5;28;01melse[39;00m:
+[32m--> [39m[32m650[39m     [38;5;28;01mwith[39;00m [38;5;28;43mopen[39;49m[43m([49m[43mfilename[49m[43m,[49m[43m [49m[33;43m'[39;49m[33;43mrb[39;49m[33;43m'[39;49m[43m)[49m [38;5;28;01mas[39;00m f:
+[32m    651[39m         [38;5;28;01mwith[39;00m _read_fileobject(f, filename, mmap_mode) [38;5;28;01mas[39;00m fobj:
+[32m    652[39m             [38;5;28;01mif[39;00m [38;5;28misinstance[39m(fobj, [38;5;28mstr[39m):
+[32m    653[39m                 [38;5;66;03m# if the returned file object is a string, this means we[39;00m
+[32m    654[39m                 [38;5;66;03m# try to load a pickle file generated with an version of[39;00m
+[32m    655[39m                 [38;5;66;03m# Joblib so we load it with joblib compatibility function.[39;00m
+
+[31mFileNotFoundError[39m: [Errno 2] No such file or directory: 'saved_models/thresholds_day3.pkl'
+

@@ -60,6 +60,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'audio_buka_tutup/modelling_suara_buka_tutup';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Deployment Identifikasi Suara Buka Tutup" href="deploy_suara_buka_tutup.html" />
     <link rel="prev" title="Preprocessing Suara Buka Tutup" href="data_preprocessing_suara_buka_tutup.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -203,6 +204,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../NO2_Bangkalan/data_understanding_NO2_BKL.html">Data Understanding (Pengambilan dan Eksplorasi Data NO<sub>2</sub> Di Kabupaten Bangkalan)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../NO2_Bangkalan/data_preprocessing_NO2_BKL.html">Preprocessing Data NO<sub>2</sub> Kabupaten Bangkalan</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../NO2_Bangkalan/modelling_NO2_BKL.html">Modelling Data NO<sub>2</sub> Kabupaten Bangkalan</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../NO2_Bangkalan/deploy_NO2_BKL.html"><strong>Deployment Prediksi Kadar NO₂ di Kabupaten Bangkalan</strong></a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Multi Prediksi NO2 di Kabupaten Bangkalan</span></p>
 <ul class="nav bd-sidenav">
@@ -210,6 +212,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../NO2_Bangkalan%20%28multi%20prediksi%29/data_understanding_NO2_BKL.html">Data Understanding (Pengambilan dan Eksplorasi Data NO<sub>2</sub> Di Kabupaten Bangkalan)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../NO2_Bangkalan%20%28multi%20prediksi%29/data_preprocessing_NO2_BKL.html">Preprocessing Data NO<sub>2</sub> Kabupaten Bangkalan</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../NO2_Bangkalan%20%28multi%20prediksi%29/modelling_NO2_BKL.html">Modelling Data NO<sub>2</sub> Kabupaten Bangkalan</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../NO2_Bangkalan%20%28multi%20prediksi%29/deploy_NO2_BKL.html"><strong>Deployment Multi Prediksi Kadar NO₂ di Kabupaten Bangkalan</strong></a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Identifikasi Audio Buka Tutup</span></p>
 <ul class="current nav bd-sidenav">
@@ -217,6 +220,7 @@
 <li class="toctree-l1"><a class="reference internal" href="data_preprocessing_suara_buka_tutup.html"><strong>Preprocessing Suara Buka Tutup</strong></a></li>
 
 <li class="toctree-l1 current active"><a class="current reference internal" href="#"><strong>Modeling &amp; Evaluation (Random Forest) Suara Buka Tutup</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="deploy_suara_buka_tutup.html"><strong>Deployment Identifikasi Suara Buka Tutup</strong></a></li>
 </ul>
 
     </div>
@@ -1072,7 +1076,7 @@ weighted avg       0.95      0.94      0.94       100
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\Harits Putra Junaidi\AppData\Local\Temp\ipykernel_14616\518267180.py:4: FutureWarning: 
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\Harits Putra Junaidi\AppData\Local\Temp\ipykernel_23124\518267180.py:4: FutureWarning: 
 
 Passing `palette` without assigning `hue` is deprecated and will be removed in v0.14.0. Assign the `y` variable to `hue` and set `legend=False` for the same effect.
 
@@ -1093,19 +1097,6 @@ Passing `palette` without assigning `hue` is deprecated and will be removed in v
 <span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">scipy</span><span class="w"> </span><span class="kn">import</span> <span class="n">stats</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">ipd</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">7</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
-<span class="ne">----&gt; </span><span class="mi">2</span> <span class="kn">import</span><span class="w"> </span><span class="nn">librosa</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
-
-<span class="ne">ModuleNotFoundError</span>: No module named &#39;librosa&#39;
 </pre></div>
 </div>
 </div>
@@ -1229,6 +1220,15 @@ Probabilitas: Buka=98.0%, Tutup=2.0%
         <p class="prev-next-subtitle">previous</p>
         <p class="prev-next-title"><strong>Preprocessing Suara Buka Tutup</strong></p>
       </div>
+    </a>
+    <a class="right-next"
+       href="deploy_suara_buka_tutup.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><strong>Deployment Identifikasi Suara Buka Tutup</strong></p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
                 </footer>
