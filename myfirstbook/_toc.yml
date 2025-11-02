@@ -26,6 +26,7 @@ parts:
   - file: NO2_Bangkalan/data_understanding_NO2_BKL.ipynb
   - file: NO2_Bangkalan/data_preprocessing_NO2_BKL.ipynb
   - file: NO2_Bangkalan/modelling_NO2_BKL.ipynb
+  - file: NO2_Bangkalan/deploy_NO2_BKL.ipynb
 
 - caption: Multi Prediksi NO2 di Kabupaten Bangkalan
   chapters:
@@ -33,9 +34,11 @@ parts:
   - file: NO2_Bangkalan (multi prediksi)/data_understanding_NO2_BKL.ipynb
   - file: NO2_Bangkalan (multi prediksi)/data_preprocessing_NO2_BKL.ipynb
   - file: NO2_Bangkalan (multi prediksi)/modelling_NO2_BKL.ipynb
+  - file: NO2_Bangkalan (multi prediksi)/deploy_NO2_BKL.ipynb
 
 - caption: Identifikasi Audio Buka Tutup
   chapters:
   - file: audio_buka_tutup/data_understanding_suara_buka_tutup.ipynb
   - file: audio_buka_tutup/data_preprocessing_suara_buka_tutup.ipynb
   - file: audio_buka_tutup/modelling_suara_buka_tutup.ipynb
+  - file: audio_buka_tutup/deploy_suara_buka_tutup.ipynb
