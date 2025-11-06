@@ -22,19 +22,19 @@ parts:
 
 - caption: Prediksi NO2 di Kabupaten Bangkalan
   chapters:
-  - file: NO2_Bangkalan/business_understanding_NO2_BKL.md
-  - file: NO2_Bangkalan/data_understanding_NO2_BKL.ipynb
-  - file: NO2_Bangkalan/data_preprocessing_NO2_BKL.ipynb
-  - file: NO2_Bangkalan/modelling_NO2_BKL.ipynb
-  - file: NO2_Bangkalan/deploy_NO2_BKL.ipynb
+  - file: NO2_Bangkalan V2/business_understanding_NO2_BKL.md
+  - file: NO2_Bangkalan V2/data_understanding_NO2_BKL.ipynb
+  - file: NO2_Bangkalan V2/data_preprocessing_NO2_BKL.ipynb
+  - file: NO2_Bangkalan V2/modelling_NO2_BKL.ipynb
+  - file: NO2_Bangkalan V2/deploy_NO2_BKL.ipynb
 
 - caption: Multi Prediksi NO2 di Kabupaten Bangkalan
   chapters:
-  - file: NO2_Bangkalan (multi prediksi)/business_understanding_NO2_BKL.md
-  - file: NO2_Bangkalan (multi prediksi)/data_understanding_NO2_BKL.ipynb
-  - file: NO2_Bangkalan (multi prediksi)/data_preprocessing_NO2_BKL.ipynb
-  - file: NO2_Bangkalan (multi prediksi)/modelling_NO2_BKL.ipynb
-  - file: NO2_Bangkalan (multi prediksi)/deploy_NO2_BKL.ipynb
+  - file: NO2_Bangkalan (multi prediksi) V2/business_understanding_NO2_BKL.md
+  - file: NO2_Bangkalan (multi prediksi) V2/data_understanding_NO2_BKL.ipynb
+  - file: NO2_Bangkalan (multi prediksi) V2/data_preprocessing_NO2_BKL.ipynb
+  - file: NO2_Bangkalan (multi prediksi) V2/modelling_NO2_BKL.ipynb
+  - file: NO2_Bangkalan (multi prediksi) V2/deploy_NO2_BKL.ipynb
 
 - caption: Identifikasi Audio Buka Tutup
   chapters:
