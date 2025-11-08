@@ -38,7 +38,7 @@ parts:
 
 - caption: Identifikasi Audio Buka Tutup
   chapters:
-  - file: audio_buka_tutup/data_understanding_suara_buka_tutup.ipynb
-  - file: audio_buka_tutup/data_preprocessing_suara_buka_tutup.ipynb
-  - file: audio_buka_tutup/modelling_suara_buka_tutup.ipynb
-  - file: audio_buka_tutup/deploy_suara_buka_tutup.ipynb
+  - file: audio_buka_tutup V2/data_understanding_suara_buka_tutup.ipynb
+  - file: audio_buka_tutup V2/data_preprocessing_suara_buka_tutup.ipynb
+  - file: audio_buka_tutup V2/modelling_suara_buka_tutup_RF.ipynb
+  - file: audio_buka_tutup V2/deploy_suara_buka_tutup.ipynb
