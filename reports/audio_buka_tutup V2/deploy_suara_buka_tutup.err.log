@@ -169,7 +169,7 @@ def verify_speaker(y, sr, speaker_profiles, is_recording=False):
         return False, "unknown", 0.0
     
     if is_recording:
-        distance_threshold = 0.55
+        distance_threshold = 0.45
         gap_threshold = 0.02
         similarity_threshold = 0.85
         st.sidebar.info("**RECORDING MODE**")
@@ -181,7 +181,7 @@ def verify_speaker(y, sr, speaker_profiles, is_recording=False):
     
     test_features = extract_speaker_features(y, sr)
     
-    # Normalisasi features untuk konsistensi
+    # Normalisasi features
     test_features = test_features / (np.linalg.norm(test_features) + 1e-8)
     
     best_distance = float('inf')
@@ -192,13 +192,13 @@ def verify_speaker(y, sr, speaker_profiles, is_recording=False):
     st.sidebar.write("🔍 **Speaker Verification Debug (Distance-based):**")
     
     for speaker_id, profile_features in speaker_profiles.items():
-        # Pastikan profile_features juga ternormalisasi
+        # profile_features normalisasi
         profile_normalized = profile_features / (np.linalg.norm(profile_features) + 1e-8)
         
         # Euclidean distance (semakin kecil = semakin mirip)
         distance = np.linalg.norm(test_features - profile_normalized)
         
-        # Cosine similarity (untuk referensi)
+        # Cosine similarity
         similarity = np.dot(test_features, profile_normalized)
         
         distances[speaker_id] = distance
@@ -212,7 +212,6 @@ def verify_speaker(y, sr, speaker_profiles, is_recording=False):
             best_distance = distance
             best_speaker = speaker_id
     
-    # Validasi berdasarkan jarak
     sorted_distances = sorted(distances.values())
     gap_distance = sorted_distances[1] - sorted_distances[0] if len(sorted_distances) > 1 else 0.1
 
@@ -222,19 +221,18 @@ def verify_speaker(y, sr, speaker_profiles, is_recording=False):
     st.sidebar.write(f"  - Gap Distance: {gap_distance:.6f} (harus > {gap_threshold})")
     st.sidebar.write(f"  - Best Similarity: {similarities[best_speaker]:.6f} (harus > {similarity_threshold})")
     
-    # DECISION dengan threshold yang berbeda
     check1 = best_distance < distance_threshold
     check2 = gap_distance > gap_threshold
     check3 = similarities[best_speaker] > similarity_threshold
     
     st.sidebar.write(f"**CHECKS:**")
-    st.sidebar.write(f"  - Distance Check: {'✅' if check1 else '❌'} ({best_distance:.3f} < {distance_threshold})")
-    st.sidebar.write(f"  - Gap Check: {'✅' if check2 else '❌'} ({gap_distance:.3f} > {gap_threshold})")  
-    st.sidebar.write(f"  - Similarity Check: {'✅' if check3 else '❌'} ({similarities[best_speaker]:.3f} > {similarity_threshold})")
+    st.sidebar.write(f"  - Distance Check: {'Done' if check1 else 'No'} ({best_distance:.3f} < {distance_threshold})")
+    st.sidebar.write(f"  - Gap Check: {'Done' if check2 else 'No'} ({gap_distance:.3f} > {gap_threshold})")  
+    st.sidebar.write(f"  - Similarity Check: {'Done' if check3 else 'No'} ({similarities[best_speaker]:.3f} > {similarity_threshold})")
     
     is_registered = check1 and check2 and check3
     
-    st.sidebar.write(f"**DECISION: {'✅ ACCEPTED' if is_registered else '❌ REJECTED'}**")
+    st.sidebar.write(f"**DECISION: {'ACCEPTED' if is_registered else 'REJECTED'}**")
     
     return is_registered, best_speaker, similarities[best_speaker]
 
@@ -308,10 +306,10 @@ def predict_audio(audio_data, model, speaker_profiles=None, is_file=True, is_rec
         st.sidebar.write(f"  - Similarity: {similarity:.6f}")
         
         if not is_registered:
-            st.sidebar.error("🚫 ACCESS DENIED - Speaker not registered")
+            st.sidebar.error("ACCESS DENIED - Speaker not registered")
             return "unregistered", [0.0, 0.0], None, y_processed, sr_processed, speaker_id, similarity, None
         
-        st.sidebar.success("✅ ACCESS GRANTED - Proceeding to classification")
+        st.sidebar.success("ACCESS GRANTED - Proceeding to classification")
 
         features = extract_only_selected_features(y_processed, sr_processed)
         
@@ -473,34 +471,32 @@ def process_prediction_results(prediction, probabilities, features, y_processed,
             st.header("Classification Results")
             
             if speaker_id is not None:
-                st.subheader("🔐 Speaker Verification")
+                st.subheader("Speaker Verification")
                 if prediction == "unregistered":
                     st.markdown(f"""
                     <div class="warning-box">
-                        <h3>⛔ SPEAKER TIDAK TERDAFTAR</h3>
+                        <h3>SPEAKER TIDAK TERDAFTAR</h3>
                         <p><strong>Similarity Score: {similarity:.3f}</strong> (Threshold: 0.65)</p>
-                        <p>🚫 Suara tidak dikenali sebagai pengguna terdaftar</p>
-                        <p>🔒 Akses ditolak untuk keamanan sistem</p>
+                        <p>Suara tidak dikenali sebagai pengguna terdaftar</p>
+                        <p>Akses ditolak untuk keamanan sistem</p>
                     </div>
                     """, unsafe_allow_html=True)
                     
-                    # Tambahkan informasi debug
-                    with st.expander("🔍 Debug Information"):
+                    with st.expander("Debug Information"):
                         st.write(f"**Detected Speaker:** {speaker_id}")
                         st.write(f"**Similarity Score:** {similarity:.6f}")
                         st.write(f"**Required Threshold:** 0.65")
                         st.write(f"**Status:** Score terlalu rendah - kemungkinan bukan speaker terdaftar")
                     return
                 else:
-                    # Tentukan confidence level
                     if similarity > 0.85:
-                        confidence_level = "🟢 High Confidence"
+                        confidence_level = "High Confidence"
                         confidence_color = "success"
                     elif similarity > 0.75:
-                        confidence_level = "🟡 Medium Confidence" 
+                        confidence_level = "Medium Confidence" 
                         confidence_color = "warning"
                     else:
-                        confidence_level = "🔴 Low Confidence"
+                        confidence_level = "Low Confidence"
                         confidence_color = "error"
                     
                     if confidence_color == "success":
@@ -509,25 +505,23 @@ def process_prediction_results(prediction, probabilities, features, y_processed,
                     elif confidence_color == "warning":
                         st.warning(f"**Speaker:** {speaker_id} | Similarity: {similarity:.3f} | {confidence_level}")
                     
-            # Classification results hanya jika speaker terverifikasi
             confidence = max(probabilities) * 100
             
             if prediction.lower() == 'buka':
                 st.markdown(f"""
                 <div class="prediction-box prediction-buka">
-                    <h2>🔓 BUKA</h2>
+                    <h2>BUKA</h2>
                     <p><strong>Confidence: {confidence:.1f}%</strong></p>
                 </div>
                 """, unsafe_allow_html=True)
             else:
                 st.markdown(f"""
                 <div class="prediction-box prediction-tutup">
-                    <h2>🔒 TUTUP</h2>
+                    <h2>TUTUP</h2>
                     <p><strong>Confidence: {confidence:.1f}%</strong></p>
                 </div>
                 """, unsafe_allow_html=True)
             
-            # Random Forest specific information
             if rf_info:
                 st.subheader("Random Forest Decision Details")
                 st.info(f"""
@@ -537,7 +531,6 @@ def process_prediction_results(prediction, probabilities, features, y_processed,
                 - **Voting Strategy:** Majority voting across all trees
                 """)
                 
-                # Feature importance visualization
                 st.subheader("Feature Importance")
                 importance_df = pd.DataFrame.from_dict(rf_info['feature_importance'], orient='index', columns=['Importance'])
                 importance_df = importance_df.sort_values('Importance', ascending=True)
@@ -552,7 +545,6 @@ def process_prediction_results(prediction, probabilities, features, y_processed,
                 )
                 st.plotly_chart(fig, use_container_width=True)
             
-            # Probability breakdown
             st.subheader("Prediction Probabilities")
             prob_df = pd.DataFrame({
                 'Class': model.classes_,
@@ -571,8 +563,7 @@ def process_prediction_results(prediction, probabilities, features, y_processed,
             fig.update_traces(texttemplate='%{text:.1f}%', textposition='outside')
             fig.update_layout(showlegend=False)
             st.plotly_chart(fig, use_container_width=True)
-            
-            # Feature details
+
             if features:
                 st.subheader("Extracted Features (Raw for RF)")
                 features_df = pd.DataFrame([features]).T
@@ -580,7 +571,6 @@ def process_prediction_results(prediction, probabilities, features, y_processed,
                 st.dataframe(features_df, use_container_width=True)
                 st.info("Note: Random Forest menggunakan raw features tanpa scaling")
         
-        # Audio analysis
         st.header("🎵 Audio Analysis")
         if y_processed is not None:
             waveform_fig = create_waveform_plot(
@@ -623,96 +613,96 @@ if __name__ == "__main__":
 ------------------
 
 ----- stderr -----
-2025-11-10 11:54:28.131 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+2025-11-17 10:35:32.076 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
 ----- stderr -----
-2025-11-10 11:54:28.251 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+2025-11-17 10:35:32.124 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
 ----- stderr -----
-2025-11-10 11:54:28.253 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+2025-11-17 10:35:32.125 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
 ----- stderr -----
-2025-11-10 11:54:28.395 
+2025-11-17 10:35:32.163 
   [33m[1mWarning:[0m to view this Streamlit app on a browser, run it with the following
   command:
 
     streamlit run C:\Python311\Lib\site-packages\ipykernel_launcher.py [ARGUMENTS]
 ----- stderr -----
-2025-11-10 11:54:28.397 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+2025-11-17 10:35:32.164 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
 ----- stderr -----
-2025-11-10 11:54:28.399 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+2025-11-17 10:35:32.165 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
 ----- stderr -----
-2025-11-10 11:54:28.400 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+2025-11-17 10:35:32.165 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
 ----- stderr -----
-2025-11-10 11:54:28.402 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+2025-11-17 10:35:32.166 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
 ----- stderr -----
-2025-11-10 11:54:28.405 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+2025-11-17 10:35:32.167 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
 ----- stderr -----
-2025-11-10 11:54:28.416 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+2025-11-17 10:35:32.171 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
 ----- stderr -----
-2025-11-10 11:54:28.418 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+2025-11-17 10:35:32.171 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
 ----- stderr -----
-2025-11-10 11:54:28.419 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+2025-11-17 10:35:32.172 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
 ----- stderr -----
-2025-11-10 11:54:28.421 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+2025-11-17 10:35:32.173 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
 ----- stderr -----
-2025-11-10 11:54:28.425 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+2025-11-17 10:35:32.174 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
 ----- stderr -----
-2025-11-10 11:54:28.427 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+2025-11-17 10:35:32.175 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
 ----- stderr -----
-2025-11-10 11:54:28.428 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+2025-11-17 10:35:32.175 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
 ----- stderr -----
-2025-11-10 11:54:28.429 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+2025-11-17 10:35:32.176 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
 ----- stderr -----
-2025-11-10 11:54:28.431 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+2025-11-17 10:35:32.177 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
 ----- stderr -----
-2025-11-10 11:54:28.432 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+2025-11-17 10:35:32.177 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
 ----- stderr -----
-2025-11-10 11:54:28.434 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+2025-11-17 10:35:32.178 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
 ----- stderr -----
-2025-11-10 11:54:28.435 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+2025-11-17 10:35:32.178 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
 ----- stderr -----
-2025-11-10 11:54:28.437 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+2025-11-17 10:35:32.179 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
 ----- stderr -----
-2025-11-10 11:54:28.438 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+2025-11-17 10:35:32.179 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
 ----- stderr -----
-2025-11-10 11:54:28.466 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+2025-11-17 10:35:32.203 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
 ----- stderr -----
-2025-11-10 11:54:28.469 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+2025-11-17 10:35:32.205 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
 ----- stderr -----
-2025-11-10 11:54:28.470 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+2025-11-17 10:35:32.206 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
 ----- stderr -----
-2025-11-10 11:54:28.472 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+2025-11-17 10:35:32.207 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
 ----- stderr -----
-2025-11-10 11:54:28.472 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+2025-11-17 10:35:32.208 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
 ----- stderr -----
-2025-11-10 11:54:28.474 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+2025-11-17 10:35:32.209 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
 ----- stderr -----
-2025-11-10 11:54:28.476 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+2025-11-17 10:35:32.210 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
 ------------------
 
 [31m---------------------------------------------------------------------------[39m
 [31mAttributeError[39m                            Traceback (most recent call last)
-[36mCell[39m[36m [39m[32mIn[1][39m[32m, line 602[39m
-[32m    572[39m     st.markdown([33m"""[39m
-[32m    573[39m [33m    ### Fitur Utama:[39m
-[32m    574[39m [33m    1. **Upload Audio File** - Upload file WAV untuk klasifikasi[39m
-[32m   (...)[39m[32m    598[39m [33m    - **Feature importance analysis** untuk interpretabilitas model[39m
-[32m    599[39m [33m    [39m[33m"""[39m)
-[32m    601[39m [38;5;28;01mif[39;00m [34m__name__[39m == [33m"[39m[33m__main__[39m[33m"[39m:
-[32m--> [39m[32m602[39m     [43mmain[49m[43m([49m[43m)[49m
+[36mCell[39m[36m [39m[32mIn[1][39m[32m, line 592[39m
+[32m    562[39m     st.markdown([33m"""[39m
+[32m    563[39m [33m    ### Fitur Utama:[39m
+[32m    564[39m [33m    1. **Upload Audio File** - Upload file WAV untuk klasifikasi[39m
+[32m   (...)[39m[32m    588[39m [33m    - **Feature importance analysis** untuk interpretabilitas model[39m
+[32m    589[39m [33m    [39m[33m"""[39m)
+[32m    591[39m [38;5;28;01mif[39;00m [34m__name__[39m == [33m"[39m[33m__main__[39m[33m"[39m:
+[32m--> [39m[32m592[39m     [43mmain[49m[43m([49m[43m)[49m
 
-[36mCell[39m[36m [39m[32mIn[1][39m[32m, line 349[39m, in [36mmain[39m[34m()[39m
-[32m    344[39m     st.stop()
-[32m    346[39m st.sidebar.header([33m"[39m[33mModel Information[39m[33m"[39m)
-[32m    347[39m st.sidebar.info([33mf[39m[33m"""[39m
-[32m    348[39m [33m**Model:** Random Forest[39m
-[32m--> [39m[32m349[39m [33m**Classes:** [39m[38;5;132;01m{[39;00m[33m'[39m[33m, [39m[33m'[39m.join([43mmodel[49m[43m.[49m[43mclasses_[49m)[38;5;132;01m}[39;00m
-[32m    350[39m [33m**Trees:** [39m[38;5;132;01m{[39;00mmodel.n_estimators[38;5;132;01m}[39;00m
-[32m    351[39m [33m**Max Depth:** [39m[38;5;132;01m{[39;00mmodel.max_depth[38;5;250m [39m[38;5;28;01mif[39;00m[38;5;250m [39mmodel.max_depth[38;5;250m [39m[38;5;28;01melse[39;00m[38;5;250m [39m[33m'[39m[33mNone[39m[33m'[39m[38;5;132;01m}[39;00m
-[32m    352[39m [33m**Selected Features:** 5 fitur terpilih[39m
-[32m    353[39m [33m**Feature Scaling:** None (Raw features)[39m
-[32m    354[39m [33m**Speaker Verification:** [39m[38;5;132;01m{[39;00m[33m'[39m[33mAktif[39m[33m'[39m[38;5;250m [39m[38;5;28;01mif[39;00m[38;5;250m [39mprofiles_loaded[38;5;250m [39m[38;5;28;01melse[39;00m[38;5;250m [39m[33m'[39m[33mTidak aktif[39m[33m'[39m[38;5;132;01m}[39;00m
-[32m    355[39m [33m[39m[33m"""[39m)
-[32m    357[39m [38;5;28;01mif[39;00m profiles_loaded:
-[32m    358[39m     st.sidebar.success([33mf[39m[33m"[39m[33m👥 [39m[38;5;132;01m{[39;00m[38;5;28mlen[39m(speaker_profiles)[38;5;132;01m}[39;00m[33m speaker terdaftar[39m[33m"[39m)
+[36mCell[39m[36m [39m[32mIn[1][39m[32m, line 347[39m, in [36mmain[39m[34m()[39m
+[32m    342[39m     st.stop()
+[32m    344[39m st.sidebar.header([33m"[39m[33mModel Information[39m[33m"[39m)
+[32m    345[39m st.sidebar.info([33mf[39m[33m"""[39m
+[32m    346[39m [33m**Model:** Random Forest[39m
+[32m--> [39m[32m347[39m [33m**Classes:** [39m[38;5;132;01m{[39;00m[33m'[39m[33m, [39m[33m'[39m.join([43mmodel[49m[43m.[49m[43mclasses_[49m)[38;5;132;01m}[39;00m
+[32m    348[39m [33m**Trees:** [39m[38;5;132;01m{[39;00mmodel.n_estimators[38;5;132;01m}[39;00m
+[32m    349[39m [33m**Max Depth:** [39m[38;5;132;01m{[39;00mmodel.max_depth[38;5;250m [39m[38;5;28;01mif[39;00m[38;5;250m [39mmodel.max_depth[38;5;250m [39m[38;5;28;01melse[39;00m[38;5;250m [39m[33m'[39m[33mNone[39m[33m'[39m[38;5;132;01m}[39;00m
+[32m    350[39m [33m**Selected Features:** 5 fitur terpilih[39m
+[32m    351[39m [33m**Feature Scaling:** None (Raw features)[39m
+[32m    352[39m [33m**Speaker Verification:** [39m[38;5;132;01m{[39;00m[33m'[39m[33mAktif[39m[33m'[39m[38;5;250m [39m[38;5;28;01mif[39;00m[38;5;250m [39mprofiles_loaded[38;5;250m [39m[38;5;28;01melse[39;00m[38;5;250m [39m[33m'[39m[33mTidak aktif[39m[33m'[39m[38;5;132;01m}[39;00m
+[32m    353[39m [33m[39m[33m"""[39m)
+[32m    355[39m [38;5;28;01mif[39;00m profiles_loaded:
+[32m    356[39m     st.sidebar.success([33mf[39m[33m"[39m[33m👥 [39m[38;5;132;01m{[39;00m[38;5;28mlen[39m(speaker_profiles)[38;5;132;01m}[39;00m[33m speaker terdaftar[39m[33m"[39m)
 
 [31mAttributeError[39m: 'NoneType' object has no attribute 'classes_'
 

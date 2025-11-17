@@ -37,8 +37,7 @@ nbclient.exceptions.CellTimeoutError: A cell timed out while it was being execut
 The message was: Cell execution timed out.
 Here is a preview of the cell contents:
 -------------------
-['# 4. Mask nilai negatif (data invalid)', 'def mask_invalid(x):', '    return x < 0', '', 's5p_masked = s5p.mask(s5p.apply(mask_invalid))']
-...
-['job = daily_mean_aoi.execute_batch(out_format="CSV",)', '', '# 8. Unduh hasil job', 'results = job.get_results()', 'results.download_files("no2_results")']
+# 1. Koneksi ke Copernicus Data Space
+connection = openeo.connect("openeo.dataspace.copernicus.eu").authenticate_oidc()
 -------------------
 

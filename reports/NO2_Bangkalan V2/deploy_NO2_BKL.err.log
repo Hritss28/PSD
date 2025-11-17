@@ -134,79 +134,79 @@ st.caption("Model: KNN Regression berdasarkan analisis korelasi | Data: 268 obse
 ------------------
 
 ----- stderr -----
-2025-11-10 11:52:59.462 WARNING streamlit.runtime.caching.cache_data_api: No runtime found, using MemoryCacheStorageManager
+2025-11-17 10:34:17.684 WARNING streamlit.runtime.caching.cache_data_api: No runtime found, using MemoryCacheStorageManager
 ----- stderr -----
-2025-11-10 11:52:59.513 WARNING streamlit.runtime.scriptrunner_utils.script_run_context: Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+2025-11-17 10:34:17.756 WARNING streamlit.runtime.scriptrunner_utils.script_run_context: Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
 ----- stderr -----
-2025-11-10 11:52:59.514 WARNING streamlit.runtime.scriptrunner_utils.script_run_context: Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+2025-11-17 10:34:17.759 WARNING streamlit.runtime.scriptrunner_utils.script_run_context: Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
 ----- stderr -----
-2025-11-10 11:52:59.881 
+2025-11-17 10:34:18.557 
   [33m[1mWarning:[0m to view this Streamlit app on a browser, run it with the following
   command:
 
     streamlit run C:\Python311\Lib\site-packages\ipykernel_launcher.py [ARGUMENTS]
 ----- stderr -----
-2025-11-10 11:52:59.882 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+2025-11-17 10:34:18.559 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
 ----- stderr -----
-2025-11-10 11:52:59.883 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+2025-11-17 10:34:18.559 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
 ----- stderr -----
-2025-11-10 11:52:59.884 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+2025-11-17 10:34:18.561 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
 ----- stderr -----
-2025-11-10 11:52:59.885 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+2025-11-17 10:34:18.561 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
 ----- stderr -----
-2025-11-10 11:52:59.885 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+2025-11-17 10:34:18.562 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
 ----- stderr -----
-2025-11-10 11:52:59.887 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+2025-11-17 10:34:18.564 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
 ----- stderr -----
-2025-11-10 11:52:59.888 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+2025-11-17 10:34:18.565 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
 ----- stderr -----
-2025-11-10 11:52:59.889 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+2025-11-17 10:34:18.567 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
 ----- stderr -----
-2025-11-10 11:52:59.890 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+2025-11-17 10:34:18.568 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
 ----- stderr -----
-2025-11-10 11:52:59.892 Session state does not function when running a script without `streamlit run`
+2025-11-17 10:34:18.569 Session state does not function when running a script without `streamlit run`
 ----- stderr -----
-2025-11-10 11:52:59.893 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+2025-11-17 10:34:18.570 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
 ----- stderr -----
-2025-11-10 11:52:59.894 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+2025-11-17 10:34:18.571 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
 ----- stderr -----
-2025-11-10 11:52:59.895 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+2025-11-17 10:34:18.571 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
 ----- stderr -----
-2025-11-10 11:52:59.898 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+2025-11-17 10:34:18.573 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
 ----- stderr -----
-2025-11-10 11:52:59.898 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+2025-11-17 10:34:18.574 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
 ----- stderr -----
-2025-11-10 11:52:59.900 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+2025-11-17 10:34:18.574 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
 ----- stderr -----
-2025-11-10 11:52:59.902 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+2025-11-17 10:34:18.575 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
 ----- stderr -----
-2025-11-10 11:53:00.408 Thread 'Thread-3': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+2025-11-17 10:34:19.084 Thread 'Thread-3': missing ScriptRunContext! This warning can be ignored when running in bare mode.
 ----- stderr -----
-2025-11-10 11:53:00.412 Thread 'Thread-3': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+2025-11-17 10:34:19.091 Thread 'Thread-3': missing ScriptRunContext! This warning can be ignored when running in bare mode.
 ----- stderr -----
-2025-11-10 11:53:00.413 Thread 'Thread-3': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+2025-11-17 10:34:19.094 Thread 'Thread-3': missing ScriptRunContext! This warning can be ignored when running in bare mode.
 ----- stderr -----
-2025-11-10 11:53:01.126 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+2025-11-17 10:34:20.038 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
 ----- stderr -----
-2025-11-10 11:53:01.128 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+2025-11-17 10:34:20.040 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
 ----- stderr -----
-2025-11-10 11:53:01.129 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+2025-11-17 10:34:20.042 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
 ----- stderr -----
-2025-11-10 11:53:01.129 No runtime found, using MemoryCacheStorageManager
+2025-11-17 10:34:20.044 No runtime found, using MemoryCacheStorageManager
 ----- stderr -----
-2025-11-10 11:53:01.131 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+2025-11-17 10:34:20.047 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
 ----- stderr -----
-2025-11-10 11:53:01.132 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+2025-11-17 10:34:20.049 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
 ----- stderr -----
-2025-11-10 11:53:01.132 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+2025-11-17 10:34:20.053 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
 ----- stderr -----
-2025-11-10 11:53:01.134 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+2025-11-17 10:34:20.055 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
 ----- stderr -----
-2025-11-10 11:53:01.136 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+2025-11-17 10:34:20.059 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
 ----- stderr -----
-2025-11-10 11:53:01.137 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+2025-11-17 10:34:20.061 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
 ----- stderr -----
-2025-11-10 11:53:01.138 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+2025-11-17 10:34:20.063 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
 ------------------
 
 [31m---------------------------------------------------------------------------[39m

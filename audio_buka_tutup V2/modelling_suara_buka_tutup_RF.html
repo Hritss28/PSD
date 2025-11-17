@@ -440,8 +440,7 @@ document.write(`
 <h2><em><strong>1. Import &amp; Load Data Fitur</strong></em><a class="headerlink" href="#import-load-data-fitur" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### ***1. Import &amp; Load Data Fitur***</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.ensemble</span><span class="w"> </span><span class="kn">import</span> <span class="n">RandomForestClassifier</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.metrics</span><span class="w"> </span><span class="kn">import</span> <span class="n">accuracy_score</span><span class="p">,</span> <span class="n">classification_report</span><span class="p">,</span> <span class="n">confusion_matrix</span><span class="p">,</span> <span class="n">ConfusionMatrixDisplay</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
@@ -1049,7 +1048,7 @@ weighted avg       0.89      0.88      0.88        34
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\Harits Putra Junaidi\AppData\Local\Temp\ipykernel_7344\518267180.py:4: FutureWarning: 
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\Harits Putra Junaidi\AppData\Local\Temp\ipykernel_23464\518267180.py:4: FutureWarning: 
 
 Passing `palette` without assigning `hue` is deprecated and will be removed in v0.14.0. Assign the `y` variable to `hue` and set `legend=False` for the same effect.
 
@@ -1067,7 +1066,7 @@ Passing `palette` without assigning `hue` is deprecated and will be removed in v
 <span class="kn">import</span><span class="w"> </span><span class="nn">pickle</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
 
-<span class="k">def</span><span class="w"> </span><span class="nf">extract_enhanced_speaker_features</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">sr</span><span class="o">=</span><span class="mi">22050</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">extract_speaker_features</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">sr</span><span class="o">=</span><span class="mi">22050</span><span class="p">):</span>
     
     <span class="c1"># 1. MFCC features (13 coefficients)</span>
     <span class="n">mfccs</span> <span class="o">=</span> <span class="n">librosa</span><span class="o">.</span><span class="n">feature</span><span class="o">.</span><span class="n">mfcc</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="n">y</span><span class="p">,</span> <span class="n">sr</span><span class="o">=</span><span class="n">sr</span><span class="p">,</span> <span class="n">n_mfcc</span><span class="o">=</span><span class="mi">13</span><span class="p">)</span>
@@ -1087,7 +1086,6 @@ Passing `palette` without assigning `hue` is deprecated and will be removed in v
     <span class="n">chroma</span> <span class="o">=</span> <span class="n">librosa</span><span class="o">.</span><span class="n">feature</span><span class="o">.</span><span class="n">chroma_stft</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="n">y</span><span class="p">,</span> <span class="n">sr</span><span class="o">=</span><span class="n">sr</span><span class="p">)</span>
     <span class="n">chroma_mean</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">chroma</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
     
-    <span class="c1"># Gabungkan semua features</span>
     <span class="n">speaker_features</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span>
         <span class="n">mfcc_mean</span><span class="p">,</span>           <span class="c1"># 13 features</span>
         <span class="n">mfcc_std</span><span class="p">,</span>            <span class="c1"># 13 features  </span>
@@ -1105,7 +1103,7 @@ Passing `palette` without assigning `hue` is deprecated and will be removed in v
         <span class="n">y</span> <span class="o">=</span> <span class="n">librosa</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">orig_sr</span><span class="o">=</span><span class="n">sr</span><span class="p">,</span> <span class="n">target_sr</span><span class="o">=</span><span class="n">target_sr</span><span class="p">)</span>
         <span class="n">sr</span> <span class="o">=</span> <span class="n">target_sr</span>
     
-    <span class="c1"># Durasi 2-3 detik untuk speaker profiling (lebih panjang = lebih akurat)</span>
+    <span class="c1"># Durasi 2-3 detik untuk speaker profiling</span>
     <span class="n">max_len</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">sr</span> <span class="o">*</span> <span class="mf">2.0</span><span class="p">)</span>  <span class="c1"># 2 detik</span>
     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">y</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">max_len</span><span class="p">:</span>
         <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">pad</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">max_len</span> <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="n">y</span><span class="p">)),</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;constant&#39;</span><span class="p">)</span>
@@ -1114,10 +1112,10 @@ Passing `palette` without assigning `hue` is deprecated and will be removed in v
         <span class="n">start</span> <span class="o">=</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">y</span><span class="p">)</span> <span class="o">-</span> <span class="n">max_len</span><span class="p">)</span> <span class="o">//</span> <span class="mi">2</span>
         <span class="n">y</span> <span class="o">=</span> <span class="n">y</span><span class="p">[</span><span class="n">start</span><span class="p">:</span><span class="n">start</span> <span class="o">+</span> <span class="n">max_len</span><span class="p">]</span>
     
-    <span class="c1"># Normalisasi yang lebih halus</span>
+    <span class="c1"># Normalisasi amplitudo</span>
     <span class="n">y</span> <span class="o">=</span> <span class="n">y</span> <span class="o">/</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">y</span><span class="p">))</span> <span class="o">+</span> <span class="mf">1e-6</span><span class="p">)</span>
     
-    <span class="c1"># Noise reduction yang lebih konservatif</span>
+    <span class="c1"># Noise reduction </span>
     <span class="n">y</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">y</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mf">0.005</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.0</span>
     
     <span class="k">return</span> <span class="n">y</span><span class="p">,</span> <span class="n">sr</span>
@@ -1137,11 +1135,10 @@ Passing `palette` without assigning `hue` is deprecated and will be removed in v
         <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isdir</span><span class="p">(</span><span class="n">speaker_dir</span><span class="p">):</span>
             <span class="k">continue</span>
             
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Processing speaker: </span><span class="si">{</span><span class="n">speaker_name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">🎤 Processing speaker: </span><span class="si">{</span><span class="n">speaker_name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
         
         <span class="n">speaker_features_list</span> <span class="o">=</span> <span class="p">[]</span>
         
-        <span class="c1"># Process semua file audio untuk speaker ini</span>
         <span class="k">for</span> <span class="n">audio_file</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">speaker_dir</span><span class="p">):</span>
             <span class="k">if</span> <span class="n">audio_file</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s1">&#39;.wav&#39;</span><span class="p">):</span>
                 <span class="n">audio_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">speaker_dir</span><span class="p">,</span> <span class="n">audio_file</span><span class="p">)</span>
@@ -1151,13 +1148,10 @@ Passing `palette` without assigning `hue` is deprecated and will be removed in v
                     <span class="c1"># Load audio</span>
                     <span class="n">y</span><span class="p">,</span> <span class="n">sr</span> <span class="o">=</span> <span class="n">librosa</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">audio_path</span><span class="p">,</span> <span class="n">sr</span><span class="o">=</span><span class="mi">22050</span><span class="p">)</span>
                     
-                    <span class="c1"># Preprocess dengan algoritma yang diperbaiki</span>
                     <span class="n">y_processed</span><span class="p">,</span> <span class="n">sr_processed</span> <span class="o">=</span> <span class="n">preprocess_audio_for_speaker_v2</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">sr</span><span class="p">)</span>
                     
-                    <span class="c1"># Extract features dengan algoritma enhanced</span>
-                    <span class="n">features</span> <span class="o">=</span> <span class="n">extract_enhanced_speaker_features</span><span class="p">(</span><span class="n">y_processed</span><span class="p">,</span> <span class="n">sr_processed</span><span class="p">)</span>
+                    <span class="n">features</span> <span class="o">=</span> <span class="n">extract_speaker_features</span><span class="p">(</span><span class="n">y_processed</span><span class="p">,</span> <span class="n">sr_processed</span><span class="p">)</span>
                     
-                    <span class="c1"># Normalize features</span>
                     <span class="n">features_normalized</span> <span class="o">=</span> <span class="n">features</span> <span class="o">/</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">features</span><span class="p">)</span> <span class="o">+</span> <span class="mf">1e-8</span><span class="p">)</span>
                     
                     <span class="n">speaker_features_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">features_normalized</span><span class="p">)</span>
@@ -1167,13 +1161,10 @@ Passing `palette` without assigning `hue` is deprecated and will be removed in v
                     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;    Error processing </span><span class="si">{</span><span class="n">audio_file</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
         
         <span class="k">if</span> <span class="n">speaker_features_list</span><span class="p">:</span>
-            <span class="c1"># Rata-rata dari semua samples untuk speaker ini</span>
             <span class="n">avg_features</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">speaker_features_list</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
             
-            <span class="c1"># Normalize lagi</span>
             <span class="n">avg_features_normalized</span> <span class="o">=</span> <span class="n">avg_features</span> <span class="o">/</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">avg_features</span><span class="p">)</span> <span class="o">+</span> <span class="mf">1e-8</span><span class="p">)</span>
             
-            <span class="c1"># Hitung variabilitas untuk quality check</span>
             <span class="n">feature_std</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">speaker_features_list</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
             <span class="n">variability</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">feature_std</span><span class="p">)</span>
             
@@ -1185,7 +1176,6 @@ Passing `palette` without assigning `hue` is deprecated and will be removed in v
         <span class="k">else</span><span class="p">:</span>
             <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  No valid audio files found for </span><span class="si">{</span><span class="n">speaker_name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
     
-    <span class="c1"># Save profiles</span>
     <span class="k">if</span> <span class="n">speaker_profiles</span><span class="p">:</span>
         <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;speaker_profiles.pkl&#39;</span><span class="p">,</span> <span class="s1">&#39;wb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
             <span class="n">pickle</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">speaker_profiles</span><span class="p">,</span> <span class="n">f</span><span class="p">)</span>
@@ -1194,7 +1184,6 @@ Passing `palette` without assigning `hue` is deprecated and will be removed in v
         <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Registered speakers: </span><span class="si">{</span><span class="nb">list</span><span class="p">(</span><span class="n">speaker_profiles</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;File saved as: speaker_profiles.pkl&quot;</span><span class="p">)</span>
         
-        <span class="c1"># Test similarity antar speaker untuk quality check</span>
         <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Quality Check - Inter-speaker similarity:&quot;</span><span class="p">)</span>
         <span class="n">speakers</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">speaker_profiles</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">speakers</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
@@ -1202,7 +1191,10 @@ Passing `palette` without assigning `hue` is deprecated and will be removed in v
             <span class="n">profile2</span> <span class="o">=</span> <span class="n">speaker_profiles</span><span class="p">[</span><span class="n">speakers</span><span class="p">[</span><span class="mi">1</span><span class="p">]]</span>
             <span class="n">similarity</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">profile1</span><span class="p">,</span> <span class="n">profile2</span><span class="p">)</span>
             <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;   Similarity between </span><span class="si">{</span><span class="n">speakers</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2"> and </span><span class="si">{</span><span class="n">speakers</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">similarity</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-
+            <span class="k">if</span> <span class="n">similarity</span> <span class="o">&gt;</span> <span class="mf">0.9</span><span class="p">:</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;   WARNING: Speakers too similar! Consider recording more diverse samples.&quot;</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;   Good separation between speakers.&quot;</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">No speaker profiles created!&quot;</span><span class="p">)</span>
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
@@ -1211,7 +1203,7 @@ Passing `palette` without assigning `hue` is deprecated and will be removed in v
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Processing speaker: harits
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>🎤 Processing speaker: harits
   Processing: Buka1.wav
 </pre></div>
 </div>
@@ -1223,9 +1215,7 @@ Passing `palette` without assigning `hue` is deprecated and will be removed in v
   Processing: Buka12.wav
     Features extracted: 42 dimensions
   Processing: Buka13.wav
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Features extracted: 42 dimensions
+    Features extracted: 42 dimensions
   Processing: Buka14.wav
     Features extracted: 42 dimensions
   Processing: Buka15.wav
@@ -1233,19 +1223,17 @@ Passing `palette` without assigning `hue` is deprecated and will be removed in v
   Processing: Buka16.wav
     Features extracted: 42 dimensions
   Processing: Buka17.wav
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Features extracted: 42 dimensions
+    Features extracted: 42 dimensions
   Processing: Buka18.wav
     Features extracted: 42 dimensions
   Processing: Buka19.wav
-    Features extracted: 42 dimensions
-  Processing: Buka2.wav
-    Features extracted: 42 dimensions
-  Processing: Buka20.wav
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Features extracted: 42 dimensions
+  Processing: Buka2.wav
+    Features extracted: 42 dimensions
+  Processing: Buka20.wav
+    Features extracted: 42 dimensions
   Processing: Buka21.wav
     Features extracted: 42 dimensions
   Processing: Buka22.wav
@@ -1253,9 +1241,7 @@ Passing `palette` without assigning `hue` is deprecated and will be removed in v
   Processing: Buka23.wav
     Features extracted: 42 dimensions
   Processing: Buka24.wav
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Features extracted: 42 dimensions
+    Features extracted: 42 dimensions
   Processing: Buka25.wav
     Features extracted: 42 dimensions
   Processing: Buka26.wav
@@ -1273,9 +1259,7 @@ Passing `palette` without assigning `hue` is deprecated and will be removed in v
   Processing: Buka30.wav
     Features extracted: 42 dimensions
   Processing: Buka31.wav
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Features extracted: 42 dimensions
+    Features extracted: 42 dimensions
   Processing: Buka32.wav
     Features extracted: 42 dimensions
   Processing: Buka33.wav
@@ -1283,19 +1267,17 @@ Passing `palette` without assigning `hue` is deprecated and will be removed in v
   Processing: Buka34.wav
     Features extracted: 42 dimensions
   Processing: Buka35.wav
+    Features extracted: 42 dimensions
+  Processing: Buka36.wav
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Features extracted: 42 dimensions
-  Processing: Buka36.wav
-    Features extracted: 42 dimensions
   Processing: Buka37.wav
     Features extracted: 42 dimensions
   Processing: Buka39.wav
     Features extracted: 42 dimensions
   Processing: Buka4.wav
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Features extracted: 42 dimensions
+    Features extracted: 42 dimensions
   Processing: Buka40.wav
     Features extracted: 42 dimensions
   Processing: Buka41.wav
@@ -1303,19 +1285,17 @@ Passing `palette` without assigning `hue` is deprecated and will be removed in v
   Processing: Buka42.wav
     Features extracted: 42 dimensions
   Processing: Buka43.wav
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Features extracted: 42 dimensions
+    Features extracted: 42 dimensions
   Processing: Buka44.wav
     Features extracted: 42 dimensions
   Processing: Buka45.wav
-    Features extracted: 42 dimensions
-  Processing: Buka46.wav
-    Features extracted: 42 dimensions
-  Processing: Buka47.wav
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Features extracted: 42 dimensions
+  Processing: Buka46.wav
+    Features extracted: 42 dimensions
+  Processing: Buka47.wav
+    Features extracted: 42 dimensions
   Processing: Buka48.wav
     Features extracted: 42 dimensions
   Processing: Buka49.wav
@@ -1323,19 +1303,17 @@ Passing `palette` without assigning `hue` is deprecated and will be removed in v
   Processing: Buka5.wav
     Features extracted: 42 dimensions
   Processing: Buka50.wav
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Features extracted: 42 dimensions
+    Features extracted: 42 dimensions
   Processing: Buka6.wav
     Features extracted: 42 dimensions
   Processing: Buka7.wav
-    Features extracted: 42 dimensions
-  Processing: Buka8.wav
-    Features extracted: 42 dimensions
-  Processing: Buka9.wav
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Features extracted: 42 dimensions
+  Processing: Buka8.wav
+    Features extracted: 42 dimensions
+  Processing: Buka9.wav
+    Features extracted: 42 dimensions
   Processing: Tutup1.wav
     Features extracted: 42 dimensions
   Processing: Tutup10.wav
@@ -1343,19 +1321,17 @@ Passing `palette` without assigning `hue` is deprecated and will be removed in v
   Processing: Tutup11.wav
     Features extracted: 42 dimensions
   Processing: Tutup12.wav
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Features extracted: 42 dimensions
+    Features extracted: 42 dimensions
   Processing: Tutup13.wav
     Features extracted: 42 dimensions
   Processing: Tutup14.wav
     Features extracted: 42 dimensions
   Processing: Tutup15.wav
-    Features extracted: 42 dimensions
-  Processing: Tutup16.wav
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Features extracted: 42 dimensions
+  Processing: Tutup16.wav
+    Features extracted: 42 dimensions
   Processing: Tutup17.wav
     Features extracted: 42 dimensions
   Processing: Tutup18.wav
@@ -1363,9 +1339,7 @@ Passing `palette` without assigning `hue` is deprecated and will be removed in v
   Processing: Tutup19.wav
     Features extracted: 42 dimensions
   Processing: Tutup2.wav
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Features extracted: 42 dimensions
+    Features extracted: 42 dimensions
   Processing: Tutup20.wav
     Features extracted: 42 dimensions
   Processing: Tutup21.wav
@@ -1383,9 +1357,7 @@ Passing `palette` without assigning `hue` is deprecated and will be removed in v
   Processing: Tutup27.wav
     Features extracted: 42 dimensions
   Processing: Tutup28.wav
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Features extracted: 42 dimensions
+    Features extracted: 42 dimensions
   Processing: Tutup29.wav
     Features extracted: 42 dimensions
   Processing: Tutup3.wav
@@ -1393,19 +1365,17 @@ Passing `palette` without assigning `hue` is deprecated and will be removed in v
   Processing: Tutup30.wav
     Features extracted: 42 dimensions
   Processing: Tutup31.wav
+    Features extracted: 42 dimensions
+  Processing: Tutup32.wav
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Features extracted: 42 dimensions
-  Processing: Tutup32.wav
-    Features extracted: 42 dimensions
   Processing: Tutup33.wav
     Features extracted: 42 dimensions
   Processing: Tutup35.wav
     Features extracted: 42 dimensions
   Processing: Tutup36.wav
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Features extracted: 42 dimensions
+    Features extracted: 42 dimensions
   Processing: Tutup37.wav
     Features extracted: 42 dimensions
   Processing: Tutup38.wav
@@ -1443,55 +1413,53 @@ Passing `palette` without assigning `hue` is deprecated and will be removed in v
   Processing: Tutup5.wav
     Features extracted: 42 dimensions
   Processing: Tutup50.wav
+    Features extracted: 42 dimensions
+  Processing: Tutup6.wav
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Features extracted: 42 dimensions
-  Processing: Tutup6.wav
-    Features extracted: 42 dimensions
   Processing: Tutup7.wav
     Features extracted: 42 dimensions
   Processing: Tutup8.wav
     Features extracted: 42 dimensions
   Processing: Tutup9.wav
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Features extracted: 42 dimensions
+    Features extracted: 42 dimensions
   Profile created for harits
      - Samples used: 97
      - Feature dimensions: 42
      - Variability score: 0.0030
 
-Processing speaker: lutfi
+🎤 Processing speaker: lutfi
   Processing: 6 Nov, 18.58​(15).wav
-    Features extracted: 42 dimensions
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Features extracted: 42 dimensions
   Processing: 6 Nov, 18.58​(16).wav
     Features extracted: 42 dimensions
   Processing: 6 Nov, 18.58​(17).wav
     Features extracted: 42 dimensions
   Processing: 6 Nov, 18.59​(10).wav
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Features extracted: 42 dimensions
+    Features extracted: 42 dimensions
   Processing: 6 Nov, 18.59​(11).wav
     Features extracted: 42 dimensions
   Processing: 6 Nov, 18.59​(12).wav
-    Features extracted: 42 dimensions
-  Processing: 6 Nov, 18.59​(13).wav
-    Features extracted: 42 dimensions
-  Processing: 6 Nov, 18.59​(14).wav
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Features extracted: 42 dimensions
+  Processing: 6 Nov, 18.59​(13).wav
+    Features extracted: 42 dimensions
+  Processing: 6 Nov, 18.59​(14).wav
+    Features extracted: 42 dimensions
   Processing: 6 Nov, 18.59​(2).wav
     Features extracted: 42 dimensions
   Processing: 6 Nov, 18.59​(3).wav
     Features extracted: 42 dimensions
   Processing: 6 Nov, 18.59​(4).wav
-    Features extracted: 42 dimensions
-  Processing: 6 Nov, 18.59​(5).wav
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Features extracted: 42 dimensions
+  Processing: 6 Nov, 18.59​(5).wav
+    Features extracted: 42 dimensions
   Processing: 6 Nov, 18.59​(6).wav
     Features extracted: 42 dimensions
   Processing: 6 Nov, 18.59​(7).wav
@@ -1509,39 +1477,37 @@ Processing speaker: lutfi
   Processing: 6 Nov, 19.00​(11).wav
     Features extracted: 42 dimensions
   Processing: 6 Nov, 19.00​(12).wav
+    Features extracted: 42 dimensions
+  Processing: 6 Nov, 19.00​(13).wav
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Features extracted: 42 dimensions
-  Processing: 6 Nov, 19.00​(13).wav
-    Features extracted: 42 dimensions
   Processing: 6 Nov, 19.00​(2).wav
     Features extracted: 42 dimensions
   Processing: 6 Nov, 19.00​(3).wav
     Features extracted: 42 dimensions
   Processing: 6 Nov, 19.00​(4).wav
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Features extracted: 42 dimensions
+    Features extracted: 42 dimensions
   Processing: 6 Nov, 19.00​(5).wav
     Features extracted: 42 dimensions
   Processing: 6 Nov, 19.00​(6).wav
-    Features extracted: 42 dimensions
-  Processing: 6 Nov, 19.00​(7).wav
-    Features extracted: 42 dimensions
-  Processing: 6 Nov, 19.00​(8).wav
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Features extracted: 42 dimensions
+  Processing: 6 Nov, 19.00​(7).wav
+    Features extracted: 42 dimensions
+  Processing: 6 Nov, 19.00​(8).wav
+    Features extracted: 42 dimensions
   Processing: 6 Nov, 19.00​(9).wav
     Features extracted: 42 dimensions
   Processing: 6 Nov, 19.00​.wav
     Features extracted: 42 dimensions
   Processing: 6 Nov, 19.01​(10).wav
-    Features extracted: 42 dimensions
-  Processing: 6 Nov, 19.01​(11).wav
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Features extracted: 42 dimensions
+  Processing: 6 Nov, 19.01​(11).wav
+    Features extracted: 42 dimensions
   Processing: 6 Nov, 19.01​(12).wav
     Features extracted: 42 dimensions
   Processing: 6 Nov, 19.01​(13).wav
@@ -1559,39 +1525,37 @@ Processing speaker: lutfi
   Processing: 6 Nov, 19.01​(2).wav
     Features extracted: 42 dimensions
   Processing: 6 Nov, 19.01​(3).wav
+    Features extracted: 42 dimensions
+  Processing: 6 Nov, 19.01​(4).wav
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Features extracted: 42 dimensions
-  Processing: 6 Nov, 19.01​(4).wav
-    Features extracted: 42 dimensions
   Processing: 6 Nov, 19.01​(5).wav
     Features extracted: 42 dimensions
   Processing: 6 Nov, 19.01​(6).wav
     Features extracted: 42 dimensions
   Processing: 6 Nov, 19.01​(7).wav
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Features extracted: 42 dimensions
+    Features extracted: 42 dimensions
   Processing: 6 Nov, 19.01​(8).wav
     Features extracted: 42 dimensions
   Processing: 6 Nov, 19.01​(9).wav
-    Features extracted: 42 dimensions
-  Processing: 6 Nov, 19.01​.wav
-    Features extracted: 42 dimensions
-  Processing: 6 Nov, 19.02​(2).wav
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Features extracted: 42 dimensions
+  Processing: 6 Nov, 19.01​.wav
+    Features extracted: 42 dimensions
+  Processing: 6 Nov, 19.02​(2).wav
+    Features extracted: 42 dimensions
   Processing: 6 Nov, 19.02​(3).wav
     Features extracted: 42 dimensions
   Processing: 6 Nov, 19.02​(4).wav
     Features extracted: 42 dimensions
   Processing: 6 Nov, 19.02​(5).wav
-    Features extracted: 42 dimensions
-  Processing: 6 Nov, 19.02​.wav
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Features extracted: 42 dimensions
+  Processing: 6 Nov, 19.02​.wav
+    Features extracted: 42 dimensions
   Processing: 6 Nov, 19.03​(10).wav
     Features extracted: 42 dimensions
   Processing: 6 Nov, 19.03​(11).wav
@@ -1609,39 +1573,37 @@ Processing speaker: lutfi
   Processing: 6 Nov, 19.03​(16).wav
     Features extracted: 42 dimensions
   Processing: 6 Nov, 19.03​(17).wav
+    Features extracted: 42 dimensions
+  Processing: 6 Nov, 19.03​(18).wav
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Features extracted: 42 dimensions
-  Processing: 6 Nov, 19.03​(18).wav
-    Features extracted: 42 dimensions
   Processing: 6 Nov, 19.03​(19).wav
     Features extracted: 42 dimensions
   Processing: 6 Nov, 19.03​(2).wav
     Features extracted: 42 dimensions
   Processing: 6 Nov, 19.03​(3).wav
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Features extracted: 42 dimensions
+    Features extracted: 42 dimensions
   Processing: 6 Nov, 19.03​(4).wav
     Features extracted: 42 dimensions
   Processing: 6 Nov, 19.03​(5).wav
-    Features extracted: 42 dimensions
-  Processing: 6 Nov, 19.03​(6).wav
-    Features extracted: 42 dimensions
-  Processing: 6 Nov, 19.03​(7).wav
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Features extracted: 42 dimensions
+  Processing: 6 Nov, 19.03​(6).wav
+    Features extracted: 42 dimensions
+  Processing: 6 Nov, 19.03​(7).wav
+    Features extracted: 42 dimensions
   Processing: 6 Nov, 19.03​(8).wav
     Features extracted: 42 dimensions
   Processing: 6 Nov, 19.03​(9).wav
     Features extracted: 42 dimensions
   Processing: 6 Nov, 19.03​.wav
-    Features extracted: 42 dimensions
-  Processing: 6 Nov, 19.04​(10).wav
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Features extracted: 42 dimensions
+  Processing: 6 Nov, 19.04​(10).wav
+    Features extracted: 42 dimensions
   Processing: 6 Nov, 19.04​(11).wav
     Features extracted: 42 dimensions
   Processing: 6 Nov, 19.04​(12).wav
@@ -1659,39 +1621,37 @@ Processing speaker: lutfi
   Processing: 6 Nov, 19.04​(5).wav
     Features extracted: 42 dimensions
   Processing: 6 Nov, 19.04​(6).wav
+    Features extracted: 42 dimensions
+  Processing: 6 Nov, 19.04​(7).wav
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Features extracted: 42 dimensions
-  Processing: 6 Nov, 19.04​(7).wav
-    Features extracted: 42 dimensions
   Processing: 6 Nov, 19.04​(8).wav
     Features extracted: 42 dimensions
   Processing: 6 Nov, 19.04​(9).wav
     Features extracted: 42 dimensions
   Processing: 6 Nov, 19.04​.wav
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Features extracted: 42 dimensions
+    Features extracted: 42 dimensions
   Processing: 6 Nov, 19.05​(10).wav
     Features extracted: 42 dimensions
   Processing: 6 Nov, 19.05​(11).wav
-    Features extracted: 42 dimensions
-  Processing: 6 Nov, 19.05​(12).wav
-    Features extracted: 42 dimensions
-  Processing: 6 Nov, 19.05​(13).wav
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Features extracted: 42 dimensions
+  Processing: 6 Nov, 19.05​(12).wav
+    Features extracted: 42 dimensions
+  Processing: 6 Nov, 19.05​(13).wav
+    Features extracted: 42 dimensions
   Processing: 6 Nov, 19.05​(2).wav
     Features extracted: 42 dimensions
   Processing: 6 Nov, 19.05​(3).wav
     Features extracted: 42 dimensions
   Processing: 6 Nov, 19.05​(4).wav
-    Features extracted: 42 dimensions
-  Processing: 6 Nov, 19.05​(5).wav
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Features extracted: 42 dimensions
+  Processing: 6 Nov, 19.05​(5).wav
+    Features extracted: 42 dimensions
   Processing: 6 Nov, 19.05​(6).wav
     Features extracted: 42 dimensions
   Processing: 6 Nov, 19.05​(7).wav
@@ -1709,11 +1669,11 @@ Processing speaker: lutfi
   Processing: 6 Nov, 19.06​(3).wav
     Features extracted: 42 dimensions
   Processing: 6 Nov, 19.06​(4).wav
+    Features extracted: 42 dimensions
+  Processing: 6 Nov, 19.06​(5).wav
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Features extracted: 42 dimensions
-  Processing: 6 Nov, 19.06​(5).wav
-    Features extracted: 42 dimensions
   Processing: 6 Nov, 19.06​.wav
     Features extracted: 42 dimensions
   Profile created for lutfi
@@ -1727,6 +1687,7 @@ File saved as: speaker_profiles.pkl
 
 Quality Check - Inter-speaker similarity:
    Similarity between harits and lutfi: 0.9964
+   WARNING: Speakers too similar! Consider recording more diverse samples.
 </pre></div>
 </div>
 </div>
@@ -1858,9 +1819,7 @@ FEATURE ORDER: [&#39;mel_7_std&#39;, &#39;chroma_0_mean&#39;, &#39;mel_6_std&#39
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>HASIL PREDIKSI
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>==============================
+==============================
 Prediksi: **BUKA**
 Confidence: 100.0%
 P(buka): 100.0%
