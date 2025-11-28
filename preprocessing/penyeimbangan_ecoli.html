@@ -221,6 +221,7 @@
 
 <li class="toctree-l1"><a class="reference internal" href="../audio_buka_tutup%20V2/modelling_suara_buka_tutup_RF.html"><strong>Modeling &amp; Evaluation (Random Forest) Suara Buka Tutup</strong></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../audio_buka_tutup%20V2/deploy_suara_buka_tutup.html"><strong>Deployment Identifikasi Suara Buka Tutup</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../audio_buka_tutup%20V2/menghitung_jarak_suara.html"><strong>Menghitung jarak antara data lama(buka tutup) masing masing 100 data dengan data baru 1 data menggunakan Dynamic Time Warping</strong></a></li>
 </ul>
 
     </div>
@@ -508,13 +509,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Data berhasil dimuat!
-✅ Data disimpan ke &#39;data_ecoli_original.csv&#39;
-   Shape: (336, 10)
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\Harits Putra Junaidi\AppData\Local\Temp\ipykernel_28380\37460529.py:8: UserWarning: pandas only supports SQLAlchemy connectable (engine/connection) or database string URI or sqlite3 DBAPI2 connection. Other DBAPI2 objects are not tested. Please consider using SQLAlchemy.
-  df = pd.read_sql(&quot;SELECT * FROM ecoli&quot;, conn)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Error: (2003, &quot;Can&#39;t connect to MySQL server on &#39;localhost&#39; ([WinError 10061] No connection could be made because the target machine actively refused it)&quot;)
 </pre></div>
 </div>
 </div>
@@ -578,22 +573,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Distribusi kelas:
-cp: 143 samples (42.6%)
-im: 77 samples (22.9%)
-imL: 2 samples (0.6%)
-imS: 2 samples (0.6%)
-imU: 35 samples (10.4%)
-om: 20 samples (6.0%)
-omL: 5 samples (1.5%)
-pp: 52 samples (15.5%)
-</pre></div>
-</div>
-<img alt="../_images/8b868520706124f88692220951dd2c23f4c2977100ac6adcdacd17739756ecc0.png" src="../_images/8b868520706124f88692220951dd2c23f4c2977100ac6adcdacd17739756ecc0.png" />
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Kelas terbanyak: cp (42.6%)
-Kelas tersedikit: imL (0.6%)
-Rasio ketidakseimbangan: 71.5:1
-Status: TIDAK SEIMBANG
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Data tidak tersedia!
 </pre></div>
 </div>
 </div>
@@ -638,33 +618,6 @@ Status: TIDAK SEIMBANG
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;PCA components shape:&quot;</span><span class="p">,</span> <span class="n">X_pca</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">DataFrame PCA (5 baris pertama):&quot;</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">dataframe_pca</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Data shape: (336, 10)
-Columns: [&#39;id&#39;, &#39;Sequence&#39;, &#39;mcg&#39;, &#39;gvh&#39;, &#39;lip&#39;, &#39;chg&#39;, &#39;aac&#39;, &#39;alm1&#39;, &#39;alm2&#39;, &#39;class&#39;]
-</pre></div>
-</div>
-<img alt="../_images/fa53e4097f11917c57b1cff98dd676f8c06186d0c8a0977236caf29f8995103c.png" src="../_images/fa53e4097f11917c57b1cff98dd676f8c06186d0c8a0977236caf29f8995103c.png" />
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Total variance explained: 76.0%
-PCA components shape: (336, 2)
-
-DataFrame PCA (5 baris pertama):
-          PC1       PC2 class
-0   -0.285601 -0.035274    cp
-1   -0.290838 -0.330159    cp
-2   -0.104676  0.015248    cp
-3   -0.087943  0.122218    cp
-4   -0.366268 -0.210366    cp
-..        ...       ...   ...
-331  0.084233  0.274803    pp
-332 -0.139026  0.274116    pp
-333 -0.111904  0.187103    pp
-334 -0.106204  0.178851    pp
-335  0.108764  0.281129    pp
-
-[336 rows x 3 columns]
 </pre></div>
 </div>
 </div>
@@ -714,39 +667,17 @@ DataFrame PCA (5 baris pertama):
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Distribusi kelas sebelum ADASYN:
-[(&#39;cp&#39;, 143), (&#39;im&#39;, 77), (&#39;imL&#39;, 2), (&#39;imS&#39;, 2), (&#39;imU&#39;, 35), (&#39;om&#39;, 20), (&#39;omL&#39;, 5), (&#39;pp&#39;, 52)]
-Sorted counts untuk iterasi: [2, 2, 5, 20, 35, 52, 77, 143]
-
-Iterasi 1: menggunakan k_neighbors=1
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Hasil iterasi 1: [(&#39;cp&#39;, 143), (&#39;im&#39;, 77), (&#39;imL&#39;, 142), (&#39;imS&#39;, 2), (&#39;imU&#39;, 35), (&#39;om&#39;, 20), (&#39;omL&#39;, 5), (&#39;pp&#39;, 52)]
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">6</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Distribusi kelas sebelum ADASYN:&quot;</span><span class="p">)</span>
+<span class="ne">----&gt; </span><span class="mi">2</span> <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="nb">sorted</span><span class="p">(</span><span class="n">Counter</span><span class="p">(</span><span class="n">y</span><span class="p">)</span><span class="o">.</span><span class="n">items</span><span class="p">())</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">nt</span> <span class="o">=</span> <span class="n">X</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="n">ns</span> <span class="o">=</span> <span class="n">y</span>
 
-Iterasi 2: menggunakan k_neighbors=1
-Hasil iterasi 2: [(&#39;cp&#39;, 143), (&#39;im&#39;, 77), (&#39;imL&#39;, 142), (&#39;imS&#39;, 142), (&#39;imU&#39;, 35), (&#39;om&#39;, 20), (&#39;omL&#39;, 5), (&#39;pp&#39;, 52)]
-
-Iterasi 3: menggunakan k_neighbors=4
-Hasil iterasi 3: [(&#39;cp&#39;, 143), (&#39;im&#39;, 77), (&#39;imL&#39;, 142), (&#39;imS&#39;, 142), (&#39;imU&#39;, 35), (&#39;om&#39;, 20), (&#39;omL&#39;, 143), (&#39;pp&#39;, 52)]
-
-Iterasi 4: menggunakan k_neighbors=19
-Hasil iterasi 4: [(&#39;cp&#39;, 143), (&#39;im&#39;, 77), (&#39;imL&#39;, 142), (&#39;imS&#39;, 142), (&#39;imU&#39;, 35), (&#39;om&#39;, 143), (&#39;omL&#39;, 143), (&#39;pp&#39;, 52)]
-
-Iterasi 5: menggunakan k_neighbors=34
-Hasil iterasi 5: [(&#39;cp&#39;, 143), (&#39;im&#39;, 77), (&#39;imL&#39;, 142), (&#39;imS&#39;, 142), (&#39;imU&#39;, 143), (&#39;om&#39;, 143), (&#39;omL&#39;, 143), (&#39;pp&#39;, 52)]
-
-Iterasi 6: menggunakan k_neighbors=51
-Hasil iterasi 6: [(&#39;cp&#39;, 143), (&#39;im&#39;, 77), (&#39;imL&#39;, 142), (&#39;imS&#39;, 142), (&#39;imU&#39;, 143), (&#39;om&#39;, 143), (&#39;omL&#39;, 143), (&#39;pp&#39;, 142)]
-
-Iterasi 7: menggunakan k_neighbors=76
-Hasil iterasi 7: [(&#39;cp&#39;, 143), (&#39;im&#39;, 150), (&#39;imL&#39;, 142), (&#39;imS&#39;, 142), (&#39;imU&#39;, 143), (&#39;om&#39;, 143), (&#39;omL&#39;, 143), (&#39;pp&#39;, 142)]
-
-Distribusi kelas setelah ADASYN:
-[(&#39;cp&#39;, 143), (&#39;im&#39;, 150), (&#39;imL&#39;, 142), (&#39;imS&#39;, 142), (&#39;imU&#39;, 143), (&#39;om&#39;, 143), (&#39;omL&#39;, 143), (&#39;pp&#39;, 142)]
-
-Total samples sebelum: 336
-Total samples setelah: 1148
-Data yang ditambahkan: 812
-✅ Data ADASYN disimpan ke &#39;data_ecoli_adasyn.csv&#39; - 1148 rows
+<span class="ne">NameError</span>: name &#39;y&#39; is not defined
 </pre></div>
 </div>
 </div>
@@ -804,7 +735,7 @@ Data yang ditambahkan: 812
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/3c85d6654bd391f94a8e8140cf65f949c0b7467cc7d5bbfa766b32358a80600a.png" src="../_images/3c85d6654bd391f94a8e8140cf65f949c0b7467cc7d5bbfa766b32358a80600a.png" />
+<img alt="../_images/22c092b414279a5a6387634548ee268b8c1e32871789484ee2ea9acc88177520.png" src="../_images/22c092b414279a5a6387634548ee268b8c1e32871789484ee2ea9acc88177520.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>=== SUMMARY ADASYN ===
 Peningkatan per kelas:
   cp: 0 samples (143 → 143)
@@ -814,7 +745,7 @@ Peningkatan per kelas:
   imU: +108 samples (35 → 143)
   om: +123 samples (20 → 143)
   omL: +138 samples (5 → 143)
-  pp: +90 samples (52 → 142)
+  pp: +89 samples (52 → 141)
 </pre></div>
 </div>
 </div>
@@ -844,7 +775,7 @@ Peningkatan per kelas:
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/c02f8db4f50c4d6d35000a1f2d3517a4f4d2c4804e983fa5c748dfa58c938be1.png" src="../_images/c02f8db4f50c4d6d35000a1f2d3517a4f4d2c4804e983fa5c748dfa58c938be1.png" />
+<img alt="../_images/8757289962598955020ebed10c3c0e0bb2ee6352e74b06277ac53227701bdf4d.png" src="../_images/8757289962598955020ebed10c3c0e0bb2ee6352e74b06277ac53227701bdf4d.png" />
 </div>
 </div>
 </section>
@@ -1044,10 +975,10 @@ Peningkatan per kelas:
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/eb8414d594cd5cb1df8ec0f541be31cd7b1fa10197058a1ade01200b22392e18.png" src="../_images/eb8414d594cd5cb1df8ec0f541be31cd7b1fa10197058a1ade01200b22392e18.png" />
+<img alt="../_images/b4d958473c5425f17eb43f76853886ad95548cbc70a884b377e7268ef7630ae9.png" src="../_images/b4d958473c5425f17eb43f76853886ad95548cbc70a884b377e7268ef7630ae9.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>=== PERBANDINGAN KETIGA METODE ===
 Original  - Total: 336
-ADASYN    - Total: 1148, Penambahan: +812
+ADASYN    - Total: 1147, Penambahan: +811
 SMOTE     - Total: 1144, Penambahan: +808
 </pre></div>
 </div>
@@ -1103,9 +1034,9 @@ SMOTE     - Total: 1144, Penambahan: +808
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/4b9b2e3ee6eea3e187d5abc2974beab620ba50be3ddfb7db29da4bde4b983434.png" src="../_images/4b9b2e3ee6eea3e187d5abc2974beab620ba50be3ddfb7db29da4bde4b983434.png" />
+<img alt="../_images/c03b7c4440cbe3b66dfc0414f371b7ff794fe6cda6c43115a7b787df4199e505.png" src="../_images/c03b7c4440cbe3b66dfc0414f371b7ff794fe6cda6c43115a7b787df4199e505.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Data original: 336
-Data generated: 812
+Data generated: 811
 </pre></div>
 </div>
 </div>
@@ -1229,9 +1160,9 @@ Data generated: 808
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/500a497b5118dc77112838887afdea667c4416fc9a459ca800e3f47c1c3d2039.png" src="../_images/500a497b5118dc77112838887afdea667c4416fc9a459ca800e3f47c1c3d2039.png" />
+<img alt="../_images/a814a791c347d5fa91bf93aba4a9b23a8b4d2a5efb136f8a3d9bf9595b6a7eda.png" src="../_images/a814a791c347d5fa91bf93aba4a9b23a8b4d2a5efb136f8a3d9bf9595b6a7eda.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>=== PERBANDINGAN ADASYN vs SMOTE ===
-ADASYN - Original: 336, Generated: 812
+ADASYN - Original: 336, Generated: 811
 SMOTE  - Original: 336, Generated: 808
 </pre></div>
 </div>
