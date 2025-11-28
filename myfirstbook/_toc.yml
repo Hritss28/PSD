@@ -42,3 +42,4 @@ parts:
   - file: audio_buka_tutup V2/data_preprocessing_suara_buka_tutup.ipynb
   - file: audio_buka_tutup V2/modelling_suara_buka_tutup_RF.ipynb
   - file: audio_buka_tutup V2/deploy_suara_buka_tutup.ipynb
+  - file: audio_buka_tutup V2/menghitung_jarak_suara.ipynb
