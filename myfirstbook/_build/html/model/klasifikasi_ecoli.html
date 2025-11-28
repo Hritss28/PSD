@@ -221,6 +221,7 @@
 
 <li class="toctree-l1"><a class="reference internal" href="../audio_buka_tutup%20V2/modelling_suara_buka_tutup_RF.html"><strong>Modeling &amp; Evaluation (Random Forest) Suara Buka Tutup</strong></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../audio_buka_tutup%20V2/deploy_suara_buka_tutup.html"><strong>Deployment Identifikasi Suara Buka Tutup</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../audio_buka_tutup%20V2/menghitung_jarak_suara.html"><strong>Menghitung jarak antara data lama(buka tutup) masing masing 100 data dengan data baru 1 data menggunakan Dynamic Time Warping</strong></a></li>
 </ul>
 
     </div>
@@ -1178,9 +1179,7 @@ KLASIFIKASI MENGGUNAKAN RANDOM FOREST
 ============================================================
 
 --- KLASIFIKASI DATA SEBELUM ADASYN ---
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Accuracy data SEBELUM ADASYN: 0.8676
+Accuracy data SEBELUM ADASYN: 0.8676
 
 Classification Report - SEBELUM ADASYN:
               precision    recall  f1-score   support
@@ -1224,7 +1223,9 @@ weighted avg       0.90      0.87      0.87        68
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Accuracy data SETELAH ADASYN: 0.9478
 
 Classification Report - SETELAH ADASYN:
-              precision    recall  f1-score   support
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>              precision    recall  f1-score   support
 
           cp       0.94      1.00      0.97        29
           im       0.81      0.87      0.84        30
@@ -1456,9 +1457,7 @@ Data yang ditambahkan: 808
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>--- KLASIFIKASI DATA SEBELUM SMOTE ---
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Accuracy data SEBELUM SMOTE: 0.8676
+Accuracy data SEBELUM SMOTE: 0.8676
 
 Classification Report - SEBELUM SMOTE:
               precision    recall  f1-score   support
