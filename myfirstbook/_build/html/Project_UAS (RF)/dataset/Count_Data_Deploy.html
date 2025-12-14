@@ -57,7 +57,7 @@
     <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'Project_UAS (RF)/dataset/mengetahui kolom';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Project_UAS (RF)/dataset/Count_Data_Deploy';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
@@ -301,7 +301,7 @@
       
       
       
-      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2FProject_UAS (RF)/dataset/mengetahui kolom.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2FProject_UAS (RF)/dataset/Count_Data_Deploy.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -331,7 +331,7 @@
       
       
       
-      <li><a href="../../_sources/Project_UAS (RF)/dataset/mengetahui kolom.ipynb" target="_blank"
+      <li><a href="../../_sources/Project_UAS (RF)/dataset/Count_Data_Deploy.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -439,113 +439,25 @@ document.write(`
                   
   <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">warnings</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s1">&#39;ignore&#39;</span><span class="p">)</span>
 
-<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;BME_TEST_DEPLOY.csv&#39;</span><span class="p">)</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Target SEBELUM konversi:&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;target&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">sort_index</span><span class="p">())</span>
-
-<span class="n">target_mapping</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="mi">1</span><span class="p">:</span> <span class="s1">&#39;Begin&#39;</span><span class="p">,</span>
-    <span class="mi">2</span><span class="p">:</span> <span class="s1">&#39;Middle&#39;</span><span class="p">,</span>
-    <span class="mi">3</span><span class="p">:</span> <span class="s1">&#39;End&#39;</span>
-<span class="p">}</span>
-
-<span class="n">df</span><span class="p">[</span><span class="s1">&#39;target&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;target&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">target_mapping</span><span class="p">)</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Target SETELAH konversi:&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;target&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">())</span>
-
-<span class="n">df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;BME_TEST_DEPLOY_WITH_LABELS.csv&#39;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">File berhasil disimpan sebagai &#39;dataset/BME_TEST_DEPLOY_WITH_LABELS.csv&#39;&quot;</span><span class="p">)</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Contoh 5 baris pertama:&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">[[</span><span class="s1">&#39;att1&#39;</span><span class="p">,</span> <span class="s1">&#39;att2&#39;</span><span class="p">,</span> <span class="s1">&#39;att3&#39;</span><span class="p">,</span> <span class="s1">&#39;target&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+<span class="n">df_train</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;BME_TEST_DEPLOY.csv&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Data Deploy:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df_train</span><span class="p">[</span><span class="s1">&#39;target&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span> <span class="n">sort_index</span><span class="p">())</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Target SEBELUM konversi:
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Data Deploy:
 target
 1    47
 2    47
 3    48
 Name: count, dtype: int64
-
-Target SETELAH konversi:
-target
-End       48
-Begin     47
-Middle    47
-Name: count, dtype: int64
-
-File berhasil disimpan sebagai &#39;dataset/BME_TEST_DEPLOY_WITH_LABELS.csv&#39;
-
-Contoh 5 baris pertama:
-       att1      att2      att3  target
-0  0.028234 -0.005291  0.010423   Begin
-1  0.044553  0.045642  0.016592   Begin
-2  0.013999  0.046360  0.018746   Begin
-3  0.009391  0.029562  0.045014   Begin
-4  0.005833  0.036242  0.038033  Middle
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
-
-<span class="n">df_deploy</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;BME_TEST_DEPLOY_WITH_LABELS.csv&#39;</span><span class="p">)</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Shape sebelum filter: </span><span class="si">{</span><span class="n">df_deploy</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Kolom: </span><span class="si">{</span><span class="n">df_deploy</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-
-<span class="n">df_target_only</span> <span class="o">=</span> <span class="n">df_deploy</span><span class="p">[[</span><span class="s1">&#39;target&#39;</span><span class="p">]]</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Shape setelah filter (hanya target): </span><span class="si">{</span><span class="n">df_target_only</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Kolom: </span><span class="si">{</span><span class="n">df_target_only</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Distribusi target:&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">df_target_only</span><span class="p">[</span><span class="s1">&#39;target&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">sort_index</span><span class="p">())</span>
-
-<span class="n">df_target_only</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;BME_TEST_DEPLOY_TARGET_ONLY.csv&#39;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">File berhasil disimpan sebagai &#39;BME_TEST_DEPLOY_TARGET_ONLY.csv&#39;&quot;</span><span class="p">)</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">10 baris pertama:&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">df_target_only</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Shape sebelum filter: (142, 129)
-Kolom: [&#39;att1&#39;, &#39;att2&#39;, &#39;att3&#39;, &#39;att4&#39;, &#39;att5&#39;, &#39;att6&#39;, &#39;att7&#39;, &#39;att8&#39;, &#39;att9&#39;, &#39;att10&#39;, &#39;att11&#39;, &#39;att12&#39;, &#39;att13&#39;, &#39;att14&#39;, &#39;att15&#39;, &#39;att16&#39;, &#39;att17&#39;, &#39;att18&#39;, &#39;att19&#39;, &#39;att20&#39;, &#39;att21&#39;, &#39;att22&#39;, &#39;att23&#39;, &#39;att24&#39;, &#39;att25&#39;, &#39;att26&#39;, &#39;att27&#39;, &#39;att28&#39;, &#39;att29&#39;, &#39;att30&#39;, &#39;att31&#39;, &#39;att32&#39;, &#39;att33&#39;, &#39;att34&#39;, &#39;att35&#39;, &#39;att36&#39;, &#39;att37&#39;, &#39;att38&#39;, &#39;att39&#39;, &#39;att40&#39;, &#39;att41&#39;, &#39;att42&#39;, &#39;att43&#39;, &#39;att44&#39;, &#39;att45&#39;, &#39;att46&#39;, &#39;att47&#39;, &#39;att48&#39;, &#39;att49&#39;, &#39;att50&#39;, &#39;att51&#39;, &#39;att52&#39;, &#39;att53&#39;, &#39;att54&#39;, &#39;att55&#39;, &#39;att56&#39;, &#39;att57&#39;, &#39;att58&#39;, &#39;att59&#39;, &#39;att60&#39;, &#39;att61&#39;, &#39;att62&#39;, &#39;att63&#39;, &#39;att64&#39;, &#39;att65&#39;, &#39;att66&#39;, &#39;att67&#39;, &#39;att68&#39;, &#39;att69&#39;, &#39;att70&#39;, &#39;att71&#39;, &#39;att72&#39;, &#39;att73&#39;, &#39;att74&#39;, &#39;att75&#39;, &#39;att76&#39;, &#39;att77&#39;, &#39;att78&#39;, &#39;att79&#39;, &#39;att80&#39;, &#39;att81&#39;, &#39;att82&#39;, &#39;att83&#39;, &#39;att84&#39;, &#39;att85&#39;, &#39;att86&#39;, &#39;att87&#39;, &#39;att88&#39;, &#39;att89&#39;, &#39;att90&#39;, &#39;att91&#39;, &#39;att92&#39;, &#39;att93&#39;, &#39;att94&#39;, &#39;att95&#39;, &#39;att96&#39;, &#39;att97&#39;, &#39;att98&#39;, &#39;att99&#39;, &#39;att100&#39;, &#39;att101&#39;, &#39;att102&#39;, &#39;att103&#39;, &#39;att104&#39;, &#39;att105&#39;, &#39;att106&#39;, &#39;att107&#39;, &#39;att108&#39;, &#39;att109&#39;, &#39;att110&#39;, &#39;att111&#39;, &#39;att112&#39;, &#39;att113&#39;, &#39;att114&#39;, &#39;att115&#39;, &#39;att116&#39;, &#39;att117&#39;, &#39;att118&#39;, &#39;att119&#39;, &#39;att120&#39;, &#39;att121&#39;, &#39;att122&#39;, &#39;att123&#39;, &#39;att124&#39;, &#39;att125&#39;, &#39;att126&#39;, &#39;att127&#39;, &#39;att128&#39;, &#39;target&#39;]
-
-Shape setelah filter (hanya target): (142, 1)
-Kolom: [&#39;target&#39;]
-
-Distribusi target:
-target
-Begin     47
-End       48
-Middle    47
-Name: count, dtype: int64
-
-File berhasil disimpan sebagai &#39;BME_TEST_DEPLOY_TARGET_ONLY.csv&#39;
-
-10 baris pertama:
-   target
-0   Begin
-1   Begin
-2   Begin
-3   Begin
-4  Middle
-5   Begin
-6     End
-7  Middle
-8     End
-9   Begin
 </pre></div>
 </div>
 </div>
