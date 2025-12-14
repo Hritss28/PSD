@@ -1,0 +1,143 @@
+Traceback (most recent call last):
+  File "C:\Python311\Lib\site-packages\jupyter_cache\executors\utils.py", line 58, in single_nb_execution
+    executenb(
+  File "C:\Python311\Lib\site-packages\nbclient\client.py", line 1319, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python311\Lib\site-packages\jupyter_core\utils\__init__.py", line 165, in wrapped
+    return loop.run_until_complete(inner)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python311\Lib\asyncio\base_events.py", line 654, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "C:\Python311\Lib\site-packages\nbclient\client.py", line 709, in async_execute
+    await self.async_execute_cell(
+  File "C:\Python311\Lib\site-packages\nbclient\client.py", line 1062, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "C:\Python311\Lib\site-packages\nbclient\client.py", line 918, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+import numpy as np
+from dtaidistance import dtw
+import pandas as pd
+from sklearn.preprocessing import StandardScaler
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+def extract_features_for_dtw(audio_path, feature_type='mfcc'):
+    y, sr = librosa.load(audio_path, sr=22050)
+    mel_spec = librosa.feature.melspectrogram(y=y, sr=sr, n_mels=128)
+    mel_spec_db = librosa.power_to_db(mel_spec, ref=np.max)
+    chroma = librosa.feature.chroma_stft(y=y, sr=sr)
+
+    mel_6_mean = np.mean(mel_spec_db[6, :])  
+    mel_6_std = np.std(mel_spec_db[6, :])    
+    mel_7_mean = np.mean(mel_spec_db[7, :])   
+    mel_7_std = np.std(mel_spec_db[7, :])    
+    chroma_0_mean = np.mean(chroma[0, :])    
+    
+    from scipy.stats import skew
+    stat_skew = skew(y)
+    
+    model_features = np.array([
+        mel_7_std,      
+        chroma_0_mean,
+        mel_6_std,      
+        stat_skew,      
+        mel_7_mean 
+    ])
+    
+    return model_features
+
+# def extract_features_for_dtw(audio_path, n_mfcc=13):
+#     y, sr = librosa.load(audio_path, sr=22050)
+#     mfcc = librosa.feature.mfcc(y=y, sr=sr, n_mfcc=n_mfcc)
+#     seq = mfcc[0, :]
+    
+#     return seq
+
+
+
+def calculate_dtw_distances(new_audio_path, train_path, max_files=100):
+    try:
+        new_features = extract_features_for_dtw(new_audio_path, 'mfcc')
+        # new_features = extract_features_for_dtw(new_audio_path)
+    except Exception as e:
+        print(f"Errorrrrrrr")
+        return None
+    
+    tutup_train_files = []
+    train_labels = []
+    
+    tutup_path = os.path.join(train_path, "tutup")
+    if os.path.exists(tutup_path):
+        for file in os.listdir(tutup_path):
+            if file.endswith(('.wav')):
+                tutup_train_files.append(os.path.join(tutup_path, file))
+                train_labels.append('tutup')
+    
+    if len(tutup_train_files) > max_files:
+        indices = np.random.choice(len(tutup_train_files), max_files, replace=False)
+        tutup_train_files = [tutup_train_files[i] for i in indices]
+        train_labels = [train_labels[i] for i in indices]
+    
+    results = []
+    
+    for i, (train_file, label) in enumerate(zip(tutup_train_files, train_labels)):
+        try:
+            # Ekstrak fitur dari file training
+            train_features = extract_features_for_dtw(train_file, 'mfcc')
+            # train_features = extract_features_for_dtw(train_file)
+            
+            # Hitung jarak DTW
+            dtw_distance = dtw.distance(new_features, train_features)
+            
+            results.append({
+                'rank': i + 1,
+                'filename': os.path.basename(train_file),
+                'label': label,
+                'dtw_distance': dtw_distance,
+                'file_path': train_file
+            })
+            
+                
+        except Exception as e:
+            print(f"  Error processing {train_file}: {e}")
+            continue
+    
+    df_results = pd.DataFrame(results)
+    df_results = df_results.sort_values('dtw_distance').reset_index(drop=True)
+    df_results['rank'] = range(1, len(df_results) + 1)
+    
+    return df_results
+
+# Path audio baru
+new_audio_path = "dataset48k/Tutup1(baru).wav"
+
+# Hitung jarak DTW
+dtw_results = calculate_dtw_distances(new_audio_path, train_path, max_files=100)
+
+if dtw_results is not None:
+    print(f"\n=== RANKING JARAK DTW (Top 20) ===")
+    print(dtw_results.head(20).to_string(index=False))
+    
+    print(f"\n=== STATISTIK HASIL ===")
+    print(f"Total file dianalisis: {len(dtw_results)}")
+    print(f"Jarak minimum: {dtw_results['dtw_distance'].min():.4f}")
+    print(f"Jarak maksimum: {dtw_results['dtw_distance'].max():.4f}")
+    print(f"Jarak rata-rata: {dtw_results['dtw_distance'].mean():.4f}")
+    
+------------------
+
+
+[31m---------------------------------------------------------------------------[39m
+[31mModuleNotFoundError[39m                       Traceback (most recent call last)
+[36mCell[39m[36m [39m[32mIn[4][39m[32m, line 2[39m
+[32m      1[39m [38;5;28;01mimport[39;00m[38;5;250m [39m[34;01mnumpy[39;00m[38;5;250m [39m[38;5;28;01mas[39;00m[38;5;250m [39m[34;01mnp[39;00m
+[32m----> [39m[32m2[39m [38;5;28;01mfrom[39;00m[38;5;250m [39m[34;01mdtaidistance[39;00m[38;5;250m [39m[38;5;28;01mimport[39;00m dtw
+[32m      3[39m [38;5;28;01mimport[39;00m[38;5;250m [39m[34;01mpandas[39;00m[38;5;250m [39m[38;5;28;01mas[39;00m[38;5;250m [39m[34;01mpd[39;00m
+[32m      4[39m [38;5;28;01mfrom[39;00m[38;5;250m [39m[34;01msklearn[39;00m[34;01m.[39;00m[34;01mpreprocessing[39;00m[38;5;250m [39m[38;5;28;01mimport[39;00m StandardScaler
+
+[31mModuleNotFoundError[39m: No module named 'dtaidistance'
+

@@ -1,0 +1,899 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Data Understanding (Klasifikasi Time Series - Dataset BME) &#8212; My sample book</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Project_UAS (RF)/BACKUP SVM/Data_Understanding';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/foto.png" class="logo__image only-light" alt="My sample book - Home"/>
+    <script>document.write(`<img src="../../_static/foto.png" class="logo__image only-dark" alt="My sample book - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    My Profil
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Bussiness Understanding</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../bisnis.html">Business Understanding - Dataset Iris</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Data Understanding</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../data/get-data.html">Get Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../data/eksplorasi-data.html">Eksplorasi Data</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Preprocessing Data</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../preprocessing/data_preprocessing.html">Preprocessing Data Iris</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../preprocessing/penyeimbangan_ecoli.html">Penyeimbangan Dataset Ecoli</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../preprocessing/Ecoli_Preprocessing_KNIME.html">Dokumentasi Preprocessing Data dengan KNIME (Projek Pra UTS)</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Modelling</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../model/klasifikasi_ecoli.html">Klasifikasi Dan BaggingClassifier Pada Dataset Ecoli</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Prediksi NO2 di Kabupaten Bangkalan</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../NO2_Bangkalan%20V2/business_understanding_NO2_BKL.html">Business Understanding (Kadar NO₂ di Kabupaten Bangkalan)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../NO2_Bangkalan%20V2/data_understanding_NO2_BKL.html">Data Understanding (Pengambilan dan Eksplorasi Data NO<sub>2</sub> Di Kabupaten Bangkalan)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../NO2_Bangkalan%20V2/data_preprocessing_NO2_BKL.html">Preprocessing Data NO<sub>2</sub> Kabupaten Bangkalan</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../NO2_Bangkalan%20V2/modelling_NO2_BKL.html">Modelling Data NO<sub>2</sub> Kabupaten Bangkalan</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../NO2_Bangkalan%20V2/deploy_NO2_BKL.html"><strong>Deployment Prediksi Kadar NO₂ di Kabupaten Bangkalan</strong></a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Multi Prediksi NO2 di Kabupaten Bangkalan</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../NO2_Bangkalan%20%28multi%20prediksi%29%20V2/business_understanding_NO2_BKL.html">Business Understanding (Kadar NO₂ di Kabupaten Bangkalan)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../NO2_Bangkalan%20%28multi%20prediksi%29%20V2/data_understanding_NO2_BKL.html">Data Understanding (Pengambilan dan Eksplorasi Data NO<sub>2</sub> Di Kabupaten Bangkalan)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../NO2_Bangkalan%20%28multi%20prediksi%29%20V2/data_preprocessing_NO2_BKL.html">Preprocessing Data NO<sub>2</sub> Kabupaten Bangkalan</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../NO2_Bangkalan%20%28multi%20prediksi%29%20V2/modelling_NO2_BKL.html">Modelling Data NO<sub>2</sub> Kabupaten Bangkalan</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../NO2_Bangkalan%20%28multi%20prediksi%29%20V2/deploy_NO2_BKL.html"><strong>Deployment Multi Prediksi Kadar NO₂ di Kabupaten Bangkalan</strong></a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Identifikasi Audio Buka Tutup</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../audio_buka_tutup%20V2/data_understanding_suara_buka_tutup.html"><strong>Data Understanding &amp; Exploratory Data Analysis Suara Buka Tutup</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../audio_buka_tutup%20V2/data_preprocessing_suara_buka_tutup.html"><strong>Preprocessing Suara Buka Tutup</strong></a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../../audio_buka_tutup%20V2/modelling_suara_buka_tutup_RF.html"><strong>Modeling &amp; Evaluation (Random Forest) Suara Buka Tutup</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../audio_buka_tutup%20V2/deploy_suara_buka_tutup.html"><strong>Deployment Identifikasi Suara Buka Tutup</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../audio_buka_tutup%20V2/menghitung_jarak_suara.html"><strong>Menghitung jarak antara data lama(buka tutup) masing masing 100 data dengan data baru 1 data menggunakan Dynamic Time Warping</strong></a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2FProject_UAS (RF)/BACKUP SVM/Data_Understanding.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/Project_UAS (RF)/BACKUP SVM/Data_Understanding.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Data Understanding (Klasifikasi Time Series - Dataset BME)</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gambaran-umum-dataset-bme">1. Gambaran Umum Dataset BME</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#struktur-dan-karakteristik-data">2. Struktur dan Karakteristik Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pola-sinyal-pada-tiap-kelas">3. Pola Sinyal pada Tiap Kelas</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#kelas-begin"><strong>1. Kelas “Begin”</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#kelas-middle"><strong>2. Kelas “Middle”</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#kelas-end"><strong>3. Kelas “End”</strong></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eksplorasi-data-eda">4. Eksplorasi Data (EDA)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#melihat-struktur-data">2.1 Melihat struktur data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cek-missing-values">2.2 Cek Missing Values</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#distribusi-kelas-target">2.3 Distribusi Kelas Target</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualisasi-pola-time-series-per-kelas">2.4 Visualisasi Pola Time Series per Kelas</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rata-rata-pola-time-series-per-kelas">2.5 Rata-rata Pola Time Series per Kelas</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="data-understanding-klasifikasi-time-series-dataset-bme">
+<h1><strong>Data Understanding (Klasifikasi Time Series - Dataset BME)</strong><a class="headerlink" href="#data-understanding-klasifikasi-time-series-dataset-bme" title="Link to this heading">#</a></h1>
+<section id="gambaran-umum-dataset-bme">
+<h2>1. Gambaran Umum Dataset BME<a class="headerlink" href="#gambaran-umum-dataset-bme" title="Link to this heading">#</a></h2>
+<p>Dataset BME (Begin–Middle–End) merupakan dataset deret waktu (time series) sintetis dan univariat yang digunakan sebagai salah satu benchmark dalam UCR Time Series Classification Archive. Dataset ini dikembangkan oleh peneliti di <em>Laboratoire d’Informatique de Grenoble (LIG), Université Grenoble Alpes</em>, kemudian diadopsi ke dalam koleksi UCR sebagai salah satu problem klasifikasi deret waktu berdimensi satu.</p>
+<p>Tujuan utama dari dataset BME adalah menyediakan contoh dataset yang sederhana namun memiliki struktur pola yang jelas, sehingga sangat cocok untuk menguji algoritma klasifikasi deret waktu, terutama model yang perlu mengenali pergeseran pola sepanjang sumbu waktu (<em>time-shift</em>).</p>
+</section>
+<section id="struktur-dan-karakteristik-data">
+<h2>2. Struktur dan Karakteristik Data<a class="headerlink" href="#struktur-dan-karakteristik-data" title="Link to this heading">#</a></h2>
+<p>Setiap sampel pada dataset BME memiliki karakteristik sebagai berikut:</p>
+<ul class="simple">
+<li><p><strong>Jenis data</strong>: deret waktu univariat (satu fitur sinyal per sampel).</p></li>
+<li><p><strong>Panjang deret waktu</strong>: setiap sampel memiliki panjang 128 titik waktu (<em>time steps</em>).</p></li>
+<li><p><strong>Tipe nilai</strong>: berupa bilangan real (float) yang merepresentasikan amplitudo sinyal.</p></li>
+<li><p><strong>Jumlah kelas</strong>: terdapat 3 kelas, yaitu:</p>
+<ul>
+<li><p><strong>Begin</strong></p></li>
+<li><p><strong>Middle</strong></p></li>
+<li><p><strong>End</strong></p></li>
+</ul>
+</li>
+<li><p><strong>Pembagian data standar (dari UCR Archive)</strong>:</p>
+<ul>
+<li><p><strong>30 sampel</strong> untuk <em>training</em></p></li>
+<li><p><strong>150 sampel</strong> untuk <em>testing</em></p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="pola-sinyal-pada-tiap-kelas">
+<h2>3. Pola Sinyal pada Tiap Kelas<a class="headerlink" href="#pola-sinyal-pada-tiap-kelas" title="Link to this heading">#</a></h2>
+<p>Hal yang menarik dari dataset BME adalah bahwa <strong>ketiga kelas memiliki bagian tengah (plateau -&gt; Bagian sinyal yang relatif datar, stabil, atau tidak banyak berubah.) yang relatif mirip</strong>, sehingga bagian tersebut tidak terlalu informatif untuk membedakan kelas. Justru pola yang membedakan ketiga kelas terletak pada keberadaan dan posisi puncak (peak) dalam sinyal.</p>
+<p>Berikut penjelasan pola tiap kelas:</p>
+<section id="kelas-begin">
+<h3><strong>1. Kelas “Begin”</strong><a class="headerlink" href="#kelas-begin" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Mempunyai puncak kecil bernilai positif yang muncul di awal deret waktu.</p></li>
+</ul>
+</section>
+<section id="kelas-middle">
+<h3><strong>2. Kelas “Middle”</strong><a class="headerlink" href="#kelas-middle" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Tidak memiliki puncak mencolok di awal ataupun akhir deret waktu.</p></li>
+</ul>
+</section>
+<section id="kelas-end">
+<h3><strong>3. Kelas “End”</strong><a class="headerlink" href="#kelas-end" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Memiliki puncak positif yang muncul mendekati akhir deret waktu.</p></li>
+</ul>
+<p>Dengan struktur seperti ini, dataset BME sangat berguna untuk menilai apakah model klasifikasi time series mampu:</p>
+<ul class="simple">
+<li><p>mengenali pola lokal (local patterns),</p></li>
+<li><p>membedakan posisi pola, dan</p></li>
+<li><p>memahami perbedaan bentuk sinyal meskipun sebagian besar sinyal terlihat mirip.</p></li>
+</ul>
+</section>
+</section>
+<section id="eksplorasi-data-eda">
+<h2>4. Eksplorasi Data (EDA)<a class="headerlink" href="#eksplorasi-data-eda" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">warnings</span>
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s1">&#39;ignore&#39;</span><span class="p">)</span>
+
+<span class="n">df_train</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;BME_TRAIN.csv&#39;</span><span class="p">)</span>
+<span class="n">df_test</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;BME_TEST.csv&#39;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;=&quot;</span> <span class="o">*</span> <span class="mi">60</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;INFORMASI DATASET&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;=&quot;</span> <span class="o">*</span> <span class="mi">60</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Ukuran data training: </span><span class="si">{</span><span class="n">df_train</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Ukuran data testing: </span><span class="si">{</span><span class="n">df_test</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>============================================================
+INFORMASI DATASET
+============================================================
+Ukuran data training: (30, 129)
+Ukuran data testing: (8, 129)
+</pre></div>
+</div>
+</div>
+</div>
+<section id="melihat-struktur-data">
+<h3>2.1 Melihat struktur data<a class="headerlink" href="#melihat-struktur-data" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">seaborn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sns</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">df_train</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>       att1      att2      att3      att4      att5      att6      att7  \
+0  0.037765  0.000253  0.003977  0.020764  0.021731  0.114000  0.414000   
+1  0.000425  0.020982  0.002526  0.020118  0.037074  0.034782  0.083000   
+2  0.019856  0.003677  0.035077  0.011545  0.127000  0.462000  0.797000   
+3 -0.005805  0.002666  0.021716  0.016958  0.027037  0.003596  0.012597   
+4  0.031380  0.057092  0.047269  0.043872  0.026902  0.037878  0.032261   
+
+       att8      att9     att10  ...    att120    att121    att122    att123  \
+0  0.718000  0.889000  0.969000  ...  0.022831  0.013387  0.038907  0.039188   
+1  0.317000  0.550000  0.680000  ...  0.011228  0.025040  0.044365  0.043476   
+2  0.985000  1.074000  0.983000  ...  0.017686  0.046659  0.005717  0.019496   
+3  0.090000  0.338000  0.581000  ...  0.021472  0.005443  0.045583  0.001084   
+4  0.011465  0.024362  0.039082  ...  0.019191  0.044964  0.014297  0.005419   
+
+     att124    att125    att126    att127    att128  target  
+0  0.053617  0.054673  0.031523  0.039787  0.020661       1  
+1  0.044163  0.021767  0.007789  0.029194  0.021837       1  
+2  0.021592  0.018680  0.022479  0.032204  0.045187       1  
+3  0.019091  0.005705  0.003578  0.031542  0.034386       1  
+4 -0.000230  0.027151  0.029029  0.040782  0.034723       1  
+
+[5 rows x 129 columns]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">--- Info Data Training ---&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df_train</span><span class="o">.</span> <span class="n">info</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>--- Info Data Training ---
+&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+RangeIndex: 30 entries, 0 to 29
+Columns: 129 entries, att1 to target
+dtypes: float64(128), int64(1)
+memory usage: 30.4 KB
+None
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">--- Statistik Deskriptif Data Training ---&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df_train</span><span class="o">.</span> <span class="n">describe</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>--- Statistik Deskriptif Data Training ---
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>            att1       att2       att3       att4       att5       att6  \
+count  30.000000  30.000000  30.000000  30.000000  30.000000  30.000000   
+mean    0.022363   0.022380   0.017579   0.021523   0.027460   0.038957   
+std     0.016616   0.015708   0.016732   0.016017   0.024676   0.082893   
+min    -0.005805   0.000253  -0.004860  -0.001702  -0.002623  -0.002771   
+25%     0.009671   0.009333   0.003876   0.011388   0.012567   0.009598   
+50%     0.026171   0.023152   0.013385   0.019947   0.025269   0.021027   
+75%     0.034599   0.031089   0.029883   0.035779   0.038971   0.035930   
+max     0.050930   0.057092   0.055518   0.049456   0.127000   0.462000   
+
+            att7       att8       att9      att10  ...     att120     att121  \
+count  30.000000  30.000000  30.000000  30.000000  ...  30.000000  30.000000   
+mean    0.063086   0.097850   0.149206   0.199273  ...   0.084038   0.054656   
+std     0.157943   0.228752   0.284140   0.322203  ...   0.154788   0.090493   
+min    -0.006197  -0.009974  -0.003928  -0.003808  ...  -0.001929  -0.006021   
+25%     0.009156   0.010639   0.015659   0.013061  ...   0.017601   0.016894   
+50%     0.019289   0.018578   0.028827   0.032454  ...   0.028445   0.025618   
+75%     0.033545   0.027659   0.097134   0.325063  ...   0.047560   0.046235   
+max     0.797000   0.985000   1.074000   0.983000  ...   0.656000   0.448000   
+
+          att122     att123     att124     att125     att126     att127  \
+count  30.000000  30.000000  30.000000  30.000000  30.000000  30.000000   
+mean    0.038098   0.029739   0.033757   0.026087   0.024867   0.027402   
+std     0.042465   0.020657   0.018393   0.014531   0.014107   0.013038   
+min    -0.004071   0.001084  -0.001404  -0.000725   0.002165  -0.001504   
+25%     0.011990   0.015571   0.022403   0.018791   0.013378   0.018110   
+50%     0.038589   0.027148   0.036087   0.022159   0.024131   0.030640   
+75%     0.046734   0.042268   0.043166   0.040070   0.038049   0.035820   
+max     0.222000   0.099000   0.086371   0.054673   0.044714   0.051910   
+
+          att128     target  
+count  30.000000  30.000000  
+mean    0.027329   2.000000  
+std     0.015173   0.830455  
+min    -0.005816   1.000000  
+25%     0.015162   1.000000  
+50%     0.028903   2.000000  
+75%     0.039106   3.000000  
+max     0.053829   3.000000  
+
+[8 rows x 129 columns]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="cek-missing-values">
+<h3>2.2 Cek Missing Values<a class="headerlink" href="#cek-missing-values" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">missing_train</span> <span class="o">=</span> <span class="n">df_train</span><span class="o">.</span> <span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span> <span class="nb">sum</span><span class="p">()</span>
+<span class="n">missing_test</span> <span class="o">=</span> <span class="n">df_test</span><span class="o">.</span> <span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Missing values di data training: </span><span class="si">{</span><span class="n">missing_train</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Missing values di data testing: </span><span class="si">{</span><span class="n">missing_test</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Missing values di data training: 0
+Missing values di data testing: 0
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="distribusi-kelas-target">
+<h3>2.3 Distribusi Kelas Target<a class="headerlink" href="#distribusi-kelas-target" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Data Training:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df_train</span><span class="p">[</span><span class="s1">&#39;target&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span> <span class="n">sort_index</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Data Testing:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df_test</span><span class="p">[</span><span class="s1">&#39;target&#39;</span><span class="p">]</span><span class="o">.</span> <span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">sort_index</span><span class="p">())</span>
+
+<span class="c1"># Visualisasi distribusi kelas</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+
+<span class="n">ax1</span> <span class="o">=</span> <span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">df_train</span><span class="p">[</span><span class="s1">&#39;target&#39;</span><span class="p">]</span><span class="o">.</span> <span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">sort_index</span><span class="p">()</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;bar&#39;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;#3498db&#39;</span><span class="p">,</span> <span class="s1">&#39;#e74c3c&#39;</span><span class="p">,</span> <span class="s1">&#39;#2ecc71&#39;</span><span class="p">])</span>
+<span class="n">ax1</span><span class="o">.</span> <span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Distribusi Kelas - Data Training&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Kelas&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Jumlah Sampel&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_xticklabels</span><span class="p">([</span><span class="s1">&#39;Kelas 1 (Begin)&#39;</span><span class="p">,</span> <span class="s1">&#39;Kelas 2 (Middle)&#39;</span><span class="p">,</span> <span class="s1">&#39;Kelas 3 (End)&#39;</span><span class="p">],</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="n">ax2</span> <span class="o">=</span> <span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">df_test</span><span class="p">[</span><span class="s1">&#39;target&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">sort_index</span><span class="p">()</span><span class="o">.</span> <span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;bar&#39;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax2</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;#3498db&#39;</span><span class="p">,</span> <span class="s1">&#39;#e74c3c&#39;</span><span class="p">,</span> <span class="s1">&#39;#2ecc71&#39;</span><span class="p">])</span>
+<span class="n">ax2</span><span class="o">.</span> <span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Distribusi Kelas - Data Testing&#39;</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Kelas&#39;</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span> <span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Jumlah Sampel&#39;</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_xticklabels</span><span class="p">([</span><span class="s1">&#39;Kelas 1 (Begin)&#39;</span><span class="p">,</span> <span class="s1">&#39;Kelas 2 (Middle)&#39;</span><span class="p">,</span> <span class="s1">&#39;Kelas 3 (End)&#39;</span><span class="p">],</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span> <span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Data Training:
+target
+1    10
+2    10
+3    10
+Name: count, dtype: int64
+
+Data Testing:
+target
+1    3
+2    3
+3    2
+Name: count, dtype: int64
+</pre></div>
+</div>
+<img alt="../../_images/c810ee90e1db73e6be358787aa8a18a1de5db57a78f81f3cc71ef17e29b4b6b8.png" src="../../_images/c810ee90e1db73e6be358787aa8a18a1de5db57a78f81f3cc71ef17e29b4b6b8.png" />
+</div>
+</div>
+</section>
+<section id="visualisasi-pola-time-series-per-kelas">
+<h3>2.4 Visualisasi Pola Time Series per Kelas<a class="headerlink" href="#visualisasi-pola-time-series-per-kelas" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">class_names</span> <span class="o">=</span> <span class="p">{</span><span class="mi">1</span><span class="p">:</span> <span class="s1">&#39;Begin (Kelas 1)&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="p">:</span> <span class="s1">&#39;Middle (Kelas 2)&#39;</span><span class="p">,</span> <span class="mi">3</span><span class="p">:</span> <span class="s1">&#39;End (Kelas 3)&#39;</span><span class="p">}</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+
+<span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="n">kelas</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]):</span>
+    <span class="n">ax</span> <span class="o">=</span> <span class="n">axes</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span>
+    <span class="n">samples</span> <span class="o">=</span> <span class="n">df_train</span><span class="p">[</span><span class="n">df_train</span><span class="p">[</span><span class="s1">&#39;target&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">kelas</span><span class="p">]</span><span class="o">.</span> <span class="n">iloc</span><span class="p">[:</span><span class="mi">5</span><span class="p">,</span> <span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+    
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">samples</span><span class="p">)):</span>
+        <span class="n">ax</span><span class="o">.</span> <span class="n">plot</span><span class="p">(</span><span class="n">samples</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span> <span class="n">values</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Pola Time Series - </span><span class="si">{</span><span class="n">class_names</span><span class="p">[</span><span class="n">kelas</span><span class="p">]</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Waktu (Time Step)&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span> <span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Nilai&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span> <span class="n">axhline</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span> <span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/5bddfca3f9acb7cc911d5ef674608d088b02cbc1ffb7e6d09e6e7a217cdaed3d.png" src="../../_images/5bddfca3f9acb7cc911d5ef674608d088b02cbc1ffb7e6d09e6e7a217cdaed3d.png" />
+</div>
+</div>
+</section>
+<section id="rata-rata-pola-time-series-per-kelas">
+<h3>2.5 Rata-rata Pola Time Series per Kelas<a class="headerlink" href="#rata-rata-pola-time-series-per-kelas" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+
+<span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;#3498db&#39;</span><span class="p">,</span> <span class="s1">&#39;#e74c3c&#39;</span><span class="p">,</span> <span class="s1">&#39;#2ecc71&#39;</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="n">kelas</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]):</span>
+    <span class="n">mean_pattern</span> <span class="o">=</span> <span class="n">df_train</span><span class="p">[</span><span class="n">df_train</span><span class="p">[</span><span class="s1">&#39;target&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">kelas</span><span class="p">]</span><span class="o">.</span> <span class="n">iloc</span><span class="p">[:,</span> <span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+    <span class="n">ax</span><span class="o">.</span> <span class="n">plot</span><span class="p">(</span><span class="n">mean_pattern</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">class_names</span><span class="p">[</span><span class="n">kelas</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="n">colors</span><span class="p">[</span><span class="n">idx</span><span class="p">],</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Rata-rata Pola Time Series per Kelas&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Waktu (Time Step)&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Nilai Rata-rata&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span> <span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/f9e2256ddd09b4bb9974458c5a56a93b75ca9581e00e5d7b4d44bd461e11e405.png" src="../../_images/f9e2256ddd09b4bb9974458c5a56a93b75ca9581e00e5d7b4d44bd461e11e405.png" />
+</div>
+</div>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./Project_UAS (RF)\BACKUP SVM"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gambaran-umum-dataset-bme">1. Gambaran Umum Dataset BME</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#struktur-dan-karakteristik-data">2. Struktur dan Karakteristik Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pola-sinyal-pada-tiap-kelas">3. Pola Sinyal pada Tiap Kelas</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#kelas-begin"><strong>1. Kelas “Begin”</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#kelas-middle"><strong>2. Kelas “Middle”</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#kelas-end"><strong>3. Kelas “End”</strong></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eksplorasi-data-eda">4. Eksplorasi Data (EDA)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#melihat-struktur-data">2.1 Melihat struktur data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cek-missing-values">2.2 Cek Missing Values</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#distribusi-kelas-target">2.3 Distribusi Kelas Target</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualisasi-pola-time-series-per-kelas">2.4 Visualisasi Pola Time Series per Kelas</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rata-rata-pola-time-series-per-kelas">2.5 Rata-rata Pola Time Series per Kelas</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By The Jupyter Book Community
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
